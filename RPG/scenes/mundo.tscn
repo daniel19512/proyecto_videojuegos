@@ -2,6 +2,50 @@
 
 [ext_resource type="Script" uid="uid://8dy8d4pu1gww" path="res://scripts/mundo.gd" id="1_wqn8j"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suelo"]
+albedo_color = Color(0.33, 0.29, 0.19, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_suelo"]
+material = SubResource("StandardMaterial3D_suelo")
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_suelo"]
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="Environment" id="Environment_mundo"]
+background_mode = 1
+background_color = Color(0.16, 0.19, 0.22, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.77, 0.85, 1)
+ambient_light_energy = 0.6
+
 [node name="Mundo" type="Node3D" unique_id=872652748]
-transform = Transform3D(0.89541453, -0.44523346, 0, 0.44523346, 0.89541453, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_wqn8j")
+
+[node name="Suelo" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.25, 0)
+
+[node name="MallaSuelo" type="MeshInstance3D" parent="Suelo"]
+mesh = SubResource("BoxMesh_suelo")
+
+[node name="ColisionSuelo" type="CollisionShape3D" parent="Suelo"]
+shape = SubResource("BoxShape3D_suelo")
+
+[node name="CamaraPrincipal" type="Camera3D" parent="."]
+position = Vector3(0, 14, 16.68455)
+rotation_degrees = Vector3(-40, 0, 0)
+projection = 1
+current = true
+size = 28.0
+near = 0.1
+far = 100.0
+
+[node name="LuzSolar" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -30, 0)
+light_color = Color(1, 0.89, 0.72, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="AmbienteMundo" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mundo")
