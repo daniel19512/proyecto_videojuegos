@@ -28,7 +28,7 @@ script = ExtResource("1_wqn8j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="MallaSuelo" type="MeshInstance3D" parent="Suelo" unique_id=373564665]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6281171, -0.14737844, -0.2513981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08377552, -0.31318092, 0.24072361)
 mesh = SubResource("BoxMesh_suelo")
 
 [node name="ColisionSuelo" type="CollisionShape3D" parent="Suelo" unique_id=1839546336]

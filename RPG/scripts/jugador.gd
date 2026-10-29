@@ -4,11 +4,11 @@ extends CharacterBody3D
 @export_range(0.1, 100.0, 0.1) var aceleracion: float = 18.0
 @export_range(0.1, 100.0, 0.1) var desaceleracion: float = 24.0
 
-# Estado disponible para las futuras animaciones de AnimatedSprite3D.
+# Direccion relativa a la pantalla para las animaciones de cuatro orientaciones.
 var direccion_visual: StringName = &"abajo"
 var en_movimiento: bool = false
 
-@onready var visual: Node3D = $Visual
+@onready var sprite: AnimatedSprite3D = $Visual/SpriteAnimado
 
 
 func _physics_process(delta: float) -> void:
@@ -42,14 +42,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	en_movimiento = Vector2(velocity.x, velocity.z).length() > 0.05
 	if not entrada.is_zero_approx():
-		_actualizar_visual(entrada, direccion)
+		_actualizar_direccion_visual(entrada)
+	_actualizar_animacion()
 
 
-func _actualizar_visual(entrada: Vector2, direccion: Vector3) -> void:
+func _actualizar_direccion_visual(entrada: Vector2) -> void:
 	if absf(entrada.x) > absf(entrada.y):
 		direccion_visual = &"derecha" if entrada.x > 0.0 else &"izquierda"
 	else:
 		direccion_visual = &"abajo" if entrada.y > 0.0 else &"arriba"
-	# Solo gira el modelo provisional, nunca el cuerpo ni la camara.
-	# Al usar AnimatedSprite3D, sustituir este giro por la seleccion de animacion.
-	visual.rotation.y = atan2(-direccion.x, -direccion.z)
+
+
+func _actualizar_animacion() -> void:
+	var estado: String = "walk" if en_movimiento else "idle"
+	var animacion: StringName = StringName(estado + "_" + String(direccion_visual))
+	if sprite.animation != animacion or not sprite.is_playing():
+		sprite.play(animacion)

@@ -16,3 +16,6 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Recursos privados de Ventilatore: no redistribuir los sprites originales.
+/assets/personajes/protagonista/
