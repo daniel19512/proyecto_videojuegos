@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/jugador.gd" id="1_jugador"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jugador"]
+radius = 0.32
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tunica"]
+albedo_color = Color(0.18, 0.38, 0.48, 1)
+roughness = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cuerpo"]
+material = SubResource("StandardMaterial3D_tunica")
+radius = 0.32
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frente"]
+albedo_color = Color(0.85, 0.66, 0.36, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_frente"]
+material = SubResource("StandardMaterial3D_frente")
+size = Vector3(0.28, 0.22, 0.12)
+
+[node name="Jugador" type="CharacterBody3D"]
+floor_snap_length = 0.2
+script = ExtResource("1_jugador")
+
+[node name="ColisionJugador" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_jugador")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="CuerpoProvisional" type="MeshInstance3D" parent="Visual"]
+position = Vector3(0, 0.8, 0)
+mesh = SubResource("CapsuleMesh_cuerpo")
+
+[node name="FrenteProvisional" type="MeshInstance3D" parent="Visual"]
+position = Vector3(0, 1.15, -0.3)
+mesh = SubResource("BoxMesh_frente")

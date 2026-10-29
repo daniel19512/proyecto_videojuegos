@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://8b5rhmh5q8qk"]
 
 [ext_resource type="Script" uid="uid://8dy8d4pu1gww" path="res://scripts/mundo.gd" id="1_wqn8j"]
+[ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2_jugador"]
+[ext_resource type="Script" uid="uid://chbs8pc67vcj4" path="res://scripts/camara_seguimiento.gd" id="3_camara"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suelo"]
 albedo_color = Color(0.33, 0.29, 0.19, 1)
-roughness = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_suelo"]
 material = SubResource("StandardMaterial3D_suelo")
@@ -23,29 +24,34 @@ ambient_light_energy = 0.6
 [node name="Mundo" type="Node3D" unique_id=872652748]
 script = ExtResource("1_wqn8j")
 
-[node name="Suelo" type="StaticBody3D" parent="."]
-position = Vector3(0, -0.25, 0)
+[node name="Suelo" type="StaticBody3D" parent="." unique_id=516442212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
-[node name="MallaSuelo" type="MeshInstance3D" parent="Suelo"]
+[node name="MallaSuelo" type="MeshInstance3D" parent="Suelo" unique_id=373564665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6281171, -0.14737844, -0.2513981)
 mesh = SubResource("BoxMesh_suelo")
 
-[node name="ColisionSuelo" type="CollisionShape3D" parent="Suelo"]
+[node name="ColisionSuelo" type="CollisionShape3D" parent="Suelo" unique_id=1839546336]
 shape = SubResource("BoxShape3D_suelo")
 
-[node name="CamaraPrincipal" type="Camera3D" parent="."]
-position = Vector3(0, 14, 16.68455)
-rotation_degrees = Vector3(-40, 0, 0)
+[node name="Jugador" parent="." unique_id=2062574165 instance=ExtResource("2_jugador")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="CamaraPrincipal" type="Camera3D" parent="." unique_id=1486661048 node_paths=PackedStringArray("objetivo")]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, 0.6427876, 0, -0.6427876, 0.76604444, 0, 14, 16.68455)
 projection = 1
 current = true
 size = 28.0
 near = 0.1
 far = 100.0
+script = ExtResource("3_camara")
+objetivo = NodePath("../Jugador")
 
-[node name="LuzSolar" type="DirectionalLight3D" parent="."]
-rotation_degrees = Vector3(-55, -30, 0)
+[node name="LuzSolar" type="DirectionalLight3D" parent="." unique_id=622571284]
+transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
 light_color = Color(1, 0.89, 0.72, 1)
 light_energy = 1.2
 shadow_enabled = true
 
-[node name="AmbienteMundo" type="WorldEnvironment" parent="."]
+[node name="AmbienteMundo" type="WorldEnvironment" parent="." unique_id=1446535498]
 environment = SubResource("Environment_mundo")
