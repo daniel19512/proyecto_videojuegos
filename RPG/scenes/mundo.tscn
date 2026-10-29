@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://8b5rhmh5q8qk"]
+
+[ext_resource type="Script" uid="uid://8dy8d4pu1gww" path="res://scripts/mundo.gd" id="1_wqn8j"]
+
+[node name="Mundo" type="Node3D" unique_id=872652748]
+transform = Transform3D(0.89541453, -0.44523346, 0, 0.44523346, 0.89541453, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_wqn8j")
