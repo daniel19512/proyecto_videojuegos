@@ -1,0 +1,393 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="Jugador"]
+[ext_resource type="Script" path="res://scripts/camara_seguimiento.gd" id="Camara"]
+[ext_resource type="Script" path="res://scenes/selector_distancia_assets.gd" id="SelectorDistancia"]
+[ext_resource type="PackedScene" path="res://scenes/casa_modular.tscn" id="Casa"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Stall_Empty.gltf" id="Puesto"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Barrel.gltf" id="Barril"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Barrel_Apples.gltf" id="Manzanas"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Crate_Wooden.gltf" id="Caja"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/FarmCrate_Apple.gltf" id="Mercancia"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Anvil_Log.gltf" id="Yunque"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Workbench.gltf" id="Banco"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Whetstone.gltf" id="Afiladora"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Axe_Bronze.gltf" id="Hacha"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Pickaxe_Bronze.gltf" id="Pico"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/CommonTree_1.gltf" id="Arbol1"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/CommonTree_3.gltf" id="Arbol3"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/CommonTree_5.gltf" id="Arbol5"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Bush_Common.gltf" id="Arbusto"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Bush_Common_Flowers.gltf" id="ArbustoFlores"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Flower_3_Group.gltf" id="Flores"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Grass_Common_Short.gltf" id="Hierba"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Rock_Medium_1.gltf" id="Roca"]
+
+[sub_resource type="Environment" id="Ambiente"]
+background_mode = 1
+background_color = Color(0.16, 0.19, 0.22, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.77, 0.85, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="ButtonGroup" id="GrupoDistancia"]
+
+[sub_resource type="StandardMaterial3D" id="MaterialSuelo"]
+albedo_color = Color(0.32, 0.38, 0.22, 1)
+
+[sub_resource type="BoxMesh" id="MallaSuelo"]
+material = SubResource("MaterialSuelo")
+size = Vector3(32, 0.5, 32)
+
+[sub_resource type="BoxShape3D" id="Suelo"]
+size = Vector3(32, 0.5, 32)
+
+[sub_resource type="BoxShape3D" id="CasaSolida"]
+size = Vector3(4.25, 4.5, 4.25)
+
+[sub_resource type="BoxShape3D" id="PuestoSolido"]
+size = Vector3(1.85, 2.63, 0.94)
+
+[sub_resource type="BoxShape3D" id="BarrilSolido"]
+size = Vector3(0.7, 0.9, 0.7)
+
+[sub_resource type="BoxShape3D" id="CajaSolida"]
+size = Vector3(0.85, 0.93, 0.91)
+
+[sub_resource type="BoxShape3D" id="YunqueSolido"]
+size = Vector3(0.93, 1.08, 0.83)
+
+[sub_resource type="BoxShape3D" id="BancoSolido"]
+size = Vector3(2.02, 0.9, 1.03)
+
+[sub_resource type="BoxShape3D" id="AfiladoraSolida"]
+size = Vector3(1.15, 1.17, 0.91)
+
+[sub_resource type="CylinderShape3D" id="TroncoGrande"]
+radius = 0.36
+height = 2.5
+
+[sub_resource type="CylinderShape3D" id="TroncoPequeno"]
+radius = 0.25
+height = 2.0
+
+[sub_resource type="BoxShape3D" id="RocaSolida"]
+size = Vector3(1.7, 1.1, 1.6)
+
+[sub_resource type="BoxShape3D" id="LimiteHorizontal"]
+size = Vector3(32, 3, 0.3)
+
+[sub_resource type="BoxShape3D" id="LimiteVertical"]
+size = Vector3(0.3, 3, 32)
+
+[node name="PruebasAssets" type="Node3D"]
+
+[node name="Suelo" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.25, 0)
+
+[node name="Colision" type="CollisionShape3D" parent="Suelo"]
+shape = SubResource("Suelo")
+
+[node name="Terreno" type="MeshInstance3D" parent="Suelo"]
+mesh = SubResource("MallaSuelo")
+
+[node name="Arquitectura" type="Node3D" parent="."]
+position = Vector3(-6, 0, -6)
+
+[node name="Casa" parent="Arquitectura" instance=ExtResource("Casa")]
+
+[node name="Cuerpo" type="StaticBody3D" parent="Arquitectura"]
+
+[node name="Colision" type="CollisionShape3D" parent="Arquitectura/Cuerpo"]
+position = Vector3(0, 2.25, 0)
+shape = SubResource("CasaSolida")
+
+[node name="Mercado" type="Node3D" parent="."]
+position = Vector3(6, 0, -5)
+
+[node name="Puesto" type="StaticBody3D" parent="Mercado"]
+
+[node name="Colision" type="CollisionShape3D" parent="Mercado/Puesto"]
+position = Vector3(0, 1.315, 0)
+shape = SubResource("PuestoSolido")
+
+[node name="Modelo" parent="Mercado/Puesto" instance=ExtResource("Puesto")]
+
+[node name="Mercancia" parent="Mercado/Puesto" instance=ExtResource("Mercancia")]
+position = Vector3(0, 0.94, 0)
+
+[node name="Barril" type="StaticBody3D" parent="Mercado"]
+position = Vector3(-2.4, 0, 0.3)
+
+[node name="Colision" type="CollisionShape3D" parent="Mercado/Barril"]
+position = Vector3(0, 0.45, 0)
+shape = SubResource("BarrilSolido")
+
+[node name="Modelo" parent="Mercado/Barril" instance=ExtResource("Barril")]
+
+[node name="Manzanas" type="StaticBody3D" parent="Mercado"]
+position = Vector3(-3.5, 0, -1.5)
+
+[node name="Colision" type="CollisionShape3D" parent="Mercado/Manzanas"]
+position = Vector3(0, 0.45, 0)
+shape = SubResource("BarrilSolido")
+
+[node name="Modelo" parent="Mercado/Manzanas" instance=ExtResource("Manzanas")]
+
+[node name="Caja" type="StaticBody3D" parent="Mercado"]
+position = Vector3(2.6, 0, -0.8)
+rotation_degrees = Vector3(0, 17, 0)
+
+[node name="Colision" type="CollisionShape3D" parent="Mercado/Caja"]
+position = Vector3(0, 0.465, 0)
+shape = SubResource("CajaSolida")
+
+[node name="Modelo" parent="Mercado/Caja" instance=ExtResource("Caja")]
+position = Vector3(0, 0.053, 0)
+
+[node name="Herreria" type="Node3D" parent="."]
+position = Vector3(-6, 0, 5)
+
+[node name="Yunque" type="StaticBody3D" parent="Herreria"]
+
+[node name="Colision" type="CollisionShape3D" parent="Herreria/Yunque"]
+position = Vector3(0.05, 0.54, 0.06)
+shape = SubResource("YunqueSolido")
+
+[node name="Modelo" parent="Herreria/Yunque" instance=ExtResource("Yunque")]
+
+[node name="Banco" type="StaticBody3D" parent="Herreria"]
+position = Vector3(-0.6, 0, -2.5)
+
+[node name="Colision" type="CollisionShape3D" parent="Herreria/Banco"]
+position = Vector3(0, 0.45, 0)
+shape = SubResource("BancoSolido")
+
+[node name="Modelo" parent="Herreria/Banco" instance=ExtResource("Banco")]
+
+[node name="Hacha" parent="Herreria/Banco" instance=ExtResource("Hacha")]
+position = Vector3(-0.4, 0.93, 0)
+rotation_degrees = Vector3(90, 0, 25)
+
+[node name="Pico" parent="Herreria/Banco" instance=ExtResource("Pico")]
+position = Vector3(0.4, 0.95, 0)
+rotation_degrees = Vector3(90, 0, -20)
+
+[node name="Afiladora" type="StaticBody3D" parent="Herreria"]
+position = Vector3(2.8, 0, -0.6)
+rotation_degrees = Vector3(0, -25, 0)
+
+[node name="Colision" type="CollisionShape3D" parent="Herreria/Afiladora"]
+position = Vector3(0.01, 0.585, 0.08)
+shape = SubResource("AfiladoraSolida")
+
+[node name="Modelo" parent="Herreria/Afiladora" instance=ExtResource("Afiladora")]
+
+[node name="Naturaleza" type="Node3D" parent="."]
+
+[node name="ArbolGrande" type="StaticBody3D" parent="Naturaleza"]
+position = Vector3(10.2, 0, 4.3)
+
+[node name="Colision" type="CollisionShape3D" parent="Naturaleza/ArbolGrande"]
+position = Vector3(0, 1.25, 0)
+shape = SubResource("TroncoGrande")
+
+[node name="Modelo" parent="Naturaleza/ArbolGrande" instance=ExtResource("Arbol3")]
+rotation_degrees = Vector3(0, 24, 0)
+
+[node name="ArbolMediano" type="StaticBody3D" parent="Naturaleza"]
+position = Vector3(5.1, 0, 8.8)
+
+[node name="Colision" type="CollisionShape3D" parent="Naturaleza/ArbolMediano"]
+position = Vector3(0, 1.25, 0)
+shape = SubResource("TroncoGrande")
+
+[node name="Modelo" parent="Naturaleza/ArbolMediano" instance=ExtResource("Arbol1")]
+rotation_degrees = Vector3(0, -38, 0)
+
+[node name="ArbolPequeno" type="StaticBody3D" parent="Naturaleza"]
+position = Vector3(11.8, 0, 10.1)
+
+[node name="Colision" type="CollisionShape3D" parent="Naturaleza/ArbolPequeno"]
+position = Vector3(0, 1, 0)
+shape = SubResource("TroncoPequeno")
+
+[node name="Modelo" parent="Naturaleza/ArbolPequeno" instance=ExtResource("Arbol5")]
+rotation_degrees = Vector3(0, 71, 0)
+scale = Vector3(0.72, 0.72, 0.72)
+
+[node name="Arbusto" parent="Naturaleza" instance=ExtResource("Arbusto")]
+position = Vector3(11.1, 0, 6.1)
+rotation_degrees = Vector3(0, 31, 0)
+scale = Vector3(0.7, 0.7, 0.7)
+
+[node name="ArbustoFlores" parent="Naturaleza" instance=ExtResource("ArbustoFlores")]
+position = Vector3(3.6, 0, 10.2)
+scale = Vector3(0.65, 0.65, 0.65)
+
+[node name="ArbustoBorde" parent="Naturaleza" instance=ExtResource("Arbusto")]
+position = Vector3(12.9, 0, 8.2)
+rotation_degrees = Vector3(0, -43, 0)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="Flores1" parent="Naturaleza" instance=ExtResource("Flores")]
+position = Vector3(4.1, 0, 6.8)
+scale = Vector3(0.3, 0.3, 0.3)
+
+[node name="Flores2" parent="Naturaleza" instance=ExtResource("Flores")]
+position = Vector3(8.1, 0, 10.5)
+rotation_degrees = Vector3(0, 83, 0)
+scale = Vector3(0.25, 0.25, 0.25)
+
+[node name="Flores3" parent="Naturaleza" instance=ExtResource("Flores")]
+position = Vector3(11.9, 0, 6.8)
+rotation_degrees = Vector3(0, -35, 0)
+scale = Vector3(0.35, 0.35, 0.35)
+
+[node name="Hierba1" parent="Naturaleza" instance=ExtResource("Hierba")]
+position = Vector3(4.4, 0, 7.4)
+scale = Vector3(0.45, 0.45, 0.45)
+
+[node name="Hierba2" parent="Naturaleza" instance=ExtResource("Hierba")]
+position = Vector3(6.5, 0, 9.7)
+rotation_degrees = Vector3(0, 50, 0)
+scale = Vector3(0.35, 0.35, 0.35)
+
+[node name="Hierba3" parent="Naturaleza" instance=ExtResource("Hierba")]
+position = Vector3(9.1, 0, 5.8)
+rotation_degrees = Vector3(0, -20, 0)
+scale = Vector3(0.5, 0.5, 0.5)
+
+[node name="Hierba4" parent="Naturaleza" instance=ExtResource("Hierba")]
+position = Vector3(12.6, 0, 10.8)
+scale = Vector3(0.4, 0.4, 0.4)
+
+[node name="Hierba5" parent="Naturaleza" instance=ExtResource("Hierba")]
+position = Vector3(7.8, 0, 3.6)
+rotation_degrees = Vector3(0, 110, 0)
+scale = Vector3(0.45, 0.45, 0.45)
+
+[node name="RocaGrande" type="StaticBody3D" parent="Naturaleza"]
+position = Vector3(7.4, 0, 6.4)
+
+[node name="Colision" type="CollisionShape3D" parent="Naturaleza/RocaGrande"]
+position = Vector3(-0.06, 0.55, 0.18)
+shape = SubResource("RocaSolida")
+
+[node name="Modelo" parent="Naturaleza/RocaGrande" instance=ExtResource("Roca")]
+scale = Vector3(0.55, 0.55, 0.55)
+
+[node name="RocaPequena" type="StaticBody3D" parent="Naturaleza"]
+position = Vector3(9.1, 0, 11.5)
+rotation_degrees = Vector3(0, 38, 0)
+
+[node name="Colision" type="CollisionShape3D" parent="Naturaleza/RocaPequena"]
+position = Vector3(-0.04, 0.35, 0.11)
+scale = Vector3(0.64, 0.64, 0.64)
+shape = SubResource("RocaSolida")
+
+[node name="Modelo" parent="Naturaleza/RocaPequena" instance=ExtResource("Roca")]
+scale = Vector3(0.35, 0.35, 0.35)
+
+[node name="Limites" type="StaticBody3D" parent="."]
+
+[node name="Norte" type="CollisionShape3D" parent="Limites"]
+position = Vector3(0, 1.5, -16)
+shape = SubResource("LimiteHorizontal")
+
+[node name="Sur" type="CollisionShape3D" parent="Limites"]
+position = Vector3(0, 1.5, 16)
+shape = SubResource("LimiteHorizontal")
+
+[node name="Oeste" type="CollisionShape3D" parent="Limites"]
+position = Vector3(-16, 1.5, 0)
+shape = SubResource("LimiteVertical")
+
+[node name="Este" type="CollisionShape3D" parent="Limites"]
+position = Vector3(16, 1.5, 0)
+shape = SubResource("LimiteVertical")
+
+[node name="Jugador" parent="." instance=ExtResource("Jugador")]
+position = Vector3(0, 0.05, 0)
+
+[node name="CamaraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("objetivo")]
+transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, 0, 13.8, 20.80435)
+projection = 1
+current = true
+size = 23.0
+near = 0.1
+far = 100.0
+script = ExtResource("Camara")
+objetivo = NodePath("../Jugador")
+
+[node name="LuzSolar" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
+light_color = Color(1, 0.89, 0.72, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="AmbienteMundo" type="WorldEnvironment" parent="."]
+environment = SubResource("Ambiente")
+
+[node name="SelectorDistancia" type="CanvasLayer" parent="."]
+script = ExtResource("SelectorDistancia")
+
+[node name="Panel" type="PanelContainer" parent="SelectorDistancia"]
+offset_left = 16.0
+offset_top = 16.0
+
+[node name="Margen" type="MarginContainer" parent="SelectorDistancia/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="Contenido" type="VBoxContainer" parent="SelectorDistancia/Panel/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Titulo" type="Label" parent="SelectorDistancia/Panel/Margen/Contenido"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "DISTANCIA DE CÁMARA"
+
+[node name="Opciones" type="VBoxContainer" parent="SelectorDistancia/Panel/Margen/Contenido"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Original" type="CheckBox" parent="SelectorDistancia/Panel/Margen/Contenido/Opciones"]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+button_group = SubResource("GrupoDistancia")
+text = "23 — Original"
+
+[node name="Intermedia" type="CheckBox" parent="SelectorDistancia/Panel/Margen/Contenido/Opciones"]
+layout_mode = 2
+focus_mode = 0
+button_group = SubResource("GrupoDistancia")
+text = "19 — Intermedia"
+
+[node name="Cercana" type="CheckBox" parent="SelectorDistancia/Panel/Margen/Contenido/Opciones"]
+layout_mode = 2
+focus_mode = 0
+button_group = SubResource("GrupoDistancia")
+text = "17 — Cercana"
+
+[node name="MuyCercana" type="CheckBox" parent="SelectorDistancia/Panel/Margen/Contenido/Opciones"]
+layout_mode = 2
+focus_mode = 0
+button_group = SubResource("GrupoDistancia")
+text = "15 — Muy cercana"
+
+[node name="Seleccion" type="Label" parent="SelectorDistancia/Panel/Margen/Contenido"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.54, 1)
+theme_override_font_sizes/font_size = 14
+text = "Seleccionada: 23 — Original"
+
+[node name="Controles" type="Label" parent="SelectorDistancia/Panel/Margen/Contenido"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Ratón o teclas 1–4: cambiar vista\nWASD / flechas: caminar"

@@ -1,0 +1,326 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_Plaster_Straight.gltf" id="Wall_Plaster_Straight"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_Plaster_Door_Flat.gltf" id="Wall_Plaster_Door_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_Plaster_Window_Wide_Flat.gltf" id="Wall_Plaster_Window_Wide_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Door_1_Flat.gltf" id="Door_1_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Window_Wide_Flat1.gltf" id="Window_Wide_Flat1"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Corner_Exterior_Wood.gltf" id="Corner_Exterior_Wood"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_RoundTiles_4x4.gltf" id="Roof_RoundTiles_4x4"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_RoundTiles_4x6.gltf" id="Roof_RoundTiles_4x6"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_RoundTiles_6x8.gltf" id="Roof_RoundTiles_6x8"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_Front_Brick4.gltf" id="Roof_Front_Brick4"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_Front_Brick6.gltf" id="Roof_Front_Brick6"]
+[ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="Jugador"]
+[ext_resource type="Script" path="res://scripts/camara_seguimiento.gd" id="Camara"]
+[ext_resource type="Script" path="res://scenes/pruebas_proporciones.gd" id="Comparador"]
+
+[sub_resource type="StandardMaterial3D" id="MaterialSuelo"]
+albedo_color = Color(0.32, 0.38, 0.22, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialCamino"]
+albedo_color = Color(0.52, 0.43, 0.3, 1)
+[sub_resource type="BoxMesh" id="MallaSuelo"]
+material = SubResource("MaterialSuelo")
+size = Vector3(48, 0.5, 32)
+[sub_resource type="BoxMesh" id="Camino"]
+material = SubResource("MaterialCamino")
+size = Vector3(46, 0.01, 4)
+[sub_resource type="BoxShape3D" id="Suelo"]
+size = Vector3(48, 0.5, 32)
+[sub_resource type="BoxShape3D" id="Horizontal"]
+size = Vector3(48, 3, 0.3)
+[sub_resource type="BoxShape3D" id="Vertical"]
+size = Vector3(0.3, 3, 32)
+[sub_resource type="BoxShape3D" id="Vivienda4x4"]
+size = Vector3(4.64, 3.125, 4.64)
+[sub_resource type="BoxShape3D" id="Vivienda4x6"]
+size = Vector3(4.64, 3.125, 6.64)
+[sub_resource type="BoxShape3D" id="Edificio6x8"]
+size = Vector3(6.64, 3.125, 8.64)
+[sub_resource type="Environment" id="Ambiente"]
+background_mode = 1
+background_color = Color(0.16, 0.19, 0.22, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.77, 0.85, 1)
+ambient_light_energy = 0.6
+
+[node name="PruebasProporciones" type="Node3D"]
+script = ExtResource("Comparador")
+metadata/descripcion = "Etapa 1: tres cuerpos modulares; cubiertas propuestas pendientes de aprobacion visual."
+[node name="Suelo" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.25, 0)
+[node name="Colision" type="CollisionShape3D" parent="Suelo"]
+shape = SubResource("Suelo")
+[node name="Terreno" type="MeshInstance3D" parent="Suelo"]
+mesh = SubResource("MallaSuelo")
+[node name="PaseoComparacion" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.006, 3)
+mesh = SubResource("Camino")
+[node name="Edificios" type="Node3D" parent="."]
+[node name="Vivienda4x4" type="Node3D" parent="Edificios"]
+position = Vector3(-13, 0.003, -6)
+metadata/cuerpo = Vector2(4, 4)
+metadata/escala_cubierta_propuesta = 0.6
+[node name="Muros" type="Node3D" parent="Edificios/Vivienda4x4"]
+[node name="Frente0" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Door_Flat")]
+position = Vector3(-1, 0, 2)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Trasera0" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-1, 0, -2)
+[node name="Frente1" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Window_Wide_Flat")]
+position = Vector3(1, 0, 2)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Trasera1" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(1, 0, -2)
+[node name="Ventana1" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(1, 0, 2)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Puerta" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Door_1_Flat")]
+position = Vector3(-0.5, 0, 2.04)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Izquierda0" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-2, 0, -1)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha0" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(2, 0, -1)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Izquierda1" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-2, 0, 1)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha1" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(2, 0, 1)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="EsquinaIN" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-2, 0, -2)
+[node name="EsquinaIS" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-2, 0, 2)
+[node name="EsquinaDN" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(2, 0, -2)
+[node name="EsquinaDS" parent="Edificios/Vivienda4x4/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(2, 0, 2)
+[node name="Cubierta" type="Node3D" parent="Edificios/Vivienda4x4"]
+position = Vector3(0, 3, 0)
+scale = Vector3(1, 0.6, 1)
+[node name="Tejado" parent="Edificios/Vivienda4x4/Cubierta" instance=ExtResource("Roof_RoundTiles_4x4")]
+position = Vector3(0, 0, 0)
+[node name="FrontonFrontal" parent="Edificios/Vivienda4x4/Cubierta" instance=ExtResource("Roof_Front_Brick4")]
+position = Vector3(0, 0, 2)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="FrontonTrasero" parent="Edificios/Vivienda4x4/Cubierta" instance=ExtResource("Roof_Front_Brick4")]
+position = Vector3(0, 0, -2)
+[node name="Cuerpo" type="StaticBody3D" parent="Edificios/Vivienda4x4"]
+[node name="Colision" type="CollisionShape3D" parent="Edificios/Vivienda4x4/Cuerpo"]
+position = Vector3(0, 1.5595, 0)
+shape = SubResource("Vivienda4x4")
+[node name="Rotulo" type="Label3D" parent="Edificios/Vivienda4x4"]
+position = Vector3(0, 0.04, 6)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "4 x 4  |  cubierta Y 0.6"
+font_size = 48
+pixel_size = 0.012
+outline_size = 8
+modulate = Color(1, 0.94, 0.76, 1)
+[node name="Vivienda4x6" type="Node3D" parent="Edificios"]
+position = Vector3(0, 0.003, -6)
+metadata/cuerpo = Vector2(4, 6)
+metadata/escala_cubierta_propuesta = 0.6
+[node name="Muros" type="Node3D" parent="Edificios/Vivienda4x6"]
+[node name="Frente0" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Door_Flat")]
+position = Vector3(-1, 0, 3)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Trasera0" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-1, 0, -3)
+[node name="Frente1" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Window_Wide_Flat")]
+position = Vector3(1, 0, 3)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Trasera1" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(1, 0, -3)
+[node name="Ventana1" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(1, 0, 3)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Puerta" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Door_1_Flat")]
+position = Vector3(-0.5, 0, 3.04)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Izquierda0" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-2, 0, -2)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha0" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(2, 0, -2)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Izquierda1" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-2, 0, 0)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha1" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(2, 0, 0)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Izquierda2" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-2, 0, 2)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha2" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(2, 0, 2)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="EsquinaIN" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-2, 0, -3)
+[node name="EsquinaIS" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-2, 0, 3)
+[node name="EsquinaDN" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(2, 0, -3)
+[node name="EsquinaDS" parent="Edificios/Vivienda4x6/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(2, 0, 3)
+[node name="Cubierta" type="Node3D" parent="Edificios/Vivienda4x6"]
+position = Vector3(0, 3, 0)
+scale = Vector3(1, 0.6, 1)
+[node name="Tejado" parent="Edificios/Vivienda4x6/Cubierta" instance=ExtResource("Roof_RoundTiles_4x6")]
+position = Vector3(0, 0, 0)
+[node name="FrontonFrontal" parent="Edificios/Vivienda4x6/Cubierta" instance=ExtResource("Roof_Front_Brick4")]
+position = Vector3(0, 0, 3)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="FrontonTrasero" parent="Edificios/Vivienda4x6/Cubierta" instance=ExtResource("Roof_Front_Brick4")]
+position = Vector3(0, 0, -3)
+[node name="Cuerpo" type="StaticBody3D" parent="Edificios/Vivienda4x6"]
+[node name="Colision" type="CollisionShape3D" parent="Edificios/Vivienda4x6/Cuerpo"]
+position = Vector3(0, 1.5595, 0)
+shape = SubResource("Vivienda4x6")
+[node name="Rotulo" type="Label3D" parent="Edificios/Vivienda4x6"]
+position = Vector3(0, 0.04, 7)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "4 x 6  |  cubierta Y 0.6"
+font_size = 48
+pixel_size = 0.012
+outline_size = 8
+modulate = Color(1, 0.94, 0.76, 1)
+[node name="Edificio6x8" type="Node3D" parent="Edificios"]
+position = Vector3(14, 0.003, -6)
+metadata/cuerpo = Vector2(6, 8)
+metadata/escala_cubierta_propuesta = 0.55
+[node name="Muros" type="Node3D" parent="Edificios/Edificio6x8"]
+[node name="Frente0" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Door_Flat")]
+position = Vector3(-2, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Trasera0" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-2, 0, -4)
+[node name="Frente1" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Window_Wide_Flat")]
+position = Vector3(0, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Trasera1" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(0, 0, -4)
+[node name="Ventana1" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(0, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Frente2" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Window_Wide_Flat")]
+position = Vector3(2, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Trasera2" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(2, 0, -4)
+[node name="Ventana2" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(2, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Puerta" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Door_1_Flat")]
+position = Vector3(-1.5, 0, 4.04)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Izquierda0" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-3, 0, -3)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha0" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(3, 0, -3)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Izquierda1" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-3, 0, -1)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha1" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(3, 0, -1)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Izquierda2" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-3, 0, 1)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha2" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(3, 0, 1)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Izquierda3" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(-3, 0, 3)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Derecha3" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Wall_Plaster_Straight")]
+position = Vector3(3, 0, 3)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="EsquinaIN" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-3, 0, -4)
+[node name="EsquinaIS" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-3, 0, 4)
+[node name="EsquinaDN" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(3, 0, -4)
+[node name="EsquinaDS" parent="Edificios/Edificio6x8/Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(3, 0, 4)
+[node name="Cubierta" type="Node3D" parent="Edificios/Edificio6x8"]
+position = Vector3(0, 3, 0)
+scale = Vector3(1, 0.55, 1)
+[node name="Tejado" parent="Edificios/Edificio6x8/Cubierta" instance=ExtResource("Roof_RoundTiles_6x8")]
+position = Vector3(0, 0, 0)
+[node name="FrontonFrontal" parent="Edificios/Edificio6x8/Cubierta" instance=ExtResource("Roof_Front_Brick6")]
+position = Vector3(0, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="FrontonTrasero" parent="Edificios/Edificio6x8/Cubierta" instance=ExtResource("Roof_Front_Brick6")]
+position = Vector3(0, 0, -4)
+[node name="Cuerpo" type="StaticBody3D" parent="Edificios/Edificio6x8"]
+[node name="Colision" type="CollisionShape3D" parent="Edificios/Edificio6x8/Cuerpo"]
+position = Vector3(0, 1.5595, 0)
+shape = SubResource("Edificio6x8")
+[node name="Rotulo" type="Label3D" parent="Edificios/Edificio6x8"]
+position = Vector3(0, 0.04, 8)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "6 x 8  |  cubierta Y 0.55"
+font_size = 48
+pixel_size = 0.012
+outline_size = 8
+modulate = Color(1, 0.94, 0.76, 1)
+[node name="Limites" type="StaticBody3D" parent="."]
+[node name="Norte" type="CollisionShape3D" parent="Limites"]
+position = Vector3(0, 1.5, -16)
+shape = SubResource("Horizontal")
+[node name="Sur" type="CollisionShape3D" parent="Limites"]
+position = Vector3(0, 1.5, 16)
+shape = SubResource("Horizontal")
+[node name="Oeste" type="CollisionShape3D" parent="Limites"]
+position = Vector3(-24, 1.5, 0)
+shape = SubResource("Vertical")
+[node name="Este" type="CollisionShape3D" parent="Limites"]
+position = Vector3(24, 1.5, 0)
+shape = SubResource("Vertical")
+[node name="Jugador" parent="." instance=ExtResource("Jugador")]
+position = Vector3(0, 0.05, 3)
+[node name="CamaraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("objetivo")]
+transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, 0, 13.8, 20.80435)
+projection = 1
+current = true
+size = 23.0
+near = 0.1
+far = 100.0
+script = ExtResource("Camara")
+objetivo = NodePath("../Jugador")
+[node name="LuzSolar" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
+light_color = Color(1, 0.89, 0.72, 1)
+light_energy = 1.2
+shadow_enabled = true
+[node name="AmbienteMundo" type="WorldEnvironment" parent="."]
+environment = SubResource("Ambiente")
+
+[node name="Comparador" type="CanvasLayer" parent="."]
+[node name="Panel" type="PanelContainer" parent="Comparador"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 530.0
+offset_bottom = 124.0
+[node name="Opciones" type="VBoxContainer" parent="Comparador/Panel"]
+layout_mode = 2
+[node name="Titulo" type="Label" parent="Comparador/Panel/Opciones"]
+layout_mode = 2
+text = "MUESTRA DE PROPORCIONES - Etapa 1"
+[node name="Instrucciones" type="Label" parent="Comparador/Panel/Opciones"]
+layout_mode = 2
+text = "WASD / flechas: recorrer las tres fachadas y sus contornos.\nIzquierda: 4x4 | Centro: 4x6 | Derecha: 6x8.\nPuertas cerradas; protagonista y camara conservan su escala."
+[node name="Originales" type="CheckButton" parent="Comparador/Panel/Opciones"]
+layout_mode = 2
+focus_mode = 0
+text = "Comparar cubiertas originales (altura Y = 1)"
+
+[connection signal="toggled" from="Comparador/Panel/Opciones/Originales" to="." method="_on_originales_toggled"]

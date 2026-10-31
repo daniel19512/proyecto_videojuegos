@@ -1,0 +1,1392 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="MaterialSuelo"]
+albedo_color = Color(0.32, 0.38, 0.22, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoSuelo"]
+material = SubResource("MaterialSuelo")
+size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialCamino"]
+albedo_color = Color(0.5, 0.41, 0.28, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoCamino"]
+material = SubResource("MaterialCamino")
+size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialPlaza"]
+albedo_color = Color(0.51, 0.48, 0.37, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoPlaza"]
+material = SubResource("MaterialPlaza")
+size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialParcela"]
+albedo_color = Color(0.35, 0.4, 0.25, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoParcela"]
+material = SubResource("MaterialParcela")
+size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialBorde"]
+albedo_color = Color(0.72, 0.66, 0.42, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoBorde"]
+material = SubResource("MaterialBorde")
+size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialJardin"]
+albedo_color = Color(0.27, 0.35, 0.19, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoJardin"]
+material = SubResource("MaterialJardin")
+size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialReserva"]
+albedo_color = Color(0.27, 0.36, 0.32, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoReserva"]
+material = SubResource("MaterialReserva")
+size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="MaterialEspecial"]
+albedo_color = Color(0.58, 0.56, 0.41, 1)
+roughness = 1.0
+[sub_resource type="PlaneMesh" id="PlanoEspecial"]
+material = SubResource("MaterialEspecial")
+size = Vector2(1, 1)
+[sub_resource type="BoxMesh" id="MallaSuelo"]
+material = SubResource("MaterialSuelo")
+size = Vector3(80, 0.5, 72)
+[sub_resource type="BoxShape3D" id="FormaSuelo"]
+size = Vector3(80, 0.5, 72)
+[sub_resource type="BoxShape3D" id="Horizontal"]
+size = Vector3(80.4, 3, 0.2)
+[sub_resource type="BoxShape3D" id="Vertical"]
+size = Vector3(0.2, 3, 72)
+
+[node name="Aldea" type="Node3D"]
+metadata/etapa = 2
+metadata/tamano_terreno = Vector2(80, 72)
+[node name="Terreno" type="Node3D" parent="."]
+[node name="Suelo" type="StaticBody3D" parent="Terreno"]
+position = Vector3(0, -0.25, 0)
+[node name="Forma" type="CollisionShape3D" parent="Terreno/Suelo"]
+shape = SubResource("FormaSuelo")
+[node name="MallaSuelo" type="MeshInstance3D" parent="Terreno/Suelo"]
+mesh = SubResource("MallaSuelo")
+[node name="Plaza" type="Node3D" parent="."]
+metadata/reserva = Rect2(-10, -9, 20, 18)
+[node name="Marca" type="MeshInstance3D" parent="Plaza"]
+position = Vector3(0, 0.012, 0)
+scale = Vector3(20, 1, 18)
+cast_shadow = 0
+mesh = SubResource("PlanoPlaza")
+[node name="BordeN" type="MeshInstance3D" parent="Plaza"]
+position = Vector3(0, 0.022, -8.965)
+scale = Vector3(20, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Plaza"]
+position = Vector3(0, 0.022, 8.965)
+scale = Vector3(20, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Plaza"]
+position = Vector3(-9.965, 0.022, 0)
+scale = Vector3(0.07, 1, 18)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Plaza"]
+position = Vector3(9.965, 0.022, 0)
+scale = Vector3(0.07, 1, 18)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Plaza"]
+position = Vector3(0, 0.065, 7.8)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "PLAZA"
+font_size = 34
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Caminos" type="Node3D" parent="."]
+[node name="AnilloNorte" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-14, -12)
+metadata/b = Vector2(14, -12)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AnilloNorte"]
+position = Vector3(0, 0.018, -12)
+scale = Vector3(28, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AnilloEste" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(14, -12)
+metadata/b = Vector2(14, 14)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AnilloEste"]
+position = Vector3(14, 0.018, 1)
+scale = Vector3(4, 1, 26)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AnilloSur" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(14, 14)
+metadata/b = Vector2(-14, 14)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AnilloSur"]
+position = Vector3(0, 0.018, 14)
+scale = Vector3(28, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AnilloOeste" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-14, 14)
+metadata/b = Vector2(-14, -12)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AnilloOeste"]
+position = Vector3(-14, 0.018, 1)
+scale = Vector3(4, 1, 26)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="EntradaNorte" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(0, -35.5)
+metadata/b = Vector2(0, -9)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/EntradaNorte"]
+position = Vector3(0, 0.018, -22.25)
+scale = Vector3(4, 1, 26.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="EntradaSur" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(0, 35.5)
+metadata/b = Vector2(0, 9)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/EntradaSur"]
+position = Vector3(0, 0.018, 22.25)
+scale = Vector3(4, 1, 26.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="PlazaOeste" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-14, 0)
+metadata/b = Vector2(-10, 0)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/PlazaOeste"]
+position = Vector3(-12, 0.018, 0)
+scale = Vector3(4, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="Ribera" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(10, 0)
+metadata/b = Vector2(38.5, 0)
+metadata/ancho = 4.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/Ribera"]
+position = Vector3(24.25, 0.018, 0)
+scale = Vector3(28.5, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE01" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-8, -15.2)
+metadata/b = Vector2(-8, -12)
+metadata/ancho = 3.0
+metadata/acceso_parcela = "E01"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE01"]
+position = Vector3(-8, 0.018, -13.6)
+scale = Vector3(3, 1, 3.1999999999999993)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE02" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(8, -16.2)
+metadata/b = Vector2(8, -12)
+metadata/ancho = 3.0
+metadata/acceso_parcela = "E02"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE02"]
+position = Vector3(8, 0.018, -14.1)
+scale = Vector3(3, 1, 4.199999999999999)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE03" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-19.1, -6)
+metadata/b = Vector2(-14, -6)
+metadata/ancho = 3.0
+metadata/acceso_parcela = "E03"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE03"]
+position = Vector3(-16.55, 0.018, -6)
+scale = Vector3(5.100000000000001, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE04" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-19.1, 7)
+metadata/b = Vector2(-14, 7)
+metadata/ancho = 3.0
+metadata/acceso_parcela = "E04"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE04"]
+position = Vector3(-16.55, 0.018, 7)
+scale = Vector3(5.100000000000001, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE05" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(18.2, 8)
+metadata/b = Vector2(14, 8)
+metadata/ancho = 3.0
+metadata/acceso_parcela = "E05"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE05"]
+position = Vector3(16.1, 0.018, 8)
+scale = Vector3(4.199999999999999, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE06_1" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-21.2, -23)
+metadata/b = Vector2(-16.5, -23)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E06"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE06_1"]
+position = Vector3(-18.85, 0.018, -23)
+scale = Vector3(4.699999999999999, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE06_2" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-16.5, -23)
+metadata/b = Vector2(-16.5, -12)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E06"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE06_2"]
+position = Vector3(-16.5, 0.018, -17.5)
+scale = Vector3(2.5, 1, 11)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE06_3" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-16.5, -12)
+metadata/b = Vector2(-14, -12)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E06"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE06_3"]
+position = Vector3(-15.25, 0.018, -12)
+scale = Vector3(2.5, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE07_1" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(18.2, -24)
+metadata/b = Vector2(14.25, -24)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E07"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE07_1"]
+position = Vector3(16.225, 0.018, -24)
+scale = Vector3(3.9499999999999993, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE07_2" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(14.25, -24)
+metadata/b = Vector2(14.25, -12)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E07"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE07_2"]
+position = Vector3(14.25, 0.018, -18)
+scale = Vector3(2.5, 1, 12)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE07_3" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(14.25, -12)
+metadata/b = Vector2(14, -12)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E07"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE07_3"]
+position = Vector3(14.125, 0.018, -12)
+scale = Vector3(0.25, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE08_1" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-24, 20.2)
+metadata/b = Vector2(-24, 16)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E08"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE08_1"]
+position = Vector3(-24, 0.018, 18.1)
+scale = Vector3(2.5, 1, 4.199999999999999)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE08_2" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-24, 16)
+metadata/b = Vector2(-14, 16)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E08"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE08_2"]
+position = Vector3(-19, 0.018, 16)
+scale = Vector3(10, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE08_3" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-14, 16)
+metadata/b = Vector2(-14, 14)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E08"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE08_3"]
+position = Vector3(-14, 0.018, 15)
+scale = Vector3(2.5, 1, 2)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE09_1" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-8, 21.2)
+metadata/b = Vector2(-8, 17)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E09"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE09_1"]
+position = Vector3(-8, 0.018, 19.1)
+scale = Vector3(2.5, 1, 4.199999999999999)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE09_2" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-8, 17)
+metadata/b = Vector2(0, 17)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E09"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE09_2"]
+position = Vector3(-4, 0.018, 17)
+scale = Vector3(8, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE10_1" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(8, 22.2)
+metadata/b = Vector2(8, 17)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E10"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE10_1"]
+position = Vector3(8, 0.018, 19.6)
+scale = Vector3(2.5, 1, 5.199999999999999)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE10_2" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(8, 17)
+metadata/b = Vector2(0, 17)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E10"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE10_2"]
+position = Vector3(4, 0.018, 17)
+scale = Vector3(8, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE11_1" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(18, 21.2)
+metadata/b = Vector2(18, 17)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E11"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE11_1"]
+position = Vector3(18, 0.018, 19.1)
+scale = Vector3(2.5, 1, 4.199999999999999)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE11_2" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(18, 17)
+metadata/b = Vector2(14, 17)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E11"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE11_2"]
+position = Vector3(16, 0.018, 17)
+scale = Vector3(4, 1, 2.5)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE11_3" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(14, 17)
+metadata/b = Vector2(14, 14)
+metadata/ancho = 2.5
+metadata/acceso_parcela = "E11"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE11_3"]
+position = Vector3(14, 0.018, 15.5)
+scale = Vector3(2.5, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="AccesoE12" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(17.2, -10)
+metadata/b = Vector2(14, -10)
+metadata/ancho = 3.0
+metadata/acceso_parcela = "E12"
+metadata/acceso_zona = ""
+[node name="Marca" type="MeshInstance3D" parent="Caminos/AccesoE12"]
+position = Vector3(15.6, 0.018, -10)
+scale = Vector3(3.1999999999999993, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="HuertoComunitario" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(-24, 16)
+metadata/b = Vector2(-29.5, 16)
+metadata/ancho = 2.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = "HuertoComunitario"
+[node name="Marca" type="MeshInstance3D" parent="Caminos/HuertoComunitario"]
+position = Vector3(-26.75, 0.018, 16)
+scale = Vector3(5.5, 1, 2)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="HuertoE09" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(0, 32)
+metadata/b = Vector2(-5, 32)
+metadata/ancho = 2.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = "HuertoE09"
+[node name="Marca" type="MeshInstance3D" parent="Caminos/HuertoE09"]
+position = Vector3(-2.5, 0.018, 32)
+scale = Vector3(5, 1, 2)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="HuertoE10" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(0, 33)
+metadata/b = Vector2(5, 33)
+metadata/ancho = 2.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = "HuertoE10"
+[node name="Marca" type="MeshInstance3D" parent="Caminos/HuertoE10"]
+position = Vector3(2.5, 0.018, 33)
+scale = Vector3(5, 1, 2)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="JardinHierbas_1" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(16, 8)
+metadata/b = Vector2(16, 15)
+metadata/ancho = 2.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = "JardinHierbas"
+[node name="Marca" type="MeshInstance3D" parent="Caminos/JardinHierbas_1"]
+position = Vector3(16, 0.018, 11.5)
+scale = Vector3(2, 1, 7)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="JardinHierbas_2" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(16, 15)
+metadata/b = Vector2(21, 15)
+metadata/ancho = 2.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = "JardinHierbas"
+[node name="Marca" type="MeshInstance3D" parent="Caminos/JardinHierbas_2"]
+position = Vector3(18.5, 0.018, 15)
+scale = Vector3(5, 1, 2)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="Mirador" type="Node3D" parent="Caminos"]
+metadata/a = Vector2(37, 0)
+metadata/b = Vector2(37, 8)
+metadata/ancho = 2.0
+metadata/acceso_parcela = ""
+metadata/acceso_zona = "Mirador"
+[node name="Marca" type="MeshInstance3D" parent="Caminos/Mirador"]
+position = Vector3(37, 0.018, 4)
+scale = Vector3(2, 1, 8)
+cast_shadow = 0
+mesh = SubResource("PlanoCamino")
+[node name="Parcelas" type="Node3D" parent="."]
+[node name="E01" type="Node3D" parent="Parcelas"]
+position = Vector3(-8, 0, -20)
+metadata/uso = "Taberna"
+metadata/reserva_local = Rect2(-6, -7, 11.5, 12.5)
+metadata/huella_cubierta = Vector2(8.3, 9.7)
+metadata/escala_y_cubierta = 0.55
+metadata/acceso = Vector2(-8, -15.2)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E01"]
+position = Vector3(-0.25, 0.006, -0.75)
+scale = Vector3(11.5, 1, 12.5)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E01"]
+position = Vector3(-0.25, 0.026, -6.965)
+scale = Vector3(11.5, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E01"]
+position = Vector3(-0.25, 0.026, 5.465)
+scale = Vector3(11.5, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E01"]
+position = Vector3(-5.965, 0.026, -0.75)
+scale = Vector3(0.07, 1, 12.5)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E01"]
+position = Vector3(5.465, 0.026, -0.75)
+scale = Vector3(0.07, 1, 12.5)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E01"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E01\nTaberna"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E02" type="Node3D" parent="Parcelas"]
+position = Vector3(8, 0, -20)
+metadata/uso = "Panaderia"
+metadata/reserva_local = Rect2(-5, -6, 9.5, 11.5)
+metadata/huella_cubierta = Vector2(5.6, 7.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(8, -16.2)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E02"]
+position = Vector3(-0.25, 0.006, -0.25)
+scale = Vector3(9.5, 1, 11.5)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E02"]
+position = Vector3(-0.25, 0.026, -5.965)
+scale = Vector3(9.5, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E02"]
+position = Vector3(-0.25, 0.026, 5.465)
+scale = Vector3(9.5, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E02"]
+position = Vector3(-4.965, 0.026, -0.25)
+scale = Vector3(0.07, 1, 11.5)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E02"]
+position = Vector3(4.465, 0.026, -0.25)
+scale = Vector3(0.07, 1, 11.5)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E02"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E02\nPanaderia"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E03" type="Node3D" parent="Parcelas"]
+position = Vector3(-23, 0, -6)
+metadata/uso = "Herreria"
+metadata/reserva_local = Rect2(-6, -5, 12, 10)
+metadata/huella_cubierta = Vector2(7.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(-19.1, -6)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E03"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(12, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E03"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(12, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E03"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(12, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E03"]
+position = Vector3(-5.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E03"]
+position = Vector3(5.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E03"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E03\nHerreria"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E04" type="Node3D" parent="Parcelas"]
+position = Vector3(-23, 0, 7)
+metadata/uso = "Carpinteria"
+metadata/reserva_local = Rect2(-6, -5, 12, 10)
+metadata/huella_cubierta = Vector2(7.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(-19.1, 7)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E04"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(12, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E04"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(12, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E04"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(12, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E04"]
+position = Vector3(-5.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E04"]
+position = Vector3(5.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E04"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E04\nCarpinteria"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E05" type="Node3D" parent="Parcelas"]
+position = Vector3(21, 0, 8)
+metadata/uso = "Herbolario"
+metadata/reserva_local = Rect2(-4, -5, 8, 10)
+metadata/huella_cubierta = Vector2(5.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(18.2, 8)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E05"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(8, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E05"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E05"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E05"]
+position = Vector3(-3.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E05"]
+position = Vector3(3.9650000000000003, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E05"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E05\nHerbolario"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E06" type="Node3D" parent="Parcelas"]
+position = Vector3(-24, 0, -23)
+metadata/uso = "Vivienda NO"
+metadata/reserva_local = Rect2(-5, -6, 10, 12)
+metadata/huella_cubierta = Vector2(5.6, 7.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(-21.2, -23)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E06"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(10, 1, 12)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E06"]
+position = Vector3(0, 0.026, -5.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E06"]
+position = Vector3(0, 0.026, 5.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E06"]
+position = Vector3(-4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 12)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E06"]
+position = Vector3(4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 12)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E06"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E06\nVivienda NO"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E07" type="Node3D" parent="Parcelas"]
+position = Vector3(21, 0, -24)
+metadata/uso = "Vivienda NE"
+metadata/reserva_local = Rect2(-4, -5, 8, 10)
+metadata/huella_cubierta = Vector2(5.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(18.2, -24)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E07"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(8, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E07"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E07"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E07"]
+position = Vector3(-3.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E07"]
+position = Vector3(3.9650000000000003, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E07"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E07\nVivienda NE"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E08" type="Node3D" parent="Parcelas"]
+position = Vector3(-24, 0, 23)
+metadata/uso = "Vivienda SO"
+metadata/reserva_local = Rect2(-5, -5, 10, 10)
+metadata/huella_cubierta = Vector2(5.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(-24, 20.2)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E08"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(10, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E08"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E08"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E08"]
+position = Vector3(-4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E08"]
+position = Vector3(4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E08"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E08\nVivienda SO"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E09" type="Node3D" parent="Parcelas"]
+position = Vector3(-8, 0, 24)
+metadata/uso = "Vivienda S"
+metadata/reserva_local = Rect2(-5, -5, 10, 10)
+metadata/huella_cubierta = Vector2(5.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(-8, 21.2)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E09"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(10, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E09"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E09"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E09"]
+position = Vector3(-4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E09"]
+position = Vector3(4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E09"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E09\nVivienda S"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E10" type="Node3D" parent="Parcelas"]
+position = Vector3(8, 0, 25)
+metadata/uso = "Vivienda S"
+metadata/reserva_local = Rect2(-4, -5, 8, 10)
+metadata/huella_cubierta = Vector2(5.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(8, 22.2)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E10"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(8, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E10"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E10"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E10"]
+position = Vector3(-3.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E10"]
+position = Vector3(3.9650000000000003, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E10"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E10\nVivienda S"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E11" type="Node3D" parent="Parcelas"]
+position = Vector3(18, 0, 24)
+metadata/uso = "Vivienda SE"
+metadata/reserva_local = Rect2(-5, -5, 10, 10)
+metadata/huella_cubierta = Vector2(5.6, 5.6)
+metadata/escala_y_cubierta = 0.60
+metadata/acceso = Vector2(18, 21.2)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E11"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(10, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E11"]
+position = Vector3(0, 0.026, -4.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E11"]
+position = Vector3(0, 0.026, 4.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E11"]
+position = Vector3(-4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E11"]
+position = Vector3(4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 10)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E11"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E11\nVivienda SE"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="E12" type="Node3D" parent="Parcelas"]
+position = Vector3(21, 0, -10)
+metadata/uso = "Molino"
+metadata/reserva_local = Rect2(-5, -6, 10, 12)
+metadata/huella_cubierta = Vector2(8.3, 9.7)
+metadata/escala_y_cubierta = 0.55
+metadata/acceso = Vector2(17.2, -10)
+[node name="Marca" type="MeshInstance3D" parent="Parcelas/E12"]
+position = Vector3(0, 0.006, 0)
+scale = Vector3(10, 1, 12)
+cast_shadow = 0
+mesh = SubResource("PlanoParcela")
+[node name="BordeN" type="MeshInstance3D" parent="Parcelas/E12"]
+position = Vector3(0, 0.026, -5.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeS" type="MeshInstance3D" parent="Parcelas/E12"]
+position = Vector3(0, 0.026, 5.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeO" type="MeshInstance3D" parent="Parcelas/E12"]
+position = Vector3(-4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 12)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="BordeE" type="MeshInstance3D" parent="Parcelas/E12"]
+position = Vector3(4.965, 0.026, 0)
+scale = Vector3(0.07, 1, 12)
+cast_shadow = 0
+mesh = SubResource("PlanoBorde")
+[node name="Rotulo" type="Label3D" parent="Parcelas/E12"]
+position = Vector3(0, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "E12\nMolino"
+font_size = 30
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Jardines" type="Node3D" parent="."]
+[node name="JardinHierbas" type="Node3D" parent="Jardines"]
+metadata/reserva = Rect2(21, 13, 4, 4)
+[node name="Marca" type="MeshInstance3D" parent="Jardines/JardinHierbas"]
+position = Vector3(23, 0.008, 15)
+scale = Vector3(4, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoJardin")
+[node name="BordeN" type="MeshInstance3D" parent="Jardines/JardinHierbas"]
+position = Vector3(23, 0.024, 13.035)
+scale = Vector3(4, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Jardines/JardinHierbas"]
+position = Vector3(23, 0.024, 16.965)
+scale = Vector3(4, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Jardines/JardinHierbas"]
+position = Vector3(21.035, 0.024, 15)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Jardines/JardinHierbas"]
+position = Vector3(24.965, 0.024, 15)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Jardines/JardinHierbas"]
+position = Vector3(23, 0.065, 15)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Jardin"
+font_size = 26
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="HuertoComunitario" type="Node3D" parent="Jardines"]
+metadata/reserva = Rect2(-35.5, 12.5, 6, 5)
+[node name="Marca" type="MeshInstance3D" parent="Jardines/HuertoComunitario"]
+position = Vector3(-32.5, 0.008, 15)
+scale = Vector3(6, 1, 5)
+cast_shadow = 0
+mesh = SubResource("PlanoJardin")
+[node name="BordeN" type="MeshInstance3D" parent="Jardines/HuertoComunitario"]
+position = Vector3(-32.5, 0.024, 12.535)
+scale = Vector3(6, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Jardines/HuertoComunitario"]
+position = Vector3(-32.5, 0.024, 17.465)
+scale = Vector3(6, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Jardines/HuertoComunitario"]
+position = Vector3(-35.465, 0.024, 15)
+scale = Vector3(0.07, 1, 5)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Jardines/HuertoComunitario"]
+position = Vector3(-29.535, 0.024, 15)
+scale = Vector3(0.07, 1, 5)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Jardines/HuertoComunitario"]
+position = Vector3(-32.5, 0.065, 15)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Huerto"
+font_size = 26
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="HuertoE09" type="Node3D" parent="Jardines"]
+metadata/reserva = Rect2(-11, 30, 6, 4)
+[node name="Marca" type="MeshInstance3D" parent="Jardines/HuertoE09"]
+position = Vector3(-8, 0.008, 32)
+scale = Vector3(6, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoJardin")
+[node name="BordeN" type="MeshInstance3D" parent="Jardines/HuertoE09"]
+position = Vector3(-8, 0.024, 30.035)
+scale = Vector3(6, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Jardines/HuertoE09"]
+position = Vector3(-8, 0.024, 33.964999999999996)
+scale = Vector3(6, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Jardines/HuertoE09"]
+position = Vector3(-10.965, 0.024, 32)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Jardines/HuertoE09"]
+position = Vector3(-5.035, 0.024, 32)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Jardines/HuertoE09"]
+position = Vector3(-8, 0.065, 32)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Huerto E09"
+font_size = 26
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="HuertoE10" type="Node3D" parent="Jardines"]
+metadata/reserva = Rect2(5, 31, 6, 4)
+[node name="Marca" type="MeshInstance3D" parent="Jardines/HuertoE10"]
+position = Vector3(8, 0.008, 33)
+scale = Vector3(6, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoJardin")
+[node name="BordeN" type="MeshInstance3D" parent="Jardines/HuertoE10"]
+position = Vector3(8, 0.024, 31.035)
+scale = Vector3(6, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Jardines/HuertoE10"]
+position = Vector3(8, 0.024, 34.964999999999996)
+scale = Vector3(6, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Jardines/HuertoE10"]
+position = Vector3(5.035, 0.024, 33)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Jardines/HuertoE10"]
+position = Vector3(10.965, 0.024, 33)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Jardines/HuertoE10"]
+position = Vector3(8, 0.065, 33)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Huerto E10"
+font_size = 26
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Mirador" type="Node3D" parent="Jardines"]
+metadata/reserva = Rect2(35, 6, 4, 4)
+[node name="Marca" type="MeshInstance3D" parent="Jardines/Mirador"]
+position = Vector3(37, 0.008, 8)
+scale = Vector3(4, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoJardin")
+[node name="BordeN" type="MeshInstance3D" parent="Jardines/Mirador"]
+position = Vector3(37, 0.024, 6.035)
+scale = Vector3(4, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Jardines/Mirador"]
+position = Vector3(37, 0.024, 9.965)
+scale = Vector3(4, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Jardines/Mirador"]
+position = Vector3(35.035, 0.024, 8)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Jardines/Mirador"]
+position = Vector3(38.964999999999996, 0.024, 8)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Jardines/Mirador"]
+position = Vector3(37, 0.065, 8)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Mirador"
+font_size = 26
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Reservas" type="Node3D" parent="."]
+[node name="Ribera" type="Node3D" parent="Reservas"]
+metadata/reserva = Rect2(26, -34, 10, 68)
+[node name="Marca" type="MeshInstance3D" parent="Reservas/Ribera"]
+position = Vector3(31, 0.004, 0)
+scale = Vector3(10, 1, 68)
+cast_shadow = 0
+mesh = SubResource("PlanoReserva")
+[node name="BordeN" type="MeshInstance3D" parent="Reservas/Ribera"]
+position = Vector3(31, 0.023, -33.965)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoReserva")
+[node name="BordeS" type="MeshInstance3D" parent="Reservas/Ribera"]
+position = Vector3(31, 0.023, 33.964999999999996)
+scale = Vector3(10, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoReserva")
+[node name="BordeO" type="MeshInstance3D" parent="Reservas/Ribera"]
+position = Vector3(26.035, 0.023, 0)
+scale = Vector3(0.07, 1, 68)
+cast_shadow = 0
+mesh = SubResource("PlanoReserva")
+[node name="BordeE" type="MeshInstance3D" parent="Reservas/Ribera"]
+position = Vector3(35.964999999999996, 0.023, 0)
+scale = Vector3(0.07, 1, 68)
+cast_shadow = 0
+mesh = SubResource("PlanoReserva")
+[node name="Rotulo" type="Label3D" parent="Reservas/Ribera"]
+position = Vector3(31, 0.065, 23)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "RIBERA RESERVADA\nSuelo transitable"
+font_size = 24
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Puente" type="Node3D" parent="Reservas"]
+metadata/reserva = Rect2(26, -2, 8, 4)
+[node name="BordeN" type="MeshInstance3D" parent="Reservas/Puente"]
+position = Vector3(30, 0.023, -1.965)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Reservas/Puente"]
+position = Vector3(30, 0.023, 1.9649999999999999)
+scale = Vector3(8, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Reservas/Puente"]
+position = Vector3(26.035, 0.023, 0)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Reservas/Puente"]
+position = Vector3(33.964999999999996, 0.023, 0)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Reservas/Puente"]
+position = Vector3(30, 0.065, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Cruce futuro"
+font_size = 24
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="RuedaMolino" type="Node3D" parent="Reservas"]
+metadata/reserva = Rect2(25, -13, 3, 6)
+[node name="BordeN" type="MeshInstance3D" parent="Reservas/RuedaMolino"]
+position = Vector3(26.5, 0.023, -12.965)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Reservas/RuedaMolino"]
+position = Vector3(26.5, 0.023, -7.035)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Reservas/RuedaMolino"]
+position = Vector3(25.035, 0.023, -10)
+scale = Vector3(0.07, 1, 6)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Reservas/RuedaMolino"]
+position = Vector3(27.965, 0.023, -10)
+scale = Vector3(0.07, 1, 6)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Reservas/RuedaMolino"]
+position = Vector3(26.5, 0.065, -10)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Rueda"
+font_size = 24
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Fuente" type="Node3D" parent="Reservas"]
+metadata/reserva = Rect2(-2, -6, 4, 4)
+[node name="BordeN" type="MeshInstance3D" parent="Reservas/Fuente"]
+position = Vector3(0, 0.023, -5.965)
+scale = Vector3(4, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Reservas/Fuente"]
+position = Vector3(0, 0.023, -2.0349999999999997)
+scale = Vector3(4, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Reservas/Fuente"]
+position = Vector3(-1.965, 0.023, -4)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Reservas/Fuente"]
+position = Vector3(1.9649999999999999, 0.023, -4)
+scale = Vector3(0.07, 1, 4)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Reservas/Fuente"]
+position = Vector3(0, 0.065, -4)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Fuente futura"
+font_size = 24
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Puesto1" type="Node3D" parent="Reservas"]
+metadata/reserva = Rect2(-7.5, -7.5, 3, 3)
+[node name="BordeN" type="MeshInstance3D" parent="Reservas/Puesto1"]
+position = Vector3(-6, 0.023, -7.465)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Reservas/Puesto1"]
+position = Vector3(-6, 0.023, -4.535)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Reservas/Puesto1"]
+position = Vector3(-7.465, 0.023, -6)
+scale = Vector3(0.07, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Reservas/Puesto1"]
+position = Vector3(-4.535, 0.023, -6)
+scale = Vector3(0.07, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Reservas/Puesto1"]
+position = Vector3(-6, 0.065, -6)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Mercado"
+font_size = 24
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Puesto2" type="Node3D" parent="Reservas"]
+metadata/reserva = Rect2(4.5, -7.5, 3, 3)
+[node name="BordeN" type="MeshInstance3D" parent="Reservas/Puesto2"]
+position = Vector3(6, 0.023, -7.465)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Reservas/Puesto2"]
+position = Vector3(6, 0.023, -4.535)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Reservas/Puesto2"]
+position = Vector3(4.535, 0.023, -6)
+scale = Vector3(0.07, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Reservas/Puesto2"]
+position = Vector3(7.465, 0.023, -6)
+scale = Vector3(0.07, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Reservas/Puesto2"]
+position = Vector3(6, 0.065, -6)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Mercado"
+font_size = 24
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Puesto3" type="Node3D" parent="Reservas"]
+metadata/reserva = Rect2(5.5, -0.5, 3, 3)
+[node name="BordeN" type="MeshInstance3D" parent="Reservas/Puesto3"]
+position = Vector3(7, 0.023, -0.46499999999999997)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeS" type="MeshInstance3D" parent="Reservas/Puesto3"]
+position = Vector3(7, 0.023, 2.4650000000000003)
+scale = Vector3(3, 1, 0.07)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeO" type="MeshInstance3D" parent="Reservas/Puesto3"]
+position = Vector3(5.535, 0.023, 1)
+scale = Vector3(0.07, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="BordeE" type="MeshInstance3D" parent="Reservas/Puesto3"]
+position = Vector3(8.465, 0.023, 1)
+scale = Vector3(0.07, 1, 3)
+cast_shadow = 0
+mesh = SubResource("PlanoEspecial")
+[node name="Rotulo" type="Label3D" parent="Reservas/Puesto3"]
+position = Vector3(7, 0.065, 1)
+rotation_degrees = Vector3(-90, 0, 0)
+text = "Mercado"
+font_size = 24
+pixel_size = 0.014
+outline_size = 5
+modulate = Color(0.94, 0.9, 0.72, 1)
+[node name="Colisiones" type="Node3D" parent="."]
+[node name="LimiteNorte" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/LimiteNorte"]
+position = Vector3(0, 1.5, -36.1)
+shape = SubResource("Horizontal")
+[node name="LimiteSur" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/LimiteSur"]
+position = Vector3(0, 1.5, 36.1)
+shape = SubResource("Horizontal")
+[node name="LimiteOeste" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/LimiteOeste"]
+position = Vector3(-40.1, 1.5, 0)
+shape = SubResource("Vertical")
+[node name="LimiteEste" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/LimiteEste"]
+position = Vector3(40.1, 1.5, 0)
+shape = SubResource("Vertical")

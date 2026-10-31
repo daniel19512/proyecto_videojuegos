@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://8dy8d4pu1gww" path="res://scripts/mundo.gd" id="1_wqn8j"]
+[ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2_jugador"]
+[ext_resource type="Script" uid="uid://chbs8pc67vcj4" path="res://scripts/camara_seguimiento.gd" id="3_camara"]
+[ext_resource type="PackedScene" path="res://scenes/respaldos/aldea_etapa1.tscn" id="4_aldea"]
+
+[sub_resource type="Environment" id="Environment_mundo"]
+background_mode = 1
+background_color = Color(0.16, 0.19, 0.22, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.77, 0.85, 1)
+ambient_light_energy = 0.6
+
+[node name="Mundo" type="Node3D" unique_id=872652748]
+script = ExtResource("1_wqn8j")
+
+[node name="Aldea" parent="." unique_id=517062927 instance=ExtResource("4_aldea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Jugador" parent="." unique_id=2062574165 instance=ExtResource("2_jugador")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="CamaraPrincipal" type="Camera3D" parent="." unique_id=1486661048 node_paths=PackedStringArray("objetivo")]
+transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, 0, 13.8, 20.80435)
+projection = 1
+current = true
+size = 23.0
+near = 0.1
+far = 100.0
+script = ExtResource("3_camara")
+objetivo = NodePath("../Jugador")
+
+[node name="LuzSolar" type="DirectionalLight3D" parent="." unique_id=622571284]
+transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
+light_color = Color(1, 0.89, 0.72, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="AmbienteMundo" type="WorldEnvironment" parent="." unique_id=1446535498]
+environment = SubResource("Environment_mundo")

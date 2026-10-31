@@ -1,104 +1,115 @@
-# RPG Medieval — Nombre por definir
+# RPG Medieval — Simulador de Vida
 
-> Un RPG medieval de simulación social, exploración y minijuegos, donde tus decisiones influyen en los personajes y en el mundo.
+**Un mundo de fantasía medieval donde la vida cotidiana es la aventura.**
 
-## 📖 Descripción
+> **Estado:** En desarrollo · Proyecto académico · Godot 4.7.2
 
-Este proyecto es un videojuego RPG 2D desarrollado en **GameMaker**, ambientado en un mundo medieval de fantasía.
+Este proyecto es un **RPG de simulación de vida** ambientado en una aldea medieval de fantasía. En lugar de centrarse en el combate tradicional, busca dar protagonismo a la exploración, los oficios, las relaciones entre habitantes y las pequeñas historias que surgen de la vida en comunidad.
 
-A diferencia de los RPG tradicionales, el juego no se centra en el combate. Su propuesta consiste en explorar un mundo dinámico, realizar actividades, completar misiones, obtener recursos y establecer relaciones con sus habitantes.
+El juego combina **escenarios completamente 3D** con **personajes 2D de pixel art**, vistos mediante una cámara ortográfica inclinada. Actualmente estamos construyendo la base jugable y el entorno de la aldea; los sistemas sociales y de simulación forman parte de la visión futura.
 
-Uno de los principales objetivos es implementar **NPCs semiautónomos impulsados por inteligencia artificial**, capaces de mantener conversaciones dinámicas, recordar acontecimientos y reaccionar a las decisiones del jugador.
+## La experiencia que queremos crear
 
-## 🎮 Características planeadas
+Imagina llegar a una aldea donde cada habitante tenga su propia rutina, sus intereses y sus relaciones. Podrás conocer a sus vecinos, aprender profesiones, participar en actividades cotidianas y descubrir cómo evoluciona la comunidad con el paso del tiempo.
 
-- **Exploración:** mundo medieval con pueblos, bosques, comercios y diferentes localizaciones.
-- **Minijuegos:** actividades de pesca, agricultura, minería, cocina, artesanía y otras profesiones.
-- **Sistema de misiones:** encargos y objetivos que pueden variar según las necesidades de los NPCs.
-- **Inventario y recursos:** obtención, almacenamiento, intercambio y utilización de objetos.
-- **NPCs con IA:** personajes con personalidades, recuerdos, relaciones y objetivos individuales.
-- **Relaciones sociales:** las decisiones del jugador afectan la confianza y el comportamiento de los personajes.
-- **Mundo dinámico:** rutinas, acontecimientos y cambios en el entorno.
+La propuesta se apoya en cuatro pilares:
 
-Estas características representan la visión del proyecto y no necesariamente están implementadas todavía.
+- **Exploración tranquila:** recorrer aldeas, caminos y entornos medievales.
+- **Vida social:** interactuar con NPCs que, en futuras etapas, tendrán personalidad, memoria, rutinas y relaciones.
+- **Oficios y actividades:** desarrollar profesiones como herrería y agricultura mediante sistemas y minijuegos propios.
+- **Un mundo con identidad:** construir espacios reconocibles —plaza, taberna, herrería, viviendas, mercado y naturaleza— que tengan sentido para sus habitantes.
 
-## 🧠 Sistema de inteligencia artificial
+Estas son **metas de diseño**, no una lista de funciones ya disponibles.
 
-Se planea integrar un sistema de NPCs semiautónomos utilizando modelos de lenguaje (LLM).
+## Estado actual del desarrollo
 
-Cada NPC podrá disponer de:
+| Implementado | Planeado |
+| --- | --- |
+| Mundo 3D con iluminación y ambiente | NPCs con rutinas, personalidad y memoria |
+| Protagonista 2D integrado mediante `AnimatedSprite3D` | Diálogos, vínculos y relaciones sociales |
+| Movimiento relativo a la cámara, aceleración y frenado | Profesiones y minijuegos |
+| Animaciones de reposo y caminata en cuatro direcciones | Misiones y eventos dinámicos |
+| Cámara ortográfica inclinada con seguimiento suave | Ampliación de la aldea y nuevos escenarios |
+| Colisiones básicas del personaje y la aldea | Río, puente, molino, huertos y zonas naturales |
+| Aldea modular inicial con plaza, caminos y edificios | Sistemas de simulación de vida |
 
-- Personalidad e identidad propias.
-- Memoria persistente de acontecimientos importantes.
-- Relaciones con el jugador y otros NPCs.
-- Objetivos y necesidades individuales.
-- Capacidad de proponer misiones y tomar decisiones dentro de las reglas del juego.
+**Próximo objetivo:** probar visualmente los nuevos paquetes de modelos, validar escalas y colisiones, y ampliar progresivamente la aldea a partir de una referencia artística.
 
-La lógica principal del videojuego será controlada por GameMaker, mientras que un servicio externo gestionará las interacciones con la IA y la memoria.
+El avance detallado se encuentra en [Estado del proyecto](RPG/docs/estado_proyecto.md).
 
-## 🛠️ Tecnologías
+## Dirección artística
 
-| Tecnología | Utilización |
-|---|---|
-| GameMaker LTS | Motor del videojuego |
-| GML | Programación de la lógica del juego |
-| Visual Studio Code | Entorno de desarrollo |
-| Git y GitHub | Control de versiones y colaboración |
-| Python / Node.js | Posible backend para IA |
-| SQLite | Posible almacenamiento de memoria |
+El proyecto utiliza una estética **medieval fantástica, cálida y estilizada**, con arquitectura de madera y piedra, vegetación colorida y espacios diseñados para sentirse habitados.
 
-## 📂 Estructura del proyecto
+La combinación de **personajes pixel art en escenarios 3D** permite conservar el encanto de los RPG clásicos mientras aprovechamos la profundidad, iluminación y composición espacial de un entorno tridimensional.
 
-La estructura podrá evolucionar durante el desarrollo.
+La aldea se construye con piezas modulares para poder ajustar su distribución, añadir colisiones y preparar futuros recorridos e interacciones de los NPCs.
+
+## Tecnologías
+
+| Tecnología | Uso |
+| --- | --- |
+| **Godot 4.7.2** | Motor del videojuego |
+| **GDScript** | Lógica de juego y comportamiento |
+| **Forward Plus** | Renderizado 3D |
+| **Jolt Physics** | Física y colisiones 3D |
+| **AnimatedSprite3D** | Personajes 2D dentro del mundo 3D |
+| **glTF** | Modelos 3D modulares y recursos visuales |
+
+## Estructura del repositorio
 
 ```text
-Repositorio/
-├── ProyectoGameMaker/
-│   ├── objects/
-│   ├── sprites/
-│   ├── rooms/
-│   ├── scripts/
-│   ├── options/
-│   └── ProyectoGameMaker.yyp
-├── .gitignore
-└── README.md
+.
+├── AGENTS.md                 # Instrucciones para agentes de desarrollo
+├── README.md
+└── RPG/                      # Proyecto Godot
+    ├── assets/               # Recursos locales (excluidos de Git)
+    ├── docs/
+    │   ├── estado_proyecto.md
+    │   └── inventario_assets.md
+    ├── scenes/               # Escenas y recursos visuales
+    ├── scripts/              # Lógica en GDScript
+    ├── tests/                # Validaciones del escenario
+    └── project.godot
 ```
 
-## 🚀 Instalación y ejecución
+La escena principal es `RPG/scenes/mundo.tscn`. El personaje, la cámara y la aldea se mantienen organizados en escenas y scripts separados.
 
-1. Instalar una versión compatible de GameMaker LTS.
-2. Clonar el repositorio:
+## Cómo abrir el proyecto
 
-   ```bash
-   git clone https://github.com/USUARIO/REPOSITORIO.git
-   ```
+1. Instala **Godot 4.7.2**.
+2. Clona o descarga este repositorio.
+3. Abre Godot y selecciona **Import**.
+4. Elige `RPG/project.godot`.
+5. Una vez disponibles los recursos gráficos locales, espera a que Godot termine de importarlos y ejecuta la escena principal.
 
-3. Abrir el archivo `.yyp` del proyecto en GameMaker.
-4. Ejecutar el videojuego desde el IDE.
+### Importante: recursos gráficos no incluidos
 
-## 🤝 Desarrollo y colaboración
+**La carpeta `RPG/assets/` está excluida de Git intencionalmente.** Por tanto, clonar este repositorio **no basta para ejecutar correctamente el videojuego**: faltarán modelos, texturas y sprites hasta que se incorporen localmente con la estructura esperada.
 
-El código fuente se administra mediante Git y GitHub.
+La documentación de recursos está en [Inventario de assets](RPG/docs/inventario_assets.md). El proyecto no incluye un instalador ni un paquete independiente listo para jugar.
 
-Para contribuir:
+## Recursos artísticos
 
-1. Descargar los últimos cambios con `git pull`.
-2. Abrir el proyecto en GameMaker o VS Code.
-3. Realizar y probar las modificaciones.
-4. Guardar los archivos.
-5. Registrar los cambios mediante `git commit`.
-6. Subirlos con `git push`.
+La base visual utiliza paquetes de terceros, entre ellos:
 
-Se recomienda coordinar la edición de rooms y recursos compartidos para reducir conflictos.
+- [Quaternius — Medieval Village MegaKit](https://quaternius.com/packs/medievalvillagemegakit.html): arquitectura medieval modular.
+- [Quaternius — Stylized Nature MegaKit](https://quaternius.com/packs/stylizednaturemegakit.html): árboles, arbustos, flores y rocas.
+- [Quaternius — Fantasy Props MegaKit](https://quaternius.com/packs/fantasypropsmegakit.html): mobiliario, herramientas y objetos decorativos.
+- **Ventilatore — The Fantasy Tileset / Animated Character:** sprites del protagonista.
 
-## 📌 Estado del proyecto
+Los recursos originales pertenecen a sus respectivos autores y están sujetos a sus propias condiciones de uso. No se redistribuyen en este repositorio.
 
-**En desarrollo — Etapa inicial.**
+El inventario local actual registra **338 modelos 3D** entre los tres paquetes de Quaternius. Que un modelo esté disponible no significa que ya esté integrado en el escenario.
 
-Actualmente se está preparando la estructura del proyecto y definiendo los sistemas principales, los recursos gráficos y la arquitectura técnica.
+## Documentación del desarrollo
 
-## 📄 Licencia
+- [Estado del proyecto](RPG/docs/estado_proyecto.md): funcionalidades, limitaciones y próximos pasos.
+- [Inventario de assets](RPG/docs/inventario_assets.md): recursos 3D disponibles y comprobaciones de importación.
+- [AGENTS.md](AGENTS.md): convenciones técnicas y reglas de trabajo para agentes de programación.
 
-Pendiente de definir. El contenido del repositorio no se considera automáticamente de libre uso por estar publicado en GitHub.
+## Sobre el proyecto
 
-Los recursos de terceros deberán respetar sus respectivas licencias.
+Este videojuego nace como un **proyecto académico** y se desarrolla de forma incremental: primero una base jugable estable, después una aldea más completa y, posteriormente, los sistemas de interacción y simulación social.
+
+**La meta es crear un pequeño mundo medieval que se sienta vivo, incluso cuando el jugador simplemente decide pasear por sus calles.**

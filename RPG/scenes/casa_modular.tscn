@@ -1,0 +1,70 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_Plaster_Straight.gltf" id="Wall_Plaster_Straight"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_Plaster_Door_Flat.gltf" id="Wall_Plaster_Door_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_Plaster_Window_Wide_Flat.gltf" id="Wall_Plaster_Window_Wide_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_RoundTiles_4x4.gltf" id="Roof_RoundTiles_4x4"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_Front_Brick4.gltf" id="Roof_Front_Brick4"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Door_1_Flat.gltf" id="Door_1_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Window_Wide_Flat1.gltf" id="Window_Wide_Flat1"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Corner_Exterior_Wood.gltf" id="Corner_Exterior_Wood"]
+[node name="CasaModular" type="Node3D"]
+
+[node name="FachadaPuerta" parent="." instance=ExtResource("Wall_Plaster_Door_Flat") ]
+position = Vector3(-1, 0, 2)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="FachadaVentana" parent="." instance=ExtResource("Wall_Plaster_Window_Wide_Flat") ]
+position = Vector3(1, 0, 2)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="PuertaCerrada" parent="." instance=ExtResource("Door_1_Flat") ]
+position = Vector3(-0.5, 0, 2.04)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="Ventana" parent="." instance=ExtResource("Window_Wide_Flat1") ]
+position = Vector3(1, 0, 2)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="Trasera0" parent="." instance=ExtResource("Wall_Plaster_Straight") ]
+position = Vector3(-1, 0, -2)
+
+[node name="Trasera2" parent="." instance=ExtResource("Wall_Plaster_Straight") ]
+position = Vector3(1, 0, -2)
+
+[node name="LateralIzquierdo0" parent="." instance=ExtResource("Wall_Plaster_Straight") ]
+position = Vector3(-2, 0, -1)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="LateralDerecho0" parent="." instance=ExtResource("Wall_Plaster_Straight") ]
+position = Vector3(2, 0, -1)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="LateralIzquierdo2" parent="." instance=ExtResource("Wall_Plaster_Straight") ]
+position = Vector3(-2, 0, 1)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="LateralDerecho2" parent="." instance=ExtResource("Wall_Plaster_Straight") ]
+position = Vector3(2, 0, 1)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="Tejado" parent="." instance=ExtResource("Roof_RoundTiles_4x4") ]
+position = Vector3(0, 3, 0)
+
+[node name="FrontonFrontal" parent="." instance=ExtResource("Roof_Front_Brick4") ]
+position = Vector3(0, 3, 2)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="FrontonTrasero" parent="." instance=ExtResource("Roof_Front_Brick4") ]
+position = Vector3(0, 3, -2)
+
+[node name="Esquina00" parent="." instance=ExtResource("Corner_Exterior_Wood") ]
+position = Vector3(-2, 0, -2)
+
+[node name="Esquina04" parent="." instance=ExtResource("Corner_Exterior_Wood") ]
+position = Vector3(-2, 0, 2)
+
+[node name="Esquina40" parent="." instance=ExtResource("Corner_Exterior_Wood") ]
+position = Vector3(2, 0, -2)
+
+[node name="Esquina44" parent="." instance=ExtResource("Corner_Exterior_Wood") ]
+position = Vector3(2, 0, 2)
