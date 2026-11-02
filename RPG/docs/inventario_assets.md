@@ -620,3 +620,21 @@ Total conservado: 338 modelos originales; procedencia/licencias pendientes sin c
 - Geometría local de Godot fuera de assets/: muros, postes, riostras, cubiertas bajas de pizarra/madera, forja completa con brasas emisivas estáticas y chimenea, carbón, leña, barras, martillo, tenazas y soportes. La forja resuelve una pieza dedicada ausente del paquete; no implica fabricación, fuego dinámico ni interacción.
 
 Se mantienen 338 modelos originales, los mismos paquetes y la exclusión de assets en Git. Recursos de E03 cargados en Godot 4.7.2 y capturados con Forward+/D3D12; aprobación artística pendiente del usuario.
+
+## Uso incorporado en E04 — 1 de noviembre de 2026
+
+`RPG/scenes/carpinteria.tscn` reutiliza `Workbench`, `Axe_Bronze`, `Crate_Wooden` y `Rope_1`, todos en `RPG/assets/objetos_medievales/glTF/`, con rutas locales verificadas y sin modificar originales. La lista local no contiene modelos dedicados de sierra ni cepillo de carpintero; se representan mediante geometría sencilla de Godot, junto con mazo y escuadra a escala del banco.
+
+Primitivas fuera de assets/: postes, muros parciales, riostras, bases de piedra, cubierta a una pendiente, caballetes, troncos/testas/soportes, tablones, vigas, virutas, bastidor de puerta y taburete en proceso. Materiales locales exclusivos de E04. Sin nuevos paquetes, modelos originales ni dependencias; total conservado de 338 glTF. Capturas técnicas Forward+/D3D12 disponibles, aprobación artística pendiente.
+
+## Uso incorporado en E05 — 2 de noviembre de 2026
+
+`RPG/scenes/herbolario.tscn` reutiliza originales con rutas verificadas, sin modificarlos:
+
+- `RPG/assets/objetos_medievales/glTF/SmallBottles_1.gltf`: conjunto de frascos en mesa, escala local 1.8 para legibilidad.
+- `RPG/assets/objetos_medievales/glTF/Barrel.gltf`: agua de riego al noreste, escala 1; colisión simplificada de 0.7×0.9×0.7 añadida en escena.
+- `RPG/assets/naturaleza/glTF/Fern_1.gltf`: helecho al noroeste, escala local 0.65 y apoyo corregido según su AABB.
+
+Primitivas de Godot fuera de assets/: muros/entramado/zócalos, frontones, cubierta verde de tablillas y secadero, puerta/letrero, ventanas/repisas, macetas, cinco bancales con plantas estilizadas de cinco familias, cuerda y siete manojos colgantes, mesa/mortero/mano y estantería con nueve tarros. No se atribuyen especies botánicas exactas a modelos importados ni se inventan rutas de morteros/hierbas específicas. Materiales locales exclusivos de E05.
+
+Sin paquetes, dependencias ni modelos originales nuevos: permanecen 338 glTF y su exclusión intencional de Git. Recursos cargados en Godot 4.7.2 y ocho vistas Forward+/D3D12 revisadas técnicamente; aprobación artística pendiente del usuario. Sin sistemas de cultivo, medicina o alquimia.

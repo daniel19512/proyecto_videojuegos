@@ -1,0 +1,1050 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Workbench.gltf" id="Workbench"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Axe_Bronze.gltf" id="Axe_Bronze"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Crate_Wooden.gltf" id="Crate_Wooden"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Rope_1.gltf" id="Rope_1"]
+[sub_resource type="StandardMaterial3D" id="Viga"]
+albedo_color = Color(0.25, 0.14, 0.065, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Tabla"]
+albedo_color = Color(0.58, 0.37, 0.18, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Clara"]
+albedo_color = Color(0.72, 0.52, 0.29, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Techo"]
+albedo_color = Color(0.37, 0.25, 0.14, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Metal"]
+albedo_color = Color(0.38, 0.40, 0.39, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Piedra"]
+albedo_color = Color(0.48, 0.46, 0.39, 1)
+roughness = 0.92
+[sub_resource type="BoxMesh" id="MPosteON"]
+size = Vector3(0.23, 3.15, 0.23)
+material = SubResource("Viga")
+[sub_resource type="BoxShape3D" id="SPosteON"]
+size = Vector3(0.23, 3.15, 0.23)
+[sub_resource type="BoxMesh" id="MBaseON"]
+size = Vector3(0.38, 0.20, 0.38)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="MPosteOS"]
+size = Vector3(0.23, 3.15, 0.23)
+material = SubResource("Viga")
+[sub_resource type="BoxShape3D" id="SPosteOS"]
+size = Vector3(0.23, 3.15, 0.23)
+[sub_resource type="BoxMesh" id="MBaseOS"]
+size = Vector3(0.38, 0.20, 0.38)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="MPosteEN"]
+size = Vector3(0.23, 2.55, 0.23)
+material = SubResource("Viga")
+[sub_resource type="BoxShape3D" id="SPosteEN"]
+size = Vector3(0.23, 2.55, 0.23)
+[sub_resource type="BoxMesh" id="MBaseEN"]
+size = Vector3(0.38, 0.20, 0.38)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="MPosteES"]
+size = Vector3(0.23, 2.55, 0.23)
+material = SubResource("Viga")
+[sub_resource type="BoxShape3D" id="SPosteES"]
+size = Vector3(0.23, 2.55, 0.23)
+[sub_resource type="BoxMesh" id="MBaseES"]
+size = Vector3(0.38, 0.20, 0.38)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="MMuroTrasero"]
+size = Vector3(0.16, 2.3, 3.7)
+material = SubResource("Tabla")
+[sub_resource type="BoxShape3D" id="SMuroTrasero"]
+size = Vector3(0.16, 2.3, 3.7)
+[sub_resource type="BoxMesh" id="MMuroNorte"]
+size = Vector3(3.5, 2.1, 0.16)
+material = SubResource("Tabla")
+[sub_resource type="BoxShape3D" id="SMuroNorte"]
+size = Vector3(3.5, 2.1, 0.16)
+[sub_resource type="BoxMesh" id="MViga_1_85"]
+size = Vector3(6.1, 0.23, 0.22)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MViga1_85"]
+size = Vector3(6.1, 0.23, 0.22)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MVigaOeste"]
+size = Vector3(0.24, 0.22, 4.35)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MVigaEste"]
+size = Vector3(0.24, 0.22, 4.35)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MTablonTecho0"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho1"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho2"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho3"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho4"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho5"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho6"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho7"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho8"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho9"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho10"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho11"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho12"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho13"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho14"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho15"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho16"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MTablonTecho17"]
+size = Vector3(4.9, 0.12, 0.265)
+material = SubResource("Techo")
+[sub_resource type="BoxMesh" id="MJuntaMuro0"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro1"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro2"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro3"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro4"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro5"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro6"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro7"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro8"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro9"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro10"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro11"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MJuntaMuro12"]
+size = Vector3(0.025, 2.18, 0.025)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MRiostraNorte"]
+size = Vector3(3.5, 0.13, 0.17)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MRiostraSur"]
+size = Vector3(1.3, 0.15, 0.18)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MBancoFisico"]
+size = Vector3(2.02, 0.88, 1.03)
+material = SubResource("Viga")
+[sub_resource type="BoxShape3D" id="SBancoFisico"]
+size = Vector3(2.02, 0.88, 1.03)
+[sub_resource type="BoxMesh" id="MCaballete0_5"]
+size = Vector3(0.16, 0.16, 1.05)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MPata0_50_92"]
+size = Vector3(0.13, 0.74, 0.14)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MPata0_51_58"]
+size = Vector3(0.13, 0.74, 0.14)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MCaballete2_1"]
+size = Vector3(0.16, 0.16, 1.05)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MPata2_10_92"]
+size = Vector3(0.13, 0.74, 0.14)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MPata2_11_58"]
+size = Vector3(0.13, 0.74, 0.14)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MCorte"]
+size = Vector3(2.7, 0.13, 0.65)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="SCorte"]
+size = Vector3(2.7, 0.13, 0.65)
+[sub_resource type="BoxMesh" id="MSierraHoja"]
+size = Vector3(0.67, 0.035, 0.08)
+material = SubResource("Metal")
+[sub_resource type="BoxMesh" id="MSierraArco"]
+size = Vector3(0.70, 0.055, 0.07)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MUnionSierra_1_42"]
+size = Vector3(0.055, 0.055, 0.29)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MUnionSierra_0_78"]
+size = Vector3(0.055, 0.055, 0.29)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MMangoMazo"]
+size = Vector3(0.045, 0.045, 0.35)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MCabezaMazo"]
+size = Vector3(0.23, 0.13, 0.13)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MCepillo"]
+size = Vector3(0.27, 0.12, 0.12)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MHojaCepillo"]
+size = Vector3(0.035, 0.08, 0.10)
+material = SubResource("Metal")
+[sub_resource type="BoxMesh" id="MEscuadraA"]
+size = Vector3(0.28, 0.025, 0.035)
+material = SubResource("Metal")
+[sub_resource type="BoxMesh" id="MEscuadraB"]
+size = Vector3(0.035, 0.025, 0.23)
+material = SubResource("Metal")
+[sub_resource type="BoxMesh" id="MSoporte_4_9"]
+size = Vector3(0.18, 0.30, 3.2)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MSoporte_3_65"]
+size = Vector3(0.18, 0.30, 3.2)
+material = SubResource("Viga")
+[sub_resource type="CylinderMesh" id="Tronco0"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 2.6
+radial_segments = 9
+material = SubResource("Viga")
+[sub_resource type="CylinderMesh" id="Testa0_1"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Testa01"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Tronco1"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 2.95
+radial_segments = 9
+material = SubResource("Viga")
+[sub_resource type="CylinderMesh" id="Testa1_1"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Testa11"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Tronco2"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 2.6
+radial_segments = 9
+material = SubResource("Viga")
+[sub_resource type="CylinderMesh" id="Testa2_1"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Testa21"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Tronco3"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 2.95
+radial_segments = 9
+material = SubResource("Viga")
+[sub_resource type="CylinderMesh" id="Testa3_1"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Testa31"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Tronco4"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 2.6
+radial_segments = 9
+material = SubResource("Viga")
+[sub_resource type="CylinderMesh" id="Testa4_1"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Testa41"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Tronco5"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 2.95
+radial_segments = 9
+material = SubResource("Viga")
+[sub_resource type="CylinderMesh" id="Testa5_1"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="Testa51"]
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.012
+radial_segments = 9
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MPilaTroncos"]
+size = Vector3(1.43, 1.10, 3.1)
+material = SubResource("Viga")
+[sub_resource type="BoxShape3D" id="SPilaTroncos"]
+size = Vector3(1.43, 1.10, 3.1)
+[sub_resource type="BoxMesh" id="MApoyoTablas_1_8"]
+size = Vector3(0.20, 0.32, 1.0)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MApoyoTablas0_2"]
+size = Vector3(0.20, 0.32, 1.0)
+material = SubResource("Viga")
+[sub_resource type="BoxMesh" id="MTablas0"]
+size = Vector3(3.5, 0.10, 0.80)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MTablas1"]
+size = Vector3(3.5, 0.10, 0.80)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MTablas2"]
+size = Vector3(3.5, 0.10, 0.80)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MTablas3"]
+size = Vector3(3.5, 0.10, 0.80)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MTablas4"]
+size = Vector3(3.5, 0.10, 0.80)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MPilaTablas"]
+size = Vector3(3.5, 0.98, 0.85)
+material = SubResource("Tabla")
+[sub_resource type="BoxShape3D" id="SPilaTablas"]
+size = Vector3(3.5, 0.98, 0.85)
+[sub_resource type="BoxMesh" id="MVigaLarga0"]
+size = Vector3(0.18, 0.12, 3.5)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MVigaLarga1"]
+size = Vector3(0.18, 0.12, 3.5)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MVigaLarga2"]
+size = Vector3(0.18, 0.12, 3.5)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MTablonApoyado0"]
+size = Vector3(0.22, 1.95, 0.07)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MTablonApoyado1"]
+size = Vector3(0.22, 1.95, 0.07)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MTablonApoyado2"]
+size = Vector3(0.22, 1.95, 0.07)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MMarcoLargo_3_7"]
+size = Vector3(0.12, 2, 0.12)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MMarcoLargo_2_8"]
+size = Vector3(0.12, 2, 0.12)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MMarcoTravesano0_15"]
+size = Vector3(0.12, 0.12, 1.0)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MMarcoTravesano1_2"]
+size = Vector3(0.12, 0.12, 1.0)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MMarcoTravesano1_95"]
+size = Vector3(0.12, 0.12, 1.0)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MBastidorFisico"]
+size = Vector3(0.15, 2, 1.1)
+material = SubResource("Tabla")
+[sub_resource type="BoxShape3D" id="SBastidorFisico"]
+size = Vector3(0.15, 2, 1.1)
+[sub_resource type="BoxMesh" id="MAsiento"]
+size = Vector3(0.65, 0.10, 0.55)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="SAsiento"]
+size = Vector3(0.65, 0.10, 0.55)
+[sub_resource type="BoxMesh" id="MPataTaburete1_66_1_28"]
+size = Vector3(0.09, 0.62, 0.09)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MPataTaburete1_66_0_92"]
+size = Vector3(0.09, 0.62, 0.09)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MPataTaburete2_14_1_28"]
+size = Vector3(0.09, 0.62, 0.09)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MPataTaburete2_14_0_92"]
+size = Vector3(0.09, 0.62, 0.09)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MListonSuelto"]
+size = Vector3(0.09, 0.08, 0.7)
+material = SubResource("Tabla")
+[sub_resource type="BoxMesh" id="MCajaFisica"]
+size = Vector3(0.8, 0.64, 0.8)
+material = SubResource("Tabla")
+[sub_resource type="BoxShape3D" id="SCajaFisica"]
+size = Vector3(0.8, 0.64, 0.8)
+[sub_resource type="BoxMesh" id="MViruta0"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta1"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta2"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta3"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta4"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta5"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta6"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta7"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta8"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta9"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta10"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta11"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta12"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="MViruta13"]
+size = Vector3(0.13, 0.015, 0.035)
+material = SubResource("Clara")
+[node name="Carpinteria" type="Node3D"]
+metadata/cuerpo = Vector2(6, 4)
+[node name="Estructura" type="Node3D" parent="."]
+[node name="Cubierta" type="Node3D" parent="."]
+[node name="Almacen" type="Node3D" parent="."]
+[node name="ZonaTrabajo" type="Node3D" parent="."]
+[node name="Herramientas" type="Node3D" parent="."]
+[node name="MueblesEnProceso" type="Node3D" parent="."]
+[node name="DecoracionExterior" type="Node3D" parent="."]
+[node name="PosteON" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.85, 1.575, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPosteON")
+[node name="BaseON" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.85, 0.10, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MBaseON")
+[node name="PosteOS" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.85, 1.575, 1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPosteOS")
+[node name="BaseOS" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.85, 0.10, 1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MBaseOS")
+[node name="PosteEN" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2.85, 1.275, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPosteEN")
+[node name="BaseEN" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2.85, 0.10, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MBaseEN")
+[node name="PosteES" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2.85, 1.275, 1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPosteES")
+[node name="BaseES" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2.85, 0.10, 1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MBaseES")
+[node name="MuroTrasero" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.85, 1.15, 0)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMuroTrasero")
+[node name="MuroNorte" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-1.1, 1.05, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMuroNorte")
+[node name="Viga-1.85" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 2.85, -1.85)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MViga_1_85")
+[node name="Viga1.85" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 2.85, 1.85)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MViga1_85")
+[node name="VigaOeste" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.85, 3.10, 0)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MVigaOeste")
+[node name="VigaEste" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2.85, 2.51, 0)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MVigaEste")
+[node name="TablonTecho0" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -2.32)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho0")
+[node name="TablonTecho1" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -2.047)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho1")
+[node name="TablonTecho2" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -1.774)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho2")
+[node name="TablonTecho3" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -1.501)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho3")
+[node name="TablonTecho4" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -1.228)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho4")
+[node name="TablonTecho5" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -0.955)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho5")
+[node name="TablonTecho6" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -0.682)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho6")
+[node name="TablonTecho7" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -0.409)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho7")
+[node name="TablonTecho8" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, -0.136)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho8")
+[node name="TablonTecho9" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 0.137)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho9")
+[node name="TablonTecho10" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 0.410000000000001)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho10")
+[node name="TablonTecho11" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 0.683)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho11")
+[node name="TablonTecho12" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 0.956)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho12")
+[node name="TablonTecho13" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 1.229)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho13")
+[node name="TablonTecho14" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 1.502)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho14")
+[node name="TablonTecho15" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 1.775)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho15")
+[node name="TablonTecho16" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 2.048)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho16")
+[node name="TablonTecho17" type="MeshInstance3D" parent="Cubierta"]
+position = Vector3(-0.9, 3.035, 2.321)
+rotation_degrees = Vector3(0, 0, -6)
+mesh = SubResource("MTablonTecho17")
+[node name="JuntaMuro0" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, -1.7)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro0")
+[node name="JuntaMuro1" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, -1.42)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro1")
+[node name="JuntaMuro2" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, -1.14)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro2")
+[node name="JuntaMuro3" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, -0.86)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro3")
+[node name="JuntaMuro4" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, -0.58)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro4")
+[node name="JuntaMuro5" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, -0.3)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro5")
+[node name="JuntaMuro6" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, -0.0199999999999998)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro6")
+[node name="JuntaMuro7" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, 0.26)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro7")
+[node name="JuntaMuro8" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, 0.54)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro8")
+[node name="JuntaMuro9" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, 0.820000000000001)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro9")
+[node name="JuntaMuro10" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, 1.1)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro10")
+[node name="JuntaMuro11" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, 1.38)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro11")
+[node name="JuntaMuro12" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.752, 1.13, 1.66)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MJuntaMuro12")
+[node name="RiostraNorte" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-1.1, 2.30, -1.86)
+rotation_degrees = Vector3(0, 0, 15)
+mesh = SubResource("MRiostraNorte")
+[node name="RiostraSur" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.3, 2.40, 1.85)
+rotation_degrees = Vector3(0, 0, -38)
+mesh = SubResource("MRiostraSur")
+[node name="Banco" parent="ZonaTrabajo" instance=ExtResource("Workbench")]
+position = Vector3(-1.1, 0, -1.13)
+scale = Vector3(1, 1, 1)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="Caballete0.5" type="MeshInstance3D" parent="ZonaTrabajo"]
+position = Vector3(0.5, 0.76, 1.25)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MCaballete0_5")
+[node name="Pata0.50.92" type="MeshInstance3D" parent="ZonaTrabajo"]
+position = Vector3(0.5, 0.37, 0.92)
+rotation_degrees = Vector3(15, 0, 0)
+mesh = SubResource("MPata0_50_92")
+[node name="Pata0.51.58" type="MeshInstance3D" parent="ZonaTrabajo"]
+position = Vector3(0.5, 0.37, 1.58)
+rotation_degrees = Vector3(15, 0, 0)
+mesh = SubResource("MPata0_51_58")
+[node name="Caballete2.1" type="MeshInstance3D" parent="ZonaTrabajo"]
+position = Vector3(2.1, 0.76, 1.25)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MCaballete2_1")
+[node name="Pata2.10.92" type="MeshInstance3D" parent="ZonaTrabajo"]
+position = Vector3(2.1, 0.37, 0.92)
+rotation_degrees = Vector3(15, 0, 0)
+mesh = SubResource("MPata2_10_92")
+[node name="Pata2.11.58" type="MeshInstance3D" parent="ZonaTrabajo"]
+position = Vector3(2.1, 0.37, 1.58)
+rotation_degrees = Vector3(15, 0, 0)
+mesh = SubResource("MPata2_11_58")
+[node name="Corte" type="MeshInstance3D" parent="ZonaTrabajo"]
+position = Vector3(1.3, 0.88, 1.25)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MCorte")
+[node name="SierraHoja" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-1.1, 0.94, -1.05)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MSierraHoja")
+[node name="SierraArco" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-1.1, 0.95, -1.28)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MSierraArco")
+[node name="UnionSierra-1.42" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-1.42, 0.95, -1.16)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MUnionSierra_1_42")
+[node name="UnionSierra-0.78" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-0.78, 0.95, -1.16)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MUnionSierra_0_78")
+[node name="MangoMazo" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-1.8, 0.94, -1.1)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMangoMazo")
+[node name="CabezaMazo" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-1.8, 1.00, -1.28)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MCabezaMazo")
+[node name="Cepillo" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-0.40, 0.96, -1.2)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MCepillo")
+[node name="HojaCepillo" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-0.40, 1.04, -1.2)
+rotation_degrees = Vector3(0, 0, -25)
+mesh = SubResource("MHojaCepillo")
+[node name="EscuadraA" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-0.5, 0.92, -0.8)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MEscuadraA")
+[node name="EscuadraB" type="MeshInstance3D" parent="Herramientas"]
+position = Vector3(-0.64, 0.92, -0.9)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MEscuadraB")
+[node name="Hacha" parent="Almacen" instance=ExtResource("Axe_Bronze")]
+position = Vector3(-4.1, 0.25, 1.6)
+scale = Vector3(0.55, 0.55, 0.55)
+rotation_degrees = Vector3(0, 25, -20)
+[node name="Soporte-4.9" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.9, 0.15, 0)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MSoporte_4_9")
+[node name="Soporte-3.65" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-3.65, 0.15, 0)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MSoporte_3_65")
+[node name="Tronco0" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.9, 0.45, 0)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Tronco0")
+[node name="Testa0-1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.9, 0.45, -1.307)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa0_1")
+[node name="Testa01" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.9, 0.45, 1.307)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa01")
+[node name="Tronco1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.43, 0.45, 0)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Tronco1")
+[node name="Testa1-1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.43, 0.45, -1.482)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa1_1")
+[node name="Testa11" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.43, 0.45, 1.482)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa11")
+[node name="Tronco2" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-3.96, 0.45, 0)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Tronco2")
+[node name="Testa2-1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-3.96, 0.45, -1.307)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa2_1")
+[node name="Testa21" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-3.96, 0.45, 1.307)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa21")
+[node name="Tronco3" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.9, 0.87, 0)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Tronco3")
+[node name="Testa3-1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.9, 0.87, -1.482)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa3_1")
+[node name="Testa31" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.9, 0.87, 1.482)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa31")
+[node name="Tronco4" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.43, 0.87, 0)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Tronco4")
+[node name="Testa4-1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.43, 0.87, -1.307)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa4_1")
+[node name="Testa41" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.43, 0.87, 1.307)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa41")
+[node name="Tronco5" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-3.96, 0.87, 0)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Tronco5")
+[node name="Testa5-1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-3.96, 0.87, -1.482)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa5_1")
+[node name="Testa51" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-3.96, 0.87, 1.482)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Testa51")
+[node name="ApoyoTablas-1.8" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-1.8, 0.16, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MApoyoTablas_1_8")
+[node name="ApoyoTablas0.2" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(0.2, 0.16, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MApoyoTablas0_2")
+[node name="Tablas0" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-0.8, 0.36, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MTablas0")
+[node name="Tablas1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-0.8, 0.49, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MTablas1")
+[node name="Tablas2" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-0.8, 0.62, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MTablas2")
+[node name="Tablas3" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-0.8, 0.75, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MTablas3")
+[node name="Tablas4" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-0.8, 0.88, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MTablas4")
+[node name="VigaLarga0" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.3, 1.2, -0.3)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MVigaLarga0")
+[node name="VigaLarga1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.3, 1.34, -0.3)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MVigaLarga1")
+[node name="VigaLarga2" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-4.3, 1.48, -0.3)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MVigaLarga2")
+[node name="TablonApoyado0" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-2.5, 0.95, -2.25)
+rotation_degrees = Vector3(-12, 0, 0)
+mesh = SubResource("MTablonApoyado0")
+[node name="TablonApoyado1" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-2.2, 0.95, -2.25)
+rotation_degrees = Vector3(-12, 0, 0)
+mesh = SubResource("MTablonApoyado1")
+[node name="TablonApoyado2" type="MeshInstance3D" parent="Almacen"]
+position = Vector3(-1.9, 0.95, -2.25)
+rotation_degrees = Vector3(-12, 0, 0)
+mesh = SubResource("MTablonApoyado2")
+[node name="MarcoLargo-3.7" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(-1.0, 1.0, -3.7)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMarcoLargo_3_7")
+[node name="MarcoLargo-2.8" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(-1.0, 1.0, -2.8)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMarcoLargo_2_8")
+[node name="MarcoTravesano0.15" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(-1.0, 0.15, -3.25)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMarcoTravesano0_15")
+[node name="MarcoTravesano1.2" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(-1.0, 1.2, -3.25)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMarcoTravesano1_2")
+[node name="MarcoTravesano1.95" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(-1.0, 1.95, -3.25)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MMarcoTravesano1_95")
+[node name="Asiento" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(1.9, 0.65, -1.1)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MAsiento")
+[node name="PataTaburete1.66-1.28" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(1.66, 0.31, -1.28)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPataTaburete1_66_1_28")
+[node name="PataTaburete1.66-0.92" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(1.66, 0.31, -0.92)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPataTaburete1_66_0_92")
+[node name="PataTaburete2.14-1.28" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(2.14, 0.31, -1.28)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPataTaburete2_14_1_28")
+[node name="PataTaburete2.14-0.92" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(2.14, 0.31, -0.92)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MPataTaburete2_14_0_92")
+[node name="ListonSuelto" type="MeshInstance3D" parent="MueblesEnProceso"]
+position = Vector3(2.25, 0.04, -1.6)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MListonSuelto")
+[node name="Caja" parent="DecoracionExterior" instance=ExtResource("Crate_Wooden")]
+position = Vector3(3.8, 0, -3.3)
+scale = Vector3(0.7, 0.7, 0.7)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="Cuerda" parent="DecoracionExterior" instance=ExtResource("Rope_1")]
+position = Vector3(0.8, 0.02, -2.8)
+scale = Vector3(0.6, 0.6, 0.6)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="Viruta0" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.4, 0.025, 2.10)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("MViruta0")
+[node name="Viruta1" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.72, 0.025, 2.1)
+rotation_degrees = Vector3(0, 37, 0)
+mesh = SubResource("MViruta1")
+[node name="Viruta2" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.04, 0.025, 2.1)
+rotation_degrees = Vector3(0, 74, 0)
+mesh = SubResource("MViruta2")
+[node name="Viruta3" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.36, 0.025, 2.1)
+rotation_degrees = Vector3(0, 111, 0)
+mesh = SubResource("MViruta3")
+[node name="Viruta4" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.68, 0.025, 2.1)
+rotation_degrees = Vector3(0, 148, 0)
+mesh = SubResource("MViruta4")
+[node name="Viruta5" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.4, 0.025, 2.24)
+rotation_degrees = Vector3(0, 185, 0)
+mesh = SubResource("MViruta5")
+[node name="Viruta6" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.72, 0.025, 2.24)
+rotation_degrees = Vector3(0, 222, 0)
+mesh = SubResource("MViruta6")
+[node name="Viruta7" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.04, 0.025, 2.24)
+rotation_degrees = Vector3(0, 259, 0)
+mesh = SubResource("MViruta7")
+[node name="Viruta8" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.36, 0.025, 2.24)
+rotation_degrees = Vector3(0, 296, 0)
+mesh = SubResource("MViruta8")
+[node name="Viruta9" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.68, 0.025, 2.24)
+rotation_degrees = Vector3(0, 333, 0)
+mesh = SubResource("MViruta9")
+[node name="Viruta10" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.4, 0.025, 2.38)
+rotation_degrees = Vector3(0, 370, 0)
+mesh = SubResource("MViruta10")
+[node name="Viruta11" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.72, 0.025, 2.38)
+rotation_degrees = Vector3(0, 407, 0)
+mesh = SubResource("MViruta11")
+[node name="Viruta12" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.04, 0.025, 2.38)
+rotation_degrees = Vector3(0, 444, 0)
+mesh = SubResource("MViruta12")
+[node name="Viruta13" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(1.36, 0.025, 2.38)
+rotation_degrees = Vector3(0, 481, 0)
+mesh = SubResource("MViruta13")
+[node name="Colisiones" type="StaticBody3D" parent="."]
+[node name="PosteON" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-2.85, 1.575, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SPosteON")
+[node name="PosteOS" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-2.85, 1.575, 1.85)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SPosteOS")
+[node name="PosteEN" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(2.85, 1.275, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SPosteEN")
+[node name="PosteES" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(2.85, 1.275, 1.85)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SPosteES")
+[node name="MuroTrasero" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-2.85, 1.15, 0)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SMuroTrasero")
+[node name="MuroNorte" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-1.1, 1.05, -1.85)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SMuroNorte")
+[node name="BancoFisico" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-1.1, 0.44, -1.13)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SBancoFisico")
+[node name="Corte" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(1.3, 0.88, 1.25)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SCorte")
+[node name="PilaTroncos" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-4.43, 0.55, 0)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SPilaTroncos")
+[node name="PilaTablas" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-0.8, 0.49, 3.5)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SPilaTablas")
+[node name="BastidorFisico" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-1, 1, -3.25)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SBastidorFisico")
+[node name="Asiento" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(1.9, 0.65, -1.1)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SAsiento")
+[node name="CajaFisica" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(3.8, 0.32, -3.3)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("SCajaFisica")

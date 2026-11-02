@@ -1,0 +1,2757 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/SmallBottles_1.gltf" id="A252"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Barrel.gltf" id="A253"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Fern_1.gltf" id="A317"]
+[sub_resource type="StandardMaterial3D" id="Madera"]
+albedo_color = Color( 0.27, 0.17, 0.085, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Clara"]
+albedo_color = Color( 0.51, 0.34, 0.16, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Piedra"]
+albedo_color = Color( 0.66, 0.61, 0.48, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Crema"]
+albedo_color = Color( 0.81, 0.78, 0.61, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Musgo"]
+albedo_color = Color( 0.24, 0.33, 0.12, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="MusgoClaro"]
+albedo_color = Color( 0.32, 0.39, 0.17, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Tierra"]
+albedo_color = Color( 0.22, 0.15, 0.08, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Verde"]
+albedo_color = Color( 0.26, 0.44, 0.20, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Salvia"]
+albedo_color = Color( 0.47, 0.57, 0.40, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Violeta"]
+albedo_color = Color( 0.57, 0.36, 0.65, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Amarillo"]
+albedo_color = Color( 0.85, 0.65, 0.20, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Blanco"]
+albedo_color = Color( 0.89, 0.87, 0.70, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Vidrio"]
+albedo_color = Color( 0.28, 0.43, 0.36, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Cuerda"]
+albedo_color = Color( 0.65, 0.52, 0.32, 1)
+roughness = 0.92
+[sub_resource type="BoxMesh" id="G1"]
+size = Vector3(4, 3, 0.16)
+material = SubResource("Crema")
+[sub_resource type="BoxShape3D" id="S2"]
+size = Vector3(4, 3, 0.16)
+[sub_resource type="BoxMesh" id="G3"]
+size = Vector3(4, 3, 0.16)
+material = SubResource("Crema")
+[sub_resource type="BoxShape3D" id="S4"]
+size = Vector3(4, 3, 0.16)
+[sub_resource type="BoxMesh" id="G5"]
+size = Vector3(0.16, 3, 3.7)
+material = SubResource("Crema")
+[sub_resource type="BoxShape3D" id="S6"]
+size = Vector3(0.16, 3, 3.7)
+[sub_resource type="BoxMesh" id="G7"]
+size = Vector3(0.16, 3, 3.7)
+material = SubResource("Crema")
+[sub_resource type="BoxShape3D" id="S8"]
+size = Vector3(0.16, 3, 3.7)
+[sub_resource type="BoxMesh" id="G9"]
+size = Vector3(0.18, 3, 0.18)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G10"]
+size = Vector3(0.18, 3, 0.18)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G11"]
+size = Vector3(0.18, 3, 0.18)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G12"]
+size = Vector3(0.18, 3, 0.18)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G13"]
+size = Vector3(4.15, 0.48, 0.2)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="G14"]
+size = Vector3(4.18, 0.13, 0.16)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G15"]
+size = Vector3(4.18, 0.13, 0.16)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G16"]
+size = Vector3(0.12, 1.9, 0.15)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G17"]
+size = Vector3(0.12, 1.9, 0.15)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G18"]
+size = Vector3(4.15, 0.48, 0.2)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="G19"]
+size = Vector3(4.18, 0.13, 0.16)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G20"]
+size = Vector3(4.18, 0.13, 0.16)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G21"]
+size = Vector3(0.12, 1.9, 0.15)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G22"]
+size = Vector3(0.12, 1.9, 0.15)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G23"]
+size = Vector3(0.2, 0.48, 4.15)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="G24"]
+size = Vector3(0.16, 0.16, 4.2)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G25"]
+size = Vector3(0.2, 0.48, 4.15)
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="G26"]
+size = Vector3(0.16, 0.16, 4.2)
+material = SubResource("Madera")
+[sub_resource type="PrismMesh" id="Frontones"]
+size = Vector3(4.1, 1.12, 4.1)
+material = SubResource("Crema")
+[sub_resource type="BoxMesh" id="G27"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G28"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G29"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G30"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G31"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G32"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G33"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G34"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G35"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G36"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G37"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G38"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G39"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G40"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G41"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G42"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G43"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G44"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G45"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G46"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G47"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G48"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G49"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G50"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G51"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G52"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G53"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G54"]
+size = Vector3(2.79, 0.12, 0.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G55"]
+size = Vector3(0.18, 0.18, 5.4)
+material = SubResource("Musgo")
+[sub_resource type="BoxMesh" id="G56"]
+size = Vector3(0.12, 2.16, 1.06)
+material = SubResource("Clara")
+[sub_resource type="BoxMesh" id="G57"]
+size = Vector3(0.16, 2.3, 0.13)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G58"]
+size = Vector3(0.16, 2.3, 0.13)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G59"]
+size = Vector3(0.16, 0.16, 1.32)
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G60"]
+top_radius = 0.044000000000000004
+bottom_radius = 0.055
+height = 0.07
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="BoxMesh" id="G61"]
+size = Vector3(0.12, 0.44, 1.85)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G62"]
+size = Vector3(1.25, 0.46, 1.5)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="S63"]
+size = Vector3(1.25, 0.46, 1.5)
+[sub_resource type="BoxMesh" id="G64"]
+size = Vector3(1.13, 0.03, 1.38)
+material = SubResource("Tierra")
+[sub_resource type="CylinderMesh" id="G65"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G66"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G67"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G68"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G69"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G70"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G71"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G72"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G73"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G74"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G75"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G76"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G77"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G78"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G79"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G80"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G81"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G82"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G83"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G84"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G85"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G86"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G87"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="CylinderMesh" id="G88"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Violeta")
+[sub_resource type="BoxMesh" id="G89"]
+size = Vector3(1.15, 0.46, 1.5)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="S90"]
+size = Vector3(1.15, 0.46, 1.5)
+[sub_resource type="BoxMesh" id="G91"]
+size = Vector3(1.0299999999999998, 0.03, 1.38)
+material = SubResource("Tierra")
+[sub_resource type="CylinderMesh" id="G92"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G93"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G94"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G95"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G96"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G97"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G98"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G99"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G100"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G101"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G102"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G103"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G104"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G105"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G106"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G107"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G108"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G109"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G110"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G111"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G112"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G113"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G114"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G115"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="BoxMesh" id="G116"]
+size = Vector3(1.25, 0.46, 1.5)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="S117"]
+size = Vector3(1.25, 0.46, 1.5)
+[sub_resource type="BoxMesh" id="G118"]
+size = Vector3(1.13, 0.03, 1.38)
+material = SubResource("Tierra")
+[sub_resource type="CylinderMesh" id="G119"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G120"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G121"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G122"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G123"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G124"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G125"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G126"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G127"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G128"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G129"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G130"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G131"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G132"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G133"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G134"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G135"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G136"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G137"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G138"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G139"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G140"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G141"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G142"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="BoxMesh" id="G143"]
+size = Vector3(1, 0.46, 1.1)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="S144"]
+size = Vector3(1, 0.46, 1.1)
+[sub_resource type="BoxMesh" id="G145"]
+size = Vector3(0.88, 0.03, 0.9800000000000001)
+material = SubResource("Tierra")
+[sub_resource type="CylinderMesh" id="G146"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G147"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G148"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G149"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G150"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G151"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G152"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G153"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G154"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G155"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G156"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G157"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G158"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G159"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G160"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G161"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G162"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G163"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G164"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G165"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G166"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G167"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G168"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G169"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="BoxMesh" id="G170"]
+size = Vector3(1, 0.46, 1.1)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="S171"]
+size = Vector3(1, 0.46, 1.1)
+[sub_resource type="BoxMesh" id="G172"]
+size = Vector3(0.88, 0.03, 0.9800000000000001)
+material = SubResource("Tierra")
+[sub_resource type="CylinderMesh" id="G173"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G174"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G175"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G176"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G177"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G178"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G179"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G180"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G181"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G182"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G183"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G184"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G185"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G186"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G187"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G188"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G189"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G190"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G191"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G192"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G193"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.45
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G194"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G195"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G196"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G197"]
+top_radius = 0.23199999999999998
+bottom_radius = 0.29
+height = 0.56
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="BoxShape3D" id="S198"]
+size = Vector3(0.58, 0.56, 0.58)
+[sub_resource type="CylinderMesh" id="G199"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.55
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G200"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Blanco")
+[sub_resource type="CylinderMesh" id="G201"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Blanco")
+[sub_resource type="CylinderMesh" id="G202"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Blanco")
+[sub_resource type="CylinderMesh" id="G203"]
+top_radius = 0.23199999999999998
+bottom_radius = 0.29
+height = 0.56
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="BoxShape3D" id="S204"]
+size = Vector3(0.58, 0.56, 0.58)
+[sub_resource type="CylinderMesh" id="G205"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.55
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G206"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Blanco")
+[sub_resource type="CylinderMesh" id="G207"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Blanco")
+[sub_resource type="CylinderMesh" id="G208"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Blanco")
+[sub_resource type="BoxMesh" id="G209"]
+size = Vector3(3.5, 0.12, 1.35)
+material = SubResource("MusgoClaro")
+[sub_resource type="BoxMesh" id="G210"]
+size = Vector3(0.14, 2.36, 0.14)
+material = SubResource("Madera")
+[sub_resource type="BoxShape3D" id="S211"]
+size = Vector3(0.14, 2.36, 0.14)
+[sub_resource type="BoxMesh" id="G212"]
+size = Vector3(0.14, 2.36, 0.14)
+material = SubResource("Madera")
+[sub_resource type="BoxShape3D" id="S213"]
+size = Vector3(0.14, 2.36, 0.14)
+[sub_resource type="BoxMesh" id="G214"]
+size = Vector3(3.15, 0.035, 0.035)
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G215"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.28
+radial_segments = 8
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G216"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G217"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G218"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G219"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.28
+radial_segments = 8
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G220"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G221"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G222"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G223"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.28
+radial_segments = 8
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G224"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G225"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G226"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G227"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.28
+radial_segments = 8
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G228"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G229"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G230"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G231"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.28
+radial_segments = 8
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G232"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G233"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G234"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G235"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.28
+radial_segments = 8
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G236"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G237"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G238"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.5800000000000001
+radial_segments = 8
+material = SubResource("Salvia")
+[sub_resource type="CylinderMesh" id="G239"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.28
+radial_segments = 8
+material = SubResource("Cuerda")
+[sub_resource type="CylinderMesh" id="G240"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G241"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="CylinderMesh" id="G242"]
+top_radius = 0.08000000000000002
+bottom_radius = 0.1
+height = 0.46
+radial_segments = 8
+material = SubResource("Amarillo")
+[sub_resource type="BoxMesh" id="G243"]
+size = Vector3(1.35, 0.14, 0.8)
+material = SubResource("Clara")
+[sub_resource type="BoxShape3D" id="S244"]
+size = Vector3(1.35, 1.04, 0.8)
+[sub_resource type="BoxMesh" id="G245"]
+size = Vector3(0.12, 0.92, 0.12)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G246"]
+size = Vector3(0.12, 0.92, 0.12)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G247"]
+size = Vector3(0.12, 0.92, 0.12)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G248"]
+size = Vector3(0.12, 0.92, 0.12)
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G249"]
+top_radius = 0.168
+bottom_radius = 0.21
+height = 0.23
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G250"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.012
+radial_segments = 8
+material = SubResource("Tierra")
+[sub_resource type="CylinderMesh" id="G251"]
+top_radius = 0.04000000000000001
+bottom_radius = 0.05
+height = 0.36
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="BoxShape3D" id="S254"]
+size = Vector3(0.7, 0.9, 0.7)
+[sub_resource type="BoxMesh" id="G255"]
+size = Vector3(0.16, 2, 0.16)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G256"]
+size = Vector3(0.16, 2, 0.16)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G257"]
+size = Vector3(0.7, 0.12, 1.5)
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="G258"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G259"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G260"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Vidrio")
+[sub_resource type="CylinderMesh" id="G261"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G262"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G263"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G264"]
+size = Vector3(0.7, 0.12, 1.5)
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="G265"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G266"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G267"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Vidrio")
+[sub_resource type="CylinderMesh" id="G268"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G269"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G270"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G271"]
+size = Vector3(0.7, 0.12, 1.5)
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="G272"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G273"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G274"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Vidrio")
+[sub_resource type="CylinderMesh" id="G275"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="CylinderMesh" id="G276"]
+top_radius = 0.10400000000000001
+bottom_radius = 0.13
+height = 0.3
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G277"]
+top_radius = 0.11200000000000002
+bottom_radius = 0.14
+height = 0.04
+radial_segments = 8
+material = SubResource("Madera")
+[sub_resource type="BoxShape3D" id="S278"]
+size = Vector3(0.7, 2, 1.5)
+[sub_resource type="BoxMesh" id="G279"]
+size = Vector3(1.1, 0.85, 0.08)
+material = SubResource("Vidrio")
+[sub_resource type="BoxMesh" id="G280"]
+size = Vector3(1.35, 0.12, 0.42)
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="G281"]
+top_radius = 0.12
+bottom_radius = 0.15
+height = 0.22
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G282"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.3
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G283"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G284"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G285"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G286"]
+top_radius = 0.12
+bottom_radius = 0.15
+height = 0.22
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G287"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.3
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G288"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G289"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G290"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G291"]
+top_radius = 0.12
+bottom_radius = 0.15
+height = 0.22
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G292"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.3
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G293"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G294"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G295"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="BoxMesh" id="G296"]
+size = Vector3(0.08, 0.9, 0.09)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G297"]
+size = Vector3(1.1, 0.85, 0.08)
+material = SubResource("Vidrio")
+[sub_resource type="BoxMesh" id="G298"]
+size = Vector3(1.35, 0.12, 0.42)
+material = SubResource("Clara")
+[sub_resource type="CylinderMesh" id="G299"]
+top_radius = 0.12
+bottom_radius = 0.15
+height = 0.22
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G300"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.3
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G301"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G302"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G303"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G304"]
+top_radius = 0.12
+bottom_radius = 0.15
+height = 0.22
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G305"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.3
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G306"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G307"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G308"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G309"]
+top_radius = 0.12
+bottom_radius = 0.15
+height = 0.22
+radial_segments = 8
+material = SubResource("Piedra")
+[sub_resource type="CylinderMesh" id="G310"]
+top_radius = 0.028000000000000004
+bottom_radius = 0.035
+height = 0.3
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G311"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G312"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="CylinderMesh" id="G313"]
+top_radius = 0.128
+bottom_radius = 0.16
+height = 0.12
+radial_segments = 8
+material = SubResource("Verde")
+[sub_resource type="BoxMesh" id="G314"]
+size = Vector3(0.08, 0.9, 0.09)
+material = SubResource("Madera")
+[sub_resource type="BoxMesh" id="G315"]
+size = Vector3(0.08, 0.85, 1.1)
+material = SubResource("Vidrio")
+[sub_resource type="BoxMesh" id="G316"]
+size = Vector3(0.08, 0.9, 0.08)
+material = SubResource("Madera")
+[node name="Herbolario" type="Node3D"]
+metadata/cuerpo = Vector2(4, 4)
+metadata/entrada = "oeste"
+[node name="Estructura" type="Node3D" parent="."]
+
+[node name="Tejado" type="Node3D" parent="."]
+
+[node name="Entrada" type="Node3D" parent="."]
+
+[node name="JardinMedicinal" type="Node3D" parent="."]
+
+[node name="SecaderoHierbas" type="Node3D" parent="."]
+
+[node name="MesaPreparacion" type="Node3D" parent="."]
+
+[node name="Estanterias" type="Node3D" parent="."]
+
+[node name="DecoracionExterior" type="Node3D" parent="."]
+
+[node name="Colisiones" type="StaticBody3D" parent="."]
+
+[node name="MuroN" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 1.5, -1.92)
+mesh = SubResource("G1")
+[node name="MuroN" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(0, 1.5, -1.92)
+shape = SubResource("S2")
+[node name="MuroS" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 1.5, 1.92)
+mesh = SubResource("G3")
+[node name="MuroS" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(0, 1.5, 1.92)
+shape = SubResource("S4")
+[node name="MuroE" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(1.92, 1.5, 0)
+mesh = SubResource("G5")
+[node name="MuroE" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(1.92, 1.5, 0)
+shape = SubResource("S6")
+[node name="MuroO" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-1.92, 1.5, 0)
+mesh = SubResource("G7")
+[node name="MuroO" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-1.92, 1.5, 0)
+shape = SubResource("S8")
+[node name="Poste-2-2" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2, 1.5, -2)
+mesh = SubResource("G9")
+[node name="Poste-22" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2, 1.5, 2)
+mesh = SubResource("G10")
+[node name="Poste2-2" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2, 1.5, -2)
+mesh = SubResource("G11")
+[node name="Poste22" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2, 1.5, 2)
+mesh = SubResource("G12")
+[node name="Zocalo-2.02" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 0.24, -2.02)
+mesh = SubResource("G13")
+[node name="Travesano-2.021" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 1, -2.02)
+mesh = SubResource("G14")
+[node name="Travesano-2.022.85" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 2.85, -2.02)
+mesh = SubResource("G15")
+[node name="Entramado-2.02-0.95" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-0.95, 1.9, -2.02)
+mesh = SubResource("G16")
+[node name="Entramado-2.020.95" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0.95, 1.9, -2.02)
+mesh = SubResource("G17")
+[node name="Zocalo2.02" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 0.24, 2.02)
+mesh = SubResource("G18")
+[node name="Travesano2.021" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 1, 2.02)
+mesh = SubResource("G19")
+[node name="Travesano2.022.85" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0, 2.85, 2.02)
+mesh = SubResource("G20")
+[node name="Entramado2.02-0.95" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-0.95, 1.9, 2.02)
+mesh = SubResource("G21")
+[node name="Entramado2.020.95" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(0.95, 1.9, 2.02)
+mesh = SubResource("G22")
+[node name="ZocaloL-2.02" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.02, 0.24, 0)
+mesh = SubResource("G23")
+[node name="VigaL-2.02" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(-2.02, 2.85, 0)
+mesh = SubResource("G24")
+[node name="ZocaloL2.02" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2.02, 0.24, 0)
+mesh = SubResource("G25")
+[node name="VigaL2.02" type="MeshInstance3D" parent="Estructura"]
+position = Vector3(2.02, 2.85, 0)
+mesh = SubResource("G26")
+[node name="CierreFrontones" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(0, 3.55, 0)
+mesh = SubResource("Frontones")
+[node name="Tablilla-1_0" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, -2.48)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G27")
+[node name="Tablilla-1_1" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, -2.1)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G28")
+[node name="Tablilla-1_2" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, -1.72)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G29")
+[node name="Tablilla-1_3" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, -1.3399999999999999)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G30")
+[node name="Tablilla-1_4" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, -0.96)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G31")
+[node name="Tablilla-1_5" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, -0.5800000000000001)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G32")
+[node name="Tablilla-1_6" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, -0.19999999999999973)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G33")
+[node name="Tablilla-1_7" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, 0.18000000000000016)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G34")
+[node name="Tablilla-1_8" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, 0.56)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G35")
+[node name="Tablilla-1_9" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, 0.94)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G36")
+[node name="Tablilla-1_10" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, 1.3199999999999998)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G37")
+[node name="Tablilla-1_11" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, 1.6999999999999997)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G38")
+[node name="Tablilla-1_12" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, 2.0800000000000005)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G39")
+[node name="Tablilla-1_13" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(-1.25, 3.58, 2.4600000000000004)
+rotation_degrees = Vector3(0, 0, 24)
+mesh = SubResource("G40")
+[node name="Tablilla1_0" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, -2.48)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G41")
+[node name="Tablilla1_1" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, -2.1)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G42")
+[node name="Tablilla1_2" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, -1.72)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G43")
+[node name="Tablilla1_3" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, -1.3399999999999999)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G44")
+[node name="Tablilla1_4" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, -0.96)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G45")
+[node name="Tablilla1_5" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, -0.5800000000000001)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G46")
+[node name="Tablilla1_6" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, -0.19999999999999973)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G47")
+[node name="Tablilla1_7" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, 0.18000000000000016)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G48")
+[node name="Tablilla1_8" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, 0.56)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G49")
+[node name="Tablilla1_9" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, 0.94)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G50")
+[node name="Tablilla1_10" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, 1.3199999999999998)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G51")
+[node name="Tablilla1_11" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, 1.6999999999999997)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G52")
+[node name="Tablilla1_12" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, 2.0800000000000005)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G53")
+[node name="Tablilla1_13" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(1.25, 3.58, 2.4600000000000004)
+rotation_degrees = Vector3(0, 0, -24)
+mesh = SubResource("G54")
+[node name="Cumbrera" type="MeshInstance3D" parent="Tejado"]
+position = Vector3(0, 4.18, 0)
+mesh = SubResource("G55")
+[node name="Puerta" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.12, 1.08, 0)
+mesh = SubResource("G56")
+[node name="Marco-0.59" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.2, 1.15, -0.59)
+mesh = SubResource("G57")
+[node name="Marco0.59" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.2, 1.15, 0.59)
+mesh = SubResource("G58")
+[node name="Dintel" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.2, 2.3, 0)
+mesh = SubResource("G59")
+[node name="Tirador" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.23, 1.05, -0.3)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("G60")
+[node name="Cartel" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.23, 2.65, 0)
+mesh = SubResource("G61")
+[node name="Texto" type="Label3D" parent="Entrada"]
+position = Vector3(-2.31, 2.65, 0)
+rotation_degrees = Vector3(0, -90, 0)
+text = "HERBOLARIO"
+font_size = 48
+pixel_size = 0.003
+outline_size = 3
+modulate = Color(0.88, 0.85, 0.65, 1)
+[node name="Lavanda" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9, 0.23, 3.65)
+mesh = SubResource("G62")
+[node name="Lavanda" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-1.9, 0.23, 3.65)
+shape = SubResource("S63")
+[node name="LavandaTierra" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9, 0.47, 3.65)
+mesh = SubResource("G64")
+[node name="Lavanda00Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.2375, 0.715, 3.29)
+mesh = SubResource("G65")
+[node name="Lavanda00Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.2375, 0.715, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G66")
+[node name="Lavanda00Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.128384308780918, 0.8049999999999999, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G67")
+[node name="Lavanda00Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.3283162994369513, 0.895, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G68")
+[node name="Lavanda01Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.2375, 0.715, 4.01)
+mesh = SubResource("G69")
+[node name="Lavanda01Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.2375, 0.715, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G70")
+[node name="Lavanda01Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.128384308780918, 0.8049999999999999, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G71")
+[node name="Lavanda01Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-2.3283162994369513, 0.895, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G72")
+[node name="Lavanda10Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9, 0.78, 3.29)
+mesh = SubResource("G73")
+[node name="Lavanda10Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9, 0.78, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G74")
+[node name="Lavanda10Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.790884308780918, 0.87, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G75")
+[node name="Lavanda10Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9908162994369514, 0.96, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G76")
+[node name="Lavanda11Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9, 0.78, 4.01)
+mesh = SubResource("G77")
+[node name="Lavanda11Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9, 0.78, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G78")
+[node name="Lavanda11Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.790884308780918, 0.87, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G79")
+[node name="Lavanda11Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.9908162994369514, 0.96, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G80")
+[node name="Lavanda20Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.5625, 0.715, 3.29)
+mesh = SubResource("G81")
+[node name="Lavanda20Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.5625, 0.715, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G82")
+[node name="Lavanda20Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.4533843087809182, 0.8049999999999999, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G83")
+[node name="Lavanda20Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.6533162994369515, 0.895, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G84")
+[node name="Lavanda21Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.5625, 0.715, 4.01)
+mesh = SubResource("G85")
+[node name="Lavanda21Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.5625, 0.715, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G86")
+[node name="Lavanda21Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.4533843087809182, 0.8049999999999999, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G87")
+[node name="Lavanda21Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-1.6533162994369515, 0.895, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G88")
+[node name="Romero" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0, 0.23, 3.65)
+mesh = SubResource("G89")
+[node name="Romero" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(0, 0.23, 3.65)
+shape = SubResource("S90")
+[node name="RomeroTierra" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0, 0.47, 3.65)
+mesh = SubResource("G91")
+[node name="Romero00Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.3105, 0.715, 3.29)
+mesh = SubResource("G92")
+[node name="Romero00Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.3105, 0.715, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G93")
+[node name="Romero00Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.2013843087809182, 0.8049999999999999, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G94")
+[node name="Romero00Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.40131629943695135, 0.895, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G95")
+[node name="Romero01Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.3105, 0.715, 4.01)
+mesh = SubResource("G96")
+[node name="Romero01Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.3105, 0.715, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G97")
+[node name="Romero01Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.2013843087809182, 0.8049999999999999, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G98")
+[node name="Romero01Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.40131629943695135, 0.895, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G99")
+[node name="Romero10Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0, 0.78, 3.29)
+mesh = SubResource("G100")
+[node name="Romero10Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0, 0.78, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G101")
+[node name="Romero10Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.1091156912190818, 0.87, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G102")
+[node name="Romero10Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.09081629943695138, 0.96, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G103")
+[node name="Romero11Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0, 0.78, 4.01)
+mesh = SubResource("G104")
+[node name="Romero11Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0, 0.78, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G105")
+[node name="Romero11Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.1091156912190818, 0.87, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G106")
+[node name="Romero11Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(-0.09081629943695138, 0.96, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G107")
+[node name="Romero20Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.3105, 0.715, 3.29)
+mesh = SubResource("G108")
+[node name="Romero20Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.3105, 0.715, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G109")
+[node name="Romero20Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.4196156912190818, 0.8049999999999999, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G110")
+[node name="Romero20Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.21968370056304862, 0.895, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G111")
+[node name="Romero21Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.3105, 0.715, 4.01)
+mesh = SubResource("G112")
+[node name="Romero21Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.3105, 0.715, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G113")
+[node name="Romero21Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.4196156912190818, 0.8049999999999999, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G114")
+[node name="Romero21Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(0.21968370056304862, 0.895, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G115")
+[node name="Calendula" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.9, 0.23, 3.65)
+mesh = SubResource("G116")
+[node name="Calendula" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(1.9, 0.23, 3.65)
+shape = SubResource("S117")
+[node name="CalendulaTierra" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.9, 0.47, 3.65)
+mesh = SubResource("G118")
+[node name="Calendula00Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.5625, 0.715, 3.29)
+mesh = SubResource("G119")
+[node name="Calendula00Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.5625, 0.715, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G120")
+[node name="Calendula00Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.6716156912190818, 0.8049999999999999, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G121")
+[node name="Calendula00Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.4716837005630485, 0.895, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G122")
+[node name="Calendula01Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.5625, 0.715, 4.01)
+mesh = SubResource("G123")
+[node name="Calendula01Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.5625, 0.715, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G124")
+[node name="Calendula01Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.6716156912190818, 0.8049999999999999, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G125")
+[node name="Calendula01Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.4716837005630485, 0.895, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G126")
+[node name="Calendula10Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.9, 0.78, 3.29)
+mesh = SubResource("G127")
+[node name="Calendula10Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.9, 0.78, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G128")
+[node name="Calendula10Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.0091156912190815, 0.87, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G129")
+[node name="Calendula10Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.8091837005630484, 0.96, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G130")
+[node name="Calendula11Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.9, 0.78, 4.01)
+mesh = SubResource("G131")
+[node name="Calendula11Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.9, 0.78, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G132")
+[node name="Calendula11Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.0091156912190815, 0.87, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G133")
+[node name="Calendula11Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(1.8091837005630484, 0.96, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G134")
+[node name="Calendula20Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.2375, 0.715, 3.29)
+mesh = SubResource("G135")
+[node name="Calendula20Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.2375, 0.715, 3.41)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G136")
+[node name="Calendula20Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.3466156912190814, 0.8049999999999999, 3.240062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G137")
+[node name="Calendula20Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.1466837005630484, 0.895, 3.2115627654963665)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G138")
+[node name="Calendula21Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.2375, 0.715, 4.01)
+mesh = SubResource("G139")
+[node name="Calendula21Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.2375, 0.715, 4.13)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G140")
+[node name="Calendula21Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.3466156912190814, 0.8049999999999999, 3.960062379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G141")
+[node name="Calendula21Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.1466837005630484, 0.895, 3.9315627654963663)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G142")
+[node name="Salvia" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.23, -1.5)
+mesh = SubResource("G143")
+[node name="Salvia" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(2.75, 0.23, -1.5)
+shape = SubResource("S144")
+[node name="SalviaTierra" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.47, -1.5)
+mesh = SubResource("G145")
+[node name="Salvia00Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, -1.764)
+mesh = SubResource("G146")
+[node name="Salvia00Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, -1.6440000000000001)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G147")
+[node name="Salvia00Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.7891156912190818, 0.8049999999999999, -1.8139376203856572)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G148")
+[node name="Salvia00Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.5891837005630487, 0.895, -1.8424372345036335)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G149")
+[node name="Salvia01Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, -1.236)
+mesh = SubResource("G150")
+[node name="Salvia01Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, -1.116)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G151")
+[node name="Salvia01Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.7891156912190818, 0.8049999999999999, -1.2859376203856572)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G152")
+[node name="Salvia01Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.5891837005630487, 0.895, -1.3144372345036335)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G153")
+[node name="Salvia10Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, -1.764)
+mesh = SubResource("G154")
+[node name="Salvia10Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, -1.6440000000000001)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G155")
+[node name="Salvia10Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.059115691219082, 0.87, -1.8139376203856572)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G156")
+[node name="Salvia10Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.8591837005630487, 0.96, -1.8424372345036335)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G157")
+[node name="Salvia11Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, -1.236)
+mesh = SubResource("G158")
+[node name="Salvia11Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, -1.116)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G159")
+[node name="Salvia11Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.059115691219082, 0.87, -1.2859376203856572)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G160")
+[node name="Salvia11Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.8591837005630487, 0.96, -1.3144372345036335)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G161")
+[node name="Salvia20Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, -1.764)
+mesh = SubResource("G162")
+[node name="Salvia20Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, -1.6440000000000001)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G163")
+[node name="Salvia20Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.329115691219082, 0.8049999999999999, -1.8139376203856572)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G164")
+[node name="Salvia20Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.1291837005630487, 0.895, -1.8424372345036335)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G165")
+[node name="Salvia21Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, -1.236)
+mesh = SubResource("G166")
+[node name="Salvia21Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, -1.116)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G167")
+[node name="Salvia21Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.329115691219082, 0.8049999999999999, -1.2859376203856572)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G168")
+[node name="Salvia21Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.1291837005630487, 0.895, -1.3144372345036335)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G169")
+[node name="Menta" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.23, 0.25)
+mesh = SubResource("G170")
+[node name="Menta" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(2.75, 0.23, 0.25)
+shape = SubResource("S171")
+[node name="MentaTierra" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.47, 0.25)
+mesh = SubResource("G172")
+[node name="Menta00Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, -0.014000000000000012)
+mesh = SubResource("G173")
+[node name="Menta00Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, 0.10599999999999998)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G174")
+[node name="Menta00Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.7891156912190818, 0.8049999999999999, -0.06393762038565709)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G175")
+[node name="Menta00Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.5891837005630487, 0.895, -0.09243723450363345)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G176")
+[node name="Menta01Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, 0.514)
+mesh = SubResource("G177")
+[node name="Menta01Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.68, 0.715, 0.634)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G178")
+[node name="Menta01Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.7891156912190818, 0.8049999999999999, 0.46406237961434293)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G179")
+[node name="Menta01Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.5891837005630487, 0.895, 0.4355627654963666)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G180")
+[node name="Menta10Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, -0.014000000000000012)
+mesh = SubResource("G181")
+[node name="Menta10Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, 0.10599999999999998)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G182")
+[node name="Menta10Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.059115691219082, 0.87, -0.06393762038565709)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G183")
+[node name="Menta10Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.8591837005630487, 0.96, -0.09243723450363345)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G184")
+[node name="Menta11Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, 0.514)
+mesh = SubResource("G185")
+[node name="Menta11Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.75, 0.78, 0.634)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G186")
+[node name="Menta11Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.059115691219082, 0.87, 0.46406237961434293)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G187")
+[node name="Menta11Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(2.8591837005630487, 0.96, 0.4355627654963666)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G188")
+[node name="Menta20Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, -0.014000000000000012)
+mesh = SubResource("G189")
+[node name="Menta20Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, 0.10599999999999998)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G190")
+[node name="Menta20Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.329115691219082, 0.8049999999999999, -0.06393762038565709)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G191")
+[node name="Menta20Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.1291837005630487, 0.895, -0.09243723450363345)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G192")
+[node name="Menta21Tallo" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, 0.514)
+mesh = SubResource("G193")
+[node name="Menta21Hoja0" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.22, 0.715, 0.634)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G194")
+[node name="Menta21Hoja1" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.329115691219082, 0.8049999999999999, 0.46406237961434293)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G195")
+[node name="Menta21Hoja2" type="MeshInstance3D" parent="JardinMedicinal"]
+position = Vector3(3.1291837005630487, 0.895, 0.4355627654963666)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G196")
+[node name="Maceta-1.35" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.45, 0.28, -1.8)
+mesh = SubResource("G197")
+[node name="Maceta-1.35" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-2.45, 0.28, -1.8)
+shape = SubResource("S198")
+[node name="FlorEntrada-1.35Tallo" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.45, 0.855, -1.8)
+mesh = SubResource("G199")
+[node name="FlorEntrada-1.35Hoja0" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.45, 0.855, -1.68)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G200")
+[node name="FlorEntrada-1.35Hoja1" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.340884, 0.945, -1.849938)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G201")
+[node name="FlorEntrada-1.35Hoja2" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.540816, 1.035, -1.878437)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G202")
+[node name="Maceta1.35" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.45, 0.28, 1.8)
+mesh = SubResource("G203")
+[node name="Maceta1.35" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-2.45, 0.28, 1.8)
+shape = SubResource("S204")
+[node name="FlorEntrada1.35Tallo" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.45, 0.855, 1.8)
+mesh = SubResource("G205")
+[node name="FlorEntrada1.35Hoja0" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.45, 0.855, 1.92)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G206")
+[node name="FlorEntrada1.35Hoja1" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.340884, 0.945, 1.750062)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G207")
+[node name="FlorEntrada1.35Hoja2" type="MeshInstance3D" parent="Entrada"]
+position = Vector3(-2.540816, 1.035, 1.721563)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G208")
+[node name="CubiertaSecadero" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.35, 2.42, -3.05)
+rotation_degrees = Vector3(-8, 0, 0)
+mesh = SubResource("G209")
+[node name="Soporte-1.25" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-1.25, 1.18, -3.55)
+mesh = SubResource("G210")
+[node name="Soporte-1.25" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-1.25, 1.18, -3.55)
+shape = SubResource("S211")
+[node name="Soporte1.95" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.95, 1.18, -3.55)
+mesh = SubResource("G212")
+[node name="Soporte1.95" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(1.95, 1.18, -3.55)
+shape = SubResource("S213")
+[node name="Cuerda" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.3, 2.12, -3.48)
+mesh = SubResource("G214")
+[node name="Atadura0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-1, 1.98, -3.48)
+mesh = SubResource("G215")
+[node name="Manojo0_0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-1.075, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, -12)
+mesh = SubResource("G216")
+[node name="Manojo0_1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-1, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("G217")
+[node name="Manojo0_2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.925, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, 12)
+mesh = SubResource("G218")
+[node name="Atadura1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.5700000000000001, 1.98, -3.48)
+mesh = SubResource("G219")
+[node name="Manojo1_0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.645, 1.6900000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, -12)
+mesh = SubResource("G220")
+[node name="Manojo1_1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.5700000000000001, 1.6900000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("G221")
+[node name="Manojo1_2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.49500000000000005, 1.6900000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 12)
+mesh = SubResource("G222")
+[node name="Atadura2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.14, 1.98, -3.48)
+mesh = SubResource("G223")
+[node name="Manojo2_0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.21500000000000002, 1.7600000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, -12)
+mesh = SubResource("G224")
+[node name="Manojo2_1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.14, 1.7600000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("G225")
+[node name="Manojo2_2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(-0.06500000000000002, 1.7600000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 12)
+mesh = SubResource("G226")
+[node name="Atadura3" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.29000000000000004, 1.98, -3.48)
+mesh = SubResource("G227")
+[node name="Manojo3_0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.21500000000000002, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, -12)
+mesh = SubResource("G228")
+[node name="Manojo3_1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.29000000000000004, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("G229")
+[node name="Manojo3_2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.36500000000000005, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, 12)
+mesh = SubResource("G230")
+[node name="Atadura4" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.72, 1.98, -3.48)
+mesh = SubResource("G231")
+[node name="Manojo4_0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.645, 1.6900000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, -12)
+mesh = SubResource("G232")
+[node name="Manojo4_1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.72, 1.6900000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("G233")
+[node name="Manojo4_2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(0.7949999999999999, 1.6900000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 12)
+mesh = SubResource("G234")
+[node name="Atadura5" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.15, 1.98, -3.48)
+mesh = SubResource("G235")
+[node name="Manojo5_0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.075, 1.7600000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, -12)
+mesh = SubResource("G236")
+[node name="Manojo5_1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.15, 1.7600000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("G237")
+[node name="Manojo5_2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.2249999999999999, 1.7600000000000002, -3.48)
+rotation_degrees = Vector3(0, 0, 12)
+mesh = SubResource("G238")
+[node name="Atadura6" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.58, 1.98, -3.48)
+mesh = SubResource("G239")
+[node name="Manojo6_0" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.5050000000000001, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, -12)
+mesh = SubResource("G240")
+[node name="Manojo6_1" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.58, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("G241")
+[node name="Manojo6_2" type="MeshInstance3D" parent="SecaderoHierbas"]
+position = Vector3(1.655, 1.62, -3.48)
+rotation_degrees = Vector3(0, 0, 12)
+mesh = SubResource("G242")
+[node name="Tablero" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-2.7, 0.97, 2.55)
+mesh = SubResource("G243")
+[node name="Mesa" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-2.7, 0.52, 2.55)
+shape = SubResource("S244")
+[node name="Pata-3.482.26" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-3.23, 0.46, 2.26)
+mesh = SubResource("G245")
+[node name="Pata-3.482.84" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-3.23, 0.46, 2.84)
+mesh = SubResource("G246")
+[node name="Pata-2.422.26" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-2.17, 0.46, 2.26)
+mesh = SubResource("G247")
+[node name="Pata-2.422.84" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-2.17, 0.46, 2.84)
+mesh = SubResource("G248")
+[node name="Mortero" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-2.93, 1.14, 2.55)
+mesh = SubResource("G249")
+[node name="HuecoMortero" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-2.93, 1.259, 2.55)
+mesh = SubResource("G250")
+[node name="ManoMortero" type="MeshInstance3D" parent="MesaPreparacion"]
+position = Vector3(-2.92, 1.4, 2.55)
+rotation_degrees = Vector3(0, 0, -30)
+mesh = SubResource("G251")
+[node name="Frascos" parent="MesaPreparacion" instance=ExtResource("A252")]
+position = Vector3(-2.45, 1.045, 2.55)
+scale = Vector3(1.8, 1.8, 1.8)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="BarrilAgua" parent="DecoracionExterior" instance=ExtResource("A253")]
+position = Vector3(2.9, 0, -3.2)
+scale = Vector3(1, 1, 1)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="Barril" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(2.9, 0.45, -3.2)
+shape = SubResource("S254")
+[node name="Montante0.95" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1, 0.95)
+mesh = SubResource("G255")
+[node name="Montante2.25" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1, 2.25)
+mesh = SubResource("G256")
+[node name="Repisa0.25" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.25, 1.6)
+mesh = SubResource("G257")
+[node name="Tarro0.250" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.45999999999999996, 1.12)
+mesh = SubResource("G258")
+[node name="Tapa0.250" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.63, 1.12)
+mesh = SubResource("G259")
+[node name="Tarro0.251" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.45999999999999996, 1.56)
+mesh = SubResource("G260")
+[node name="Tapa0.251" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.63, 1.56)
+mesh = SubResource("G261")
+[node name="Tarro0.252" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.45999999999999996, 2)
+mesh = SubResource("G262")
+[node name="Tapa0.252" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.63, 2)
+mesh = SubResource("G263")
+[node name="Repisa0.9" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 0.9, 1.6)
+mesh = SubResource("G264")
+[node name="Tarro0.90" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.11, 1.12)
+mesh = SubResource("G265")
+[node name="Tapa0.90" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.28, 1.12)
+mesh = SubResource("G266")
+[node name="Tarro0.91" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.11, 1.56)
+mesh = SubResource("G267")
+[node name="Tapa0.91" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.28, 1.56)
+mesh = SubResource("G268")
+[node name="Tarro0.92" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.11, 2)
+mesh = SubResource("G269")
+[node name="Tapa0.92" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.28, 2)
+mesh = SubResource("G270")
+[node name="Repisa1.55" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.55, 1.6)
+mesh = SubResource("G271")
+[node name="Tarro1.550" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.76, 1.12)
+mesh = SubResource("G272")
+[node name="Tapa1.550" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.9300000000000002, 1.12)
+mesh = SubResource("G273")
+[node name="Tarro1.551" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.76, 1.56)
+mesh = SubResource("G274")
+[node name="Tapa1.551" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.9300000000000002, 1.56)
+mesh = SubResource("G275")
+[node name="Tarro1.552" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.76, 2)
+mesh = SubResource("G276")
+[node name="Tapa1.552" type="MeshInstance3D" parent="Estanterias"]
+position = Vector3(2.78, 1.9300000000000002, 2)
+mesh = SubResource("G277")
+[node name="Estanteria" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(2.78, 1, 1.6)
+shape = SubResource("S278")
+[node name="Ventana-2.09" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.9, -2.09)
+mesh = SubResource("G279")
+[node name="RepisaVentana-2.09" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.43, -2.2572)
+mesh = SubResource("G280")
+[node name="Tiesto-2.090" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.38, 1.59, -2.2572)
+mesh = SubResource("G281")
+[node name="Brote-2.090Tallo" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.38, 1.8599999999999999, -2.2572)
+mesh = SubResource("G282")
+[node name="Brote-2.090Hoja0" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.38, 1.8599999999999999, -2.1372)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G283")
+[node name="Brote-2.090Hoja1" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.2708843087809182, 1.95, -2.307137620385657)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G284")
+[node name="Brote-2.090Hoja2" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.47081629943695136, 2.04, -2.3356372345036336)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G285")
+[node name="Tiesto-2.091" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.59, -2.2572)
+mesh = SubResource("G286")
+[node name="Brote-2.091Tallo" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.8599999999999999, -2.2572)
+mesh = SubResource("G287")
+[node name="Brote-2.091Hoja0" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.8599999999999999, -2.1372)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G288")
+[node name="Brote-2.091Hoja1" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.1091156912190818, 1.95, -2.307137620385657)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G289")
+[node name="Brote-2.091Hoja2" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.09081629943695138, 2.04, -2.3356372345036336)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G290")
+[node name="Tiesto-2.092" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.38, 1.59, -2.2572)
+mesh = SubResource("G291")
+[node name="Brote-2.092Tallo" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.38, 1.8599999999999999, -2.2572)
+mesh = SubResource("G292")
+[node name="Brote-2.092Hoja0" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.38, 1.8599999999999999, -2.1372)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G293")
+[node name="Brote-2.092Hoja1" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.4891156912190818, 1.95, -2.307137620385657)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G294")
+[node name="Brote-2.092Hoja2" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.28918370056304865, 2.04, -2.3356372345036336)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G295")
+[node name="Parteluz-2.09" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.9, -2.1213499999999996)
+mesh = SubResource("G296")
+[node name="Ventana2.09" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.9, 2.09)
+mesh = SubResource("G297")
+[node name="RepisaVentana2.09" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.43, 2.2572)
+mesh = SubResource("G298")
+[node name="Tiesto2.090" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.38, 1.59, 2.2572)
+mesh = SubResource("G299")
+[node name="Brote2.090Tallo" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.38, 1.8599999999999999, 2.2572)
+mesh = SubResource("G300")
+[node name="Brote2.090Hoja0" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.38, 1.8599999999999999, 2.3772)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G301")
+[node name="Brote2.090Hoja1" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.2708843087809182, 1.95, 2.207262379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G302")
+[node name="Brote2.090Hoja2" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.47081629943695136, 2.04, 2.1787627654963666)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G303")
+[node name="Tiesto2.091" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.59, 2.2572)
+mesh = SubResource("G304")
+[node name="Brote2.091Tallo" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.8599999999999999, 2.2572)
+mesh = SubResource("G305")
+[node name="Brote2.091Hoja0" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.8599999999999999, 2.3772)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G306")
+[node name="Brote2.091Hoja1" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.1091156912190818, 1.95, 2.207262379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G307")
+[node name="Brote2.091Hoja2" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(-0.09081629943695138, 2.04, 2.1787627654963666)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G308")
+[node name="Tiesto2.092" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.38, 1.59, 2.2572)
+mesh = SubResource("G309")
+[node name="Brote2.092Tallo" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.38, 1.8599999999999999, 2.2572)
+mesh = SubResource("G310")
+[node name="Brote2.092Hoja0" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.38, 1.8599999999999999, 2.3772)
+rotation_degrees = Vector3(20, 0, 0)
+mesh = SubResource("G311")
+[node name="Brote2.092Hoja1" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.4891156912190818, 1.95, 2.207262379614343)
+rotation_degrees = Vector3(20, 0, 40)
+mesh = SubResource("G312")
+[node name="Brote2.092Hoja2" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0.28918370056304865, 2.04, 2.1787627654963666)
+rotation_degrees = Vector3(20, 0, 80)
+mesh = SubResource("G313")
+[node name="Parteluz2.09" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(0, 1.9, 2.1213499999999996)
+mesh = SubResource("G314")
+[node name="VentanaEste" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(2.09, 1.9, -0.3)
+mesh = SubResource("G315")
+[node name="ParteluzEste" type="MeshInstance3D" parent="DecoracionExterior"]
+position = Vector3(2.14, 1.9, -0.3)
+mesh = SubResource("G316")
+[node name="Helecho" parent="DecoracionExterior" instance=ExtResource("A317")]
+position = Vector3(-1.8, 0.052, -3.6)
+scale = Vector3(0.65, 0.65, 0.65)
+rotation_degrees = Vector3(0, 0, 0)

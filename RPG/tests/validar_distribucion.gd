@@ -9,6 +9,8 @@ var consulta := PhysicsShapeQueryParameters3D.new()
 var muestras := 0
 var solidos_panaderia: Array[PhysicsBody3D] = []
 var solidos_herreria: Array[PhysicsBody3D] = []
+var solidos_carpinteria: Array[PhysicsBody3D] = []
+var solidos_herbolario: Array[PhysicsBody3D] = []
 var solidos_exterior_e06: Array[PhysicsBody3D] = []
 
 func _initialize() -> void:
@@ -196,7 +198,7 @@ func muestra_mobiliario(punto: Vector2) -> bool:
 		return false
 	var mobiliario := aldea.get_node("Edificios/E01/DetallesTaberna/Mobiliario")
 	for golpe in golpes:
-		if golpe.collider != mobiliario and golpe.collider not in solidos_exterior_e06 and golpe.collider not in solidos_panaderia and golpe.collider not in solidos_herreria:
+		if golpe.collider != mobiliario and golpe.collider not in solidos_exterior_e06 and golpe.collider not in solidos_panaderia and golpe.collider not in solidos_herreria and golpe.collider not in solidos_carpinteria and golpe.collider not in solidos_herbolario:
 			return false
 	return true
 
@@ -334,8 +336,8 @@ func validar() -> void:
 	comprobar(caja.position.is_equal_approx(Vector3(-40, -0.5, -36)) and caja.size.is_equal_approx(Vector3(80, 0.5, 72)), "Terreno fisico 80x72 centrado, superficie Y=0")
 	var malla: MeshInstance3D = aldea.get_node("Terreno/Suelo/MallaSuelo")
 	comprobar((malla.global_transform * malla.get_aabb()).is_equal_approx(caja), "Suelo visual coincide con colision")
-	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 15, "Suelo, limites, edificios, exterior E06, panaderia y herreria")
-	comprobar(aldea.get_node("Edificios").get_child_count() == 4, "Solo E01, E02, E03 y E06 construidos")
+	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 17, "Suelo, limites, edificios, exterior E06, talleres y herbolario")
+	comprobar(aldea.get_node("Edificios").get_child_count() == 6, "Solo E01, E02, E03, E04, E05 y E06 construidos")
 	var plaza := plano(aldea.get_node("Plaza/Marca"))
 	comprobar(plaza.is_equal_approx(Rect2(-10, -9, 20, 18)), "Plaza central 20x18")
 	var inicio := jugador.global_position
@@ -355,6 +357,8 @@ func validar() -> void:
 	await validar_exterior_e06()
 	await validar_panaderia()
 	await validar_herreria()
+	await validar_carpinteria()
+	await validar_herbolario()
 	var nivelado := true
 	for x in range(-39, 40, 2):
 		for z in range(-35, 36, 2):
@@ -593,5 +597,119 @@ func validar_panaderia() -> void:
 	control.position = Vector3(0.5,0.89,4.2)
 	await esperar(2)
 	comprobar(not suelo_libre(Vector2(8.5,-15.8)),"E02: control negativo detecta mostrador bloqueando entrada")
+	control.position = original
+	await esperar(2)
+func validar_carpinteria() -> void:
+	var edificio: Node3D = aldea.get_node("Edificios/E04")
+	var reserva := plano(aldea.get_node("Parcelas/E04/Marca"))
+	comprobar(edificio.position.is_equal_approx(Vector3(-23,0.003,7)) and edificio.scale == Vector3.ONE and edificio.get_meta("cuerpo") == Vector2(6,4), "E04: centro aprobado, cuerpo 6x4 y escala original")
+	var visuales := true
+	for m: MeshInstance3D in edificio.find_children("*","MeshInstance3D",true,false):
+		var caja := m.global_transform * m.get_aabb()
+		if not reserva.encloses(plano(m)) or caja.position.y < -0.04:
+			print("FUERA E04: ",m.get_path()," ",caja)
+		visuales = visuales and reserva.encloses(plano(m)) and caja.position.y >= -0.04
+		for superficie in m.mesh.get_surface_count():
+			visuales = visuales and m.get_active_material(superficie) != null
+	comprobar(visuales,"E04: materiales presentes, mallas apoyadas y contenidas en reserva")
+	var solido: StaticBody3D = edificio.get_node("Colisiones")
+	var valido := true
+	for forma: CollisionShape3D in solido.get_children():
+		var caja: AABB = forma.global_transform * AABB(-forma.shape.size*0.5,forma.shape.size)
+		var huella := Rect2(Vector2(caja.position.x,caja.position.z),Vector2(caja.size.x,caja.size.z))
+		valido = valido and reserva.encloses(huella)
+		for camino: Node3D in aldea.get_node("Caminos").get_children():
+			valido = valido and not huella.intersects(plano(camino.get_node("Marca")))
+		# Consulta la forma exacta en fisica, incluso en encuentros entre muros y postes.
+		var sonda := PhysicsShapeQueryParameters3D.new()
+		sonda.shape = forma.shape
+		sonda.transform = forma.global_transform
+		sonda.exclude = [jugador.get_rid()]
+		var detectado := false
+		for golpe in mundo.get_world_3d().direct_space_state.intersect_shape(sonda):
+			detectado = detectado or golpe.collider == solido
+		valido = detectado and valido
+	comprobar(valido and solido.get_child_count() == 13,"E04: 13 cajas individuales verificadas, dentro de parcela y fuera de corredores")
+	if valido and solido.get_child_count() == 13:
+		solidos_carpinteria.append(solido)
+	var libre := true
+	# Camino publico este -> taller abierto; pasillo al sur del puesto de corte.
+	for i in 71:
+		libre = suelo_libre(Vector2(lerpf(-14,-22,float(i)/70),7)) and libre
+	for i in 31:
+		libre = suelo_libre(Vector2(lerpf(-22,-23,float(i)/30),7)) and libre
+	comprobar(libre,"E04: acceso publico, taller y espacio frente al puesto de corte libres para capsula")
+	var puestos_libres := true
+	for i in 41:
+		var x := lerpf(-24.1,-20.8,float(i)/40)
+		puestos_libres = suelo_libre(Vector2(x,7)) and puestos_libres
+	comprobar(puestos_libres,"E04: pasillo continuo frente al banco y los caballetes accesible")
+	jugador.global_position = Vector3(-18,0.02,7)
+	jugador.velocity = Vector3.ZERO
+	await caminar("mover_izquierda",45)
+	comprobar(jugador.is_on_floor() and jugador.position.x < -20.6,"E04: marcha real entra al taller abierto")
+	await caminar("mover_derecha",60)
+	comprobar(jugador.position.x > -18.5,"E04: retorno real hacia camino publico")
+	var control: CollisionShape3D = solido.get_node("Corte")
+	var original := control.position
+	control.position = Vector3(3.9,0.54,0)
+	await esperar(2)
+	comprobar(not suelo_libre(Vector2(-19.1,7)),"E04: control negativo detecta puesto de corte bloqueando acceso")
+	control.position = original
+	await esperar(2)
+
+func validar_herbolario() -> void:
+	var edificio: Node3D = aldea.get_node("Edificios/E05")
+	var reserva := plano(aldea.get_node("Parcelas/E05/Marca"))
+	comprobar(edificio.position.is_equal_approx(Vector3(21,0.003,8)) and edificio.scale == Vector3.ONE and edificio.get_meta("cuerpo") == Vector2(4,4), "E05: centro, cuerpo y escala aprobados")
+	var visuales := true
+	for m: MeshInstance3D in edificio.find_children("*","MeshInstance3D",true,false):
+		var caja := m.global_transform * m.get_aabb()
+		if not reserva.encloses(plano(m)) or caja.position.y < -0.04:
+			print("FUERA E05: ",m.get_path()," ",caja)
+		visuales = visuales and reserva.encloses(plano(m)) and caja.position.y >= -0.04
+		for superficie in m.mesh.get_surface_count():
+			visuales = visuales and m.get_active_material(superficie) != null
+	comprobar(visuales,"E05: materiales y mallas dentro de parcela, sin geometria bajo suelo")
+	var solido: StaticBody3D = edificio.get_node("Colisiones")
+	var valido := true
+	for forma: CollisionShape3D in solido.get_children():
+		var caja: AABB = forma.global_transform * AABB(-forma.shape.size*0.5,forma.shape.size)
+		var huella := Rect2(Vector2(caja.position.x,caja.position.z),Vector2(caja.size.x,caja.size.z))
+		valido = valido and reserva.encloses(huella) and not forma.disabled
+		for camino: Node3D in aldea.get_node("Caminos").get_children():
+			valido = valido and not huella.intersects(plano(camino.get_node("Marca")))
+		var sonda := PhysicsShapeQueryParameters3D.new()
+		sonda.shape = forma.shape
+		sonda.transform = forma.global_transform
+		sonda.exclude = [jugador.get_rid()]
+		var detectado := false
+		for golpe in mundo.get_world_3d().direct_space_state.intersect_shape(sonda):
+			detectado = detectado or golpe.collider == solido
+		valido = detectado and valido
+	comprobar(valido and solido.get_child_count() == 16,"E05: 16 formas activas individuales, contenidas y fuera de corredores")
+	if valido and solido.get_child_count() == 16:
+		solidos_herbolario.append(solido)
+	var libre := true
+	for i in 51:
+		libre = suelo_libre(Vector2(lerpf(14,18.5,float(i)/50),8)) and libre
+	comprobar(libre,"E05: acceso oeste continuo hasta puerta")
+	# Recorrido exterior y aproximaciones a mesa, secadero y jardin.
+	var puntos := [Vector2(17.25,8),Vector2(17.25,11.1),Vector2(17.25,12.8),Vector2(24.65,12.8),Vector2(24.65,3.35),Vector2(17.25,3.35),Vector2(17.25,8)]
+	var circuito := true
+	for i in range(puntos.size()-1):
+		for j in 51:
+			circuito = suelo_libre(puntos[i].lerp(puntos[i+1],float(j)/50)) and circuito
+	comprobar(circuito,"E05: circuito con capsula alrededor de jardin y anexos")
+	comprobar(suelo_libre(Vector2(18.05,11.4)) and suelo_libre(Vector2(21,10.5)) and suelo_libre(Vector2(21,3.8)), "E05: aproximacion a mesa, bancales y secadero")
+	jugador.global_position = Vector3(17.4,0.02,8)
+	jugador.velocity = Vector3.ZERO
+	await caminar("mover_derecha",50)
+	comprobar(jugador.is_on_floor() and jugador.position.x > 18.3 and jugador.position.x < 18.75,"E05: marcha real llega a puerta cerrada sin atravesarla")
+	var control: CollisionShape3D = solido.get_node("Mesa")
+	var original := control.position
+	control.position = Vector3(-2.8,0.52,0)
+	await esperar(2)
+	comprobar(not suelo_libre(Vector2(18.2,8)),"E05: control negativo detecta mesa bloqueando acceso")
 	control.position = original
 	await esperar(2)
