@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8dy8d4pu1gww" path="res://scripts/mundo.gd" id="1_wqn8j"]
 [ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2_jugador"]
-[ext_resource type="Script" uid="uid://chbs8pc67vcj4" path="res://scripts/camara_seguimiento.gd" id="3_camara"]
+[ext_resource type="Script" path="res://scripts/camara_orbital.gd" id="3_camara"]
 [ext_resource type="PackedScene" path="res://scenes/aldea.tscn" id="4_aldea"]
 
 [sub_resource type="Environment" id="Environment_mundo"]

@@ -19,3 +19,6 @@ __pycache__/
 
 # Recursos locales: excluir temporalmente todos los assets del repositorio.
 /assets/
+
+# Registros temporales de pruebas y validaciones
+/logs/

@@ -8,7 +8,7 @@ Diseño de una aldea acogedora con **12 edificios**: seis viviendas, taberna, pa
 
 Fuentes: `AGENTS.md`, `RPG/docs/estado_proyecto.md`, `RPG/docs/inventario_assets.md`; escenas `aldea.tscn`, `casa_modular.tscn`, `pruebas_assets.tscn`, `mundo.tscn`, `jugador.tscn` y `jugador_frames.tres` bajo `RPG/scenes/`; movimiento en `RPG/scripts/jugador.gd`. Se comprobaron los 338 archivos glTF locales por paquete y las medidas de los recursos de la tabla siguiente. La referencia artística se interpreta desde la descripción del usuario; no se ha inspeccionado una imagen adjunta.
 
-La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. No se han construido todavía las casas ni establecimientos descritos aquí. Cámara, protagonista y assets originales se conservan.
+La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01 y E06 están construidos y revisados desde ocho ángulos en 3A.3; las otras diez parcelas siguen reservadas. Se conservan protagonista y assets originales.
 
 ## 2. Escala real y dimensiones del terreno
 
@@ -16,7 +16,7 @@ Terreno preparado: **80 × 72 unidades**, límites X = [-40, 40], Z = [-36, 36],
 
 Origen: centro de plaza (0, 0). En las tablas se indica **(X, Z)**; norte = -Z, sur = +Z, este = +X. Son coordenadas del mundo con `Aldea` a identidad. El norte del plano no es necesariamente la parte superior de toda vista de juego. Las cotas Y y pivotes se resolverán al montar cada envoltorio.
 
-El protagonista conserva cápsula de radio **0,32** y altura **1,60**, `pixel_size = 0.045` y cuadros de 40 × 48 píxeles: rectángulo del sprite de **1,80 × 2,16**, incluido margen transparente; no equivale a su silueta opaca. Velocidad actual: 4 unidades/s. La cámara principal utiliza el tamaño ortográfico **15 aprobado por el usuario**, con inclinación aproximada de -32° conservada: se recorrerán sectores, sin pretender mostrar el plano completo simultáneamente. El selector de la escena de assets sigue iniciando en 23 para futuras comparaciones.
+El protagonista conserva cápsula de radio **0,32** y altura **1,60**, `pixel_size = 0.045` y cuadros de 40 × 48 píxeles: rectángulo del sprite de **1,80 × 2,16**, incluido margen transparente; no equivale a su silueta opaca. Velocidad actual: 4 unidades/s. La cámara principal utiliza el tamaño ortográfico **15 aprobado por el usuario**, con inclinación aproximada de -32° conservada: se recorrerán sectores, sin pretender mostrar el plano completo simultáneamente. Desde 3A.3 la cámara principal permite órbita horizontal 360° con Q/E y mando; norte sigue siendo -Z, aunque la pantalla gire. El selector del laboratorio inicia en 15 y conserva sus cuatro comparaciones.
 
 ### Medidas verificadas de los modelos
 
@@ -49,7 +49,7 @@ Centros de futuros edificios, implementados como marcadores en la etapa 2; dimen
 
 | ID | Edificio | Centro (X, Z) | Cuerpo modular / envolvente de cubierta | Parcela | Acceso y actividad futura |
 |---|---|---|---|---|---|
-| E01 | Taberna | (-8, -20) | 6×8 / 8,3×9,7 | 11,5×12,5; descentrada | Sur; reunión, comidas y descanso |
+| E01 | Taberna | (-8, -20) | 6×8 / 10×10,5 (etapa 3A.2) | 11,5×12,5; descentrada | Sur; reunión, comidas y descanso |
 | E02 | Panadería | (8, -20) | 4×6 / 5,6×7,6 | 9,5×11,5; descentrada | Sur; venta y preparación exterior |
 | E03 | Herrería | (-23, -6) | 6×4 / 7,6×5,6 | 12×10 | Este; yunque, afilado y suministros |
 | E04 | Carpintería | (-23, 7) | 6×4 / 7,6×5,6 | 12×10 | Este; banco de trabajo y madera |
@@ -290,3 +290,24 @@ La prueba actual verifica tamaño físico/visual y cota del suelo; aparición e 
 Capturas generadas y revisadas: `user://distribucion_plaza.png`, `distribucion_norte.png`, `distribucion_sur.png`, `distribucion_oeste.png`, `distribucion_ribera.png`, `distribucion_cenital.png` (las seis bajo `user://`). La cenital usa una cámara temporal de diagnóstico; no se guarda ni modifica la cámara principal. Las marcas permiten leer los sectores; revisar manualmente en F6 la sensación de distancia antes de autorizar los edificios. No se certifica aún el recorrido entre futuros obstáculos, navegación de NPCs ni rendimiento del escenario final.
 
 Comando actual desde la raíz: `godot --headless --path RPG --script res://tests/validar_aldea.gd`. Para la composición anterior: sustituir el script por `res://tests/validar_aldea_anterior.gd`. Quitar `--headless` produce capturas. La ampliación de esta fase está terminada como distribución provisional: la etapa 3, los edificios definitivos, la vegetación y el río siguen sin construir.
+
+## 12. Etapa 3A.2: envolvente actual de E01
+
+Propuesta arquitectónica de taberna construida, pendiente de aprobación visual. Centro (-8,-20), cuerpo 6×8 y reserva X=[-14,-2.5], Z=[-27,-14.5] conservados. Cubierta `Roof_RoundTiles_8x8`, X/Z=1, factor vertical efectivo 0.4125; envolvente real aproximada 9.952×10.332 y metadato conservador 10×10.5. Altura de tejado 5.479 y máxima con chimenea 5.503 desde terreno. Porche sin postes mediante alero de madera sobre entrada sur; su extremo no supera Z=-14.799. No se alteran accesos, otros centros, corredores ni proporciones de viviendas. Detalles y validaciones en `RPG/docs/estado_proyecto.md`.
+## 13. Etapa 3A.3: inspección orbital
+
+Órbita 360° integrada en el mundo con tamaño 15 e inclinación conservada. Mejoradas cuatro fachadas de E01/E06 mediante ventanas, marcos y madera adosada; E06 conserva cuerpo 4×6 y puerta este, E01 cuerpo 6×8 y puerta sur. No cambian centros, reservas, cubiertas ni corredores. La chimenea E06 se integra bajando su raíz a Y local 2.5. La oclusión del protagonista por edificios/aleros sigue pendiente de una etapa específica. Detalles, archivos y resultados en `RPG/docs/estado_proyecto.md`, registro del 1 de noviembre de 2026.
+## 14. Etapa 3A.4: organización interior de la parcela E06
+
+Sin cambios al centro (-24,-23), reserva X=[-29,-19], Z=[-29,-17], huella de casa ni ramales públicos. Las posiciones siguientes son **locales a E06**, en X/Z; sumar (-24,-23) para obtener el mundo.
+
+| Zona | Colocación y recorrido |
+|---|---|
+| Entrada este | Vallas sobre X=4.45, centros Z=±2.6, con abertura libre aproximada 3.14. Sendero de piedras X≈2.4–7.44 tras 3A.5, hasta el eje del ramal público; ancho visual entre 1.3 y 2.5, limitado a la franja de acceso propio de 2.5. |
+| Jardín delantero | Grupos bajos en esquinas orientales; maceta en (4,-1.95), farol junto a puerta. Sin plantas ni colisiones en el eje de acceso. |
+| Servicio norte | Leña en (-1,-5.01), barril (0.85,-4.95), caja (1.8,-5.05), con dos tramos de valla a Z=-5.65. Paso alrededor de casa por Z≈-3.95. |
+| Descanso sur | Banco en (-1.1,4.85), flores y arbustos separados; espacio delante sobre Z≈4.0. Cerca parcial al sur, sin cerrar el rincón. |
+| Huerto oeste | Tres surcos de 1.30×0.62 sobre X=-4, centros Z=-1.65/-0.62/0.41. Valla oeste X=-4.65 y cierre corto al sur; acceso abierto por norte. Cubo en (-4.3,2.25). |
+| Circulación interior | Banda libre X≈-2.95 al oeste / 3.25 al este y Z≈±3.95 al norte/sur; conexión al huerto por (-4,-3.4). Comprobada con cápsula real y marcha a puerta/huerto. |
+
+La cerca es parcial, baja y asimétrica; no sustituye los límites de reserva ni ocupa corredores ajenos. Vegetación y cultivos son decoración, sin navegación de NPCs ni mecánicas agrícolas.

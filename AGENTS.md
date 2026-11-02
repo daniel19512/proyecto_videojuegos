@@ -68,7 +68,7 @@ La base existente permite movimiento y presentación del protagonista en una ald
 
 \| Animaciones idle/walk en cuatro direcciones | `RPG/scripts/jugador.gd`, `RPG/scenes/jugador_frames.tres`, `RPG/scenes/jugador.tscn`. |
 
-\| Cámara ortográfica inclinada con seguimiento suavizado; tamaño aprobado 15 en el mundo principal | `RPG/scripts/camara_seguimiento.gd`, `RPG/scenes/mundo.tscn`. |
+\| Cámara orbital ortográfica 360° con seguimiento suavizado; tamaño 15 en el mundo principal | `RPG/scripts/camara_orbital.gd`, `RPG/scenes/mundo.tscn`; seguimiento fijo conservado para respaldos/muestras en `RPG/scripts/camara_seguimiento.gd`. |
 
 \| Terreno 80×72, plaza 20×18, corredores, parcelas y reservas visuales de la etapa 2; suelo y límites sólidos | `RPG/scenes/aldea.tscn`; cápsula del personaje en `RPG/scenes/jugador.tscn`. |
 
@@ -76,7 +76,7 @@ La base existente permite movimiento y presentación del protagonista en una ald
 
 \| Validación del mundo actual: movimiento, cámara, suelo, límites, conectividad, reservas y solapes | `RPG/tests/validar_aldea.gd` es la entrada de `RPG/tests/validar_distribucion.gd`. La composición anterior conserva sus comprobaciones en `RPG/tests/validar_aldea_anterior.gd`. Su existencia no equivale a una ejecución aprobada en cada sesión. |
 
-`RPG/scenes/casa_modular.tscn` se reutiliza en `RPG/scenes/pruebas_assets.tscn`; la aldea actual no contiene edificios definitivos. La escena de pruebas es independiente y no sustituye la escena principal; reutiliza jugador, seguimiento e iluminación, y añade colisiones sin editar los glTF. Su prueba reproducible es `RPG/tests/validar_pruebas_assets.gd` (headless o con capturas en `user://` al ejecutarse con ventana). `RPG/scenes/pruebas_proporciones.tscn` compara tres cuerpos modulares mediante un controlador visual exclusivo y `RPG/tests/validar_proporciones.gd`. Consultar el estado para resultados y limitaciones.
+`RPG/scenes/casa_modular.tscn` se reutiliza en `RPG/scenes/pruebas_assets.tscn`; la aldea actual incorpora taberna E01 y vivienda E06 mediante `RPG/scenes/taberna.tscn` y `RPG/scenes/vivienda_noroeste.tscn`, con muros, cubierta y colisiones separados. Cada edificio usa cuatro cajas perimetrales, incluidas sus puertas cerradas; no llenar su volumen con una caja. Las diez parcelas restantes siguen como reservas. La escena de pruebas es independiente y no sustituye la escena principal; reutiliza jugador, seguimiento e iluminación, y añade colisiones sin editar los glTF. Su prueba reproducible es `RPG/tests/validar_pruebas_assets.gd` (headless o con capturas en `user://` al ejecutarse con ventana). `RPG/scenes/pruebas_proporciones.tscn` compara tres cuerpos modulares mediante un controlador visual exclusivo y `RPG/tests/validar_proporciones.gd`. Consultar el estado para resultados y limitaciones.
 
 La composición anterior de cuatro edificios se conserva en `RPG/scenes/respaldos/aldea_etapa1.tscn`; `RPG/scenes/respaldos/mundo_etapa1.tscn` permite abrirla y ejecutarla con F6 sin cambiar la escena principal. No sobrescribir esos respaldos al continuar. La validación anterior conserva todas sus comprobaciones, dirigida a ese mundo respaldado.
 
@@ -84,8 +84,11 @@ Proporciones aprobadas para futuros edificios definitivos: cuerpos 4×4 y 4×6 c
 
 En la distribución provisional, parcelas y jardines son reservas, no obstáculos ni edificios: sus nodos `Marca` contienen planos sin colisión. Los metadatos de centros, reservas, accesos, anchuras y futuras cubiertas deben mantenerse coherentes con las marcas visibles; `validar_distribucion.gd` contrasta su geometría real. Los accesos solo pueden atravesar la reserva de su propia parcela/zona. Las reservas de río/puente/rueda admiten cruces previstos; el suelo sigue continuo hasta autorizar el cauce.
 
-El tamaño ortográfico aprobado para la cámara principal es **15**, configurado en `RPG/scenes/mundo.tscn` (`CamaraPrincipal.size`). `camara_seguimiento.gd` no fija ni sobrescribe el tamaño: mantiene orientación y seguimiento. Conservar el selector local de `RPG/scenes/pruebas_assets.tscn` (23/19/17/15, inicio en 23) para comparar; ese valor inicial de laboratorio y las cámaras de respaldos/muestras no sustituyen la decisión del mundo principal.
+El tamaño ortográfico aprobado para la cámara principal es **15**, configurado en `RPG/scenes/mundo.tscn` (`CamaraPrincipal.size`). El mundo y el laboratorio comparten `RPG/scripts/camara_orbital.gd`: órbita horizontal continua de 360°, inclinación de aproximadamente -32°, seguimiento del centro suavizado y radio conservado. `RPG/scripts/camara_orbital_assets.gd` es un adaptador del laboratorio sin duplicar la lógica. `camara_seguimiento.gd` conserva el seguimiento fijo de respaldos y muestras; ninguno de los scripts sobrescribe el tamaño ortográfico.
 
+Controles persistentes en `RPG/project.godot`: Q/E y stick derecho X mediante `girar_camara_izquierda/derecha` (zona muerta 0.20); WASD/flechas y stick izquierdo X/Y mediante acciones de movimiento existentes. Al salir de la cámara se liberan estados, sin borrar acciones ni eventos de InputMap. El jugador conserva cuerpo físico sin rotar, parámetros originales y movimiento/animaciones relativos a pantalla. No incorporar zoom dinámico, inclinación controlable ni transparencia de obstáculos sin una tarea específica.
+
+Conservar el selector local de `RPG/scenes/pruebas_assets.tscn` (23/19/17/15, inicio en 15) para comparar; su tamaño opcional no modifica la cámara del mundo. Validación orbital compartida: `RPG/tests/validar_camara_orbital_assets.gd` para laboratorio y `RPG/tests/validar_camara_orbital.gd` para mundo. `RPG/tests/validar_edificios_360.gd` verifica cierres geométricos y captura E01/E06 en ocho ángulos; esta geometría y headless no sustituyen la revisión visual de texturas, encajes y oclusión.
 ## Recursos y assets
 
 Paquetes identificados por el proyecto y contenido local verificado:
@@ -154,13 +157,18 @@ Total local verificado: ****338 modelos 3D****. El inventario detallado y sus l�
 
 \- No revertir ni incorporar como propios cambios previos del usuario. Revisar el diff y comunicar qué archivos se tocaron realmente.
 
+## Registros de pruebas y validaciones
+
+**Todos los archivos de registro generados durante pruebas y validaciones deben almacenarse en `RPG/logs/`. No generar archivos `.log` en la raíz de `RPG/`.** Son registros temporales excluidos de Git por `/logs/` en `RPG/.gitignore`; no incluirlos en commits ni forzar su incorporación. Conservar los registros existentes y no sobrescribirlos sin autorización; usar nombres nuevos para ejecuciones adicionales.
+
+La carpeta se crea localmente antes de validar, ya que Git no la distribuye. Godot 4.7.2 resuelve `--log-file` respecto a la raíz del proyecto indicada por `--path`: desde la raíz del repositorio usar `--path RPG --log-file logs/<nombre>.log`; desde `RPG/`, usar `--path . --log-file logs/<nombre>.log`. Ambos escriben en `RPG/logs/`. Las redirecciones de terminal se resuelven respecto al directorio actual: desde la raíz del repositorio usar `RPG/logs/<nombre>.log`; desde `RPG/`, usar `logs/<nombre>.log`. No cambiar por ello la lógica de las pruebas ni la configuración de registro del juego.
 ## Validación y cierre obligatorio
 
 1. Validar los cambios según su alcance. Para lógica o escenas, considerar la prueba existente, desde la raíz del repositorio, con un ejecutable de Godot 4.7.2 disponible en el entorno:
 
    ```text
 
-   godot --headless --path RPG --script res\://tests/validar_aldea.gd
+   godot --headless --path RPG --log-file logs/validar_aldea.log --script res://tests/validar_aldea.gd
 
    ```
 
@@ -197,3 +205,7 @@ Reglas de mantenimiento:
 6. Indicar en cada informe final si se actualizaron estos documentos.
 
 7. No realizar cambios documentales si no hay información nueva relevante.
+
+## Límites de distribución durante el juego
+
+`RPG/scripts/depuracion_parcelas.gd`, asignado a la raíz de `RPG/scenes/aldea.tscn`, controla las mallas `Borde*` de Parcelas, Jardines, Reservas y Plaza. La propiedad exportada `mostrar_limites_parcelas` es falsa por defecto: los límites de desarrollo permanecen disponibles en edición y se ocultan al ejecutar. Puede activarse en el Inspector de `Mundo/Aldea` antes de F6 o en el Inspector remoto durante la ejecución. No eliminar ni mover reservas, identificadores o metadatos para ocultar marcas. Las pruebas deben comprobar geometría lógica independientemente de la visibilidad y conservar la detección de bloqueos reales. Las marcas de relleno no son parte de este interruptor.

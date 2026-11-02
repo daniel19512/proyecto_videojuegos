@@ -14,7 +14,7 @@ func _ready() -> void:
 	for i in TAMANOS.size():
 		var boton: BaseButton = opciones.get_child(i)
 		boton.pressed.connect(seleccionar.bind(i))
-	seleccionar(0)
+	seleccionar(3)
 
 
 func seleccionar(indice: int) -> void:

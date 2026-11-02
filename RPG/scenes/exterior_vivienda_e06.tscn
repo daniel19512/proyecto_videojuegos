@@ -1,0 +1,645 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Prop_WoodenFence_Single.gltf" id="Valla"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Prop_WoodenFence_Extension1.gltf" id="Extension"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/RockPath_Round_Small_1.gltf" id="Piedras"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Bush_Common_Flowers.gltf" id="Arbusto"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Flower_3_Group.gltf" id="FloresRosas"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Flower_4_Group.gltf" id="FloresClaras"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Grass_Common_Short.gltf" id="Hierba"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Pebble_Round_1.gltf" id="Guijarro"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Bench.gltf" id="Banco"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Barrel.gltf" id="Barril"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Crate_Wooden.gltf" id="Caja"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Bucket_Wooden_1.gltf" id="Cubo"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Pot_1.gltf" id="Maceta"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Axe_Bronze.gltf" id="Hacha"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Lantern_Wall.gltf" id="Farol"]
+
+[ext_resource type="ArrayMesh" path="res://scenes/recursos/parche_suelo_uso.tres" id="ParcheUso"]
+[ext_resource type="ArrayMesh" path="res://scenes/recursos/parche_suelo_verde.tres" id="ParcheVerde"]
+[ext_resource type="ArrayMesh" path="res://scenes/recursos/parche_suelo_cultivo.tres" id="ParcheCultivo"]
+[sub_resource type="StandardMaterial3D" id="Tierra"]
+albedo_color = Color(0.16, 0.085, 0.045, 1)
+roughness = 1.0
+[sub_resource type="StandardMaterial3D" id="Hojas"]
+albedo_color = Color(0.28, 0.40, 0.12, 1)
+roughness = 1.0
+[sub_resource type="StandardMaterial3D" id="Corteza"]
+albedo_color = Color(0.38, 0.23, 0.11, 1)
+roughness = 1.0
+[sub_resource type="StandardMaterial3D" id="Testa"]
+albedo_color = Color(0.60, 0.38, 0.18, 1)
+roughness = 1.0
+[sub_resource type="BoxMesh" id="Surco"]
+size = Vector3(1.30, 0.055, 0.62)
+material = SubResource("Tierra")
+[sub_resource type="BoxMesh" id="Hoja"]
+size = Vector3(0.14, 0.33, 0.055)
+material = SubResource("Hojas")
+[sub_resource type="CylinderMesh" id="Tronco"]
+top_radius = 0.14
+bottom_radius = 0.14
+height = 1.8
+radial_segments = 8
+material = SubResource("Corteza")
+[sub_resource type="CylinderMesh" id="Extremo"]
+top_radius = 0.125
+bottom_radius = 0.125
+height = 0.015
+radial_segments = 8
+material = SubResource("Testa")
+[sub_resource type="BoxMesh" id="SoporteLena"]
+size = Vector3(0.08, 0.65, 0.08)
+material = SubResource("Corteza")
+[sub_resource type="BoxShape3D" id="FormaValla"]
+size = Vector3(2.06, 0.84, 0.14)
+[sub_resource type="BoxShape3D" id="FormaVallaCorta"]
+size = Vector3(1.24, 0.84, 0.14)
+[sub_resource type="BoxShape3D" id="FormaLena"]
+size = Vector3(2.25, 0.7, 0.86)
+[sub_resource type="CylinderShape3D" id="FormaBarril"]
+radius = 0.35
+height = 0.90
+[sub_resource type="BoxShape3D" id="FormaCaja"]
+size = Vector3(0.61, 0.67, 0.65)
+[sub_resource type="BoxShape3D" id="FormaBanco"]
+size = Vector3(2.78, 0.54, 0.54)
+[sub_resource type="CylinderShape3D" id="FormaCubo"]
+radius = 0.23
+height = 0.30
+[sub_resource type="CylinderShape3D" id="FormaMaceta"]
+radius = 0.27
+height = 0.23
+[sub_resource type="BoxShape3D" id="FormaFarol"]
+size = Vector3(0.58, 0.62, 0.18)
+
+[node name="ExteriorViviendaE06" type="Node3D"]
+metadata/parcela = "E06"
+[node name="Vallas" type="StaticBody3D" parent="."]
+[node name="FrenteNorte" parent="Vallas" instance=ExtResource("Valla")]
+position = Vector3(4.45, 0.03, -2.6)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="ColisionFrenteNorte" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(4.45, 0.42, -2.6)
+rotation_degrees = Vector3(0, 90, 0)
+shape = SubResource("FormaValla")
+[node name="FrenteSur" parent="Vallas" instance=ExtResource("Valla")]
+position = Vector3(4.45, 0.03, 2.6)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="ColisionFrenteSur" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(4.45, 0.42, 2.6)
+rotation_degrees = Vector3(0, 90, 0)
+shape = SubResource("FormaValla")
+[node name="FondoServicio1" parent="Vallas" instance=ExtResource("Valla")]
+position = Vector3(-0.4, 0.03, -5.65)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="ColisionFondoServicio1" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(-0.4, 0.42, -5.65)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("FormaValla")
+[node name="FondoServicio2" parent="Vallas" instance=ExtResource("Extension")]
+position = Vector3(1.6, 0.03, -5.65)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="ColisionFondoServicio2" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(1.6, 0.42, -5.65)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("FormaValla")
+[node name="HuertoOeste1" parent="Vallas" instance=ExtResource("Valla")]
+position = Vector3(-4.65, 0.03, -1.6)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="ColisionHuertoOeste1" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(-4.65, 0.42, -1.6)
+rotation_degrees = Vector3(0, 90, 0)
+shape = SubResource("FormaValla")
+[node name="HuertoOeste2" parent="Vallas" instance=ExtResource("Extension")]
+position = Vector3(-4.65, 0.03, 0.4)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="ColisionHuertoOeste2" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(-4.65, 0.42, 0.4)
+rotation_degrees = Vector3(0, 90, 0)
+shape = SubResource("FormaValla")
+[node name="HuertoCorto" parent="Vallas" instance=ExtResource("Valla")]
+position = Vector3(-3.95, 0.03, 1.5)
+scale = Vector3(0.6, 1, 1)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="ColisionHuertoCorto" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(-3.95, 0.42, 1.5)
+rotation_degrees = Vector3(0, 0, 0)
+shape = SubResource("FormaVallaCorta")
+[node name="JardinSur" parent="Vallas" instance=ExtResource("Valla")]
+position = Vector3(2.7, 0.03, 5.65)
+rotation_degrees = Vector3(0, -5, 0)
+[node name="ColisionJardinSur" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(2.7, 0.42, 5.65)
+rotation_degrees = Vector3(0, -5, 0)
+shape = SubResource("FormaValla")
+[node name="RinconSur" parent="Vallas" instance=ExtResource("Valla")]
+position = Vector3(-3.65, 0.03, 5.55)
+rotation_degrees = Vector3(0, 3, 0)
+[node name="ColisionRinconSur" type="CollisionShape3D" parent="Vallas"]
+position = Vector3(-3.65, 0.42, 5.55)
+rotation_degrees = Vector3(0, 3, 0)
+shape = SubResource("FormaValla")
+[node name="CaminoEntrada" type="Node3D" parent="."]
+[node name="Losa00" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(2.675, 0.019, -0.36)
+scale = Vector3(0.64, 0.2, 0.57)
+rotation_degrees = Vector3(0, -14, 0)
+[node name="Losa01" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(2.725, 0.019, 0.39)
+scale = Vector3(0.665, 0.2, 0.57)
+rotation_degrees = Vector3(0, 19, 0)
+[node name="Losa10" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(3.375, 0.019, -0.415)
+scale = Vector3(0.71, 0.2, 0.62)
+rotation_degrees = Vector3(0, -8, 0)
+[node name="Losa11" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(3.425, 0.019, 0.335)
+scale = Vector3(0.735, 0.2, 0.62)
+rotation_degrees = Vector3(0, 11, 0)
+[node name="Losa20" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(4.105, 0.019, -0.33)
+scale = Vector3(0.66, 0.2, 0.54)
+rotation_degrees = Vector3(0, 22, 0)
+[node name="Losa21" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(4.155, 0.019, 0.42)
+scale = Vector3(0.685, 0.2, 0.54)
+rotation_degrees = Vector3(0, -17, 0)
+[node name="Losa30" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(4.815, 0.019, -0.395)
+scale = Vector3(0.75, 0.2, 0.59)
+rotation_degrees = Vector3(0, 6, 0)
+[node name="Losa31" parent="CaminoEntrada" instance=ExtResource("Piedras")]
+position = Vector3(4.865, 0.019, 0.355)
+scale = Vector3(0.775, 0.2, 0.59)
+rotation_degrees = Vector3(0, -12, 0)
+[node name="Jardin" type="StaticBody3D" parent="."]
+[node name="MacetaEntrada" parent="Jardin" instance=ExtResource("Maceta")]
+position = Vector3(4, 0.026, -1.95)
+[node name="ColisionMaceta" type="CollisionShape3D" parent="Jardin"]
+position = Vector3(4, 0.12, -1.95)
+shape = SubResource("FormaMaceta")
+[node name="FloresMaceta" parent="Jardin" instance=ExtResource("FloresRosas")]
+position = Vector3(4, 0.21, -1.95)
+scale = Vector3(0.19, 0.19, 0.19)
+[node name="FarolEntrada" parent="Jardin" instance=ExtResource("Farol")]
+position = Vector3(2.18, 1.8, -0.85)
+scale = Vector3(0.45, 0.45, 0.45)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="ColisionFarol" type="CollisionShape3D" parent="Jardin"]
+position = Vector3(2.44, 2.13, -0.85)
+shape = SubResource("FormaFarol")
+[node name="Luz" type="OmniLight3D" parent="Jardin/FarolEntrada"]
+position = Vector3(0, 0.55, 1)
+light_color = Color(1, 0.70, 0.35, 1)
+light_energy = 0.4
+omni_range = 2.5
+[node name="ZonaServicio" type="StaticBody3D" parent="."]
+[node name="Tronco0" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-1, 0.15, -5.17)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Tronco")
+[node name="Testa0I" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-1.91, 0.15, -5.17)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Extremo")
+[node name="Testa0D" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-0.09, 0.15, -5.17)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Extremo")
+[node name="Tronco1" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-1, 0.15, -4.85)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Tronco")
+[node name="Testa1I" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-1.91, 0.15, -4.85)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Extremo")
+[node name="Testa1D" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-0.09, 0.15, -4.85)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Extremo")
+[node name="Tronco2" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-1, 0.4, -5.01)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Tronco")
+[node name="Testa2I" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-1.91, 0.4, -5.01)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Extremo")
+[node name="Testa2D" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-0.09, 0.4, -5.01)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Extremo")
+[node name="SoporteI" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(-2.04, 0.35, -5.01)
+mesh = SubResource("SoporteLena")
+[node name="SoporteD" type="MeshInstance3D" parent="ZonaServicio"]
+position = Vector3(0.04, 0.35, -5.01)
+mesh = SubResource("SoporteLena")
+[node name="ColisionLena" type="CollisionShape3D" parent="ZonaServicio"]
+position = Vector3(-1, 0.35, -5.01)
+shape = SubResource("FormaLena")
+[node name="Hacha" parent="ZonaServicio" instance=ExtResource("Hacha")]
+position = Vector3(-1.15, 0.57, -5.01)
+rotation_degrees = Vector3(90, 0, 0)
+[node name="Barril" parent="ZonaServicio" instance=ExtResource("Barril")]
+position = Vector3(0.85, 0, -4.95)
+[node name="ColisionBarril" type="CollisionShape3D" parent="ZonaServicio"]
+position = Vector3(0.85, 0.45, -4.95)
+shape = SubResource("FormaBarril")
+[node name="Caja" parent="ZonaServicio" instance=ExtResource("Caja")]
+position = Vector3(1.8, 0.04, -5.05)
+scale = Vector3(0.55, 0.55, 0.55)
+rotation_degrees = Vector3(0, 8, 0)
+[node name="ColisionCaja" type="CollisionShape3D" parent="ZonaServicio"]
+position = Vector3(1.8, 0.34, -5.05)
+rotation_degrees = Vector3(0, 8, 0)
+shape = SubResource("FormaCaja")
+[node name="ZonaDescanso" type="StaticBody3D" parent="."]
+[node name="Banco" parent="ZonaDescanso" instance=ExtResource("Banco")]
+position = Vector3(-1.1, 0.01, 4.85)
+[node name="ColisionBanco" type="CollisionShape3D" parent="ZonaDescanso"]
+position = Vector3(-1.1, 0.27, 4.85)
+shape = SubResource("FormaBanco")
+[node name="PiedraPequena" parent="ZonaDescanso" instance=ExtResource("Guijarro")]
+position = Vector3(0.8, 0.005, 5.15)
+scale = Vector3(1.4, 1, 1.4)
+[node name="Huerto" type="StaticBody3D" parent="."]
+[node name="Surco0" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4, 0.032, -1.65)
+mesh = SubResource("Surco")
+[node name="Cultivo00I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.15, -1.65)
+rotation_degrees = Vector3(-26, 0, -30)
+scale = Vector3(0.78, 0.7, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo00D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.15, -1.65)
+rotation_degrees = Vector3(26, 0, 30)
+scale = Vector3(0.78, 0.7, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo01I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.98, 0.16, -1.65)
+rotation_degrees = Vector3(-26, 15, -30)
+scale = Vector3(0.84, 0.78, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo01D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.98, 0.16, -1.65)
+rotation_degrees = Vector3(26, 15, 30)
+scale = Vector3(0.84, 0.78, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo02I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.15, -1.65)
+rotation_degrees = Vector3(-26, 30, -30)
+scale = Vector3(0.78, 0.7, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo02D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.15, -1.65)
+rotation_degrees = Vector3(26, 30, 30)
+scale = Vector3(0.78, 0.7, 1)
+mesh = SubResource("Hoja")
+[node name="Surco1" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4, 0.032, -0.6199999999999999)
+mesh = SubResource("Surco")
+[node name="Cultivo10I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.185, -0.62)
+rotation_degrees = Vector3(-26, 0, -30)
+scale = Vector3(0.9, 0.88, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo10D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.185, -0.62)
+rotation_degrees = Vector3(26, 0, 30)
+scale = Vector3(0.9, 0.88, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo11I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.98, 0.195, -0.62)
+rotation_degrees = Vector3(-26, 15, -30)
+scale = Vector3(0.96, 0.96, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo11D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.98, 0.195, -0.62)
+rotation_degrees = Vector3(26, 15, 30)
+scale = Vector3(0.96, 0.96, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo12I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.185, -0.62)
+rotation_degrees = Vector3(-26, 30, -30)
+scale = Vector3(0.9, 0.88, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo12D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.185, -0.62)
+rotation_degrees = Vector3(26, 30, 30)
+scale = Vector3(0.9, 0.88, 1)
+mesh = SubResource("Hoja")
+[node name="Surco2" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4, 0.032, 0.41000000000000014)
+mesh = SubResource("Surco")
+[node name="Cultivo20I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.22, 0.41)
+rotation_degrees = Vector3(-26, 0, -30)
+scale = Vector3(1.02, 1.06, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo20D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.22, 0.41)
+rotation_degrees = Vector3(26, 0, 30)
+scale = Vector3(1.02, 1.06, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo21I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.98, 0.23, 0.41)
+rotation_degrees = Vector3(-26, 15, -30)
+scale = Vector3(1.08, 1.14, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo21D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.98, 0.23, 0.41)
+rotation_degrees = Vector3(26, 15, 30)
+scale = Vector3(1.08, 1.14, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo22I" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.22, 0.41)
+rotation_degrees = Vector3(-26, 30, -30)
+scale = Vector3(1.02, 1.06, 1)
+mesh = SubResource("Hoja")
+[node name="Cultivo22D" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.22, 0.41)
+rotation_degrees = Vector3(26, 30, 30)
+scale = Vector3(1.02, 1.06, 1)
+mesh = SubResource("Hoja")
+[node name="Cubo" parent="Huerto" instance=ExtResource("Cubo")]
+position = Vector3(-4.3, 0.003, 2.25)
+[node name="ColisionCubo" type="CollisionShape3D" parent="Huerto"]
+position = Vector3(-4.3, 0.15, 2.25)
+shape = SubResource("FormaCubo")
+[node name="Vegetacion" type="Node3D" parent="."]
+[node name="Arbusto0" parent="Vegetacion" instance=ExtResource("Arbusto")]
+position = Vector3(-4, 0.11, 4.55)
+scale = Vector3(0.42, 0.42, 0.42)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="Arbusto1" parent="Vegetacion" instance=ExtResource("Arbusto")]
+position = Vector3(3.85, 0.11, 4.25)
+scale = Vector3(0.4, 0.4, 0.4)
+rotation_degrees = Vector3(0, 37, 0)
+[node name="Arbusto2" parent="Vegetacion" instance=ExtResource("Arbusto")]
+position = Vector3(3.8, 0.11, -4.2)
+scale = Vector3(0.43, 0.43, 0.43)
+rotation_degrees = Vector3(0, 74, 0)
+[node name="Arbusto3" parent="Vegetacion" instance=ExtResource("Arbusto")]
+position = Vector3(-4.15, 0.11, -4.65)
+scale = Vector3(0.37, 0.37, 0.37)
+rotation_degrees = Vector3(0, 111, 0)
+[node name="Flores0" parent="Vegetacion" instance=ExtResource("FloresRosas")]
+position = Vector3(3.65, 0.022, 1.95)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="Flores1" parent="Vegetacion" instance=ExtResource("FloresClaras")]
+position = Vector3(4.18, 0.022, 3.85)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 31, 0)
+[node name="Flores2" parent="Vegetacion" instance=ExtResource("FloresRosas")]
+position = Vector3(3.45, 0.022, -3.4)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 62, 0)
+[node name="Flores3" parent="Vegetacion" instance=ExtResource("FloresClaras")]
+position = Vector3(-3.35, 0.022, 4.8)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 93, 0)
+[node name="Flores4" parent="Vegetacion" instance=ExtResource("FloresRosas")]
+position = Vector3(-3.7, 0.022, 3.8)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 124, 0)
+[node name="Flores5" parent="Vegetacion" instance=ExtResource("FloresClaras")]
+position = Vector3(0.75, 0.022, 5.35)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 155, 0)
+[node name="Flores6" parent="Vegetacion" instance=ExtResource("FloresRosas")]
+position = Vector3(-4.35, 0.022, 3.15)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 186, 0)
+[node name="Flores7" parent="Vegetacion" instance=ExtResource("FloresClaras")]
+position = Vector3(-4.2, 0.022, -3.5)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 217, 0)
+[node name="Flores8" parent="Vegetacion" instance=ExtResource("FloresRosas")]
+position = Vector3(2.6, 0.022, -4.7)
+scale = Vector3(0.23, 0.23, 0.23)
+rotation_degrees = Vector3(0, 248, 0)
+[node name="Hierba0" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(4.55, 0.01, 4.55)
+scale = Vector3(0.2, 0.18, 0.22)
+rotation_degrees = Vector3(0, 0, 0)
+[node name="Hierba1" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(3.7, 0.01, -4.85)
+scale = Vector3(0.27, 0.225, 0.28)
+rotation_degrees = Vector3(0, 47, 0)
+[node name="Hierba2" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(-4.55, 0.01, 3.55)
+scale = Vector3(0.34, 0.27, 0.22)
+rotation_degrees = Vector3(0, 94, 0)
+[node name="Hierba3" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(-3.65, 0.01, 5.45)
+scale = Vector3(0.2, 0.315, 0.28)
+rotation_degrees = Vector3(0, 141, 0)
+[node name="Hierba4" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(1.2, 0.01, 4.7)
+scale = Vector3(0.27, 0.18, 0.22)
+rotation_degrees = Vector3(0, 188, 0)
+[node name="Hierba5" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(-4.15, 0.01, -3.1)
+scale = Vector3(0.34, 0.225, 0.28)
+rotation_degrees = Vector3(0, 235, 0)
+[node name="Hierba6" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(3.8, 0.01, 1.65)
+scale = Vector3(0.2, 0.27, 0.22)
+rotation_degrees = Vector3(0, 282, 0)
+
+
+
+[node name="Conexion00" parent="CaminoEntrada" instance=ExtResource("Guijarro")]
+position = Vector3(5.6, 0.019, -0.33)
+scale = Vector3(1.35, 0.27, 1.6)
+rotation_degrees = Vector3(0, -11, 0)
+
+[node name="Conexion01" parent="CaminoEntrada" instance=ExtResource("Guijarro")]
+position = Vector3(5.61, 0.019, 0.39)
+scale = Vector3(1.35, 0.27, 1.6)
+rotation_degrees = Vector3(0, 17, 0)
+
+[node name="Conexion10" parent="CaminoEntrada" instance=ExtResource("Guijarro")]
+position = Vector3(6.32, 0.019, -0.4)
+scale = Vector3(1.52, 0.27, 1.8)
+rotation_degrees = Vector3(0, -18, 0)
+
+[node name="Conexion11" parent="CaminoEntrada" instance=ExtResource("Guijarro")]
+position = Vector3(6.33, 0.019, 0.32)
+scale = Vector3(1.52, 0.27, 1.8)
+rotation_degrees = Vector3(0, 9, 0)
+
+[node name="Conexion20" parent="CaminoEntrada" instance=ExtResource("Guijarro")]
+position = Vector3(7.05, 0.019, -0.345)
+scale = Vector3(1.3, 0.27, 1.45)
+rotation_degrees = Vector3(0, -8, 0)
+
+[node name="Conexion21" parent="CaminoEntrada" instance=ExtResource("Guijarro")]
+position = Vector3(7.06, 0.019, 0.375)
+scale = Vector3(1.3, 0.27, 1.45)
+rotation_degrees = Vector3(0, 6, 0)
+
+[node name="SueloDecorativo" type="Node3D" parent="."]
+
+[node name="UsoLena" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(-0.9, 0.008, -4.95)
+scale = Vector3(2.7, 1, 1.3)
+rotation_degrees = Vector3(0, 8, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheUso")
+
+[node name="UsoLenaIrregular" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(-1.6, 0.009, -4.7)
+scale = Vector3(1.2, 1, 0.9)
+rotation_degrees = Vector3(0, -27, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheUso")
+
+[node name="UsoBanco" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(-1.2, 0.007, 4.35)
+scale = Vector3(2.9, 1, 1.25)
+rotation_degrees = Vector3(0, -11, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheUso")
+
+[node name="UsoPuerta" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(2.85, 0.006, 0)
+scale = Vector3(1.3, 1, 1.55)
+rotation_degrees = Vector3(0, 4, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheUso")
+
+[node name="UsoEntrada" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(4, 0.007, 0.04)
+scale = Vector3(1.45, 1, 1.6)
+rotation_degrees = Vector3(0, -8, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheUso")
+
+[node name="VerdeRincon" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(-3.6, 0.006, 3.75)
+scale = Vector3(1.6, 1, 1.1)
+rotation_degrees = Vector3(0, 17, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheVerde")
+
+[node name="VerdeFrente" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(3.7, 0.006, 3.7)
+scale = Vector3(1.7, 1, 1.65)
+rotation_degrees = Vector3(0, -18, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheVerde")
+
+[node name="VerdeNorte" type="MeshInstance3D" parent="SueloDecorativo"]
+position = Vector3(3.65, 0.006, -4.2)
+scale = Vector3(1.65, 1, 1.1)
+rotation_degrees = Vector3(0, 29, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheVerde")
+
+[node name="TierraTrabajada" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4, 0.006, -0.62)
+scale = Vector3(1.58, 1, 3.45)
+rotation_degrees = Vector3(0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("ParcheCultivo")
+
+[node name="HojaCentral00" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.16, -1.65)
+rotation_degrees = Vector3(-24, 0, 7)
+scale = Vector3(0.65, 0.65, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral01" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4, 0.16, -1.65)
+rotation_degrees = Vector3(-24, 37, 7)
+scale = Vector3(0.65, 0.65, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral02" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.16, -1.65)
+rotation_degrees = Vector3(-24, 74, 7)
+scale = Vector3(0.65, 0.65, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral10" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.19, -0.62)
+rotation_degrees = Vector3(-24, 17, 7)
+scale = Vector3(0.73, 0.8, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral11" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4, 0.19, -0.62)
+rotation_degrees = Vector3(-24, 54, 7)
+scale = Vector3(0.73, 0.8, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral12" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.19, -0.62)
+rotation_degrees = Vector3(-24, 91, 7)
+scale = Vector3(0.73, 0.8, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral20" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4.42, 0.22, 0.41)
+rotation_degrees = Vector3(-24, 34, 7)
+scale = Vector3(0.81, 0.95, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral21" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-4, 0.22, 0.41)
+rotation_degrees = Vector3(-24, 71, 7)
+scale = Vector3(0.81, 0.95, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HojaCentral22" type="MeshInstance3D" parent="Huerto"]
+position = Vector3(-3.58, 0.22, 0.41)
+rotation_degrees = Vector3(-24, 108, 7)
+scale = Vector3(0.81, 0.95, 0.85)
+mesh = SubResource("Hoja")
+
+[node name="HierbaPulido0" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(4.35, 0.01, 4.7)
+scale = Vector3(0.3, 0.24, 0.3)
+rotation_degrees = Vector3(0, 9, 0)
+
+[node name="HierbaPulido1" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(-4.4, 0.01, -3.55)
+scale = Vector3(0.23, 0.184, 0.23)
+rotation_degrees = Vector3(0, 56, 0)
+
+[node name="HierbaPulido2" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(1, 0.01, -5.48)
+scale = Vector3(0.25, 0.2, 0.25)
+rotation_degrees = Vector3(0, 103, 0)
+
+[node name="HierbaPulido3" parent="Vegetacion" instance=ExtResource("Hierba")]
+position = Vector3(-3.7, 0.01, 5)
+scale = Vector3(0.36, 0.288, 0.36)
+rotation_degrees = Vector3(0, 150, 0)
+
+[node name="GuijarroPulido0" parent="Vegetacion" instance=ExtResource("Guijarro")]
+position = Vector3(-2.4, 0.003, -5.3)
+scale = Vector3(0.8, 0.38, 0.8)
+rotation_degrees = Vector3(0, -12, 0)
+
+[node name="GuijarroPulido1" parent="Vegetacion" instance=ExtResource("Guijarro")]
+position = Vector3(-4.3, 0.003, 3.5)
+scale = Vector3(1.2, 0.38, 1.2)
+rotation_degrees = Vector3(0, 47, 0)
+
+[node name="GuijarroPulido2" parent="Vegetacion" instance=ExtResource("Guijarro")]
+position = Vector3(1.1, 0.003, 4.9)
+scale = Vector3(0.9, 0.38, 0.9)
+rotation_degrees = Vector3(0, 106, 0)
+
+[node name="GuijarroPulido3" parent="Vegetacion" instance=ExtResource("Guijarro")]
+position = Vector3(4.35, 0.003, 3.75)
+scale = Vector3(1.1, 0.38, 1.1)
+rotation_degrees = Vector3(0, 165, 0)
+

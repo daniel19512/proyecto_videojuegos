@@ -1,4 +1,7 @@
 [gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/depuracion_parcelas.gd" id="DepuracionParcelas"]
+[ext_resource type="PackedScene" path="res://scenes/taberna.tscn" id="Taberna"]
+[ext_resource type="PackedScene" path="res://scenes/vivienda_noroeste.tscn" id="ViviendaNO"]
 
 [sub_resource type="StandardMaterial3D" id="MaterialSuelo"]
 albedo_color = Color(0.32, 0.38, 0.22, 1)
@@ -59,6 +62,7 @@ size = Vector3(80.4, 3, 0.2)
 size = Vector3(0.2, 3, 72)
 
 [node name="Aldea" type="Node3D"]
+script = ExtResource("DepuracionParcelas")
 metadata/etapa = 2
 metadata/tamano_terreno = Vector2(80, 72)
 [node name="Terreno" type="Node3D" parent="."]
@@ -505,10 +509,11 @@ mesh = SubResource("PlanoCamino")
 position = Vector3(-8, 0, -20)
 metadata/uso = "Taberna"
 metadata/reserva_local = Rect2(-6, -7, 11.5, 12.5)
-metadata/huella_cubierta = Vector2(8.3, 9.7)
+metadata/huella_cubierta = Vector2(10.0, 10.5)
 metadata/escala_y_cubierta = 0.55
 metadata/acceso = Vector2(-8, -15.2)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E01"]
+visible = false
 position = Vector3(-0.25, 0.006, -0.75)
 scale = Vector3(11.5, 1, 12.5)
 cast_shadow = 0
@@ -534,6 +539,7 @@ scale = Vector3(0.07, 1, 12.5)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E01"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E01\nTaberna"
@@ -709,6 +715,7 @@ metadata/huella_cubierta = Vector2(5.6, 7.6)
 metadata/escala_y_cubierta = 0.60
 metadata/acceso = Vector2(-21.2, -23)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E06"]
+visible = false
 position = Vector3(0, 0.006, 0)
 scale = Vector3(10, 1, 12)
 cast_shadow = 0
@@ -734,6 +741,7 @@ scale = Vector3(0.07, 1, 12)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E06"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E06\nVivienda NO"
@@ -1390,3 +1398,9 @@ shape = SubResource("Vertical")
 [node name="Forma" type="CollisionShape3D" parent="Colisiones/LimiteEste"]
 position = Vector3(40.1, 1.5, 0)
 shape = SubResource("Vertical")
+
+[node name="Edificios" type="Node3D" parent="."]
+[node name="E01" parent="Edificios" instance=ExtResource("Taberna")]
+position = Vector3(-8, 0.003, -20)
+[node name="E06" parent="Edificios" instance=ExtResource("ViviendaNO")]
+position = Vector3(-24, 0.003, -23)

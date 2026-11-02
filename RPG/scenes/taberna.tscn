@@ -1,0 +1,463 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/DoorFrame_Flat_WoodDark.gltf" id="MarcoPuerta"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Window_Roof_Wide.gltf" id="VentanaAltillo"]
+[ext_resource type="Texture2D" path="res://assets/aldea/glTF/T_UnevenBrick_BaseColor.png" id="ColorPiedra"]
+[ext_resource type="Texture2D" path="res://assets/aldea/glTF/T_UnevenBrick_Normal.png" id="NormalPiedra"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_Wooden_2x1.gltf" id="AleroMadera"]
+[ext_resource type="Texture2D" path="res://assets/aldea/glTF/T_RoundTiles_BaseColor.png" id="ColorTejas"]
+[ext_resource type="Texture2D" path="res://assets/aldea/glTF/T_RoundTiles_Normal.png" id="NormalTejas"]
+[ext_resource type="Texture2D" path="res://assets/aldea/glTF/T_RoundTiles_Roughness.png" id="RugosidadTejas"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Lantern_Wall.gltf" id="Farol"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Barrel.gltf" id="Barril"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Crate_Wooden.gltf" id="Caja"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Table_Large.gltf" id="Mesa"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Bench.gltf" id="Banco"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Mug.gltf" id="Jarra"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Prop_Chimney2.gltf" id="Chimenea"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_UnevenBrick_Door_Flat.gltf" id="Wall_UnevenBrick_Door_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_UnevenBrick_Straight.gltf" id="Wall_UnevenBrick_Straight"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Wall_UnevenBrick_Window_Wide_Flat.gltf" id="Wall_UnevenBrick_Window_Wide_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Window_Wide_Flat1.gltf" id="Window_Wide_Flat1"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Door_1_Flat.gltf" id="Door_1_Flat"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Corner_Exterior_Wood.gltf" id="Corner_Exterior_Wood"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_RoundTiles_8x8.gltf" id="Roof_RoundTiles_8x8"]
+[ext_resource type="PackedScene" path="res://assets/aldea/glTF/Roof_Front_Brick8.gltf" id="Roof_Front_Brick8"]
+[sub_resource type="BoxShape3D" id="Horizontal"]
+size = Vector3(6, 3.12, 0.64)
+[sub_resource type="BoxShape3D" id="Lateral"]
+size = Vector3(0.64, 3.12, 8)
+[sub_resource type="StandardMaterial3D" id="Madera"]
+albedo_color = Color(0.24, 0.105, 0.042, 1)
+roughness = 0.9
+[sub_resource type="BoxMesh" id="Viga"]
+material = SubResource("Madera")
+size = Vector3(1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="Hierro"]
+albedo_color = Color(0.12, 0.105, 0.08, 1)
+metallic = 0.65
+roughness = 0.7
+[sub_resource type="BoxMesh" id="Cadena"]
+material = SubResource("Hierro")
+size = Vector3(0.035, 0.25, 0.035)
+[sub_resource type="BoxShape3D" id="CajaSolida"]
+size = Vector3(0.78, 0.86, 0.84)
+[sub_resource type="CylinderShape3D" id="BarrilSolido"]
+radius = 0.35
+height = 0.9
+[sub_resource type="BoxShape3D" id="MesaSolida"]
+size = Vector3(1.1, 0.82, 2.85)
+[sub_resource type="BoxShape3D" id="BancoSolido"]
+size = Vector3(0.54, 0.54, 2.78)
+[sub_resource type="BoxShape3D" id="CartelSolido"]
+size = Vector3(1.65, 0.74, 0.13)
+[sub_resource type="BoxShape3D" id="FarolSolido"]
+size = Vector3(0.18, 0.65, 0.64)
+[sub_resource type="StandardMaterial3D" id="Pizarra"]
+albedo_color = Color(0.16, 0.26, 0.32, 1)
+
+roughness_texture = ExtResource("RugosidadTejas")
+normal_enabled = true
+normal_texture = ExtResource("NormalTejas")
+roughness = 0.9
+[sub_resource type="BoxShape3D" id="AleroSolido"]
+size = Vector3(2.26, 0.6, 1.57)
+[sub_resource type="StandardMaterial3D" id="PiedraExterior"]
+albedo_texture = ExtResource("ColorPiedra")
+normal_enabled = true
+normal_texture = ExtResource("NormalPiedra")
+roughness = 0.94
+[sub_resource type="StandardMaterial3D" id="Madera360"]
+albedo_color = Color(0.23, 0.12, 0.055, 1)
+roughness = 0.92
+[sub_resource type="BoxMesh" id="Viga360"]
+size = Vector3(1, 1, 1)
+material = SubResource("Madera360")
+[node name="Edificio6x8" type="Node3D"]
+metadata/cuerpo = Vector2(6, 8)
+metadata/escala_y_cubierta = 0.55
+[node name="Muros" type="Node3D" parent="."]
+[node name="Frente0" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Door_Flat")]
+position = Vector3(0, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Wall_UnevenBrick_Door_Flat" parent="Muros/Frente0" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Trasera0" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(-2, 0, -4)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Trasera0" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Frente1" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(-2, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Frente1" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Trasera1" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Straight")]
+position = Vector3(0, 0, -4)
+[node name="Wall_UnevenBrick_Straight" parent="Muros/Trasera1" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Ventana1" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(-2, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Frente2" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(2, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Frente2" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Trasera2" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(2, 0, -4)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Trasera2" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Ventana2" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(2, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Puerta" parent="Muros" instance=ExtResource("Door_1_Flat")]
+position = Vector3(0.5, 0, 4.04)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Izquierda0" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Straight")]
+position = Vector3(-3, 0, -3)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Wall_UnevenBrick_Straight" parent="Muros/Izquierda0" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Derecha0" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Straight")]
+position = Vector3(3, 0, -3)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Wall_UnevenBrick_Straight" parent="Muros/Derecha0" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Izquierda1" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(-3, 0, -1)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Izquierda1" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Derecha1" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(3, 0, -1)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Derecha1" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Izquierda2" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Straight")]
+position = Vector3(-3, 0, 1)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Wall_UnevenBrick_Straight" parent="Muros/Izquierda2" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Derecha2" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Straight")]
+position = Vector3(3, 0, 1)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Wall_UnevenBrick_Straight" parent="Muros/Derecha2" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Izquierda3" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(-3, 0, 3)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Izquierda3" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="Derecha3" parent="Muros" instance=ExtResource("Wall_UnevenBrick_Window_Wide_Flat")]
+position = Vector3(3, 0, 3)
+rotation_degrees = Vector3(0, -90, 0)
+[node name="Wall_UnevenBrick_Window_Wide_Flat" parent="Muros/Derecha3" index="0"]
+surface_material_override/1 = SubResource("PiedraExterior")
+[node name="EsquinaIN" parent="Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-3, 0, -4)
+[node name="EsquinaIS" parent="Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(-3, 0, 4)
+[node name="EsquinaDN" parent="Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(3, 0, -4)
+[node name="EsquinaDS" parent="Muros" instance=ExtResource("Corner_Exterior_Wood")]
+position = Vector3(3, 0, 4)
+[node name="Cubierta" type="Node3D" parent="."]
+position = Vector3(0, 3, 0)
+scale = Vector3(1, 0.55, 1)
+[node name="PerfilBajo" type="Node3D" parent="Cubierta"]
+scale = Vector3(1, 0.75, 1)
+[node name="Tejado" parent="Cubierta/PerfilBajo" instance=ExtResource("Roof_RoundTiles_8x8")]
+position = Vector3(0, 0, 0)
+[node name="Roof_RoundTiles_8x8" parent="Cubierta/PerfilBajo/Tejado" index="0"]
+surface_material_override/1 = SubResource("Pizarra")
+[node name="FrontonFrontal" parent="Cubierta/PerfilBajo" instance=ExtResource("Roof_Front_Brick8")]
+position = Vector3(0, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="FrontonTrasero" parent="Cubierta/PerfilBajo" instance=ExtResource("Roof_Front_Brick8")]
+position = Vector3(0, 0, -4)
+[node name="Paredes" type="StaticBody3D" parent="."]
+[node name="Norte" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(0, 1.56, -4)
+shape = SubResource("Horizontal")
+[node name="Sur" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(0, 1.56, 4)
+shape = SubResource("Horizontal")
+[node name="Oeste" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(-3, 1.56, 0)
+shape = SubResource("Lateral")
+[node name="Este" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(3, 1.56, 0)
+shape = SubResource("Lateral")
+
+[node name="Chimenea" parent="." instance=ExtResource("Chimenea")]
+position = Vector3(-1, 2.5, -1.8)
+
+[node name="DetallesTaberna" type="Node3D" parent="."]
+[node name="Letrero" type="Node3D" parent="DetallesTaberna"]
+position = Vector3(-2.05, 2.35, 5.12)
+[node name="Soporte" type="MeshInstance3D" parent="DetallesTaberna/Letrero"]
+position = Vector3(0, 0.57, -0.37)
+scale = Vector3(0.12, 0.12, 1.05)
+mesh = SubResource("Viga")
+[node name="CadenaIzquierda" type="MeshInstance3D" parent="DetallesTaberna/Letrero"]
+position = Vector3(-0.56, 0.38, 0)
+mesh = SubResource("Cadena")
+[node name="CadenaDerecha" type="MeshInstance3D" parent="DetallesTaberna/Letrero"]
+position = Vector3(0.56, 0.38, 0)
+mesh = SubResource("Cadena")
+[node name="Travesano" type="MeshInstance3D" parent="DetallesTaberna/Letrero"]
+position = Vector3(0, 0.57, 0)
+scale = Vector3(1.4, 0.11, 0.11)
+mesh = SubResource("Viga")
+[node name="Tablon" type="MeshInstance3D" parent="DetallesTaberna/Letrero"]
+scale = Vector3(1.65, 0.74, 0.13)
+mesh = SubResource("Viga")
+[node name="Texto" type="Label3D" parent="DetallesTaberna/Letrero"]
+position = Vector3(0, 0.02, 0.075)
+text = "TABERNA"
+font_size = 64
+pixel_size = 0.0034
+outline_size = 2
+modulate = Color(1, 0.82, 0.43, 1)
+no_depth_test = false
+[node name="ColisionLetrero" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(-2.05, 2.35, 5.12)
+shape = SubResource("CartelSolido")
+[node name="ColisionFarolIzquierdo" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(-0.95, 2.21, 4.47)
+shape = SubResource("FarolSolido")
+[node name="ColisionFarolDerecho" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(0.95, 2.21, 4.47)
+shape = SubResource("FarolSolido")
+[node name="EntramadoSuperior" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(0, 2.88, 4.13)
+scale = Vector3(5.8, 0.18, 0.18)
+mesh = SubResource("Viga")
+[node name="PosteIzquierdo" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(-1.03, 1.45, 4.13)
+scale = Vector3(0.14, 2.9, 0.18)
+mesh = SubResource("Viga")
+[node name="PosteDerecho" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(1.03, 1.45, 4.13)
+scale = Vector3(0.14, 2.9, 0.18)
+mesh = SubResource("Viga")
+[node name="FarolIzquierdo" parent="DetallesTaberna" instance=ExtResource("Farol")]
+position = Vector3(-0.95, 1.85, 4.18)
+scale = Vector3(0.48, 0.48, 0.48)
+[node name="Luz" type="OmniLight3D" parent="DetallesTaberna/FarolIzquierdo"]
+position = Vector3(0, 0.55, 1)
+light_color = Color(1, 0.61, 0.23, 1)
+light_energy = 0.65
+omni_range = 3.5
+[node name="FarolDerecho" parent="DetallesTaberna" instance=ExtResource("Farol")]
+position = Vector3(0.95, 1.85, 4.18)
+scale = Vector3(0.48, 0.48, 0.48)
+[node name="Luz" type="OmniLight3D" parent="DetallesTaberna/FarolDerecho"]
+position = Vector3(0, 0.55, 1)
+light_color = Color(1, 0.61, 0.23, 1)
+light_energy = 0.65
+omni_range = 3.5
+[node name="Mobiliario" type="StaticBody3D" parent="DetallesTaberna"]
+[node name="Barril1" parent="DetallesTaberna/Mobiliario" instance=ExtResource("Barril")]
+position = Vector3(1.95, 0, 4.78)
+[node name="FormaBarril1" type="CollisionShape3D" parent="DetallesTaberna/Mobiliario"]
+position = Vector3(1.95, 0.45, 4.78)
+shape = SubResource("BarrilSolido")
+[node name="Barril2" parent="DetallesTaberna/Mobiliario" instance=ExtResource("Barril")]
+position = Vector3(2.73, 0, 4.65)
+[node name="FormaBarril2" type="CollisionShape3D" parent="DetallesTaberna/Mobiliario"]
+position = Vector3(2.73, 0.45, 4.65)
+shape = SubResource("BarrilSolido")
+[node name="Caja" parent="DetallesTaberna/Mobiliario" instance=ExtResource("Caja")]
+position = Vector3(-2.3, 0.05, 4.73)
+scale = Vector3(0.7, 0.7, 0.7)
+[node name="FormaCaja" type="CollisionShape3D" parent="DetallesTaberna/Mobiliario"]
+position = Vector3(-2.3, 0.44, 4.73)
+shape = SubResource("CajaSolida")
+[node name="Mesa" parent="DetallesTaberna/Mobiliario" instance=ExtResource("Mesa")]
+position = Vector3(-4.65, 0, 1.4)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="FormaMesa" type="CollisionShape3D" parent="DetallesTaberna/Mobiliario"]
+position = Vector3(-4.65, 0.41, 1.4)
+shape = SubResource("MesaSolida")
+[node name="BancoExterior" parent="DetallesTaberna/Mobiliario" instance=ExtResource("Banco")]
+position = Vector3(-5.6, 0.01, 1.4)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="FormaBancoExterior" type="CollisionShape3D" parent="DetallesTaberna/Mobiliario"]
+position = Vector3(-5.6, 0.27, 1.4)
+shape = SubResource("BancoSolido")
+[node name="BancoInterior" parent="DetallesTaberna/Mobiliario" instance=ExtResource("Banco")]
+position = Vector3(-3.7, 0.01, 1.4)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="FormaBancoInterior" type="CollisionShape3D" parent="DetallesTaberna/Mobiliario"]
+position = Vector3(-3.7, 0.27, 1.4)
+shape = SubResource("BancoSolido")
+[node name="Jarra1" parent="DetallesTaberna" instance=ExtResource("Jarra")]
+position = Vector3(-4.6, 0.82, 0.65)
+[node name="Jarra2" parent="DetallesTaberna" instance=ExtResource("Jarra")]
+position = Vector3(-4.8, 0.82, 2.1)
+rotation_degrees = Vector3(0, 150, 0)
+
+[node name="AleroEntrada" parent="." instance=ExtResource("AleroMadera")]
+position = Vector3(0, 2.8, 5.16)
+rotation_degrees = Vector3(0, 180, 0)
+scale = Vector3(1, 0.45, 1)
+[node name="ColisionAlero" type="CollisionShape3D" parent="Paredes"]
+position = Vector3(0, 3, 4.42)
+shape = SubResource("AleroSolido")
+[node name="SofitoAncho" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(0, 3.03, 0)
+scale = Vector3(8.35, 0.16, 8.1)
+mesh = SubResource("Viga")
+[node name="FajaPiedraFrontal" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(0, 3.25, 4.08)
+scale = Vector3(8, 0.18, 0.18)
+mesh = SubResource("Viga")
+[node name="TornapuntaIzquierda" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(-2.65, 2.5, 4.17)
+rotation_degrees = Vector3(0, 0, -35)
+scale = Vector3(0.15, 0.95, 0.18)
+mesh = SubResource("Viga")
+[node name="TornapuntaDerecha" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(2.65, 2.5, 4.17)
+rotation_degrees = Vector3(0, 0, 35)
+scale = Vector3(0.15, 0.95, 0.18)
+mesh = SubResource("Viga")
+[editable path="Cubierta/PerfilBajo/Tejado"]
+[editable path="Muros/Frente0"]
+
+[editable path="Muros/Trasera0"]
+
+[editable path="Muros/Frente1"]
+
+[editable path="Muros/Trasera1"]
+
+[editable path="Muros/Frente2"]
+
+[editable path="Muros/Trasera2"]
+
+[editable path="Muros/Izquierda0"]
+
+[editable path="Muros/Derecha0"]
+
+[editable path="Muros/Izquierda1"]
+
+[editable path="Muros/Derecha1"]
+
+[editable path="Muros/Izquierda2"]
+
+[editable path="Muros/Derecha2"]
+
+[editable path="Muros/Izquierda3"]
+
+[editable path="Muros/Derecha3"]
+
+[node name="VentanaAltillo" parent="DetallesTaberna" instance=ExtResource("VentanaAltillo")]
+position = Vector3(0, 2.05, 4.02)
+[node name="DiagonalAltilloIzquierda" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(-1.9, 3.85, 4.13)
+rotation_degrees = Vector3(0, 0, -55)
+scale = Vector3(0.14, 1.8, 0.16)
+mesh = SubResource("Viga")
+[node name="DiagonalAltilloDerecha" type="MeshInstance3D" parent="DetallesTaberna"]
+position = Vector3(1.9, 3.85, 4.13)
+rotation_degrees = Vector3(0, 0, 55)
+scale = Vector3(0.14, 1.8, 0.16)
+mesh = SubResource("Viga")
+[node name="VentanaIzquierda1" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(-3, 0, -1)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="VentanaIzquierda3" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(-3, 0, 3)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="VentanaDerecha1" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(3, 0, -1)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="VentanaDerecha3" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(3, 0, 3)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="VentanaTrasera0" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(-2, 0, -4)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="VentanaTrasera2" parent="Muros" instance=ExtResource("Window_Wide_Flat1")]
+position = Vector3(2, 0, -4)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Detalles360" type="Node3D" parent="."]
+
+[node name="PosteTrasero" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(0, 1.5, -4.23)
+scale = Vector3(0.14, 3, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="ContraventanaAltilloTrasero" parent="Detalles360" instance=ExtResource("VentanaAltillo")]
+position = Vector3(0, 2.05, -4.02)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="FajaZ-4.23" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(0, 2.88, -4.23)
+scale = Vector3(6, 0.16, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="ZocaloZ-4.23" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(0, 0.15, -4.23)
+scale = Vector3(6, 0.28, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="FajaX-3.23" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(-3.23, 2.88, 0)
+scale = Vector3(0.14, 0.16, 8)
+mesh = SubResource("Viga360")
+
+[node name="ZocaloX-3.23" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(-3.23, 0.15, 0)
+scale = Vector3(0.14, 0.28, 8)
+mesh = SubResource("Viga360")
+
+[node name="PosteX-3.23Z-2" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(-3.23, 1.5, -2)
+scale = Vector3(0.14, 3, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="PosteX-3.23Z0" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(-3.23, 1.5, 0)
+scale = Vector3(0.14, 3, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="PosteX-3.23Z2" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(-3.23, 1.5, 2)
+scale = Vector3(0.14, 3, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="FajaX3.23" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(3.23, 2.88, 0)
+scale = Vector3(0.14, 0.16, 8)
+mesh = SubResource("Viga360")
+
+[node name="ZocaloX3.23" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(3.23, 0.15, 0)
+scale = Vector3(0.14, 0.28, 8)
+mesh = SubResource("Viga360")
+
+[node name="PosteX3.23Z-2" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(3.23, 1.5, -2)
+scale = Vector3(0.14, 3, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="PosteX3.23Z0" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(3.23, 1.5, 0)
+scale = Vector3(0.14, 3, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="PosteX3.23Z2" type="MeshInstance3D" parent="Detalles360"]
+position = Vector3(3.23, 1.5, 2)
+scale = Vector3(0.14, 3, 0.14)
+mesh = SubResource("Viga360")
+
+[node name="MarcoPuerta" parent="Muros" instance=ExtResource("MarcoPuerta")]
+position = Vector3(0, 0, 4)
+rotation_degrees = Vector3(0, 180, 0)

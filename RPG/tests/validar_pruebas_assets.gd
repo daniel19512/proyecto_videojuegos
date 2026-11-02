@@ -38,7 +38,7 @@ func validar() -> void:
 	var camara: Camera3D = escena.get_node("CamaraPrincipal")
 	await esperar(20)
 	comprobar(jugador.is_on_floor(), "Jugador apoyado en el suelo")
-	comprobar(camara.projection == Camera3D.PROJECTION_ORTHOGONAL and is_equal_approx(camara.size, 23.0), "Camara ortografica original")
+	comprobar(camara.projection == Camera3D.PROJECTION_ORTHOGONAL and is_equal_approx(camara.size, 15.0), "Camara ortografica de laboratorio: 15")
 	var inicio := jugador.global_position
 	for caso in [["mover_arriba", Vector3.FORWARD, "arriba"], ["mover_abajo", Vector3.BACK, "abajo"], ["mover_izquierda", Vector3.LEFT, "izquierda"], ["mover_derecha", Vector3.RIGHT, "derecha"]]:
 		jugador.global_position = inicio
