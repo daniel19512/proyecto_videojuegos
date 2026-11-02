@@ -22,7 +22,9 @@ func validar() -> void:
 		var n := int(ceil(a.distance_to(b)/.5))
 		for k in range(n+1):
 			for t in [-1.0,-.5,0.0,.5,1.0]:
-				libres = suelo_libre(a.lerp(b,float(k)/maxi(n,1))+lateral*t*(ancho*.5-.36)) and libres
+				var centro := a.lerp(b,float(k)/maxi(n,1))
+				var libre := 3.0 if centro.x >= 26 and centro.x <= 34 and absf(centro.y)<.01 else ancho
+				libres = suelo_libre(centro+lateral*t*(libre*.5-.36)) and libres
 	comprobar(regiones.size() == 37 and conectadas(regiones) == 37 and libres,"E12: 36 corredores libres y conectados a plaza")
 	if "--capturas" in OS.get_cmdline_user_args() and DisplayServer.get_name() != "headless":
 		jugador.set_physics_process(false)

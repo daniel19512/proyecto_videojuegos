@@ -14,6 +14,7 @@ var solidos_herbolario: Array[PhysicsBody3D] = []
 var solidos_exterior_e06: Array[PhysicsBody3D] = []
 var solidos_e07: Array[PhysicsBody3D] = []
 var solidos_rurales: Array[PhysicsBody3D] = []
+var solidos_ribera: Array[PhysicsBody3D] = []
 
 func _initialize() -> void:
 	call_deferred("validar")
@@ -78,14 +79,25 @@ func conectadas(regiones: Array[Rect2]) -> int:
 
 func suelo_libre(punto: Vector2) -> bool:
 	muestras += 1
-	consulta.transform = Transform3D(Basis.IDENTITY, Vector3(punto.x, 0.82, punto.y))
+	var altura := altura_puente(punto)
+	# Margen vertical de consulta para la pendiente y el borde de las rampas.
+	# El apoyo sigue comprobado por rayo a la altura exacta; fuera del puente,
+	# se conserva la consulta original a .82.
+	var rampa := punto.x >= 25.65 and punto.x <= 34.35 and absf(punto.y)<=1.5
+	consulta.transform = Transform3D(Basis.IDENTITY, Vector3(punto.x, (0.88 if rampa else 0.82) + altura, punto.y))
 	var estado := mundo.get_world_3d().direct_space_state
 	if not estado.intersect_shape(consulta).is_empty():
 		return false
 	var rayo := PhysicsRayQueryParameters3D.create(Vector3(punto.x, 2, punto.y), Vector3(punto.x, -1, punto.y))
 	rayo.exclude = [jugador.get_rid()]
 	var golpe := estado.intersect_ray(rayo)
-	return not golpe.is_empty() and golpe.collider == aldea.get_node("Terreno/Suelo") and absf(golpe.position.y) < 0.005
+	var apoyo: Node = aldea.get_node("Puente/Colisiones") if altura > 0 else aldea.get_node("Terreno/Suelo")
+	return not golpe.is_empty() and golpe.collider == apoyo and absf(golpe.position.y-altura) < 0.025
+
+func altura_puente(punto: Vector2) -> float:
+	if punto.x < 26 or punto.x > 34 or absf(punto.y) > 1.5:
+		return 0.0
+	return minf(1.0, minf(punto.x-26,34-punto.x))*.462+.018
 
 func caminar(accion: String, fotogramas: int) -> void:
 	Input.action_press(accion)
@@ -200,7 +212,7 @@ func muestra_mobiliario(punto: Vector2) -> bool:
 		return false
 	var mobiliario := aldea.get_node("Edificios/E01/DetallesTaberna/Mobiliario")
 	for golpe in golpes:
-		if golpe.collider != mobiliario and golpe.collider not in solidos_exterior_e06 and golpe.collider not in solidos_panaderia and golpe.collider not in solidos_herreria and golpe.collider not in solidos_carpinteria and golpe.collider not in solidos_herbolario and golpe.collider not in solidos_e07 and golpe.collider not in solidos_rurales:
+		if golpe.collider != mobiliario and golpe.collider not in solidos_exterior_e06 and golpe.collider not in solidos_panaderia and golpe.collider not in solidos_herreria and golpe.collider not in solidos_carpinteria and golpe.collider not in solidos_herbolario and golpe.collider not in solidos_e07 and golpe.collider not in solidos_rurales and golpe.collider not in solidos_ribera:
 			return false
 	return true
 
@@ -338,7 +350,7 @@ func validar() -> void:
 	comprobar(caja.position.is_equal_approx(Vector3(-40, -0.5, -36)) and caja.size.is_equal_approx(Vector3(80, 0.5, 72)), "Terreno fisico 80x72 centrado, superficie Y=0")
 	var malla: MeshInstance3D = aldea.get_node("Terreno/Suelo/MallaSuelo")
 	comprobar((malla.global_transform * malla.get_aabb()).is_equal_approx(caja), "Suelo visual coincide con colision")
-	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 23, "Suelo, limites y solidos de los doce edificios E01-E12")
+	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 25, "Suelo, limites, doce edificios, rio y puente")
 	comprobar(aldea.get_node("Edificios").get_child_count() == 12, "Doce edificios E01-E12 construidos")
 	var plaza := plano(aldea.get_node("Plaza/Marca"))
 	comprobar(plaza.is_equal_approx(Rect2(-10, -9, 20, 18)), "Plaza central 20x18")
@@ -367,6 +379,7 @@ func validar() -> void:
 	await validar_vivienda_final("E10")
 	await validar_vivienda_final("E11")
 	await validar_molino()
+	await validar_ribera()
 	var nivelado := true
 	for x in range(-39, 40, 2):
 		for z in range(-35, 36, 2):
@@ -433,21 +446,24 @@ func validar() -> void:
 		var cantidad := int(ceil(a.distance_to(b) / 0.5))
 		for k in range(cantidad + 1):
 			for proporcion in [-1.0, -0.5, 0.0, 0.5, 1.0]:
-				var punto: Vector2 = a.lerp(b, float(k)/maxi(1,cantidad)) + lateral * proporcion * (ancho*0.5-0.36)
+				var centro := a.lerp(b, float(k)/maxi(1,cantidad))
+				# El plano reserva 4 estructurales y 3 libres en el puente definitivo.
+				var libre := 3.0 if centro.x >= 26 and centro.x <= 34 and absf(centro.y)<.01 else ancho
+				var punto: Vector2 = centro + lateral * proporcion * (libre*0.5-0.36)
 				pasos_libres = suelo_libre(punto) and pasos_libres
 	comprobar(marcas_correctas and principales == 8, "Ocho corredores principales de 4 unidades y marcas coherentes con todos los anchos")
 	comprobar(pasos_libres, "Capsula y apoyo a lo largo y ancho de todos los corredores")
 	comprobar(conectadas(regiones) == regiones.size(), "Todos los corredores conectados a plaza")
 	var ribera: Rect2 = aldea.get_node("Reservas/Ribera").get_meta("reserva")
 	var puente: Rect2 = aldea.get_node("Reservas/Puente").get_meta("reserva")
-	comprobar(ribera.is_equal_approx(Rect2(26,-34,10,68)) and puente.is_equal_approx(Rect2(26,-2,8,4)), "Ribera y cruce futuro reservados")
+	comprobar(ribera.is_equal_approx(Rect2(26,-36,10,72)) and puente.is_equal_approx(Rect2(26,-2,8,4)), "Ribera hasta limites del mapa y cruce reservado")
 	for parcela: Node3D in parcelas:
 		comprobar(area_comun(plano(parcela.get_node("Marca")), ribera) < 0.001, str(parcela.name) + ": fuera de ribera")
-	# Caminar realmente por la reserva de rio: hoy debe seguir siendo suelo continuo.
+	# Cruce real sobre el puente, conservando controlador y velocidad.
 	jugador.global_position = Vector3(24, 0.02, 0)
 	jugador.velocity = Vector3.ZERO
 	await caminar("mover_derecha", 180)
-	comprobar(jugador.is_on_floor() and jugador.position.x > 35.5, "Cruce real de ribera sin cauce ni bloqueo")
+	comprobar(jugador.is_on_floor() and jugador.position.x > 35.5, "Cruce real de ribera por el puente sin bloqueo")
 	var barridos := 0
 	for caso in [["Norte", Vector3.FORWARD, "mover_arriba", 36.0], ["Sur", Vector3.BACK, "mover_abajo", 36.0], ["Oeste", Vector3.LEFT, "mover_izquierda", 40.0], ["Este", Vector3.RIGHT, "mover_derecha", 40.0]]:
 		var dir: Vector3 = caso[1]
@@ -822,6 +838,9 @@ func validar_molino() -> void:
 	comprobar(plano(aldea.get_node("Parcelas/E12/Marca")).is_equal_approx(reserva) and aldea.get_node("Parcelas/E12").get_meta("acceso") == Vector2(17.2,-10) and aldea.get_node("Reservas/RuedaMolino").get_meta("reserva") == rueda,"E12: parcela, acceso oeste y reserva tecnica originales")
 	var mecanismo: Node3D = edificio.get_node("MecanismoHidraulico")
 	var pivot: Node3D = mecanismo.get_node("RuedaHidraulicaPivot")
+	var procesaba := pivot.is_processing()
+	pivot.set_process(false)
+	pivot.rotation = Vector3.ZERO
 	comprobar(pivot.position.is_equal_approx(Vector3(5.5,2.5,0)) and pivot.basis.is_equal_approx(Basis.IDENTITY) and pivot.get_child_count() == 4 and not pivot.is_ancestor_of(mecanismo.get_node("SoportesFijos")),"E12: pivote X en centro fisico, cuatro grupos moviles y soportes fijos separados")
 	comprobar(pivot.get_node("Aros").get_child_count() == 64 and pivot.get_node("Radios").get_child_count() == 16 and pivot.get_node("Paletas").find_children("Paleta*","MeshInstance3D",true,false).size() == 16,"E12: cuatro aros poligonales, dieciseis radios y dieciseis paletas con profundidad")
 	var visuales := true
@@ -904,12 +923,14 @@ func validar_molino() -> void:
 	for i in 101:
 		libre = suelo_libre(Vector2(lerpf(14,17.35,float(i)/100),-10)) and libre
 	comprobar(libre,"E12: aproximacion oeste desde camino publico libre")
-	var puntos := [Vector2(15.9,-16.4),Vector2(28.5,-16.4),Vector2(28.5,-3.6),Vector2(15.9,-3.6),Vector2(15.9,-16.4)]
+	# El rio separa las margenes hasta los limites. Comprobar ambos accesos E12
+	# y la margen este por el unico cruce autorizado, nunca por los extremos.
+	var puntos := [Vector2(27,-16.4),Vector2(15.9,-16.4),Vector2(15.9,0),Vector2(35,0),Vector2(35,-35),Vector2(35,35),Vector2(35,0),Vector2(15.9,0),Vector2(15.9,-3.6),Vector2(27,-3.6)]
 	var circuito := true
-	for i in 4:
+	for i in range(puntos.size()-1):
 		for j in 101:
 			circuito = suelo_libre(puntos[i].lerp(puntos[i+1],float(j)/100)) and circuito
-	comprobar(circuito,"E12: circuito exterior completo y separacion respecto a vecinos")
+	comprobar(circuito,"E12: accesos norte/sur y ambas margenes conectados por puente, sin rodear extremos")
 	jugador.global_position = Vector3(16.5,.02,-10)
 	jugador.velocity = Vector3.ZERO
 	await caminar("mover_derecha",35)
@@ -923,6 +944,7 @@ func validar_molino() -> void:
 	comprobar(not suelo_libre(Vector2(17.2,-10)),"E12: control negativo detecta barril bloqueando acceso")
 	control.position = original
 	await esperar(2)
+	pivot.set_process(procesaba)
 
 # Viviendas rurales independientes. Ninguna excepcion sobre corredores o huertos.
 func validar_vivienda_final(id: String) -> void:
@@ -1139,3 +1161,130 @@ func validar_vivienda_rural(id: String) -> void:
 		comprobar(edificio.get_node("Tejado").find_children("Haz*","MeshInstance3D",true,false).size() == 144,id+": paja con haces en relieve y cumbrera, sin segunda planta")
 	else:
 		comprobar(edificio.has_node("Galeria/CubiertaSecundaria") and edificio.get_node("Tejado").find_children("Placa*","MeshInstance3D",true,false).size() == 108,id+": pizarra en placas, cumbrera descentrada y galeria lateral")
+
+# Fase 4A: solo admitir los cuerpos nuevos tras comprobar formas, reservas y paso real.
+func validar_ribera() -> void:
+	var rio: Node3D = aldea.get_node("Rio")
+	var puente: Node3D = aldea.get_node("Puente")
+	var formas_validas := true
+	var reserva := Rect2(26,-48,10,96)
+	for forma: CollisionShape3D in rio.get_node("Colisiones").get_children():
+		var caja: AABB = forma.global_transform*AABB(-forma.shape.size*.5,forma.shape.size)
+		var huella := Rect2(Vector2(caja.position.x,caja.position.z),Vector2(caja.size.x,caja.size.z))
+		formas_validas = formas_validas and not forma.disabled and (reserva.grow(.03).encloses(huella) or Rect2(25,-13,5,6).encloses(huella))
+		formas_validas = formas_validas and not huella.intersects(Rect2(26,-1.5,8,3))
+	comprobar(formas_validas and rio.get_node("Colisiones").get_child_count() == 93,"Rio: 93 volumenes, extension longitudinal sin invadir parcelas ni cerrar el cruce")
+	var agua: MeshInstance3D = rio.get_node("SuperficieAgua/CauceContinuo")
+	comprobar(agua.mesh.get_surface_count()==1 and agua.mesh.surface_get_material(0) is ShaderMaterial,"Rio: superficie continua y shader estilizado opaco")
+	comprobar(puente.position == Vector3(30,0,0) and puente.get_node("Colisiones").get_child_count()==5,"Puente: centro aprobado, tablero, dos rampas y dos barandas")
+	var bloqueado := true
+	for z in range(-36,37):
+		if abs(z)<2: continue
+		for x in [29.0,30.0,31.0]:
+			bloqueado = not suelo_libre(Vector2(x,z)) and bloqueado
+	comprobar(bloqueado,"Rio: agua bloqueada en 210 muestras incluidos limites norte/sur")
+	var paso := true
+	for i in range(81):
+		for z in [-1.1,0.0,1.1]:
+			paso = suelo_libre(Vector2(lerpf(25,35,float(i)/80),z)) and paso
+	comprobar(paso,"Puente: apoyo continuo y anchura libre en 243 muestras de ambas rampas y tablero")
+	var baranda: CollisionShape3D = puente.get_node("Colisiones/Baranda-1_65")
+	var posicion_baranda := baranda.position
+	baranda.position.z = 0
+	await esperar(2)
+	comprobar(not suelo_libre(Vector2(30,0)),"Puente: control negativo detecta baranda bloqueando el tablero")
+	baranda.position = posicion_baranda
+	var barrera: CollisionShape3D = rio.get_node("Colisiones/Agua39")
+	barrera.disabled = true
+	await esperar(2)
+	comprobar(suelo_libre(Vector2(30,5.5)),"Rio: control negativo detecta el suelo subyacente al retirar una barrera")
+	barrera.disabled = false
+	await esperar(2)
+	var camara: Camera3D = mundo.get_node("CamaraPrincipal")
+	camara.set_process(false)
+	camara.rotation = Vector3(deg_to_rad(-32),0,0)
+	for caso in [[25.0,"mover_derecha",true],[35.0,"mover_izquierda",false]]:
+		jugador.global_position = Vector3(caso[0],.02,0)
+		jugador.velocity = Vector3.ZERO
+		await esperar(3)
+		await caminar(caso[1],90)
+		comprobar(jugador.is_on_floor() and (jugador.position.x>34.5 if caso[2] else jugador.position.x<25.5),"Puente: cruce real desde "+str(caso[0]))
+	for caso in [[Vector3(26,.02,5),"mover_derecha",true],[Vector3(34,.02,5),"mover_izquierda",false]]:
+		jugador.global_position = caso[0]
+		jugador.velocity = Vector3.ZERO
+		await esperar(3)
+		await caminar(caso[1],65)
+		comprobar(jugador.position.x<28 if caso[2] else jugador.position.x>31.5,"Rio: entrada fisica impedida desde ambas riberas")
+	for caso in [["mover_arriba",-1.0],["mover_abajo",1.0]]:
+		jugador.global_position = Vector3(30,.5,0)
+		jugador.velocity = Vector3.ZERO
+		await esperar(3)
+		await caminar(caso[0],45)
+		comprobar(absf(jugador.position.z)<1.2 and jugador.is_on_floor(),"Puente: baranda impide salida lateral hacia el agua "+str(caso[1]))
+	camara.set_process(true)
+	var pivot: Node3D = aldea.get_node("Edificios/E12/MecanismoHidraulico/RuedaHidraulicaPivot")
+	var inicio := pivot.rotation.x
+	var tiempo := Time.get_ticks_msec()
+	await esperar(30)
+	var segundos := float(Time.get_ticks_msec()-tiempo)/1000
+	var giro := wrapf(pivot.rotation.x-inicio,-PI,PI)
+	comprobar(giro<0 and absf(giro-deg_to_rad(-9)*segundos)<.05,"Rueda: giro X negativo suave de 9 grados/s, corriente +Z")
+	comprobar(pivot.global_position.is_equal_approx(Vector3(26.5,2.503,-10)) and .322 > pivot.global_position.y-2.26 and .322 < pivot.global_position.y-1.8,"Rueda: centro intacto y solo extremo inferior sumergido")
+	await validar_extremos_rio()
+	if formas_validas and bloqueado and paso:
+		solidos_ribera.assign([rio.get_node("Colisiones"),puente.get_node("Colisiones")])
+
+func validar_extremos_rio() -> void:
+	var rio: Node3D = aldea.get_node("Rio")
+	var agua: MeshInstance3D = rio.get_node("SuperficieAgua/CauceContinuo")
+	var caja := agua.global_transform*agua.get_aabb()
+	comprobar(is_equal_approx(caja.position.z,-48) and is_equal_approx(caja.end.z,48),"Extremos: agua continua Z=[-48,48], doce unidades mas alla de cada limite")
+	for nombre in ["RiberaOeste","RiberaEste"]:
+		var m: MeshInstance3D = rio.get_node("Orillas/"+nombre)
+		var b := m.global_transform*m.get_aabb()
+		comprobar(is_equal_approx(b.position.z,-48) and is_equal_approx(b.end.z,48),"Extremos: orilla extendida "+nombre)
+	var cerrados := true
+	var barridos := 0
+	var barrido := PhysicsShapeQueryParameters3D.new()
+	barrido.shape = jugador.get_node("ColisionJugador").shape
+	# Aislar el rio evita que el propio molino o sus soportes oculten un hueco.
+	var excluir: Array[RID] = []
+	for cuerpo: PhysicsBody3D in mundo.find_children("*","PhysicsBody3D",true,false):
+		if cuerpo != rio.get_node("Colisiones"):
+			excluir.append(cuerpo.get_rid())
+	barrido.exclude = excluir
+	# Barridos de la capsula real cada .25: detectan incluso una junta abierta.
+	for i in range(285):
+		var z := -35.5+float(i)*.25
+		if absf(z)<2: continue
+		for lado in [-1.0,1.0]:
+			var origen := Vector3(25 if lado>0 else 35,.82,z)
+			barrido.transform=Transform3D(Basis.IDENTITY,origen)
+			barrido.motion=Vector3(lado*10,0,0)
+			var impacto := mundo.get_world_3d().direct_space_state.cast_motion(barrido)
+			cerrados = cerrados and impacto[0]<1.0
+			barridos += 1
+	comprobar(cerrados,"Extremos: "+str(barridos)+" barridos bidireccionales sin huecos en toda seccion fuera del puente")
+	var camara: Camera3D = mundo.get_node("CamaraPrincipal")
+	camara.set_process(false)
+	camara.rotation = Vector3(deg_to_rad(-32),0,0)
+	for signo in [-1.0,1.0]:
+		for desde_oeste in [true,false]:
+			jugador.global_position = Vector3(26 if desde_oeste else 34,.02,signo*34.6)
+			jugador.velocity = Vector3.ZERO
+			await esperar(3)
+			var hacia_limite := "mover_arriba" if signo<0 else "mover_abajo"
+			await caminar(hacia_limite,30)
+			Input.action_press(hacia_limite)
+			await caminar("mover_derecha" if desde_oeste else "mover_izquierda",70)
+			Input.action_release(hacia_limite)
+			await esperar(12)
+			comprobar(absf(jugador.position.z)<35.70 and jugador.is_on_floor(),"Extremo "+str(signo)+": limite exterior impide salir del terreno")
+			var z := jugador.position.z
+			var centro := 30.0+.27*sin(z*.22)+.12*sin(z*.71)
+			var semiancho := 1.85+.18*cos(z*.43)
+			comprobar(jugador.position.x<centro-semiancho if desde_oeste else jugador.position.x>centro+semiancho,"Extremo "+str(signo)+": rodeo bloqueado desde "+("oeste" if desde_oeste else "este"))
+	camara.set_process(true)
+	var mat: ShaderMaterial = agua.mesh.surface_get_material(0)
+	comprobar(float(mat.get_shader_parameter("velocidad_corriente"))>0 and "posicion.z - TIME * velocidad_corriente" in mat.shader.code,"Agua: ambas capas advectadas hacia +Z con velocidad configurable positiva")
+	comprobar(is_equal_approx(float(mat.get_shader_parameter("velocidad_corriente")),.65),"Agua: capa principal 0.65 u/s, secundaria 0.468 u/s")

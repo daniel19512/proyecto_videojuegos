@@ -1,4 +1,5 @@
 [gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/rueda_hidraulica.gd" id="GiroRueda"]
 [ext_resource type="Texture2D" path="res://assets/aldea/glTF/T_UnevenBrick_BaseColor.png" id="Textura"]
 [ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Bag.gltf" id="Bag"]
 [ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Barrel.gltf" id="Barrel"]
@@ -1359,7 +1360,8 @@ material = SubResource("Musgo")
 [node name="Molino" type="Node3D"]
 metadata/cuerpo = Vector2(6, 8)
 metadata/entrada = Vector3(-3, 0, 0)
-metadata/cota_agua_definida = false
+metadata/cota_agua_definida = true
+metadata/cota_agua = 0.322
 [node name="Cimientos" type="Node3D" parent="."]
 [node name="Muros" type="Node3D" parent="."]
 [node name="EstructuraMadera" type="Node3D" parent="."]
@@ -1371,6 +1373,7 @@ metadata/cota_agua_definida = false
 [node name="MecanismoHidraulico" type="Node3D" parent="."]
 [node name="Colisiones" type="StaticBody3D" parent="."]
 [node name="RuedaHidraulicaPivot" type="Node3D" parent="MecanismoHidraulico"]
+script = ExtResource("GiroRueda")
 position = Vector3(5.5, 2.5, 0)
 [node name="Aros" type="Node3D" parent="MecanismoHidraulico/RuedaHidraulicaPivot"]
 [node name="Radios" type="Node3D" parent="MecanismoHidraulico/RuedaHidraulicaPivot"]

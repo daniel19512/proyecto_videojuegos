@@ -1,4 +1,6 @@
 [gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/rio.tscn" id="Rio"]
+[ext_resource type="PackedScene" path="res://scenes/puente.tscn" id="PuenteReal"]
 [ext_resource type="PackedScene" path="res://scenes/molino.tscn" id="Molino"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_e10.tscn" id="ViviendaE10"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_e11.tscn" id="ViviendaE11"]
@@ -1198,33 +1200,35 @@ outline_size = 5
 modulate = Color(0.94, 0.9, 0.72, 1)
 [node name="Reservas" type="Node3D" parent="."]
 [node name="Ribera" type="Node3D" parent="Reservas"]
-metadata/reserva = Rect2(26, -34, 10, 68)
+metadata/reserva = Rect2(26, -36, 10, 72)
 [node name="Marca" type="MeshInstance3D" parent="Reservas/Ribera"]
+visible = false
 position = Vector3(31, 0.004, 0)
-scale = Vector3(10, 1, 68)
+scale = Vector3(10, 1, 72)
 cast_shadow = 0
 mesh = SubResource("PlanoReserva")
 [node name="BordeN" type="MeshInstance3D" parent="Reservas/Ribera"]
-position = Vector3(31, 0.023, -33.965)
+position = Vector3(31, 0.023, -35.965)
 scale = Vector3(10, 1, 0.07)
 cast_shadow = 0
 mesh = SubResource("PlanoReserva")
 [node name="BordeS" type="MeshInstance3D" parent="Reservas/Ribera"]
-position = Vector3(31, 0.023, 33.964999999999996)
+position = Vector3(31, 0.023, 35.965)
 scale = Vector3(10, 1, 0.07)
 cast_shadow = 0
 mesh = SubResource("PlanoReserva")
 [node name="BordeO" type="MeshInstance3D" parent="Reservas/Ribera"]
 position = Vector3(26.035, 0.023, 0)
-scale = Vector3(0.07, 1, 68)
+scale = Vector3(0.07, 1, 72)
 cast_shadow = 0
 mesh = SubResource("PlanoReserva")
 [node name="BordeE" type="MeshInstance3D" parent="Reservas/Ribera"]
 position = Vector3(35.964999999999996, 0.023, 0)
-scale = Vector3(0.07, 1, 68)
+scale = Vector3(0.07, 1, 72)
 cast_shadow = 0
 mesh = SubResource("PlanoReserva")
 [node name="Rotulo" type="Label3D" parent="Reservas/Ribera"]
+visible = false
 position = Vector3(31, 0.065, 23)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "RIBERA RESERVADA\nSuelo transitable"
@@ -1255,6 +1259,7 @@ scale = Vector3(0.07, 1, 4)
 cast_shadow = 0
 mesh = SubResource("PlanoEspecial")
 [node name="Rotulo" type="Label3D" parent="Reservas/Puente"]
+visible = false
 position = Vector3(30, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "Cruce futuro"
@@ -1285,6 +1290,7 @@ scale = Vector3(0.07, 1, 6)
 cast_shadow = 0
 mesh = SubResource("PlanoEspecial")
 [node name="Rotulo" type="Label3D" parent="Reservas/RuedaMolino"]
+visible = false
 position = Vector3(26.5, 0.065, -10)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "Rueda"
@@ -1461,3 +1467,8 @@ position = Vector3(8, 0.003, 25)
 
 [node name="E11" parent="Edificios" instance=ExtResource("ViviendaE11")]
 position = Vector3(18, 0.003, 24)
+
+[node name="Rio" parent="." instance=ExtResource("Rio")]
+
+[node name="Puente" parent="." instance=ExtResource("PuenteReal")]
+position = Vector3(30, 0, 0)

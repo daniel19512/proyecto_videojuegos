@@ -1,6 +1,6 @@
 # Plano de ampliación de la aldea medieval
 
-Fecha del plano: **30 de octubre de 2026**; actualización **2 de noviembre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados; E01–E12 construidos técnicamente hasta 3B.8; E01–E11 aprobados según la solicitud actual y E12 pendiente de aprobación visual. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
+Fecha del plano: **30 de octubre de 2026**; actualización **2 de noviembre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados; E01–E12 construidos técnicamente hasta 3B.8; E01–E12 aprobados según la solicitud de fase 4A; río, puente y rueda implementados y pendientes de aprobación visual. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
 
 ## 1. Alcance y base inspeccionada
 
@@ -8,7 +8,7 @@ Diseño de una aldea acogedora con **12 edificios**: seis viviendas, taberna, pa
 
 Fuentes: `AGENTS.md`, `RPG/docs/estado_proyecto.md`, `RPG/docs/inventario_assets.md`; escenas `aldea.tscn`, `casa_modular.tscn`, `pruebas_assets.tscn`, `mundo.tscn`, `jugador.tscn` y `jugador_frames.tres` bajo `RPG/scenes/`; movimiento en `RPG/scripts/jugador.gd`. Se comprobaron los 338 archivos glTF locales por paquete y las medidas de los recursos de la tabla siguiente. La referencia artística se interpreta desde la descripción del usuario; no se ha inspeccionado una imagen adjunta.
 
-La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01–E12 están construidos técnicamente. E01–E11 aprobados como primera versión según la solicitud 3B.8; E12 pendiente de aprobación visual. Se conservan protagonista y assets originales.
+La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01–E12 están construidos técnicamente. E01–E12 aprobados como primera versión según la solicitud de fase 4A. Se conservan protagonista y assets originales.
 
 ## 2. Escala real y dimensiones del terreno
 
@@ -378,3 +378,46 @@ Molino en (21,0.003,-10), cuerpo 6×8, parcela X=[16,26], Z=[-16,-4]; acceso oes
 Rueda este: centro mundial (26.5,2.503,-10), diámetro ≈4.52, ancho 1.22, plano YZ y giro futuro sobre eje X mediante MecanismoHidraulico/RuedaHidraulicaPivot. Partes móviles y soportes fijos separados. Rueda contenida en reserva técnica X=[25,28], Z=[-13,-7]; no invade cauce propuesto X=[28,32] ni cruce X=[26,34], Z=[-2,2]. Eje visual entra en muro este y conecta ambos soportes. No hay rueda dedicada en los paquetes: geometría local estática.
 
 No está definida la cota de agua. Altura provisional de rueda sobre suelo actual; al crear el río se deberá resolver alimentación/canal dentro de reserva, nivel de agua y ajuste coordinado de pivote, eje, cojinetes y apoyos, preservando el edificio y cruce. Esta etapa no fija ese canal ni modifica cauce, terreno, puente o corredores. E12 construida técnicamente y pendiente de aprobación visual. Prueba específica headless y Forward+/D3D12 sin fallos; 36 corredores libres/conectados; incidencia preexistente de retorno E04 conservada. Ocho vistas y contexto en RPG/logs/e12_vistas_finales/.
+
+## Fase 4A — río, puente y alimentación de rueda
+
+Implementación técnica del 2 de noviembre de 2026, pendiente de aprobación visual. Las secciones de etapas anteriores describen su situación histórica. E01–E12 aprobados por el usuario al iniciar esta fase. No cambia ningún centro, parcela, corredor ni reserva del plano.
+
+| Elemento | Geometría real en coordenadas del mundo |
+|---|---|
+| Reserva de ribera | X=[26,36], Z=[-34,34], intacta |
+| Eje de río | X=30+0.27·sin(0.22·Z)+0.12·sin(0.71·Z), muestreo cada unidad, Z=[-34,34] |
+| Ancho de agua | 2·(1.85+0.18·cos(0.43·Z)); 3.340–4.060 en muestras; X≈[27.789,32.211] |
+| Superficie principal | Y=0.32; malla continua, 68 tramos, 272 triángulos |
+| Orillas | 0.7 por lado, Y exterior=0.014 hasta Y agua=0.32; X≈[27.089,32.911] |
+| Puente | Raíz (30,0,0), X=[26,34], tablero ancho 3.4, estribos 3.8, 3 libres entre barandas |
+| Tablero y rampas | Centro plano X=[27,33], Y=0.48. Rampas X=[26,27] y [33,34], Y=0.018→0.48, pendiente ≈24.8° |
+| Barandas | Centros Z=±1.65, espesor 0.30; cara interior Z=±1.50; altura máxima de postes Y=1.455 |
+| Canal de rueda | Borde oeste (X,Z): (28.7,-13)→(26.1,-11.7)→(26.1,-8.3)→(28.7,-7). Borde este: (30,-13)→(29,-11.7)→(29,-8.3)→(30,-7). Y=0.322, unión solapada con agua principal |
+| Banco oeste del canal | (28,-13)→(25.7,-11.7)→(25.7,-8.3)→(28,-7), Y exterior=0.014; dentro de reservas técnicas |
+| Rueda | Centro intacto (26.5,2.503,-10), diámetro ≈4.52, ancho ≈1.22; extremo inferior ≈0.24, inmersión ≈0.08 |
+| Giro | Eje X, -9°/s, 1.5 rpm; parte inferior hacia +Z, coherente con corriente visual; soportes fijos |
+
+Material de agua propio opaco, azul verdoso desaturado, variación tonal suave, patrón animado hacia +Z y normales discretas. Tierra húmeda y piedra mate; madera oscura/clara exclusiva del puente. Treinta y cinco piedras locales de siete sectores y tres anillos, tamaños irregulares; sin vegetación nueva ni árboles. No se reutilizan ni modifican glTF en esta fase.
+
+Suelo original continuo Y=0 **sin excavación**. Solución provisional visual elevada, con orillas en pendiente para disimular el apoyo; no representa profundidad física. Extremos contenidos en Z=±34 pendientes de continuidad paisajística futura. Sin rediseñar terreno, edificios ni caminos. No hay natación, pesca, interacción ni simulación hidráulica.
+
+Barreras: 64 cajas de cauce (2 de alto, 1.04 de largo, solapadas) y una de canal. Abertura en Z=[-2,2] para puente. Sus barandas cierran las salidas laterales al agua. Puente con cinco formas: tablero, dos rampas convexas y dos barandas. Las barreras protegen el agua pese al suelo subyacente; rocas pequeñas sin colisiones adicionales. Caja de terreno y límites exteriores conservados.
+
+Los 36 corredores mantienen sus metadatos originales y conectividad. La reserva estructural oriental sigue siendo de 4; el puente ocupa el cruce previsto y ofrece los 3 libres aprobados. Validadores contrastan a ambos lados, dentro de rampas/tablero y en todo el resto del ancho de caminos. Circuito E12 actualizado: (15.9,-16.4)→(15.9,0)→(35,0)→(35,-35)→(27,-35)→(27,-16.4)→inicio. La antigua arista X=28.5 atraviesa ahora agua: el nuevo circuito usa el puente y suelo al norte del extremo, sin eliminar detección física.
+
+`RPG/tests/validar_rio_puente.gd` comprueba río/puente/rueda headless y con ventana; `-- --capturas` guarda ocho vistas nuevas bajo `RPG/logs/fase4a_rio_puente/`. Galería: `RPG/logs/fase4a_rio_puente/galeria.html`. Específica, molino y cámara sin fallos; distribución conserva únicamente el retorno preexistente E04 con velocidad temporal 10. Resultados y logs en el estado. Pendientes E03/E04/E05 y oclusión de cubiertas conservados; aprobación visual de fase 4A a cargo del usuario.
+
+## Fase 4A.1 — cauce hasta los límites y agua animada
+
+Esta revisión sustituye la longitud y el circuito de ribera de fase 4A; el resto de sus medidas siguen vigentes. Terreno **X=[-40,40], Z=[-36,36]**, Y=0, sin cambios. Antes: agua Z=[-34,34], longitud 68, pasos verdes de dos unidades al norte/sur. Ahora: **agua y orillas Z=[-48,48], longitud 96**, doce unidades fuera de cada borde para que los cortes no aparezcan en las vistas cercanas. Reserva lógica de ribera ampliada únicamente hasta el límite jugable: **Rect2(26,-36,10,72)**; marcas y metadatos coinciden. Prolongación exterior sin suelo transitable; no amplía el mapa.
+
+Conservados eje X=30+0.27·sin(0.22·Z)+0.12·sin(0.71·Z), semiancho 1.85+0.18·cos(0.43·Z), muestreo cada unidad, cota Y=0.32 y bancos de 0.7. Superficie principal: 96 tramos, 384 triángulos. Canal de rueda y puente exactamente como en fase 4A; no se mueven edificios ni parcelas. Ocho piedras pequeñas nuevas junto a los extremos sobre el terreno; 43 piedras propias locales en total.
+
+Barreras continuas: **93 formas**, incluidas las 65 anteriores y 28 nuevas. Extensión de cajas hasta Z≈±48.02, con solape de 0.04 entre tramos; el río cruza por completo los límites físicos Z=±36. Se conserva el hueco del puente y las cinco colisiones de este. El personaje no puede pasar de una margen a otra por norte/sur ni salir del terreno para evitar el agua.
+
+El recorrido de prueba E12 que rodeaba el río por Z=-35 queda retirado por ser precisamente el paso prohibido. Se comprueban conexiones norte/sur del molino y ambas márgenes mediante: (27,-16.4)→(15.9,-16.4)→(15.9,0)→(35,0)→(35,-35)→(35,35)→(35,0)→(15.9,0)→(15.9,-3.6)→(27,-3.6). No se exige un circuito cerrado alrededor de un río que ahora divide el mapa; se exige el único cruce válido por puente y el bloqueo de todo el resto del cauce. Los **36 corredores** originales mantienen coordenadas, anchos de reserva y conectividad.
+
+Shader existente mejorado: dos capas hacia +Z, velocidades 0.65 y 0.468 unidades/s. Ondas normales suaves, líneas claras cortas con distribución irregular, reflejos discretos y agitación localizada junto a la rueda. Parámetros de material editables: velocidad_corriente, intensidad_ondas=0.55, intensidad_reflejos=0.24, color_base=(0.13,0.31,0.29), color_claro=(0.42,0.61,0.54). Sin texturas externas, transparencias complejas, partículas ni simulación. La rueda conserva -9°/s, pivote y cota de contacto.
+
+Específica headless y Forward+/D3D12: **0 fallos**, incluidos 540 barridos de cápsula, cuatro intentos reales de rodeo y cruce bidireccional del puente. Regresión completa: 36 corredores conectados y solo fallo preexistente de retorno E04; resultados en estado. Siete vistas, tres fotogramas de cámara fija y GIF de tres segundos en `RPG/logs/fase4a1_rio_mejorado/galeria.html`. Aprobación visual pendiente del usuario; cauce físico excavado y ambientación global siguen fuera del alcance.
