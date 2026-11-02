@@ -1,4 +1,7 @@
 [gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/vivienda_suroeste.tscn" id="ViviendaSO"]
+[ext_resource type="PackedScene" path="res://scenes/vivienda_sur.tscn" id="ViviendaS"]
+[ext_resource type="PackedScene" path="res://scenes/vivienda_noreste.tscn" id="ViviendaNE"]
 [ext_resource type="Script" path="res://scripts/depuracion_parcelas.gd" id="DepuracionParcelas"]
 [ext_resource type="PackedScene" path="res://scenes/taberna.tscn" id="Taberna"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_noroeste.tscn" id="ViviendaNO"]
@@ -770,6 +773,7 @@ metadata/huella_cubierta = Vector2(5.6, 5.6)
 metadata/escala_y_cubierta = 0.60
 metadata/acceso = Vector2(18.2, -24)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E07"]
+visible = false
 position = Vector3(0, 0.006, 0)
 scale = Vector3(8, 1, 10)
 cast_shadow = 0
@@ -795,6 +799,7 @@ scale = Vector3(0.07, 1, 10)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E07"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E07\nVivienda NE"
@@ -810,6 +815,7 @@ metadata/huella_cubierta = Vector2(5.6, 5.6)
 metadata/escala_y_cubierta = 0.60
 metadata/acceso = Vector2(-24, 20.2)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E08"]
+visible = false
 position = Vector3(0, 0.006, 0)
 scale = Vector3(10, 1, 10)
 cast_shadow = 0
@@ -835,6 +841,7 @@ scale = Vector3(0.07, 1, 10)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E08"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E08\nVivienda SO"
@@ -850,6 +857,7 @@ metadata/huella_cubierta = Vector2(5.6, 5.6)
 metadata/escala_y_cubierta = 0.60
 metadata/acceso = Vector2(-8, 21.2)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E09"]
+visible = false
 position = Vector3(0, 0.006, 0)
 scale = Vector3(10, 1, 10)
 cast_shadow = 0
@@ -875,6 +883,7 @@ scale = Vector3(0.07, 1, 10)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E09"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E09\nVivienda S"
@@ -1426,3 +1435,12 @@ position = Vector3(-24, 0.003, -23)
 
 [node name="E02" parent="Edificios" instance=ExtResource("Panaderia")]
 position = Vector3(8, 0.003, -20)
+
+[node name="E07" parent="Edificios" instance=ExtResource("ViviendaNE")]
+position = Vector3(21, 0.003, -24)
+
+[node name="E08" parent="Edificios" instance=ExtResource("ViviendaSO")]
+position = Vector3(-24, 0.003, 23)
+
+[node name="E09" parent="Edificios" instance=ExtResource("ViviendaS")]
+position = Vector3(-8, 0.003, 24)

@@ -1,6 +1,6 @@
 # Plano de ampliación de la aldea medieval
 
-Fecha: **30 de octubre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados, sin edificios definitivos. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
+Fecha: **30 de octubre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados; E01–E09 construidos hasta 3B.6, E08/E09 pendientes de aprobación visual. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
 
 ## 1. Alcance y base inspeccionada
 
@@ -8,7 +8,7 @@ Diseño de una aldea acogedora con **12 edificios**: seis viviendas, taberna, pa
 
 Fuentes: `AGENTS.md`, `RPG/docs/estado_proyecto.md`, `RPG/docs/inventario_assets.md`; escenas `aldea.tscn`, `casa_modular.tscn`, `pruebas_assets.tscn`, `mundo.tscn`, `jugador.tscn` y `jugador_frames.tres` bajo `RPG/scenes/`; movimiento en `RPG/scripts/jugador.gd`. Se comprobaron los 338 archivos glTF locales por paquete y las medidas de los recursos de la tabla siguiente. La referencia artística se interpreta desde la descripción del usuario; no se ha inspeccionado una imagen adjunta.
 
-La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01, E02, E03, E04 y E06 están construidos; siete parcelas siguen reservadas. E04 está pendiente de aprobación visual tras 3B.3; ver su estado al final del documento. Se conservan protagonista y assets originales.
+La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01–E09 están construidos; tres parcelas siguen reservadas. E01–E07 aprobados como primera versión según la solicitud 3B.6; E08/E09 pendientes de aprobación visual. Se conservan protagonista y assets originales.
 
 ## 2. Escala real y dimensiones del terreno
 
@@ -55,9 +55,9 @@ Centros de futuros edificios, implementados como marcadores en la etapa 2; dimen
 | E04 | Carpintería | (-23, 7) | 6×4 / 7,6×5,6 | 12×10 | Este; banco de trabajo y madera |
 | E05 | Herbolario | (21, 8) | 4×4 / 5,6×5,6 | 8×10 | Oeste; plantas y preparación |
 | E06 | Vivienda noroeste | (-24, -23) | 4×6 / 5,6×7,6 | 10×12 | Este; residencia de artesanos |
-| E07 | Vivienda noreste | (21, -24) | 4×4 / 5,6×5,6 | 8×10 | Oeste; residencia de comerciantes |
-| E08 | Vivienda suroeste | (-24, 23) | 4×4 / 5,6×5,6 | 10×10 | Norte; jardín doméstico |
-| E09 | Vivienda sur oeste | (-8, 24) | 4×4 / 5,6×5,6 | 10×10 | Norte; residencia de agricultores |
+| E07 | Vivienda noreste | (21, -24) | Baja 4×4, alta 4,5×4,5 / aleros ≤5,6×5,6 | 8×10 | Oeste; vivienda familiar construida, pendiente aprobación visual |
+| E08 | Vivienda suroeste | (-24, 23) | 4×4 / 5,6×5,6 | 10×10 | Norte; campesina construida, pendiente aprobación visual |
+| E09 | Vivienda sur oeste | (-8, 24) | 4×4 / 5,6×5,6 | 10×10 | Norte; vivienda con galería construida, pendiente aprobación visual |
 | E10 | Vivienda sur centro | (8, 25) | 4×4 / 5,6×5,6 | 8×10 | Norte; residencia de panadería |
 | E11 | Vivienda sureste | (18, 24) | 4×4 / 5,6×5,6 | 10×10 | Norte; residencia del molino |
 | E12 | Molino reservado | (21, -10) | 6×8 / 8,3×9,7 | 10×12 para edificio | Oeste; molienda futura; rueda al este fuera de parcela |
@@ -336,3 +336,17 @@ Una instancia de `RPG/scenes/herbolario.tscn` en (21,0.003,8), sin rotación ni 
 Bancales de lavanda/romero/caléndula al sur; salvia/menta al este. Mesa de preparación al suroeste, macetas flanqueando puerta, estantería oriental, secadero con siete manojos al norte y barril al noreste. Ventanas y plantas en fachadas restantes. Jardín de hierbas reservado en (23,15) permanece intacto; esta etapa cultiva visualmente solo dentro de E05. Cuatro muros y doce formas de obstáculos exteriores, sin colisión gigante. Aproximación a puerta/mesa/bancales/secadero y circuito exterior comprobados con cápsula.
 
 Se conservan 12 parcelas y 36 corredores, plaza, terreno y accesos. Marca/Rotulo E05 ocultos, sin borrar nodos ni metadatos. Seis edificios construidos, seis reservas pendientes. Capturas en `RPG/logs/e05_vistas_finales/`; no iniciar E07. Sin gameplay ni interior explorable. Pendientes generales E03 (brasas/forja) y E04 (oclusión de banco y lectura de herramientas) conservados, fuera del alcance de E05.
+
+## Etapa 3B.5 — E07 construida técnicamente, pendiente aprobación visual
+
+Centro (21,-24), apoyo Y=0.003; reserva original 8×10, X=[17,25], Z=[-29,-19]. Entrada hacia el oeste, puerta ligeramente al norte del eje, acceso público conservado en (18.2,-24) hacia X=14.25. Planta baja 4×4 de piedra, altura 2.70; planta alta 4.5×4.5 de yeso y entramado, altura 2.25, voladizo de 0.25. Cubierta propia a cuatro aguas chocolate, aleros máximos 5.54×5.54 dentro de la huella aprobada 5.6×5.6; cumbrera a Y=6.3 local. No cambia el metadato de proporciones ni los modelos de otros edificios.
+
+Patio al sur: tendedero, banco y losas; barril/cubo al sureste, leñera al norte y saco al noreste. Ventanas en cuatro fachadas; entrada protegida, farol y jardineras. Doce formas individuales de colisión, sin llenar el volumen interior ni bloquear parcelas. Marcas y rótulo E07 ocultos, conservando nodos/metadatos y bordes de depuración. Una sola instancia en Edificios/E07.
+
+Siete construcciones, cinco reservas pendientes; sin cambios a los 36 corredores, resto de edificios, terreno o plaza. Validación E07 headless y Forward+/D3D12: 0 fallos; ocho capturas revisadas técnicamente en `RPG/logs/e07_vistas_finales/`. La regresión general conserva un fallo de retorno E04 reproducido sin E07 con velocidad temporal 10; pasa ese control a velocidad 4 en memoria. Corredores libres/conectados y demás comprobaciones aprobados; detalle y logs en el estado. No declarar aprobación visual ni comenzar E08. Pendientes de pulido E03/E04/E05 conservados.
+
+## Etapa 3B.6 — viviendas E08/E09
+
+Construidas técnicamente, pendientes de aprobación visual. E08 (-24,23): X=[-29,-19], Z=[18,28]. E09 (-8,24): X=[-13,-3], Z=[19,29]. Cuerpos 4×4, reservas 10×10, aleros principales ≤5.6×5.6 y accesos norte (-24,20.2) / (-8,21.2) conservados. Raíces Y=0.003 sin giro ni escala. Centros separados ≈16.03; hueco entre parcelas de 6 unidades en X.
+E08 conserva el cuerpo compacto aprobado: lectura baja/horizontal con muros de 2.70 y cumbrera X, sin ampliar a 4×6. Paja de dos aguas con haces alargados y cumbrera; patio de trabajo, leñera oeste y agua este. E09 tiene muros de 3.15, una planta, cumbrera Z desplazada y placas de pizarra; galería cubierta este con banco/mesa y jardineras al sur. Puerta desplazada 0.55 al oeste dentro de la fachada, unida al acceso original.
+Cubiertas locales sin escalar originales glTF ni alterar materiales compartidos. Diez colisiones E08 y doce E09, cuatro muros delgados por casa; sin cajas que rellenen edificios/patios. Galería y leñeras dentro de parcelas. Huerto comunitario y Huerto E09 intactos, sin objetos encima. Los 36 corredores se verifican íntegramente. Capturas en `RPG/logs/e08_vistas_finales/` y `RPG/logs/e09_vistas_finales/`; pruebas y limitaciones en el estado. No comenzar E10.

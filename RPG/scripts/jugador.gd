@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@export_range(0.1, 20.0, 0.1) var velocidad: float = 4.0
+# Velocidad temporal para pruebas de exploracion (base original: 4.0).
+@export_range(0.1, 20.0, 0.1) var velocidad: float = 10.0
 @export_range(0.1, 100.0, 0.1) var aceleracion: float = 18.0
 @export_range(0.1, 100.0, 0.1) var desaceleracion: float = 24.0
 

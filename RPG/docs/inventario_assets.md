@@ -638,3 +638,35 @@ Primitivas fuera de assets/: postes, muros parciales, riostras, bases de piedra,
 Primitivas de Godot fuera de assets/: muros/entramado/zócalos, frontones, cubierta verde de tablillas y secadero, puerta/letrero, ventanas/repisas, macetas, cinco bancales con plantas estilizadas de cinco familias, cuerda y siete manojos colgantes, mesa/mortero/mano y estantería con nueve tarros. No se atribuyen especies botánicas exactas a modelos importados ni se inventan rutas de morteros/hierbas específicas. Materiales locales exclusivos de E05.
 
 Sin paquetes, dependencias ni modelos originales nuevos: permanecen 338 glTF y su exclusión intencional de Git. Recursos cargados en Godot 4.7.2 y ocho vistas Forward+/D3D12 revisadas técnicamente; aprobación artística pendiente del usuario. Sin sistemas de cultivo, medicina o alquimia.
+
+## Uso incorporado en E07 — 2 de noviembre de 2026
+
+`RPG/scenes/vivienda_noreste.tscn` reutiliza originales sin modificarlos, con rutas locales comprobadas:
+
+- `RPG/assets/objetos_medievales/glTF/Bench.gltf`: banco del patio, escala 0.8; ancho real 2.22, colisión simplificada 2.25×0.5×0.48.
+- `RPG/assets/objetos_medievales/glTF/Barrel.gltf`: agua al sureste, escala 0.85 y caja individual.
+- `RPG/assets/objetos_medievales/glTF/Bucket_Wooden_1.gltf`: cubo junto al barril, escala 0.8.
+- `RPG/assets/objetos_medievales/glTF/Bag.gltf`: saco doméstico al noreste, escala 0.8; no se atribuye al paquete una cesta no identificada.
+- `RPG/assets/objetos_medievales/glTF/Lantern_Wall.gltf`: farol decorativo junto a puerta oeste, escala 0.45; sin luz dinámica nueva.
+- `RPG/assets/aldea/glTF/T_UnevenBrick_BaseColor.png`: piedra de planta baja/chimenea mediante material exclusivo E07; textura fuente intacta.
+
+Primitivas locales fuera de assets/: plantas baja/alta, zócalos, entramado, ménsulas, puerta/protección, ventanas/postigos, chimenea, leñera, tendedero/telas, losas y jardineras con soportes/flores. Cubierta cerrada propia en `RPG/scenes/vivienda_noreste_cubierta.tres`, con cuatro aguas y hileras chocolate en relieve dentro de la escena. No se reutilizó ni recoloreó un material compartido por otro edificio. Se inspeccionaron también las carpetas de aldea/naturaleza; no se incorporó un paquete nuevo ni se modificó vegetación original.
+
+Se mantienen los 338 glTF originales y la exclusión de assets en Git. Carga y controles específicos aprobados en Godot 4.7.2 headless y Forward+/D3D12; ocho capturas revisadas técnicamente, pendientes de aprobación visual del usuario. Sin interiores, rutinas domésticas ni gameplay. La incidencia de retorno de E04 con velocidad temporal 10 se registra en el estado, no es un fallo de recursos E07.
+
+## Uso incorporado en E08/E09 — 2 de noviembre de 2026
+
+Escenas independientes `RPG/scenes/vivienda_suroeste.tscn` y `RPG/scenes/vivienda_sur.tscn`. Originales de `RPG/assets/objetos_medievales/glTF/` reutilizados sin modificaciones:
+
+| Modelo | E08 | E09 |
+|---|---|---|
+| Bench | Banco noroeste, escala 0.62 | Banco de galería, escala 0.62, giro 90° |
+| Barrel | Agua este, escala 0.90 | Agua oeste, escala 0.85 |
+| Bag | Saco trasero, escala 0.85 | Semillas al sur, escala 0.65 |
+| FarmCrate_Carrot | Caja agrícola, escala 0.80 | Caja de verduras, escala 0.70 |
+| Bucket_Wooden_1 | Cubo, escala 0.80 | — |
+| Pot_1 | — | Recipiente sobre mesa, escala 0.65 |
+
+`RPG/assets/aldea/glTF/T_UnevenBrick_BaseColor.png`: piedra mediante materiales exclusivos de cada casa. Carpetas de aldea/naturaleza consultadas; sin vegetación importada adicional ni paquetes nuevos. No se atribuye una cesta específica al paquete: se usan cajas FarmCrate_Carrot.
+Geometría local fuera de assets/: muros, yeso, entramado, puertas/ventanas/postigos, chimeneas, leñeras/troncos, rastrillo E08, galería/mesa/postes y jardineras/plantas/losas E09. Cubierta E08 con 144 haces pentagonales de paja y diez haces de cumbrera; E09 con 108 placas de pizarra y cubierta secundaria. Colisiones añadidas en cada escena; cubo, recipiente, plantas y herramienta pequeña sin colisión extra. No se recolorean recursos compartidos.
+Permanecen 338 glTF originales y la exclusión de assets en Git; procedencia/licencias pendientes sin cambios. Recursos y apoyos validados en Godot 4.7.2 headless y Forward+/D3D12. Dieciséis capturas y una conjunta revisadas técnicamente; viviendas construidas, pendientes de aprobación visual del usuario. Sin huertos generales, cultivo ni gameplay.
