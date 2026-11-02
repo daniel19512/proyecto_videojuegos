@@ -1,6 +1,6 @@
 # Plano de ampliación de la aldea medieval
 
-Fecha del plano: **30 de octubre de 2026**; actualización **2 de noviembre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados; E01–E11 construidos hasta 3B.7, E10/E11 pendientes de aprobación visual. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
+Fecha del plano: **30 de octubre de 2026**; actualización **2 de noviembre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados; E01–E12 construidos técnicamente hasta 3B.8; E01–E11 aprobados según la solicitud actual y E12 pendiente de aprobación visual. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
 
 ## 1. Alcance y base inspeccionada
 
@@ -8,7 +8,7 @@ Diseño de una aldea acogedora con **12 edificios**: seis viviendas, taberna, pa
 
 Fuentes: `AGENTS.md`, `RPG/docs/estado_proyecto.md`, `RPG/docs/inventario_assets.md`; escenas `aldea.tscn`, `casa_modular.tscn`, `pruebas_assets.tscn`, `mundo.tscn`, `jugador.tscn` y `jugador_frames.tres` bajo `RPG/scenes/`; movimiento en `RPG/scripts/jugador.gd`. Se comprobaron los 338 archivos glTF locales por paquete y las medidas de los recursos de la tabla siguiente. La referencia artística se interpreta desde la descripción del usuario; no se ha inspeccionado una imagen adjunta.
 
-La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01–E11 están construidos; E12 sigue reservada. E01–E09 aprobados como primera versión según la solicitud 3B.7; E10/E11 pendientes de aprobación visual. Se conservan protagonista y assets originales.
+La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01–E12 están construidos técnicamente. E01–E11 aprobados como primera versión según la solicitud 3B.8; E12 pendiente de aprobación visual. Se conservan protagonista y assets originales.
 
 ## 2. Escala real y dimensiones del terreno
 
@@ -16,7 +16,7 @@ Terreno preparado: **80 × 72 unidades**, límites X = [-40, 40], Z = [-36, 36],
 
 Origen: centro de plaza (0, 0). En las tablas se indica **(X, Z)**; norte = -Z, sur = +Z, este = +X. Son coordenadas del mundo con `Aldea` a identidad. El norte del plano no es necesariamente la parte superior de toda vista de juego. Las cotas Y y pivotes se resolverán al montar cada envoltorio.
 
-El protagonista conserva cápsula de radio **0,32** y altura **1,60**, `pixel_size = 0.045` y cuadros de 40 × 48 píxeles: rectángulo del sprite de **1,80 × 2,16**, incluido margen transparente; no equivale a su silueta opaca. Velocidad actual: 4 unidades/s. La cámara principal utiliza el tamaño ortográfico **15 aprobado por el usuario**, con inclinación aproximada de -32° conservada: se recorrerán sectores, sin pretender mostrar el plano completo simultáneamente. Desde 3A.3 la cámara principal permite órbita horizontal 360° con Q/E y mando; norte sigue siendo -Z, aunque la pantalla gire. El selector del laboratorio inicia en 15 y conserva sus cuatro comparaciones.
+El protagonista conserva cápsula de radio **0,32** y altura **1,60**, `pixel_size = 0.045` y cuadros de 40 × 48 píxeles: rectángulo del sprite de **1,80 × 2,16**, incluido margen transparente; no equivale a su silueta opaca. Velocidad temporal actual: 10 unidades/s (base anterior 4), conservada en esta etapa. La cámara principal utiliza el tamaño ortográfico **15 aprobado por el usuario**, con inclinación aproximada de -32° conservada: se recorrerán sectores, sin pretender mostrar el plano completo simultáneamente. Desde 3A.3 la cámara principal permite órbita horizontal 360° con Q/E y mando; norte sigue siendo -Z, aunque la pantalla gire. El selector del laboratorio inicia en 15 y conserva sus cuatro comparaciones.
 
 ### Medidas verificadas de los modelos
 
@@ -60,9 +60,9 @@ Centros de futuros edificios, implementados como marcadores en la etapa 2; dimen
 | E09 | Vivienda sur oeste | (-8, 24) | 4×4 / 5,6×5,6 | 10×10 | Norte; vivienda con galería construida, pendiente aprobación visual |
 | E10 | Vivienda sur centro | (8, 25) | 4×4 / 5,6×5,6 | 8×10 | Norte; residencia de panadería |
 | E11 | Vivienda sureste | (18, 24) | 4×4 / 5,6×5,6 | 10×10 | Norte; residencia del molino |
-| E12 | Molino reservado | (21, -10) | 6×8 / 8,3×9,7 | 10×12 para edificio | Oeste; molienda futura; rueda al este fuera de parcela |
+| E12 | Molino construido (pendiente aprobación visual) | (21, -10) | 6×8 / 8,3×9,7 | 10×12 para edificio | Oeste; molienda futura; rueda al este fuera de parcela |
 
-E04 conserva cuerpo 6×4 y envolvente máxima prevista 7,6×5,6; su taller de madera usa cubierta local de una pendiente retranqueada, sin escalar modelos de tejado. E03 conserva huella 6×4 y reserva de cubierta 7,6×5,6, con taller abierto y cubierta lateral propia según etapa 3B.2. E01/E12 usan la familia de cubierta 6×8; comprobar frontones y cierres en futuras composiciones. Los paquetes no contienen edificios completos listos. Las funciones y asignaciones de habitantes son intenciones de diseño, no gameplay ni NPCs existentes. E03 permite aproximación al área de trabajo abierta, sin transición ni interiores jugables.
+E04 conserva cuerpo 6×4 y envolvente máxima prevista 7,6×5,6; su taller de madera usa cubierta local de una pendiente retranqueada, sin escalar modelos de tejado. E03 conserva huella 6×4 y reserva de cubierta 7,6×5,6, con taller abierto y cubierta lateral propia según etapa 3B.2. E01 usa la familia de cubierta modular 6×8; E12 conserva cuerpo 6×8 y utiliza una cubierta propia de tablillas dentro de su envolvente aprobada. Los paquetes no contienen edificios completos listos. Las funciones y asignaciones de habitantes son intenciones de diseño, no gameplay ni NPCs existentes. E03 permite aproximación al área de trabajo abierta, sin transición ni interiores jugables.
 
 ## 4. Zonas, plaza y paisaje
 
@@ -370,3 +370,11 @@ Construidas técnicamente, **pendientes de aprobación visual del usuario**. Una
 Las dos cubiertas principales caben en la huella original 5.6×5.6. E10 usa un cobertizo estrecho oriental en vez de forzar un segundo volumen habitable: cubierta secundaria centrada en (2.57,2.15,1.15) local, 1.36×0.15×2.1 y pendiente transversal de 12°; queda dentro de la parcela. E11 deja íntegra la anchura 2.5 del acceso norte entre los postes. Cuatro muros delgados por casa, puertas cerradas y sin interiores explorables. Circuitos exteriores y marcha real de ida/retorno comprobados con la cápsula existente.
 
 Huerto E10, Jardín, terreno, ramales y los 36 corredores conservados; tampoco se alteran E01–E09, cámara, protagonista ni velocidad temporal 10. Capturas en `RPG/logs/e10_vistas_finales/` y `RPG/logs/e11_vistas_finales/`, conjunta en esta última. No iniciar E12. Pendientes generales y resultados de regresión en el estado.
+
+## Etapa 3B.8 — implantación de E12 sin cambios al plano
+
+Molino en (21,0.003,-10), cuerpo 6×8, parcela X=[16,26], Z=[-16,-4]; acceso oeste (17.2,-10), ancho 3. Cubierta principal propia marrón grisácea de dos aguas, cumbrera Z, huella ≈7.47×9.50 dentro de la envolvente 8.3×9.7 y altura máxima global 6.333. Plataforma de carga oeste, al sur de la puerta y fuera del acceso. Reservas, caminos y suelo Y=0 intactos; una instancia, sin interiores.
+
+Rueda este: centro mundial (26.5,2.503,-10), diámetro ≈4.52, ancho 1.22, plano YZ y giro futuro sobre eje X mediante MecanismoHidraulico/RuedaHidraulicaPivot. Partes móviles y soportes fijos separados. Rueda contenida en reserva técnica X=[25,28], Z=[-13,-7]; no invade cauce propuesto X=[28,32] ni cruce X=[26,34], Z=[-2,2]. Eje visual entra en muro este y conecta ambos soportes. No hay rueda dedicada en los paquetes: geometría local estática.
+
+No está definida la cota de agua. Altura provisional de rueda sobre suelo actual; al crear el río se deberá resolver alimentación/canal dentro de reserva, nivel de agua y ajuste coordinado de pivote, eje, cojinetes y apoyos, preservando el edificio y cruce. Esta etapa no fija ese canal ni modifica cauce, terreno, puente o corredores. E12 construida técnicamente y pendiente de aprobación visual. Prueba específica headless y Forward+/D3D12 sin fallos; 36 corredores libres/conectados; incidencia preexistente de retorno E04 conservada. Ocho vistas y contexto en RPG/logs/e12_vistas_finales/.

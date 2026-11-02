@@ -1,4 +1,5 @@
 [gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/molino.tscn" id="Molino"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_e10.tscn" id="ViviendaE10"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_e11.tscn" id="ViviendaE11"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_suroeste.tscn" id="ViviendaSO"]
@@ -985,6 +986,7 @@ metadata/huella_cubierta = Vector2(8.3, 9.7)
 metadata/escala_y_cubierta = 0.55
 metadata/acceso = Vector2(17.2, -10)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E12"]
+visible = false
 position = Vector3(0, 0.006, 0)
 scale = Vector3(10, 1, 12)
 cast_shadow = 0
@@ -1010,6 +1012,7 @@ scale = Vector3(0.07, 1, 12)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E12"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E12\nMolino"
@@ -1428,6 +1431,8 @@ position = Vector3(40.1, 1.5, 0)
 shape = SubResource("Vertical")
 
 [node name="Edificios" type="Node3D" parent="."]
+[node name="E12" parent="Edificios" instance=ExtResource("Molino")]
+position = Vector3(21, 0.003, -10)
 [node name="E05" parent="Edificios" instance=ExtResource("Herbolario")]
 position = Vector3(21, 0.003, 8)
 [node name="E04" parent="Edificios" instance=ExtResource("Carpinteria")]

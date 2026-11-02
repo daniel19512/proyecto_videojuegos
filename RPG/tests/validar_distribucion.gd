@@ -134,7 +134,7 @@ func validar_limites_depuracion() -> void:
 	for i in limites.size():
 		intactos = intactos and limites[i].global_transform.is_equal_approx(originales[i]) and not limites[i].visible
 	comprobar(intactos,"Conmutar limites no elimina nodos ni altera geometria")
-	comprobar(not aldea.get_node("Parcelas/E06/Marca").visible and not aldea.get_node("Parcelas/E07/Marca").visible and not aldea.get_node("Parcelas/E08/Marca").visible and not aldea.get_node("Parcelas/E09/Marca").visible and not aldea.get_node("Parcelas/E10/Marca").visible and not aldea.get_node("Parcelas/E11/Marca").visible and aldea.get_node("Parcelas/E12/Marca").visible,"Depuracion no altera marcas de edificios y reservas")
+	comprobar(not aldea.get_node("Parcelas/E06/Marca").visible and not aldea.get_node("Parcelas/E07/Marca").visible and not aldea.get_node("Parcelas/E08/Marca").visible and not aldea.get_node("Parcelas/E09/Marca").visible and not aldea.get_node("Parcelas/E10/Marca").visible and not aldea.get_node("Parcelas/E11/Marca").visible and not aldea.get_node("Parcelas/E12/Marca").visible,"Depuracion no altera marcas de edificios y reservas")
 
 func validar_edificios() -> void:
 	for id in ["E01", "E06"]:
@@ -338,8 +338,8 @@ func validar() -> void:
 	comprobar(caja.position.is_equal_approx(Vector3(-40, -0.5, -36)) and caja.size.is_equal_approx(Vector3(80, 0.5, 72)), "Terreno fisico 80x72 centrado, superficie Y=0")
 	var malla: MeshInstance3D = aldea.get_node("Terreno/Suelo/MallaSuelo")
 	comprobar((malla.global_transform * malla.get_aabb()).is_equal_approx(caja), "Suelo visual coincide con colision")
-	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 22, "Suelo, limites y solidos de los once edificios E01-E11")
-	comprobar(aldea.get_node("Edificios").get_child_count() == 11, "Solo E01-E11 construidos")
+	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 23, "Suelo, limites y solidos de los doce edificios E01-E12")
+	comprobar(aldea.get_node("Edificios").get_child_count() == 12, "Doce edificios E01-E12 construidos")
 	var plaza := plano(aldea.get_node("Plaza/Marca"))
 	comprobar(plaza.is_equal_approx(Rect2(-10, -9, 20, 18)), "Plaza central 20x18")
 	var inicio := jugador.global_position
@@ -366,6 +366,7 @@ func validar() -> void:
 	await validar_vivienda_rural("E09")
 	await validar_vivienda_final("E10")
 	await validar_vivienda_final("E11")
+	await validar_molino()
 	var nivelado := true
 	for x in range(-39, 40, 2):
 		for z in range(-35, 36, 2):
@@ -808,6 +809,118 @@ func validar_herbolario() -> void:
 	control.position = Vector3(-2.8,0.52,0)
 	await esperar(2)
 	comprobar(not suelo_libre(Vector2(18.2,8)),"E05: control negativo detecta mesa bloqueando acceso")
+	control.position = original
+	await esperar(2)
+
+# Molino independiente. La rueda solo puede ocupar su reserva tecnica aprobada.
+func validar_molino() -> void:
+	var edificio: Node3D = aldea.get_node("Edificios/E12")
+	var reserva := Rect2(16,-16,10,12)
+	var rueda := Rect2(25,-13,3,6)
+	var puente: Rect2 = aldea.get_node("Reservas/Puente").get_meta("reserva")
+	comprobar(edificio.position.is_equal_approx(Vector3(21,.003,-10)) and edificio.scale == Vector3.ONE and edificio.rotation == Vector3.ZERO and edificio.get_meta("cuerpo") == Vector2(6,8),"E12: centro aprobado, cuerpo 6x8 sin giro ni escala")
+	comprobar(plano(aldea.get_node("Parcelas/E12/Marca")).is_equal_approx(reserva) and aldea.get_node("Parcelas/E12").get_meta("acceso") == Vector2(17.2,-10) and aldea.get_node("Reservas/RuedaMolino").get_meta("reserva") == rueda,"E12: parcela, acceso oeste y reserva tecnica originales")
+	var mecanismo: Node3D = edificio.get_node("MecanismoHidraulico")
+	var pivot: Node3D = mecanismo.get_node("RuedaHidraulicaPivot")
+	comprobar(pivot.position.is_equal_approx(Vector3(5.5,2.5,0)) and pivot.basis.is_equal_approx(Basis.IDENTITY) and pivot.get_child_count() == 4 and not pivot.is_ancestor_of(mecanismo.get_node("SoportesFijos")),"E12: pivote X en centro fisico, cuatro grupos moviles y soportes fijos separados")
+	comprobar(pivot.get_node("Aros").get_child_count() == 64 and pivot.get_node("Radios").get_child_count() == 16 and pivot.get_node("Paletas").find_children("Paleta*","MeshInstance3D",true,false).size() == 16,"E12: cuatro aros poligonales, dieciseis radios y dieciseis paletas con profundidad")
+	var visuales := true
+	var cubierta := Rect2(16.85,-14.85,8.3,9.7)
+	for m: MeshInstance3D in edificio.find_children("*","MeshInstance3D",true,false):
+		var huella := plano(m)
+		var contenida := reserva.grow(.001).encloses(huella)
+		if mecanismo.is_ancestor_of(m):
+			contenida = area_comun(huella,reserva)+area_comun(huella,rueda)-area_comun(huella,reserva.intersection(rueda)) >= huella.get_area()-.001
+		var valida := contenida and not huella.intersects(puente) and not huella.intersects(Rect2(28,-34,4,68))
+		valida = valida and (m.global_transform*m.get_aabb()).position.y >= -.02
+		for s in m.mesh.get_surface_count():
+			valida = valida and m.get_active_material(s) != null
+		for camino: Node3D in aldea.get_node("Caminos").get_children():
+			valida = valida and area_comun(huella,plano(camino.get_node("Marca"))) < .001
+		if edificio.get_node("Tejado").is_ancestor_of(m):
+			valida = valida and cubierta.encloses(huella)
+		if not valida:
+			print("E12 GEOMETRIA: ",m.get_path()," ",huella)
+		visuales = visuales and valida
+	comprobar(visuales,"E12: materiales, apoyos, cubierta y reservas; cauce, puente y corredores despejados")
+	var apoyados := true
+	for datos in [["ZonaCarga/Grano",.373],["ZonaCarga/Harina",.373],["AlmacenamientoExterior/Barril",.003],["AlmacenamientoExterior/Caja",.003],["AlmacenamientoExterior/SacoReserva",.003]]:
+		var minimo := INF
+		for m: MeshInstance3D in edificio.get_node(datos[0]).find_children("*","MeshInstance3D",true,false):
+			minimo = minf(minimo,(m.global_transform*m.get_aabb()).position.y)
+		apoyados = apoyados and absf(minimo-float(datos[1])) < .05
+	comprobar(apoyados,"E12: sacos apoyados en plataforma y utileria trasera en suelo")
+	var cerrada := true
+	for x in [-2.8,-1.4,0.0,1.4,2.8]:
+		for z in [-3.8,-1.9,0.0,1.9,3.8]:
+			var golpe := false
+			for m: MeshInstance3D in edificio.get_node("Tejado").find_children("Base*","MeshInstance3D",true,false):
+				var caras := m.mesh.get_faces()
+				for j in range(0,caras.size(),3):
+					golpe = golpe or Geometry3D.segment_intersects_triangle(Vector3(21+x,7,-10+z),Vector3(21+x,3,-10+z),m.global_transform*caras[j],m.global_transform*caras[j+1],m.global_transform*caras[j+2]) != null
+			cerrada = cerrada and golpe
+	comprobar(cerrada,"E12: veinticinco rayos verifican cubierta continua")
+	# Verifica el volumen barrido por el giro futuro, sin animar la escena persistida.
+	var gira := true
+	for angulo in [0,23,45,67,90]:
+		pivot.rotation.x = deg_to_rad(float(angulo))
+		for grupo in ["Aros","Radios","Paletas"]:
+			for m: MeshInstance3D in pivot.get_node(grupo).find_children("*","MeshInstance3D",true,false):
+				gira = gira and rueda.encloses(plano(m)) and (m.global_transform*m.get_aabb()).position.y > .05
+	pivot.rotation = Vector3.ZERO
+	comprobar(gira,"E12: giro futuro en X conserva reserva y despeje de suelo")
+	var eje: MeshInstance3D = pivot.get_node("EjeVisual/Eje")
+	var caja_eje := eje.global_transform*eje.get_aabb()
+	comprobar(caja_eje.position.x < 24 and caja_eje.end.x > 27.5 and absf(caja_eje.get_center().y-2.503) < .01,"E12: eje continuo entra al muro este y alcanza soporte exterior")
+	var solido: StaticBody3D = edificio.get_node("Colisiones")
+	var valido := solido.get_child_count() == 16
+	for forma: CollisionShape3D in solido.get_children():
+		var caja: AABB = forma.global_transform*AABB(-forma.shape.size*.5,forma.shape.size)
+		var huella := Rect2(Vector2(caja.position.x,caja.position.z),Vector2(caja.size.x,caja.size.z))
+		var correcta := (reserva.encloses(huella) or rueda.encloses(huella)) and not forma.disabled
+		for camino: Node3D in aldea.get_node("Caminos").get_children():
+			correcta = correcta and not huella.intersects(plano(camino.get_node("Marca")))
+		var sonda := PhysicsShapeQueryParameters3D.new()
+		sonda.shape = forma.shape
+		sonda.transform = forma.global_transform
+		sonda.exclude = [jugador.get_rid()]
+		var detectada := false
+		for golpe in mundo.get_world_3d().direct_space_state.intersect_shape(sonda):
+			detectada = detectada or golpe.collider == solido
+		valido = valido and correcta and detectada
+	comprobar(valido,"E12: dieciseis colisiones individuales activas; cuatro muros, carga, utileria y soportes")
+	if valido and solido not in solidos_rurales:
+		solidos_rurales.append(solido)
+	var barridos := 0
+	for dir in [Vector3.FORWARD,Vector3.BACK,Vector3.LEFT,Vector3.RIGHT]:
+		for lateral in [-1.5,0.0,1.5]:
+			var origen: Vector3 = edificio.global_position+dir*(4.7 if dir.z != 0 else 3.7)+Vector3(-dir.z,0,dir.x)*lateral
+			origen.y = 1.6
+			var golpe := KinematicCollision3D.new()
+			if jugador.test_move(Transform3D(Basis.IDENTITY,origen),-dir*1.2,golpe) and golpe.get_collider() == solido:
+				barridos += 1
+	comprobar(barridos == 12,"E12: doce barridos de capsula contra muros")
+	var libre := true
+	for i in 101:
+		libre = suelo_libre(Vector2(lerpf(14,17.35,float(i)/100),-10)) and libre
+	comprobar(libre,"E12: aproximacion oeste desde camino publico libre")
+	var puntos := [Vector2(15.9,-16.4),Vector2(28.5,-16.4),Vector2(28.5,-3.6),Vector2(15.9,-3.6),Vector2(15.9,-16.4)]
+	var circuito := true
+	for i in 4:
+		for j in 101:
+			circuito = suelo_libre(puntos[i].lerp(puntos[i+1],float(j)/100)) and circuito
+	comprobar(circuito,"E12: circuito exterior completo y separacion respecto a vecinos")
+	jugador.global_position = Vector3(16.5,.02,-10)
+	jugador.velocity = Vector3.ZERO
+	await caminar("mover_derecha",35)
+	comprobar(jugador.is_on_floor() and jugador.position.x > 17.3 and jugador.position.x < 17.72,"E12: marcha real hasta puerta oeste cerrada")
+	await caminar("mover_izquierda",20)
+	comprobar(jugador.position.x < 16.5,"E12: retorno real al camino")
+	var control: CollisionShape3D = solido.get_node("Barril")
+	var original := control.position
+	control.position = Vector3(-3.8,.5,0)
+	await esperar(2)
+	comprobar(not suelo_libre(Vector2(17.2,-10)),"E12: control negativo detecta barril bloqueando acceso")
 	control.position = original
 	await esperar(2)
 
