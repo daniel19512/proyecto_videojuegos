@@ -134,7 +134,7 @@ func validar_limites_depuracion() -> void:
 	for i in limites.size():
 		intactos = intactos and limites[i].global_transform.is_equal_approx(originales[i]) and not limites[i].visible
 	comprobar(intactos,"Conmutar limites no elimina nodos ni altera geometria")
-	comprobar(not aldea.get_node("Parcelas/E06/Marca").visible and not aldea.get_node("Parcelas/E07/Marca").visible and not aldea.get_node("Parcelas/E08/Marca").visible and not aldea.get_node("Parcelas/E09/Marca").visible and aldea.get_node("Parcelas/E10/Marca").visible,"Depuracion no altera marcas de edificios y reservas")
+	comprobar(not aldea.get_node("Parcelas/E06/Marca").visible and not aldea.get_node("Parcelas/E07/Marca").visible and not aldea.get_node("Parcelas/E08/Marca").visible and not aldea.get_node("Parcelas/E09/Marca").visible and not aldea.get_node("Parcelas/E10/Marca").visible and not aldea.get_node("Parcelas/E11/Marca").visible and aldea.get_node("Parcelas/E12/Marca").visible,"Depuracion no altera marcas de edificios y reservas")
 
 func validar_edificios() -> void:
 	for id in ["E01", "E06"]:
@@ -338,8 +338,8 @@ func validar() -> void:
 	comprobar(caja.position.is_equal_approx(Vector3(-40, -0.5, -36)) and caja.size.is_equal_approx(Vector3(80, 0.5, 72)), "Terreno fisico 80x72 centrado, superficie Y=0")
 	var malla: MeshInstance3D = aldea.get_node("Terreno/Suelo/MallaSuelo")
 	comprobar((malla.global_transform * malla.get_aabb()).is_equal_approx(caja), "Suelo visual coincide con colision")
-	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 20, "Suelo, limites y solidos de los nueve edificios E01-E09")
-	comprobar(aldea.get_node("Edificios").get_child_count() == 9, "Solo E01-E09 construidos")
+	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 22, "Suelo, limites y solidos de los once edificios E01-E11")
+	comprobar(aldea.get_node("Edificios").get_child_count() == 11, "Solo E01-E11 construidos")
 	var plaza := plano(aldea.get_node("Plaza/Marca"))
 	comprobar(plaza.is_equal_approx(Rect2(-10, -9, 20, 18)), "Plaza central 20x18")
 	var inicio := jugador.global_position
@@ -364,6 +364,8 @@ func validar() -> void:
 	await validar_vivienda_noreste()
 	await validar_vivienda_rural("E08")
 	await validar_vivienda_rural("E09")
+	await validar_vivienda_final("E10")
+	await validar_vivienda_final("E11")
 	var nivelado := true
 	for x in range(-39, 40, 2):
 		for z in range(-35, 36, 2):
@@ -810,6 +812,110 @@ func validar_herbolario() -> void:
 	await esperar(2)
 
 # Viviendas rurales independientes. Ninguna excepcion sobre corredores o huertos.
+func validar_vivienda_final(id: String) -> void:
+	var edificio: Node3D = aldea.get_node("Edificios/"+id)
+	var centro := Vector2(8,25) if id == "E10" else Vector2(18,24)
+	var parcela: Node3D = aldea.get_node("Parcelas/"+id)
+	var reserva := plano(parcela.get_node("Marca"))
+	comprobar(edificio.position.is_equal_approx(Vector3(centro.x,0.003,centro.y)) and edificio.scale == Vector3.ONE and edificio.get_meta("cuerpo") == Vector2(4,4),id+": centro original y cuerpo 4x4")
+	comprobar(reserva.is_equal_approx(Rect2(centro-Vector2(4 if id == "E10" else 5,5),Vector2(8 if id == "E10" else 10,10))) and parcela.get_meta("acceso") == centro+Vector2(0,-2.8),id+": reserva y acceso norte originales")
+	var visuales := true
+	for m: MeshInstance3D in edificio.find_children("*","MeshInstance3D",true,false):
+		var caja := m.global_transform*m.get_aabb()
+		var valida := reserva.encloses(plano(m)) and caja.position.y >= -0.04
+		for superficie in m.mesh.get_surface_count():
+			valida = valida and m.get_active_material(superficie) != null
+		for jardin: Node3D in aldea.get_node("Jardines").get_children():
+			valida = valida and not plano(jardin.get_node("Marca")).intersects(plano(m))
+		for camino: Node3D in aldea.get_node("Caminos").get_children():
+			if camino.get_meta("acceso_parcela") != id:
+				valida = valida and not plano(camino.get_node("Marca")).intersects(plano(m))
+		if not valida:
+			print("GEOMETRIA ",m.get_path()," ",caja)
+		visuales = visuales and valida
+	comprobar(visuales,id+": materiales, apoyos, parcelas, corredores y reservas")
+	var cubierta_dentro := true
+	var envolvente := Rect2(centro-Vector2(2.8,2.8),Vector2(5.6,5.6))
+	for m: MeshInstance3D in edificio.get_node("Tejado").find_children("*","MeshInstance3D",true,false):
+		cubierta_dentro = envolvente.encloses(plano(m)) and cubierta_dentro
+	comprobar(cubierta_dentro,id+": cubierta principal dentro de huella original 5.6x5.6")
+	var apoyados := true
+	var utileria := ["Semillas","Verduras","Barril","Cubo","SacoTrasero"] if id == "E10" else ["Banco","Barril"]
+	for nombre in utileria:
+		var minimo := INF
+		for m: MeshInstance3D in edificio.get_node("Exterior/"+nombre).find_children("*","MeshInstance3D",true,false):
+			minimo = minf(minimo,(m.global_transform*m.get_aabb()).position.y)
+		apoyados = minimo >= -0.02 and minimo <= 0.05 and apoyados
+	comprobar(apoyados,id+": utileria importada apoyada en suelo")
+	var solido: StaticBody3D = edificio.get_node("Colisiones")
+	var valido := solido.get_child_count() == (12 if id == "E10" else 15)
+	for forma: CollisionShape3D in solido.get_children():
+		var caja: AABB = forma.global_transform*AABB(-forma.shape.size*.5,forma.shape.size)
+		var huella := Rect2(Vector2(caja.position.x,caja.position.z),Vector2(caja.size.x,caja.size.z))
+		valido = valido and reserva.encloses(huella) and not forma.disabled
+		for camino: Node3D in aldea.get_node("Caminos").get_children():
+			valido = valido and not huella.intersects(plano(camino.get_node("Marca")))
+		var sonda := PhysicsShapeQueryParameters3D.new()
+		sonda.shape = forma.shape
+		sonda.transform = forma.global_transform
+		sonda.exclude = [jugador.get_rid()]
+		var detectado := false
+		for golpe in mundo.get_world_3d().direct_space_state.intersect_shape(sonda):
+			detectado = detectado or golpe.collider == solido
+		if not detectado or not reserva.encloses(huella):
+			print("FORMA INVALIDA ",id," ",forma.name," ",huella," detectada ",detectado)
+		for camino: Node3D in aldea.get_node("Caminos").get_children():
+			if huella.intersects(plano(camino.get_node("Marca"))):
+				print("FORMA EN CAMINO ",id," ",forma.name," ",camino.name)
+		valido = valido and detectado
+	comprobar(valido,id+": formas individuales activas y fuera de corredores: "+str(solido.get_child_count()))
+	if valido and solido not in solidos_rurales:
+		solidos_rurales.append(solido)
+	var cerrada := true
+	for x in [-1.8,-.9,0.0,.9,1.8]:
+		for z in [-1.8,-.9,0.0,.9,1.8]:
+			var golpe := false
+			for m: MeshInstance3D in edificio.get_node("Tejado").find_children("Base*","MeshInstance3D",true,false):
+				var caras := m.mesh.get_faces()
+				for i in range(0,caras.size(),3):
+					golpe = golpe or Geometry3D.segment_intersects_triangle(Vector3(centro.x+x,8,centro.y+z),Vector3(centro.x+x,2.5,centro.y+z),m.global_transform*caras[i],m.global_transform*caras[i+1],m.global_transform*caras[i+2]) != null
+			cerrada = cerrada and golpe
+	comprobar(cerrada,id+": cubierta continua en 25 rayos")
+	var barridos := 0
+	for dir in [Vector3.FORWARD,Vector3.BACK,Vector3.LEFT,Vector3.RIGHT]:
+		for lateral in [-1.0,0.0,1.0]:
+			var origen: Vector3 = edificio.global_position+dir*2.65+Vector3(-dir.z,0,dir.x)*lateral
+			origen.y = 1.5
+			var golpe := KinematicCollision3D.new()
+			if jugador.test_move(Transform3D(Basis.IDENTITY,origen),-dir,golpe) and golpe.get_collider() == solido:
+				barridos += 1
+	comprobar(barridos == 12,id+": doce barridos de muros")
+	var libre := true
+	for i in 101:
+		libre = suelo_libre(centro+Vector2(0,lerpf(-7,-2.8,float(i)/100))) and libre
+	comprobar(libre,id+": acceso norte desde camino publico libre")
+	var dx := 3.62 if id == "E10" else 4.6
+	var puntos := [Vector2(-dx,-4.6),Vector2(dx,-4.6),Vector2(dx,4.6),Vector2(-dx,4.6),Vector2(-dx,-4.6)]
+	var circuito := true
+	for i in range(4):
+		for j in 101:
+			circuito = suelo_libre(centro+puntos[i].lerp(puntos[i+1],float(j)/100)) and circuito
+	comprobar(circuito,id+": circuito completo con capsula")
+	jugador.global_position = Vector3(centro.x,.02,centro.y-4)
+	jugador.velocity = Vector3.ZERO
+	await caminar("mover_abajo",45)
+	comprobar(jugador.is_on_floor() and jugador.position.z > centro.y-2.7 and jugador.position.z < centro.y-2.28,id+": marcha real a puerta norte cerrada")
+	await caminar("mover_arriba",20)
+	comprobar(jugador.position.z < centro.y-4,id+": retorno real al camino")
+	var control: CollisionShape3D = solido.get_node("Barril")
+	var original := control.position
+	control.position = Vector3(0,.5,-2.8)
+	await esperar(2)
+	comprobar(not suelo_libre(centro+Vector2(0,-2.8)),id+": control negativo de bloqueo")
+	control.position = original
+	await esperar(2)
+	comprobar(edificio.has_node("Anexo/FondoAnexo") if id == "E10" else edificio.has_node("Portico/Arco8"),id+": arquitectura diferenciada")
+
 func validar_vivienda_rural(id: String) -> void:
 	var edificio: Node3D = aldea.get_node("Edificios/" + id)
 	var centro := Vector2(-24,23) if id == "E08" else Vector2(-8,24)

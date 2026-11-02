@@ -670,3 +670,22 @@ Escenas independientes `RPG/scenes/vivienda_suroeste.tscn` y `RPG/scenes/viviend
 `RPG/assets/aldea/glTF/T_UnevenBrick_BaseColor.png`: piedra mediante materiales exclusivos de cada casa. Carpetas de aldea/naturaleza consultadas; sin vegetación importada adicional ni paquetes nuevos. No se atribuye una cesta específica al paquete: se usan cajas FarmCrate_Carrot.
 Geometría local fuera de assets/: muros, yeso, entramado, puertas/ventanas/postigos, chimeneas, leñeras/troncos, rastrillo E08, galería/mesa/postes y jardineras/plantas/losas E09. Cubierta E08 con 144 haces pentagonales de paja y diez haces de cumbrera; E09 con 108 placas de pizarra y cubierta secundaria. Colisiones añadidas en cada escena; cubo, recipiente, plantas y herramienta pequeña sin colisión extra. No se recolorean recursos compartidos.
 Permanecen 338 glTF originales y la exclusión de assets en Git; procedencia/licencias pendientes sin cambios. Recursos y apoyos validados en Godot 4.7.2 headless y Forward+/D3D12. Dieciséis capturas y una conjunta revisadas técnicamente; viviendas construidas, pendientes de aprobación visual del usuario. Sin huertos generales, cultivo ni gameplay.
+
+## Uso incorporado en E10/E11 — 2 de noviembre de 2026
+
+Escenas independientes `RPG/scenes/vivienda_e10.tscn` y `RPG/scenes/vivienda_e11.tscn`; originales de `RPG/assets/objetos_medievales/glTF/` reutilizados sin modificar:
+
+| Modelo | E10 | E11 |
+|---|---|---|
+| Barrel | Agua oeste, escala 0.8 | Agua este, escala 0.8 |
+| Bag | Semillas bajo cobertizo, 0.65; saco trasero, 0.7 | — |
+| FarmCrate_Carrot | Caja de verduras en patio sur, 0.7 | — |
+| Bucket_Wooden_1 | Cubo oeste, 0.65 | — |
+| Bench | — | Banco oeste, 0.62 |
+| Lantern_Wall | — | Farol junto a puerta, 0.4, sin luz dinámica nueva |
+
+Ambas usan `RPG/assets/aldea/glTF/T_UnevenBrick_BaseColor.png` en materiales de piedra exclusivos de cada escena. Se mantienen intactos la imagen y los materiales originales/compartidos. No se añaden paquetes ni dependencias: permanecen 338 modelos glTF, excluidos intencionalmente de Git; licencias/procedencia pendientes sin cambios.
+
+Geometría local de Godot fuera de assets/: muros, entramado, ventanas/postigos, puertas/herrajes, frontones, chimeneas, losas y cubiertas con 168 tablillas por vivienda. E10: cobertizo bajo, almacenamiento, rastrillo, leñera y alero. E11: arco poligonal de nueve piezas, jardineras/macetas, flores estilizadas de cuatro colores, mesa y almacén doméstico. No se atribuyen flores, herramientas agrícolas o arcos dedicados a rutas inexistentes del paquete. Arquitectura estática, sin interiores ni gameplay.
+
+Recursos, materiales y apoyos comprobados con Godot 4.7.2 headless; ocho capturas por casa y una conjunta con Forward+/D3D12 revisadas técnicamente. Construidas técnicamente, pendientes de aprobación visual del usuario. Sin construir Huerto E10 ni modificar Jardín general.

@@ -1,6 +1,6 @@
 # Plano de ampliación de la aldea medieval
 
-Fecha: **30 de octubre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados; E01–E09 construidos hasta 3B.6, E08/E09 pendientes de aprobación visual. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
+Fecha del plano: **30 de octubre de 2026**; actualización **2 de noviembre de 2026**. **Plano y proporciones aprobados; etapa 2 implementada como distribución provisional en `RPG/scenes/aldea.tscn`.** Terreno, plaza, caminos y parcelas preparados; E01–E11 construidos hasta 3B.7, E10/E11 pendientes de aprobación visual. La sección 11 registra las reservas finales y su validación; revisar visualmente con F6 antes de construir.
 
 ## 1. Alcance y base inspeccionada
 
@@ -8,7 +8,7 @@ Diseño de una aldea acogedora con **12 edificios**: seis viviendas, taberna, pa
 
 Fuentes: `AGENTS.md`, `RPG/docs/estado_proyecto.md`, `RPG/docs/inventario_assets.md`; escenas `aldea.tscn`, `casa_modular.tscn`, `pruebas_assets.tscn`, `mundo.tscn`, `jugador.tscn` y `jugador_frames.tres` bajo `RPG/scenes/`; movimiento en `RPG/scripts/jugador.gd`. Se comprobaron los 338 archivos glTF locales por paquete y las medidas de los recursos de la tabla siguiente. La referencia artística se interpreta desde la descripción del usuario; no se ha inspeccionado una imagen adjunta.
 
-La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01–E09 están construidos; tres parcelas siguen reservadas. E01–E07 aprobados como primera versión según la solicitud 3B.6; E08/E09 pendientes de aprobación visual. Se conservan protagonista y assets originales.
+La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01–E11 están construidos; E12 sigue reservada. E01–E09 aprobados como primera versión según la solicitud 3B.7; E10/E11 pendientes de aprobación visual. Se conservan protagonista y assets originales.
 
 ## 2. Escala real y dimensiones del terreno
 
@@ -350,3 +350,23 @@ Siete construcciones, cinco reservas pendientes; sin cambios a los 36 corredores
 Construidas técnicamente, pendientes de aprobación visual. E08 (-24,23): X=[-29,-19], Z=[18,28]. E09 (-8,24): X=[-13,-3], Z=[19,29]. Cuerpos 4×4, reservas 10×10, aleros principales ≤5.6×5.6 y accesos norte (-24,20.2) / (-8,21.2) conservados. Raíces Y=0.003 sin giro ni escala. Centros separados ≈16.03; hueco entre parcelas de 6 unidades en X.
 E08 conserva el cuerpo compacto aprobado: lectura baja/horizontal con muros de 2.70 y cumbrera X, sin ampliar a 4×6. Paja de dos aguas con haces alargados y cumbrera; patio de trabajo, leñera oeste y agua este. E09 tiene muros de 3.15, una planta, cumbrera Z desplazada y placas de pizarra; galería cubierta este con banco/mesa y jardineras al sur. Puerta desplazada 0.55 al oeste dentro de la fachada, unida al acceso original.
 Cubiertas locales sin escalar originales glTF ni alterar materiales compartidos. Diez colisiones E08 y doce E09, cuatro muros delgados por casa; sin cajas que rellenen edificios/patios. Galería y leñeras dentro de parcelas. Huerto comunitario y Huerto E09 intactos, sin objetos encima. Los 36 corredores se verifican íntegramente. Capturas en `RPG/logs/e08_vistas_finales/` y `RPG/logs/e09_vistas_finales/`; pruebas y limitaciones en el estado. No comenzar E10.
+
+## 17. Etapa 3B.7 — viviendas E10 y E11
+
+Construidas técnicamente, **pendientes de aprobación visual del usuario**. Una instancia por escena en `Edificios/E10` y `Edificios/E11`; solo Marca/Rotulo se ocultan, sin mover reservas ni borrar metadatos.
+
+| Dato | E10 — granjero | E11 — residencial florida |
+|---|---|---|
+| Escena | `RPG/scenes/vivienda_e10.tscn` | `RPG/scenes/vivienda_e11.tscn` |
+| Raíz (X,Y,Z) | (8,0.003,25) | (18,0.003,24) |
+| Parcela original | 8×10; X=[4,12], Z=[20,30] | 10×10; X=[13,23], Z=[19,29] |
+| Cuerpo / altura de muros | 4×4 / 2.65 | 4×4 / 2.95 |
+| Entrada / acceso | Norte (-Z), puerta (8,23); acceso (8,22.2) | Norte (-Z), puerta (18,22); acceso (18,21.2) |
+| Cubierta principal | Oliva oscuro; cumbrera X a Y=3.80 local, tablillas en relieve | Burdeos; cumbrera Z a Y=5.20 local, faldones pronunciados |
+| Silueta distintiva | Cobertizo oriental más bajo, con fondo de madera, dos postes y almacenamiento | Pórtico de arco poligonal con nueve piezas de madera y postes X=±1.4 local |
+| Patio | Sacos, verduras, barril/cubo, leñera oeste y rastrillo junto al anexo | Flores rosa/blanco/lavanda/amarillo pálido, macetas, banco oeste, mesa, barril y farol |
+| Colisiones | 12 cajas individuales | 15 cajas individuales |
+
+Las dos cubiertas principales caben en la huella original 5.6×5.6. E10 usa un cobertizo estrecho oriental en vez de forzar un segundo volumen habitable: cubierta secundaria centrada en (2.57,2.15,1.15) local, 1.36×0.15×2.1 y pendiente transversal de 12°; queda dentro de la parcela. E11 deja íntegra la anchura 2.5 del acceso norte entre los postes. Cuatro muros delgados por casa, puertas cerradas y sin interiores explorables. Circuitos exteriores y marcha real de ida/retorno comprobados con la cápsula existente.
+
+Huerto E10, Jardín, terreno, ramales y los 36 corredores conservados; tampoco se alteran E01–E09, cámara, protagonista ni velocidad temporal 10. Capturas en `RPG/logs/e10_vistas_finales/` y `RPG/logs/e11_vistas_finales/`, conjunta en esta última. No iniciar E12. Pendientes generales y resultados de regresión en el estado.
