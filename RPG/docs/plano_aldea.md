@@ -8,7 +8,7 @@ Diseño de una aldea acogedora con **12 edificios**: seis viviendas, taberna, pa
 
 Fuentes: `AGENTS.md`, `RPG/docs/estado_proyecto.md`, `RPG/docs/inventario_assets.md`; escenas `aldea.tscn`, `casa_modular.tscn`, `pruebas_assets.tscn`, `mundo.tscn`, `jugador.tscn` y `jugador_frames.tres` bajo `RPG/scenes/`; movimiento en `RPG/scripts/jugador.gd`. Se comprobaron los 338 archivos glTF locales por paquete y las medidas de los recursos de la tabla siguiente. La referencia artística se interpreta desde la descripción del usuario; no se ha inspeccionado una imagen adjunta.
 
-La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01 y E06 están construidos y revisados desde ocho ángulos en 3A.3; las otras diez parcelas siguen reservadas. Se conservan protagonista y assets originales.
+La composición original de 32×32 con cuatro edificios quedó respaldada antes de sustituirla en la etapa 2: `RPG/scenes/respaldos/aldea_etapa1.tscn` y su mundo ejecutable independiente. El mundo actual presenta suelo de 80×72 y marcadores de esta distribución. E01, E02 y E06 están construidos; nueve parcelas siguen reservadas. E02 está pendiente de aprobación visual tras 3B.1; ver su estado al final del documento. Se conservan protagonista y assets originales.
 
 ## 2. Escala real y dimensiones del terreno
 
@@ -62,7 +62,7 @@ Centros de futuros edificios, implementados como marcadores en la etapa 2; dimen
 | E11 | Vivienda sureste | (18, 24) | 4×4 / 5,6×5,6 | 10×10 | Norte; residencia del molino |
 | E12 | Molino reservado | (21, -10) | 6×8 / 8,3×9,7 | 10×12 para edificio | Oeste; molienda futura; rueda al este fuera de parcela |
 
-E03/E04 usan la familia 4×6 girada 90°. E01/E12 usan cubierta 6×8; comprobar frontones y cierre de muros antes de confirmar su montaje. Todos los edificios se componen modularmente; **no existen edificios completos listos**. Las funciones y asignaciones de habitantes son intenciones de diseño, no gameplay ni NPCs existentes. Conservar inicialmente fachadas cerradas, sin prometer interiores.
+E04 mantiene la previsión 4×6 girada 90°. E03 conserva huella 6×4 y reserva de cubierta 7,6×5,6, con taller abierto y cubierta lateral propia según etapa 3B.2. E01/E12 usan la familia de cubierta 6×8; comprobar frontones y cierres en futuras composiciones. Los paquetes no contienen edificios completos listos. Las funciones y asignaciones de habitantes son intenciones de diseño, no gameplay ni NPCs existentes. E03 permite aproximación al área de trabajo abierta, sin transición ni interiores jugables.
 
 ## 4. Zonas, plaza y paisaje
 
@@ -311,3 +311,10 @@ Sin cambios al centro (-24,-23), reserva X=[-29,-19], Z=[-29,-17], huella de cas
 | Circulación interior | Banda libre X≈-2.95 al oeste / 3.25 al este y Z≈±3.95 al norte/sur; conexión al huerto por (-4,-3.4). Comprobada con cápsula real y marcha a puerta/huerto. |
 
 La cerca es parcial, baja y asimétrica; no sustituye los límites de reserva ni ocupa corredores ajenos. Vegetación y cultivos son decoración, sin navegación de NPCs ni mecánicas agrícolas.
+## Estado E02 — etapa 3B.1 (1 de noviembre de 2026)
+
+Panadería integrada mediante `RPG/scenes/panaderia.tscn`, centro (8,-20), raíz Y=0.003, sin rotación; cuerpo 4×6, cubierta 5.6×7.6 prevista y factor vertical 0.60. Reserva original 9.5×11.5: X=[3,12.5], Z=[-26,-14.5]. Fachada sur: puerta al este del mostrador, aproximación real X=8.5 conectada al acceso público original X=8, Z=[-16.2,-12], ancho 3. Venta bajo toldo cálido; horno/chimenea y leña al oeste; barril/caja/sacos en apartadero suroeste. Geometría contenida en reserva, colisiones fuera de corredores; ninguna parcela, calle, plaza o terreno desplazados. Marca y rótulo E02 ocultos sin eliminar nodos ni metadatos. Sin interiores o servicio funcional. Distribución: 36 corredores conectados, validaciones headless/D3D12 sin bloqueos. E01/E02/E06 construidos; nueve parcelas reservadas. Pendiente aprobación visual E02; no comenzar E03.
+
+## E03 construida — etapa 3B.2
+
+La solicitud de esta etapa confirma E01/E02/E06 como primera versión aprobada. E03 se instancia desde `RPG/scenes/herreria.tscn`, en (-23,0.003,-6), sin girar ni escalar la raíz. Reserva 12×10, cuerpo previsto 6×4 y envolvente aprobada para cubierta 7.6×5.6 conservados. Núcleo occidental de piedra con antepecho sur bajo, taller abierto al este y cobertizo bajo más estrecho que el núcleo. Yunque al sur del cobertizo; banco al norte; forja integrada al oeste; afiladora exterior sur y suministros al oeste, dentro de la reserva. Paso desde (-14,-6) hacia el centro libre para la cápsula; 23 cajas individuales fuera de corredores. Marca/rótulo ocultos sin borrar metadatos. Las coordenadas, el acceso (-19.1,-6), las otras parcelas, jardines y trazado público permanecen intactos. Cuatro edificios construidos, ocho parcelas pendientes; E03 pendiente de aprobación visual. No hay herrería funcional ni NPC.

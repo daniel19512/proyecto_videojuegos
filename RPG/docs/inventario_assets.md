@@ -600,3 +600,23 @@ La ausencia se refiere al contenido local inventariado y a sus nombres/estructur
 ## 8. Alcance de cambios
 
 Único archivo creado dentro del proyecto por esta tarea: `RPG/docs/inventario_assets.md`. Herramientas auxiliares, copia de recursos y logs permanecen en el directorio temporal externo al repositorio. No se generó una aldea, no se cambiaron escenas, scripts, configuración ni assets, y no se hicieron commits ni pushes. Los cambios que ya existían al iniciar la auditoría se preservaron. La comprobación final compara hashes del contenido del proyecto (excluyendo la caché `.godot`) con la captura inicial.
+
+## Uso incorporado en E02 — 1 de noviembre de 2026
+
+`RPG/scenes/panaderia.tscn` reutiliza originales sin modificarlos ni añadir paquetes:
+
+- `RPG/assets/aldea/glTF/`: `Wall_Plaster_WoodGrid`, `Wall_Plaster_Straight`, `Wall_Plaster_Window_Wide_Flat`, `Wall_Plaster_Door_Flat`, `Window_Wide_Flat1`, `Door_1_Flat`, `DoorFrame_Flat_WoodDark`, `Roof_RoundTiles_4x6`, `Roof_Front_Brick4`; texturas `T_RoundTiles_Normal.png`, `T_RoundTiles_Roughness.png`, `T_UnevenBrick_BaseColor.png`. Cubierta con material local y escala vertical 0.60 compartida con frontones.
+- `RPG/assets/objetos_medievales/glTF/`: `Barrel`, `Crate_Wooden`, `Bag` (dos sacos), `Lantern_Wall` decorativo.
+- Primitivas dentro de la escena, fuera de assets/: hogazas achatadas/cortes, bandeja, mostrador, toldo a franjas, cartel/Label3D, horno/chimenea, leña, revoco de cierre, vigas y zócalos. No son modelos originales ni sistemas de juego. Sin cesta dedicada identificada.
+
+Total conservado: 338 modelos originales; procedencia/licencias pendientes sin cambios. El paquete sigue sin horno dedicado: E02 resuelve su horno decorativo mediante geometría local. Recursos cargados y revisados en ocho vistas Forward+/D3D12; aprobación artística pendiente del usuario.
+
+## Uso incorporado en E03 — 1 de noviembre de 2026
+
+`RPG/scenes/herreria.tscn` reutiliza sin modificar los originales:
+
+- `RPG/assets/objetos_medievales/glTF/`: `Anvil_Log` (yunque con tocón disponible, no modelado de nuevo), `Workbench`, `Whetstone`, `Bucket_Metal`, `Barrel`, `Crate_Wooden` y `Chain_Coil`.
+- `RPG/assets/aldea/glTF/T_UnevenBrick_BaseColor.png`: material local de mampostería gris con repetición UV, sin editar la imagen fuente.
+- Geometría local de Godot fuera de assets/: muros, postes, riostras, cubiertas bajas de pizarra/madera, forja completa con brasas emisivas estáticas y chimenea, carbón, leña, barras, martillo, tenazas y soportes. La forja resuelve una pieza dedicada ausente del paquete; no implica fabricación, fuego dinámico ni interacción.
+
+Se mantienen 338 modelos originales, los mismos paquetes y la exclusión de assets en Git. Recursos de E03 cargados en Godot 4.7.2 y capturados con Forward+/D3D12; aprobación artística pendiente del usuario.

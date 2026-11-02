@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" path="res://scenes/taberna.tscn" id="Taberna"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_noroeste.tscn" id="ViviendaNO"]
 
+[ext_resource type="PackedScene" path="res://scenes/panaderia.tscn" id="Panaderia"]
+[ext_resource type="PackedScene" path="res://scenes/herreria.tscn" id="Herreria"]
+
 [sub_resource type="StandardMaterial3D" id="MaterialSuelo"]
 albedo_color = Color(0.32, 0.38, 0.22, 1)
 roughness = 1.0
@@ -555,6 +558,7 @@ metadata/huella_cubierta = Vector2(5.6, 7.6)
 metadata/escala_y_cubierta = 0.60
 metadata/acceso = Vector2(8, -16.2)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E02"]
+visible = false
 position = Vector3(-0.25, 0.006, -0.25)
 scale = Vector3(9.5, 1, 11.5)
 cast_shadow = 0
@@ -580,6 +584,7 @@ scale = Vector3(0.07, 1, 11.5)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E02"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E02\nPanaderia"
@@ -595,6 +600,7 @@ metadata/huella_cubierta = Vector2(7.6, 5.6)
 metadata/escala_y_cubierta = 0.60
 metadata/acceso = Vector2(-19.1, -6)
 [node name="Marca" type="MeshInstance3D" parent="Parcelas/E03"]
+visible = false
 position = Vector3(0, 0.006, 0)
 scale = Vector3(12, 1, 10)
 cast_shadow = 0
@@ -620,6 +626,7 @@ scale = Vector3(0.07, 1, 10)
 cast_shadow = 0
 mesh = SubResource("PlanoBorde")
 [node name="Rotulo" type="Label3D" parent="Parcelas/E03"]
+visible = false
 position = Vector3(0, 0.065, 0)
 rotation_degrees = Vector3(-90, 0, 0)
 text = "E03\nHerreria"
@@ -1400,7 +1407,12 @@ position = Vector3(40.1, 1.5, 0)
 shape = SubResource("Vertical")
 
 [node name="Edificios" type="Node3D" parent="."]
+[node name="E03" parent="Edificios" instance=ExtResource("Herreria")]
+position = Vector3(-23, 0.003, -6)
 [node name="E01" parent="Edificios" instance=ExtResource("Taberna")]
 position = Vector3(-8, 0.003, -20)
 [node name="E06" parent="Edificios" instance=ExtResource("ViviendaNO")]
 position = Vector3(-24, 0.003, -23)
+
+[node name="E02" parent="Edificios" instance=ExtResource("Panaderia")]
+position = Vector3(8, 0.003, -20)

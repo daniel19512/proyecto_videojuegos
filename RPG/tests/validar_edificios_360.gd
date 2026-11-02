@@ -1,5 +1,5 @@
 extends SceneTree
-## Valida materiales, cierres geometricos y vistas de E01/E06 con camara principal.
+## Valida materiales, cierres geometricos y vistas de E01/E02/E06 con camara principal.
 var fallos := 0
 var mundo: Node3D
 func _initialize() -> void:
@@ -28,7 +28,7 @@ func validar() -> void:
 	var camara: Camera3D=mundo.get_node("CamaraPrincipal")
 	await esperar(20)
 	jugador.set_physics_process(false)
-	for id in ["E01","E06"]:
+	for id in ["E01","E02","E06"]:
 		var edificio: Node3D=mundo.get_node("Aldea/Edificios/"+id)
 		var cuerpo: Vector2=edificio.get_meta("cuerpo")
 		var caras := PackedVector3Array()
@@ -63,15 +63,19 @@ func validar() -> void:
 				# Situar al jugador en la banda transitable interior, sin meterlo en el huerto o el servicio.
 				var limite_x: float = 3.25 if salida.x >= 0 else 2.95
 				retiro = minf(limite_x/maxf(absf(salida.x),0.001),3.95/maxf(absf(salida.z),0.001))
+			if id == "E02":
+				# Rodear el horno exterior por el borde oeste de la parcela.
+				var limite_x: float = 3.9 if salida.x >= 0 else 4.3
+				retiro = minf(limite_x/maxf(absf(salida.x),0.001),4.5/maxf(absf(salida.z),0.001))
 			jugador.global_position=edificio.global_position+salida*retiro
 			jugador.global_position.y=0.02
 			jugador.velocity=Vector3.ZERO
-			if id == "E06":
+			if id in ["E02", "E06"]:
 				var consulta := PhysicsShapeQueryParameters3D.new()
 				consulta.shape = jugador.get_node("ColisionJugador").shape
 				consulta.exclude = [jugador.get_rid()]
 				consulta.transform = Transform3D(Basis.IDENTITY,jugador.global_position+Vector3.UP*0.8)
-				comprobar(mundo.get_world_3d().direct_space_state.intersect_shape(consulta).is_empty(),"E06: punto de observacion libre en %d"%grados)
+				comprobar(mundo.get_world_3d().direct_space_state.intersect_shape(consulta).is_empty(),"%s: punto de observacion libre en %d"%[id,grados])
 			camara.set("angulo_horizontal",angulo)
 			await esperar(45)
 			comprobar(is_equal_approx(camara.size,15) and absf(camara.rotation_degrees.x+32)<0.05,id+": camara 15 e inclinacion en %d"%grados)
