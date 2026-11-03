@@ -703,3 +703,65 @@ Carga, materiales, apoyos y reservas validados con Godot 4.7.2 headless y Forwar
 `RPG/scenes/rio.tscn` y `RPG/scenes/puente.tscn` contienen geometría propia serializada de Godot, fuera de assets/: cintas trianguladas continuas de agua/orillas/canal; 35 piedras low-poly de SphereMesh; estribos, 24 tablones, vigas, postes, pasamanos y riostras. Materiales locales de piedra, tierra húmeda y dos tonos de madera; agua mediante `RPG/scripts/agua_estilizada.gdshader`, opaca y animada. No son modelos de Quaternius ni incrementan el inventario de originales.
 
 Sin nuevos paquetes, glTF, texturas externas, dependencias o modificaciones a assets originales. Permanecen 338 glTF y la exclusión intencional de `RPG/assets/`; procedencia/licencias pendientes sin cambios. No se identificaron juncos dedicados ni se añadieron plantas ribereñas. El agua y el puente anteriormente ausentes se resuelven con recursos propios; `RPG/scripts/rueda_hidraulica.gd` anima la geometría E12 existente, sin reemplazarla. Cauce físico excavado y continuidad paisajística de extremos pendientes. Comprobados recursos y material en Godot 4.7.2 headless y Forward+/D3D12; ocho capturas técnicas, aprobación visual del usuario pendiente. Sin simulación hidráulica, navegación de NPCs ni pesca/natación.
+
+## Uso incorporado en huertos — fase 4B.2, 2 de noviembre de 2026
+
+Tres escenas propias: `RPG/scenes/huerto_comunitario.tscn`, `huerto_e09.tscn`, `huerto_e10.tscn`. Originales existentes de `RPG/assets/objetos_medievales/glTF/`, sin modificaciones:
+
+| Original | Uso nuevo |
+|---|---|
+| Carrot.gltf | 12 zanahorias del comunitario, escalas 0.92/1.01/1.10, raíces parcialmente integradas en bancal |
+| FarmCrate_Carrot.gltf | Caja de cosecha comunitario 0.95; E09 1.05; apoyo corregido por mínimo fuente Y≈-0.016 |
+| Barrel.gltf | Barril del comunitario, escala 0.73, caja de colisión propia |
+| Bucket_Wooden_1.gltf | Cubo de E09, escala 1.2, sin colisión extra |
+| FarmCrate_Empty.gltf | Caja vacía pequeña E10, escala 0.8, sin colisión extra |
+| Bag.gltf | Saco E10, escala 0.70, caja de colisión propia |
+
+Carrot y las zanahorias de FarmCrate_Carrot tienen COLOR_0: se habilita `vertex_color_use_as_albedo` mediante materiales duplicados y overrides locales guardados en las nuevas escenas. Los glTF, BIN, texturas, materiales de origen y ejemplares de viviendas permanecen intactos. No se inventan modelos de col, calabaza, cebolla, tomatera, rastrillo o regadera: cultivos adicionales, bancales, pasos, cercas y tutores se construyen con geometría propia sencilla fuera de assets/. Las cercas originales identificadas en el inventario se consultaron; se opta por tramos propios bajos ajustados a reservas y aperturas.
+
+Se mantienen **338 glTF originales**, mismos paquetes, exclusión intencional de Git y licencias/procedencia pendientes sin cambios. Sin dependencias, paquetes, texturas externas ni plantas de vegetación general nuevos. Son cultivos decorativos; no se incorporan etapas funcionales de crecimiento, semillas, inventario agrícola o cosecha. Recursos y materiales de las escenas finales comprobados en Godot 4.7.2 headless y Forward+/D3D12; capturas y oclusión de viviendas traseras documentadas en el estado. Pendiente aprobación visual del usuario.
+
+## Uso incorporado en jardín — fase 4B.3, 2 de noviembre de 2026
+
+`RPG/scenes/jardin_hierbas.tscn` reutiliza originales intactos de naturaleza: `Flower_3_Group.gltf`, `Flower_4_Group.gltf`, `Fern_1.gltf`; de objetos medievales: `Pot_1.gltf`. Tamaños locales ajustados según AABB para lectura baja dentro de 4×4. `Bush_Common.gltf` se inspeccionó y probó, pero no se incorpora en la escena final: su textura local roja resultó demasiado intensa para la composición.
+
+Geometría propia fuera de assets/: doce flores de cinco pétalos, follaje/arbusto verde bajo, planta de maceta, tres pequeñas manchas de tierra, cinco losas y piedras de borde; materiales locales mates. Sin texturas, paquetes, dependencias ni modelos originales nuevos. Se mantienen 338 glTF originales y su exclusión intencional de Git; licencias pendientes sin cambios. Sin colisiones en plantas pequeñas ni jardinería jugable. Recursos comprobados en Godot 4.7.2 headless y Forward+/D3D12; once vistas, aprobación visual pendiente.
+
+## Recursos propios del mirador — fase 4B.4, 2 de noviembre de 2026
+
+`RPG/scenes/mirador.tscn` usa únicamente primitivas y materiales locales de Godot: losa de piedra, cantos de tablón, barandilla rústica, banco, farol estático y dos piedras bajas. Se consultaron los modelos locales de banco y farol, pero la reserva de 4×4 y el paso central requerían proporciones ajustadas; por ello se resolvieron con geometría propia sencilla sin atribuir rutas nuevas ni modificar originales.
+
+No se incorporan paquetes, glTF, texturas, scripts de ejecución ni dependencias. Permanecen 338 modelos originales, su exclusión intencional de Git y las licencias/procedencia pendientes. La escena añade dos colisiones simples para mobiliario voluminoso; no añade interacción, luz dinámica, sistema para sentarse ni vegetación general.
+
+## Uso incorporado en mercado y plaza — fase 4B.5, 2 de noviembre de 2026
+
+`RPG/scenes/mercado.tscn` reutiliza originales intactos de objetos medievales: Stall_Cart_Empty, dos instancias de Stall_Empty, FarmCrate_Apple, FarmCrate_Carrot, FarmCrate_Empty, Barrel_Apples, Crate_Wooden y Bag. `RPG/scenes/plaza_decorada.tscn` reutiliza dos Bench y dos Pot_1. Escalas y posiciones se ajustan por instancia; no se editan glTF, BIN, texturas ni materiales fuente.
+
+Geometría local: toldos rojo apagado/azul grisáceo/oliva, postes de dos puestos, telas dobladas y rollo; pozo pequeño con brocal, agua estática, postes y tejadillo; piedras bajas. No se atribuye al paquete un pozo, cestas, textiles o fuente inexistentes. Permanecen 338 glTF, mismos paquetes, exclusión de Git y licencias pendientes. Sin dependencias, scripts de juego, luces dinámicas, NPC, comercio o navegación.
+
+## Recursos propios de salidas regionales — fase 4B.6, 2 de noviembre de 2026
+
+`RPG/scenes/salidas_aldea.tscn` usa únicamente geometría local de Godot: postes, tablas, flechas, Label3D y seis piedras bajas. No se incorpora ningún glTF porque las señales requieren texto/destino y dimensiones específicas junto a corredores existentes. Sin texturas, paquetes, dependencias ni modificación de originales.
+
+Permanecen 338 modelos glTF y su exclusión de Git. Las señales no tienen colisión; los cierres provisionales reutilizan los límites físicos ya existentes. Sin vegetación general, escenas exteriores, Area3D, transiciones o sistemas regionales funcionales.
+
+## Uso incorporado en vegetación general — fase 4B.7, 2 de noviembre de 2026
+
+`RPG/scenes/vegetacion_aldea.tscn` reutiliza originales intactos de `RPG/assets/naturaleza/glTF/`:
+
+| Original | Instancias | Uso |
+|---|---:|---|
+| CommonTree_1.gltf | 6 | Arbolado periférico principal |
+| CommonTree_3.gltf | 5 | Variación de copa y silueta |
+| CommonTree_5.gltf | 5 | Variación de copa y silueta |
+| Bush_Common.gltf | 9 | Sotobosque bajo |
+| Bush_Common_Flowers.gltf | 9 | Acentos florales periféricos |
+| Grass_Common_Short.gltf | 13 | Hierba baja dispersa |
+| Grass_Wispy_Short.gltf | 7 | Hierba fina dispersa |
+| Flower_3_Group.gltf | 6 | Grupos florales aislados |
+| Flower_4_Group.gltf | 6 | Grupos florales aislados |
+| Rock_Medium_1.gltf | 7 | Rocas de borde sin colisión |
+
+Escalas, giros y posiciones se ajustan por instancia; no se modifican glTF, BIN, texturas ni materiales fuente. Los 16 árboles reciben cilindros simples agrupados en un cuerpo físico local; arbustos, plantas y rocas no reciben colisión. No se añaden scripts individuales, shaders, texturas, paquetes ni dependencias.
+
+Permanecen **338 glTF originales**, su exclusión intencional de Git y las licencias/procedencia pendientes. No se incorporan árboles talados, frutas, recolección, crecimiento, viento ni interacción forestal. Carga, materiales, apoyos, distribución y rendimiento técnico comprobados con Godot 4.7.2 headless y Forward+/D3D12; aprobación visual del usuario pendiente.

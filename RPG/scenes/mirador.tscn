@@ -1,0 +1,190 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Piedra"]
+resource_name = "PiedraCalidaMirador"
+albedo_color = Color(0.43, 0.41, 0.34, 1)
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="Madera"]
+resource_name = "MaderaEnvejecidaMirador"
+albedo_color = Color(0.31, 0.19, 0.1, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="MaderaClara"]
+resource_name = "CantoMaderaMirador"
+albedo_color = Color(0.45, 0.3, 0.16, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Metal"]
+resource_name = "MetalFarolMirador"
+albedo_color = Color(0.16, 0.14, 0.11, 1)
+metallic = 0.55
+roughness = 0.66
+
+[sub_resource type="StandardMaterial3D" id="Luz"]
+resource_name = "CristalCalidoMirador"
+albedo_color = Color(1, 0.61, 0.2, 1)
+emission_enabled = true
+emission = Color(0.8, 0.32, 0.06, 1)
+emission_energy_multiplier = 1.35
+roughness = 0.5
+
+[sub_resource type="BoxMesh" id="Losa"]
+size = Vector3(3.7, 0.12, 3.7)
+
+[sub_resource type="BoxMesh" id="TablaLarga"]
+size = Vector3(3.35, 0.08, 0.13)
+
+[sub_resource type="BoxMesh" id="Poste"]
+size = Vector3(0.18, 1.08, 0.18)
+
+[sub_resource type="BoxMesh" id="Pasamanos"]
+size = Vector3(0.18, 0.15, 3.25)
+
+[sub_resource type="BoxMesh" id="BancoAsiento"]
+size = Vector3(0.58, 0.14, 1.4)
+
+[sub_resource type="BoxMesh" id="BancoRespaldo"]
+size = Vector3(0.12, 0.62, 1.4)
+
+[sub_resource type="BoxMesh" id="Pata"]
+size = Vector3(0.14, 0.48, 0.14)
+
+[sub_resource type="CylinderMesh" id="PiedraBorde"]
+top_radius = 0.28
+bottom_radius = 0.34
+height = 0.22
+radial_segments = 7
+
+[sub_resource type="CylinderMesh" id="PosteFarol"]
+top_radius = 0.07
+bottom_radius = 0.09
+height = 1.65
+radial_segments = 8
+
+[sub_resource type="BoxMesh" id="CajaFarol"]
+size = Vector3(0.3, 0.42, 0.3)
+
+[sub_resource type="BoxShape3D" id="ColBaranda"]
+size = Vector3(0.22, 1.05, 3.35)
+
+[sub_resource type="BoxShape3D" id="ColBanco"]
+size = Vector3(0.72, 0.78, 1.2)
+
+[node name="Mirador" type="Node3D"]
+metadata/reserva = Rect2(-2, -2, 4, 4)
+metadata/orientacion_vista = "oeste_rio"
+
+[node name="EstructuraPrincipal" type="Node3D" parent="."]
+
+[node name="Suelo" type="MeshInstance3D" parent="EstructuraPrincipal"]
+position = Vector3(0, 0.06, 0)
+mesh = SubResource("Losa")
+material_override = SubResource("Piedra")
+
+[node name="Tablones" type="Node3D" parent="EstructuraPrincipal"]
+
+[node name="TablaN" type="MeshInstance3D" parent="EstructuraPrincipal/Tablones"]
+position = Vector3(0.1, 0.15, -1.48)
+mesh = SubResource("TablaLarga")
+material_override = SubResource("MaderaClara")
+
+[node name="TablaS" type="MeshInstance3D" parent="EstructuraPrincipal/Tablones"]
+position = Vector3(0.1, 0.15, 1.48)
+mesh = SubResource("TablaLarga")
+material_override = SubResource("MaderaClara")
+
+[node name="Barandillas" type="Node3D" parent="."]
+
+[node name="PosteN" type="MeshInstance3D" parent="Barandillas"]
+position = Vector3(-1.68, 0.62, -1.48)
+mesh = SubResource("Poste")
+material_override = SubResource("Madera")
+
+[node name="PosteC" type="MeshInstance3D" parent="Barandillas"]
+position = Vector3(-1.68, 0.62, 0)
+mesh = SubResource("Poste")
+material_override = SubResource("Madera")
+
+[node name="PosteS" type="MeshInstance3D" parent="Barandillas"]
+position = Vector3(-1.68, 0.62, 1.48)
+mesh = SubResource("Poste")
+material_override = SubResource("Madera")
+
+[node name="Pasamanos" type="MeshInstance3D" parent="Barandillas"]
+position = Vector3(-1.68, 1.1, 0)
+mesh = SubResource("Pasamanos")
+material_override = SubResource("MaderaClara")
+
+[node name="Travesano" type="MeshInstance3D" parent="Barandillas"]
+position = Vector3(-1.68, 0.63, 0)
+mesh = SubResource("Pasamanos")
+material_override = SubResource("Madera")
+
+[node name="Mobiliario" type="Node3D" parent="."]
+
+[node name="Banco" type="Node3D" parent="Mobiliario"]
+
+[node name="Asiento" type="MeshInstance3D" parent="Mobiliario/Banco"]
+position = Vector3(1.08, 0.5, 1.2)
+mesh = SubResource("BancoAsiento")
+material_override = SubResource("MaderaClara")
+
+[node name="Respaldo" type="MeshInstance3D" parent="Mobiliario/Banco"]
+position = Vector3(1.39, 0.79, 1.2)
+rotation_degrees = Vector3(0, 0, -7)
+mesh = SubResource("BancoRespaldo")
+material_override = SubResource("Madera")
+
+[node name="PataN" type="MeshInstance3D" parent="Mobiliario/Banco"]
+position = Vector3(1.08, 0.28, 0.7)
+mesh = SubResource("Pata")
+material_override = SubResource("Madera")
+
+[node name="PataS" type="MeshInstance3D" parent="Mobiliario/Banco"]
+position = Vector3(1.08, 0.28, 1.7)
+mesh = SubResource("Pata")
+material_override = SubResource("Madera")
+
+[node name="Farol" type="Node3D" parent="Mobiliario"]
+
+[node name="Poste" type="MeshInstance3D" parent="Mobiliario/Farol"]
+position = Vector3(1.54, 0.94, 1.52)
+mesh = SubResource("PosteFarol")
+material_override = SubResource("Madera")
+
+[node name="Caja" type="MeshInstance3D" parent="Mobiliario/Farol"]
+position = Vector3(1.54, 1.78, 1.52)
+mesh = SubResource("CajaFarol")
+material_override = SubResource("Metal")
+
+[node name="LuzCalida" type="MeshInstance3D" parent="Mobiliario/Farol"]
+position = Vector3(1.54, 1.78, 1.52)
+scale = Vector3(0.58, 0.72, 0.58)
+mesh = SubResource("CajaFarol")
+material_override = SubResource("Luz")
+
+[node name="Decoracion" type="Node3D" parent="."]
+
+[node name="PiedraN" type="MeshInstance3D" parent="Decoracion"]
+position = Vector3(-1.36, 0.17, -1.58)
+rotation_degrees = Vector3(0, 18, 0)
+mesh = SubResource("PiedraBorde")
+material_override = SubResource("Piedra")
+
+[node name="PiedraS" type="MeshInstance3D" parent="Decoracion"]
+position = Vector3(-1.25, 0.16, 1.5)
+rotation_degrees = Vector3(0, -24, 0)
+scale = Vector3(0.8, 0.8, 1.1)
+mesh = SubResource("PiedraBorde")
+material_override = SubResource("Piedra")
+
+[node name="Colisiones" type="StaticBody3D" parent="."]
+
+[node name="Barandilla" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(-1.68, 0.64, 0)
+shape = SubResource("ColBaranda")
+
+[node name="Banco" type="CollisionShape3D" parent="Colisiones"]
+position = Vector3(1.18, 0.51, 1.3)
+shape = SubResource("ColBanco")

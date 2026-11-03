@@ -1,4 +1,14 @@
 [gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/jardin_hierbas.tscn" id="JardinHierbasReal"]
+[ext_resource type="PackedScene" path="res://scenes/mirador.tscn" id="MiradorReal"]
+[ext_resource type="PackedScene" path="res://scenes/mercado.tscn" id="MercadoReal"]
+[ext_resource type="PackedScene" path="res://scenes/plaza_decorada.tscn" id="PlazaDecoradaReal"]
+[ext_resource type="PackedScene" path="res://scenes/salidas_aldea.tscn" id="SalidasAldeaReal"]
+[ext_resource type="PackedScene" path="res://scenes/vegetacion_aldea.tscn" id="VegetacionAldeaReal"]
+[ext_resource type="PackedScene" path="res://scenes/huerto_comunitario.tscn" id="HuertoComunitario"]
+[ext_resource type="PackedScene" path="res://scenes/huerto_e09.tscn" id="HuertoE09"]
+[ext_resource type="PackedScene" path="res://scenes/huerto_e10.tscn" id="HuertoE10"]
+[ext_resource type="Script" path="res://scripts/terreno_aldea.gd" id="TerrenoVisual"]
 [ext_resource type="PackedScene" path="res://scenes/rio.tscn" id="Rio"]
 [ext_resource type="PackedScene" path="res://scenes/puente.tscn" id="PuenteReal"]
 [ext_resource type="PackedScene" path="res://scenes/molino.tscn" id="Molino"]
@@ -79,6 +89,8 @@ script = ExtResource("DepuracionParcelas")
 metadata/etapa = 2
 metadata/tamano_terreno = Vector2(80, 72)
 [node name="Terreno" type="Node3D" parent="."]
+[node name="AcabadoTerreno" type="Node" parent="."]
+script = ExtResource("TerrenoVisual")
 [node name="Suelo" type="StaticBody3D" parent="Terreno"]
 position = Vector3(0, -0.25, 0)
 [node name="Forma" type="CollisionShape3D" parent="Terreno/Suelo"]
@@ -1023,6 +1035,9 @@ pixel_size = 0.014
 outline_size = 5
 modulate = Color(0.94, 0.9, 0.72, 1)
 [node name="Jardines" type="Node3D" parent="."]
+[node name="JardinesConstruidos" type="Node3D" parent="."]
+[node name="JardinHierbas" parent="JardinesConstruidos" instance=ExtResource("JardinHierbasReal")]
+position = Vector3(23, 0, 15)
 [node name="JardinHierbas" type="Node3D" parent="Jardines"]
 metadata/reserva = Rect2(21, 13, 4, 4)
 [node name="Marca" type="MeshInstance3D" parent="Jardines/JardinHierbas"]
@@ -1437,6 +1452,20 @@ position = Vector3(40.1, 1.5, 0)
 shape = SubResource("Vertical")
 
 [node name="Edificios" type="Node3D" parent="."]
+[node name="MercadoConstruido" parent="." instance=ExtResource("MercadoReal")]
+[node name="PlazaConstruida" parent="." instance=ExtResource("PlazaDecoradaReal")]
+[node name="SalidasRegionales" parent="." instance=ExtResource("SalidasAldeaReal")]
+[node name="VegetacionGeneral" parent="." instance=ExtResource("VegetacionAldeaReal")]
+[node name="Huertos" type="Node3D" parent="."]
+[node name="EspaciosConstruidos" type="Node3D" parent="."]
+[node name="Mirador" parent="EspaciosConstruidos" instance=ExtResource("MiradorReal")]
+position = Vector3(37, 0, 8)
+[node name="HuertoComunitario" parent="Huertos" instance=ExtResource("HuertoComunitario")]
+position = Vector3(-32.5, 0, 15)
+[node name="HuertoE09" parent="Huertos" instance=ExtResource("HuertoE09")]
+position = Vector3(-8, 0, 32)
+[node name="HuertoE10" parent="Huertos" instance=ExtResource("HuertoE10")]
+position = Vector3(8, 0, 33)
 [node name="E12" parent="Edificios" instance=ExtResource("Molino")]
 position = Vector3(21, 0.003, -10)
 [node name="E05" parent="Edificios" instance=ExtResource("Herbolario")]

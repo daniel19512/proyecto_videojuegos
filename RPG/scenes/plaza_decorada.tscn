@@ -1,0 +1,125 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Bench.gltf" id="Bench"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Pot_1.gltf" id="Pot"]
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.43, 0.42, 0.36, 1)
+roughness = 0.96
+[sub_resource type="StandardMaterial3D" id="DarkStone"]
+albedo_color = Color(0.3, 0.29, 0.26, 1)
+roughness = 0.98
+[sub_resource type="StandardMaterial3D" id="Wood"]
+albedo_color = Color(0.29, 0.17, 0.08, 1)
+roughness = 0.92
+[sub_resource type="StandardMaterial3D" id="Water"]
+albedo_color = Color(0.17, 0.38, 0.39, 1)
+roughness = 0.42
+
+[sub_resource type="CylinderMesh" id="WellBase"]
+top_radius = 0.88
+bottom_radius = 0.96
+height = 0.7
+radial_segments = 12
+[sub_resource type="CylinderMesh" id="WellWater"]
+top_radius = 0.62
+bottom_radius = 0.62
+height = 0.04
+radial_segments = 16
+[sub_resource type="BoxMesh" id="Post"]
+size = Vector3(0.16, 1.45, 0.16)
+[sub_resource type="CylinderMesh" id="Roof"]
+top_radius = 0
+bottom_radius = 1.05
+height = 0.62
+radial_segments = 4
+[sub_resource type="CylinderMesh" id="Pebble"]
+top_radius = 0.2
+bottom_radius = 0.27
+height = 0.16
+radial_segments = 7
+[sub_resource type="BoxShape3D" id="WellShape"]
+size = Vector3(1.8, 0.9, 1.8)
+[sub_resource type="BoxShape3D" id="BenchShape"]
+size = Vector3(2.35, 0.65, 0.6)
+
+[node name="PlazaDecorada" type="Node3D"]
+metadata/area = Rect2(-10, -9, 20, 18)
+
+[node name="ElementoCentral" type="Node3D" parent="."]
+position = Vector3(0, 0, -4)
+[node name="Pozo" type="MeshInstance3D" parent="ElementoCentral"]
+position = Vector3(0, 0.35, 0)
+mesh = SubResource("WellBase")
+material_override = SubResource("Stone")
+[node name="Agua" type="MeshInstance3D" parent="ElementoCentral"]
+position = Vector3(0, 0.72, 0)
+mesh = SubResource("WellWater")
+material_override = SubResource("Water")
+[node name="PosteO" type="MeshInstance3D" parent="ElementoCentral"]
+position = Vector3(-0.78, 1.08, 0)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+[node name="PosteE" type="MeshInstance3D" parent="ElementoCentral"]
+position = Vector3(0.78, 1.08, 0)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+[node name="Tejadillo" type="MeshInstance3D" parent="ElementoCentral"]
+position = Vector3(0, 1.87, 0)
+rotation_degrees = Vector3(0, 45, 0)
+scale = Vector3(1.15, 1, 0.8)
+mesh = SubResource("Roof")
+material_override = SubResource("Wood")
+
+[node name="Mobiliario" type="Node3D" parent="."]
+[node name="BancoOeste" parent="Mobiliario" instance=ExtResource("Bench")]
+position = Vector3(-6.2, 0.008, 4.8)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(0.78, 0.78, 0.78)
+[node name="BancoEste" parent="Mobiliario" instance=ExtResource("Bench")]
+position = Vector3(5.6, 0.008, 5.2)
+rotation_degrees = Vector3(0, -90, 0)
+scale = Vector3(0.78, 0.78, 0.78)
+[node name="MacetaOeste" parent="Mobiliario" instance=ExtResource("Pot")]
+position = Vector3(-7.5, 0.01, 5.8)
+scale = Vector3(0.7, 0.7, 0.7)
+[node name="MacetaEste" parent="Mobiliario" instance=ExtResource("Pot")]
+position = Vector3(6.9, 0.01, 6.1)
+scale = Vector3(0.7, 0.7, 0.7)
+
+[node name="Decoracion" type="Node3D" parent="."]
+[node name="Piedra1" type="MeshInstance3D" parent="Decoracion"]
+position = Vector3(-1.2, 0.1, -5.2)
+mesh = SubResource("Pebble")
+material_override = SubResource("DarkStone")
+[node name="Piedra2" type="MeshInstance3D" parent="Decoracion"]
+position = Vector3(1.1, 0.09, -2.9)
+scale = Vector3(0.8, 0.8, 1.1)
+mesh = SubResource("Pebble")
+material_override = SubResource("DarkStone")
+
+[node name="MarcadoresFuturos" type="Node3D" parent="."]
+[node name="PlazaMeetingSpot" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(0, 0.02, 2)
+[node name="RestSpotOeste" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(-4.6, 0.02, 4.8)
+[node name="RestSpotEste" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(4, 0.02, 5.2)
+[node name="EventSpot" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(0, 0.02, 5.5)
+
+[node name="Colisiones" type="Node3D" parent="."]
+[node name="Pozo" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/Pozo"]
+position = Vector3(0, 0.45, -4)
+shape = SubResource("WellShape")
+[node name="BancoOeste" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/BancoOeste"]
+position = Vector3(-6.2, 0.33, 4.8)
+rotation_degrees = Vector3(0, 90, 0)
+shape = SubResource("BenchShape")
+[node name="BancoEste" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/BancoEste"]
+position = Vector3(5.6, 0.33, 5.2)
+rotation_degrees = Vector3(0, 90, 0)
+shape = SubResource("BenchShape")

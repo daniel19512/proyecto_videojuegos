@@ -1,0 +1,243 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/CommonTree_1.gltf" id="Tree1"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/CommonTree_3.gltf" id="Tree3"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/CommonTree_5.gltf" id="Tree5"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Bush_Common.gltf" id="Bush"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Bush_Common_Flowers.gltf" id="BushFlowers"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Grass_Common_Short.gltf" id="Grass"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Grass_Wispy_Short.gltf" id="Wispy"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Flower_3_Group.gltf" id="Flower3"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Flower_4_Group.gltf" id="Flower4"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Rock_Medium_1.gltf" id="Rock"]
+
+[sub_resource type="CylinderShape3D" id="Trunk"]
+radius = 0.38
+height = 2.2
+
+[node name="VegetacionAldea" type="Node3D"]
+metadata/arboles = 16
+metadata/arbustos = 18
+metadata/plantas_pequenas = 32
+metadata/rocas = 7
+metadata/distribucion = "manual_determinista"
+
+[node name="ArbolesPrincipales" type="Node3D" parent="."]
+[node name="N01" parent="ArbolesPrincipales" instance=ExtResource("Tree1")]
+position = Vector3(-35, 0, -32.5)
+rotation_degrees = Vector3(0, 17, 0)
+scale = Vector3(0.82, 0.82, 0.82)
+[node name="N02" parent="ArbolesPrincipales" instance=ExtResource("Tree3")]
+position = Vector3(-27.5, 0, -33)
+rotation_degrees = Vector3(0, -28, 0)
+scale = Vector3(0.68, 0.68, 0.68)
+[node name="N03" parent="ArbolesPrincipales" instance=ExtResource("Tree5")]
+position = Vector3(-18, 0, -32)
+rotation_degrees = Vector3(0, 51, 0)
+scale = Vector3(0.78, 0.78, 0.78)
+[node name="N04" parent="ArbolesPrincipales" instance=ExtResource("Tree1")]
+position = Vector3(-9, 0, -33.2)
+rotation_degrees = Vector3(0, 93, 0)
+scale = Vector3(0.7, 0.7, 0.7)
+[node name="N05" parent="ArbolesPrincipales" instance=ExtResource("Tree5")]
+position = Vector3(9.5, 0, -33)
+rotation_degrees = Vector3(0, -72, 0)
+scale = Vector3(0.72, 0.72, 0.72)
+[node name="N06" parent="ArbolesPrincipales" instance=ExtResource("Tree3")]
+position = Vector3(18.5, 0, -32.6)
+rotation_degrees = Vector3(0, 32, 0)
+scale = Vector3(0.64, 0.64, 0.64)
+[node name="N07" parent="ArbolesPrincipales" instance=ExtResource("Tree1")]
+position = Vector3(24, 0, -32.8)
+rotation_degrees = Vector3(0, 144, 0)
+scale = Vector3(0.68, 0.68, 0.68)
+[node name="O01" parent="ArbolesPrincipales" instance=ExtResource("Tree3")]
+position = Vector3(-36.5, 0, -23)
+rotation_degrees = Vector3(0, 75, 0)
+scale = Vector3(0.66, 0.66, 0.66)
+[node name="O02" parent="ArbolesPrincipales" instance=ExtResource("Tree5")]
+position = Vector3(-36, 0, -10)
+rotation_degrees = Vector3(0, -40, 0)
+scale = Vector3(0.76, 0.76, 0.76)
+[node name="O03" parent="ArbolesPrincipales" instance=ExtResource("Tree1")]
+position = Vector3(-36.8, 0, 5)
+rotation_degrees = Vector3(0, 12, 0)
+scale = Vector3(0.7, 0.7, 0.7)
+[node name="O04" parent="ArbolesPrincipales" instance=ExtResource("Tree3")]
+position = Vector3(-36, 0, 27)
+rotation_degrees = Vector3(0, 112, 0)
+scale = Vector3(0.62, 0.62, 0.62)
+[node name="S01" parent="ArbolesPrincipales" instance=ExtResource("Tree5")]
+position = Vector3(-34, 0, 33)
+rotation_degrees = Vector3(0, 22, 0)
+scale = Vector3(0.75, 0.75, 0.75)
+[node name="S02" parent="ArbolesPrincipales" instance=ExtResource("Tree1")]
+position = Vector3(-25, 0, 33.2)
+rotation_degrees = Vector3(0, -62, 0)
+scale = Vector3(0.68, 0.68, 0.68)
+[node name="S03" parent="ArbolesPrincipales" instance=ExtResource("Tree3")]
+position = Vector3(-16, 0, 33)
+rotation_degrees = Vector3(0, 43, 0)
+scale = Vector3(0.6, 0.6, 0.6)
+[node name="S04" parent="ArbolesPrincipales" instance=ExtResource("Tree1")]
+position = Vector3(17, 0, 33.2)
+rotation_degrees = Vector3(0, 101, 0)
+scale = Vector3(0.66, 0.66, 0.66)
+[node name="S05" parent="ArbolesPrincipales" instance=ExtResource("Tree5")]
+position = Vector3(25, 0, 32.8)
+rotation_degrees = Vector3(0, -19, 0)
+scale = Vector3(0.72, 0.72, 0.72)
+
+[node name="Arbustos" type="Node3D" parent="."]
+[node name="A01" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(-32, 0, -31); scale = Vector3(0.58, 0.58, 0.58)
+[node name="A02" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(-22.5, 0, -31.5); scale = Vector3(0.48, 0.48, 0.48)
+[node name="A03" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(14, 0, -31); scale = Vector3(0.5, 0.5, 0.5)
+[node name="A04" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(21.5, 0, -30.5); scale = Vector3(0.44, 0.44, 0.44)
+[node name="A05" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(-37, 0, -16); scale = Vector3(0.5, 0.5, 0.5)
+[node name="A06" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(-37, 0, -2); scale = Vector3(0.48, 0.48, 0.48)
+[node name="A07" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(-37, 0, 12); scale = Vector3(0.46, 0.46, 0.46)
+[node name="A08" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(-36.5, 0, 31); scale = Vector3(0.5, 0.5, 0.5)
+[node name="A09" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(-30, 0, 33.5); scale = Vector3(0.46, 0.46, 0.46)
+[node name="A10" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(-20, 0, 32); scale = Vector3(0.42, 0.42, 0.42)
+[node name="A11" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(21, 0, 33.5); scale = Vector3(0.5, 0.5, 0.5)
+[node name="A12" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(27, 0, 29); scale = Vector3(0.42, 0.42, 0.42)
+[node name="A13" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(-30, 0, 7); scale = Vector3(0.38, 0.38, 0.38)
+[node name="A14" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(-29, 0, -8); scale = Vector3(0.36, 0.36, 0.36)
+[node name="A15" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(26, 0, 18); scale = Vector3(0.36, 0.36, 0.36)
+[node name="A16" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(24, 0, 7); scale = Vector3(0.34, 0.34, 0.34)
+[node name="A17" parent="Arbustos" instance=ExtResource("BushFlowers")]
+position = Vector3(-17, 0, 17); scale = Vector3(0.34, 0.34, 0.34)
+[node name="A18" parent="Arbustos" instance=ExtResource("Bush")]
+position = Vector3(11, 0, 17); scale = Vector3(0.34, 0.34, 0.34)
+
+[node name="HierbaYFlores" type="Node3D" parent="."]
+[node name="P01" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(-33,0,-29.5); scale=Vector3(0.55,0.55,0.55)
+[node name="P02" parent="HierbaYFlores" instance=ExtResource("Wispy")]
+position = Vector3(-24,0,-30.5); scale=Vector3(0.5,0.5,0.5)
+[node name="P03" parent="HierbaYFlores" instance=ExtResource("Flower3")]
+position = Vector3(-14,0,-31); scale=Vector3(0.45,0.45,0.45)
+[node name="P04" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(14,0,-30); scale=Vector3(0.55,0.55,0.55)
+[node name="P05" parent="HierbaYFlores" instance=ExtResource("Flower4")]
+position = Vector3(22,0,-30); scale=Vector3(0.4,0.4,0.4)
+[node name="P06" parent="HierbaYFlores" instance=ExtResource("Wispy")]
+position = Vector3(-38,0,-28); scale=Vector3(0.48,0.48,0.48)
+[node name="P07" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(-38,0,-20); scale=Vector3(0.5,0.5,0.5)
+[node name="P08" parent="HierbaYFlores" instance=ExtResource("Flower3")]
+position = Vector3(-38,0,-6); scale=Vector3(0.38,0.38,0.38)
+[node name="P09" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(-38,0,2); scale=Vector3(0.52,0.52,0.52)
+[node name="P10" parent="HierbaYFlores" instance=ExtResource("Flower4")]
+position = Vector3(-38,0,18); scale=Vector3(0.4,0.4,0.4)
+[node name="P11" parent="HierbaYFlores" instance=ExtResource("Wispy")]
+position = Vector3(-38,0,24); scale=Vector3(0.48,0.48,0.48)
+[node name="P12" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(-32,0,30); scale=Vector3(0.52,0.52,0.52)
+[node name="P13" parent="HierbaYFlores" instance=ExtResource("Flower3")]
+position = Vector3(-27,0,31); scale=Vector3(0.4,0.4,0.4)
+[node name="P14" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(-22,0,34); scale=Vector3(0.52,0.52,0.52)
+[node name="P15" parent="HierbaYFlores" instance=ExtResource("Flower4")]
+position = Vector3(-13,0,34); scale=Vector3(0.38,0.38,0.38)
+[node name="P16" parent="HierbaYFlores" instance=ExtResource("Wispy")]
+position = Vector3(14,0,34); scale=Vector3(0.48,0.48,0.48)
+[node name="P17" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(20,0,31); scale=Vector3(0.52,0.52,0.52)
+[node name="P18" parent="HierbaYFlores" instance=ExtResource("Flower3")]
+position = Vector3(27,0,31); scale=Vector3(0.38,0.38,0.38)
+[node name="P19" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(-31,0,-1); scale=Vector3(0.45,0.45,0.45)
+[node name="P20" parent="HierbaYFlores" instance=ExtResource("Flower4")]
+position = Vector3(-30,0,10); scale=Vector3(0.34,0.34,0.34)
+[node name="P21" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(-18,0,17); scale=Vector3(0.42,0.42,0.42)
+[node name="P22" parent="HierbaYFlores" instance=ExtResource("Wispy")]
+position = Vector3(-16,0,19); scale=Vector3(0.4,0.4,0.4)
+[node name="P23" parent="HierbaYFlores" instance=ExtResource("Flower3")]
+position = Vector3(11,0,17.8); scale=Vector3(0.32,0.32,0.32)
+[node name="P24" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(24,0,8); scale=Vector3(0.4,0.4,0.4)
+[node name="P25" parent="HierbaYFlores" instance=ExtResource("Wispy")]
+position = Vector3(25,0,19); scale=Vector3(0.4,0.4,0.4)
+[node name="P26" parent="HierbaYFlores" instance=ExtResource("Flower4")]
+position = Vector3(-11,0,8); scale=Vector3(0.32,0.32,0.32)
+[node name="P27" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(10,0,8); scale=Vector3(0.38,0.38,0.38)
+[node name="P28" parent="HierbaYFlores" instance=ExtResource("Flower3")]
+position = Vector3(-9,0,-9); scale=Vector3(0.3,0.3,0.3)
+[node name="P29" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(9,0,-9); scale=Vector3(0.35,0.35,0.35)
+[node name="P30" parent="HierbaYFlores" instance=ExtResource("Wispy")]
+position = Vector3(-18,0,-13); scale=Vector3(0.36,0.36,0.36)
+[node name="P31" parent="HierbaYFlores" instance=ExtResource("Flower4")]
+position = Vector3(18,0,-13); scale=Vector3(0.3,0.3,0.3)
+[node name="P32" parent="HierbaYFlores" instance=ExtResource("Grass")]
+position = Vector3(23,0,-17); scale=Vector3(0.36,0.36,0.36)
+
+[node name="Rocas" type="Node3D" parent="."]
+[node name="R01" parent="Rocas" instance=ExtResource("Rock")]
+position=Vector3(-31,0,-32); scale=Vector3(0.55,0.55,0.55)
+[node name="R02" parent="Rocas" instance=ExtResource("Rock")]
+position=Vector3(-37,0,-7); rotation_degrees=Vector3(0,62,0); scale=Vector3(0.45,0.45,0.45)
+[node name="R03" parent="Rocas" instance=ExtResource("Rock")]
+position=Vector3(-36,0,17); rotation_degrees=Vector3(0,-31,0); scale=Vector3(0.5,0.5,0.5)
+[node name="R04" parent="Rocas" instance=ExtResource("Rock")]
+position=Vector3(-28,0,34); scale=Vector3(0.48,0.48,0.48)
+[node name="R05" parent="Rocas" instance=ExtResource("Rock")]
+position=Vector3(22,0,34); rotation_degrees=Vector3(0,87,0); scale=Vector3(0.42,0.42,0.42)
+[node name="R06" parent="Rocas" instance=ExtResource("Rock")]
+position=Vector3(25,0,-31); scale=Vector3(0.4,0.4,0.4)
+[node name="R07" parent="Rocas" instance=ExtResource("Rock")]
+position=Vector3(-29,0,9); rotation_degrees=Vector3(0,25,0); scale=Vector3(0.38,0.38,0.38)
+
+[node name="ColisionesTroncos" type="StaticBody3D" parent="."]
+[node name="N01" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-35,1.1,-32.5); shape=SubResource("Trunk")
+[node name="N02" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-27.5,1.1,-33); shape=SubResource("Trunk")
+[node name="N03" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-18,1.1,-32); shape=SubResource("Trunk")
+[node name="N04" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-9,1.1,-33.2); shape=SubResource("Trunk")
+[node name="N05" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(9.5,1.1,-33); shape=SubResource("Trunk")
+[node name="N06" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(18.5,1.1,-32.6); shape=SubResource("Trunk")
+[node name="N07" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(24,1.1,-32.8); shape=SubResource("Trunk")
+[node name="O01" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-36.5,1.1,-23); shape=SubResource("Trunk")
+[node name="O02" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-36,1.1,-10); shape=SubResource("Trunk")
+[node name="O03" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-36.8,1.1,5); shape=SubResource("Trunk")
+[node name="O04" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-36,1.1,27); shape=SubResource("Trunk")
+[node name="S01" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-34,1.1,33); shape=SubResource("Trunk")
+[node name="S02" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-25,1.1,33.2); shape=SubResource("Trunk")
+[node name="S03" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(-16,1.1,33); shape=SubResource("Trunk")
+[node name="S04" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(17,1.1,33.2); shape=SubResource("Trunk")
+[node name="S05" type="CollisionShape3D" parent="ColisionesTroncos"]
+position=Vector3(25,1.1,32.8); shape=SubResource("Trunk")

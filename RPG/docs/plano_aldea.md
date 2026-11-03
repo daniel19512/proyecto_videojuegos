@@ -421,3 +421,73 @@ El recorrido de prueba E12 que rodeaba el río por Z=-35 queda retirado por ser 
 Shader existente mejorado: dos capas hacia +Z, velocidades 0.65 y 0.468 unidades/s. Ondas normales suaves, líneas claras cortas con distribución irregular, reflejos discretos y agitación localizada junto a la rueda. Parámetros de material editables: velocidad_corriente, intensidad_ondas=0.55, intensidad_reflejos=0.24, color_base=(0.13,0.31,0.29), color_claro=(0.42,0.61,0.54). Sin texturas externas, transparencias complejas, partículas ni simulación. La rueda conserva -9°/s, pivote y cota de contacto.
 
 Específica headless y Forward+/D3D12: **0 fallos**, incluidos 540 barridos de cápsula, cuatro intentos reales de rodeo y cruce bidireccional del puente. Regresión completa: 36 corredores conectados y solo fallo preexistente de retorno E04; resultados en estado. Siete vistas, tres fotogramas de cámara fija y GIF de tres segundos en `RPG/logs/fase4a1_rio_mejorado/galeria.html`. Aprobación visual pendiente del usuario; cauce físico excavado y ambientación global siguen fuera del alcance.
+
+## Fase 4B.1 — acabado visual de terreno y caminos
+
+La distribución funcional permanece exactamente igual: terreno 80×72, plaza 20×18, 12 edificios y 36 corredores con sus coordenadas, anchuras y metadatos previos. No se cambian reservas, accesos, cubiertas, límites, puente, río ni rueda. El acabado visual sustituye la presentación de las marcas planas; sus nodos y geometría siguen presentes como fuente del plano y las pruebas.
+
+`AcabadoTerreno`, con `RPG/scripts/terreno_aldea.gd`, genera una máscara compartida determinista 800×720 desde los corredores y la plaza. `RPG/scripts/terreno_aldea.gdshader` mezcla tierra/hierba/explanada sobre el suelo original: esquinas redondeadas, unión suave de cruces, bordes con irregularidades discretas, tonos intermedios y manchas suaves. Se ocultan rellenos y rótulos de desarrollo; Borde* conserva el control de depuración existente. La forma visual mezclada no cambia anchuras transitables ni reservas lógicas. Entradas y patios reciben el mismo acabado continuo; no se modifican las escenas E01–E12.
+
+Sin geometría ni colisiones nuevas; suelo sin huecos añadidos ni planos de camino superpuestos. El césped no incorpora plantas ni huertos funcionales; la plaza es una explanada cálida preparada para 4B.4, sin mercado, pozo o fuente. Orillas y cauce conservados para 4B.3. Sin paquetes externos ni edición de originales.
+
+Comparativas reproducibles: `godot --path RPG --log-file logs/<nombre_nuevo>.log --script res://tests/validar_terreno_caminos.gd` desde la raíz del repositorio. Cada ejecución con ventana genera ocho parejas antes/después y una galería en una subcarpeta nueva de `RPG/logs/fase4b1_terreno_caminos/`. Revisión final: `RPG/logs/fase4b1_terreno_caminos/2026-11-02T15-41-09/galeria.html`. Resultados de regresión en el estado: 36 corredores conectados, único fallo preexistente E04. Aprobación visual pendiente; no iniciar 4B.2.
+
+## Fase 4B.2 — huertos construidos dentro de sus reservas
+
+Se completan las tres reservas agrícolas pendientes, sin cambiar sus límites ni los caminos. El huerto ya existente de E06 permanece intacto. JardínHierbas en (23,15), mirador y mercado continúan reservados, sin construcción en esta fase.
+
+| Huerto / escena en RPG/scenes/ | Centro (X,Z) | Reserva X / Z | Acceso público | Diseño construido |
+|---|---|---|---|---|
+| Comunitario / huerto_comunitario.tscn | (-32.5,15) | [-35.5,-29.5] / [12.5,17.5], 6×5 | Este (-29.5,16), sendero desde (-24,16) junto a E08 | Tres bancales: zanahorias, coles y cebollas; cerca oeste/norte y tramo sur, barril y caja |
+| E09 / huerto_e09.tscn | (-8,32) | [-11,-5] / [30,34], 6×4 | Este (-5,32), ramal desde entrada sur (0,32) | Bancales desiguales de lechuga y calabazas, cerca parcial, cubo, caja y rastrillo |
+| E10 / huerto_e10.tscn | (8,33) | [5,11] / [31,35], 6×4 | Oeste (5,33), ramal desde entrada sur (0,33) | Tomateras con tutores bajos al norte, cebollas y plantín al sur; saco y caja vacía |
+
+Las escenas se instancian bajo `Aldea/Huertos`, fuera de los nodos de reserva lógica `Jardines`. Estos conservan Marca/Borde/metadatos originales y el acabado de 4B.1 mantiene ocultos sus rellenos/rótulos. Raíces sin giro ni escala, Y=0. Suelo general y shader sin cambios; bancales visuales propios de hasta 0.12 de altura, bordes irregulares y surcos. No se modifica ningún edificio ni su parcela.
+
+Pasos interiores: comunitario sobre Z=16, de X=-29.5 hacia -34.7; E09 sobre Z=32, de X=-5 hacia -10.05; E10 sobre Z=33, de X=5 hacia 9.6. Se comprueban con cápsula y banda de centros ±0.25, además de entrar/volver caminando. No hay cercas que cierren las entradas. Las tres escenas tienen un cuerpo estático cada una, con 5/3/8 cajas individuales para cercas, estructura y utilería voluminosa; plantas sin colisión. Se conservan las anchuras completas de los 36 corredores y sus conexiones. Sin exclusiones de reservas enteras en pruebas.
+
+Generación de autoría opcional: `godot --headless --path RPG --log-file logs/<nombre_nuevo>.log --script res://scripts/editor/construir_huertos.gd`. Regenera solo las tres escenas de huertos; no es lógica de juego. La validación/captura propia es `res://tests/validar_huertos.gd`, con 31 PNG por ejecución con ventana bajo `RPG/logs/fase4b2_huertos/`. Revisión final: `RPG/logs/fase4b2_huertos/2026-11-02T16-09-37/galeria.html`.
+
+Revisión orbital: cultivos y cercas legibles desde varias orientaciones; **vista norte E09 fuertemente ocluida por la cubierta existente, vista norte E10 parcialmente por casa/chimenea**. Se registra para aprobación del usuario, sin mover casas/huertos ni alterar cámara. Los cultivos son decorativos, sin agricultura funcional. Resultados de pruebas y limitaciones en el estado; no continuar con jardines antes de aprobación visual.
+
+## Fase 4B.3 — jardín independiente construido
+
+Única reserva ornamental pendiente: **JardínHierbas**, centro XZ (23,15), 4×4, X=[21,25], Z=[13,17]. Escena `RPG/scenes/jardin_hierbas.tscn` bajo `Aldea/JardinesConstruidos`, raíz (23,0,15). La reserva `Jardines/JardinHierbas`, sus marcas y metadatos se conservan. Acceso oeste por los dos corredores existentes (16,8) → (16,15) → (21,15), ancho 2; losas internas hacia (23.4,15.1), sin colisiones nuevas ni invasión de corredores.
+
+Diseño floral de hierbas: islas bajas de suelo irregular, flores silvestres coral/amarillas y corolas crema/rosa/violeta, arbusto verde, helecho, maceta y piedras de borde. Vegetación inferior a 0.9 de altura; claro central libre. No se requieren banco ni cerca en esta reserva pequeña. Los jardines domésticos y bancales del herbolario ya existentes no son reservas pendientes y se conservan. Los tres huertos y el huerto E06 permanecen intactos. Mirador, mercado/plaza, arbolado y vegetación general siguen pendientes.
+
+Prueba específica y captura `RPG/tests/validar_jardines.gd`; herramienta opcional de autoría `RPG/scripts/editor/construir_jardin.gd`. Once vistas finales en `RPG/logs/fase4b3_jardines/2026-11-02T16-18-34/`. Oclusión parcial del borde norte por herbolario desde norte; aprobación visual pendiente. Resultados completos en el estado.
+
+## Fase 4B.4 — mirador de ribera construido
+
+Reserva original conservada: centro (37,8), 4×4, X=[35,39], Z=[6,10]. El sendero existente de ancho 2 llega desde el norte por X=[36,38] y permanece libre hasta el claro central. La solución es una terraza baja sobre el suelo plano: losa de piedra 3,7×3,7×0,12, bordes de madera, barandilla oeste de 1,1 de altura frente al río, banco en el sector sureste orientado al oeste, farol estático y dos piedras pequeñas. No modifica cauce, barreras de ribera, puente, molino ni relieve.
+
+La barandilla y el banco son los únicos obstáculos físicos propios. El piso usa el suelo continuo de la aldea como apoyo, evitando un escalón nuevo. La barandilla protege el borde próximo al río sin tapar la vista desde la cámara inclinada; banco y farol permanecen dentro de reserva. `RPG/tests/validar_mirador.gd` genera ocho orientaciones, detalle, acceso, río, contexto y aldea bajo `RPG/logs/fase4b4_mirador/`. Mercado y plaza permanecen sin construir; orden siguiente: 4B.5 mercado/plaza, 4B.6 salidas, 4B.7 vegetación, 4B.8 paisaje/orillas y 4B.9 pulido/optimización.
+
+## Fase 4B.5 — mercado y plaza central construidos
+
+Plaza aprobada conservada: centro (0,0), 20×18, X=[-10,10], Z=[-9,9]. Puestos sin mover: P1 centro (-6,-6), P2 (6,-6), P3 (7,1), reservas 3×3. P1 frutas/verduras mira al sur; P2 telas/artesanías mira al sur; P3 mercancías generales mira al oeste hacia el centro. Cada uno deja cliente delante y comerciante detrás, señalados mediante Marker3D.
+
+Pozo pequeño construido en (0,-4), ocupación física 1,8×1,8 dentro de la reserva Fuente 4×4. El acceso norte se divide por X≈±3,4; el eje sur y el centro de reunión quedan abiertos. Dos bancos se sitúan en (-6.2,4.8) y (5.6,5.2), orientados hacia el interior, con macetas laterales. No se pavimenta de nuevo ni se modifica el shader de 4B.1.
+
+Colisiones: una caja por puesto, una para el pozo y una por banco. Aproximaciones de clientes: (-6,-4.05), (6,-4.05), (4.9,1). Marcadores adicionales: PlazaMeetingSpot (0,2), EventSpot (0,5.5), descanso junto a bancos. Los 36 corredores pasan la comprobación de cápsula y conectividad. Capturas: `RPG/logs/fase4b5_mercado_plaza/2026-11-02T21-18-05/galeria.html`. Próximas fases: 4B.6 salidas, 4B.7 vegetación, 4B.8 paisaje/orillas, 4B.9 pulido/optimización. No continuar otra fase antes de aprobación.
+
+## Fase 4B.6 — salidas regionales preparadas
+
+| ID estable | Destino | Aproximación XZ | Transición futura XZ | Orientación | Corredor | Cierre provisional | Retorno futuro |
+|---|---|---:|---:|---|---|---|---|
+| aldea_bosque_norte | Bosque | (0,-34) | (0,-35.5) | -Z | EntradaNorte | LimiteNorte Z=-36 | bosque_aldea_sur |
+| aldea_campos_sur | CamposYGranjas | (0,34) | (0,35.5) | +Z | EntradaSur | LimiteSur Z=36 | campos_aldea_norte |
+| aldea_camino_este | CaminoMontanas | (37.2,0) | (39.5,0) | +X | Ribera, mediante puente | LimiteEste X=40 | camino_montanas_aldea_oeste |
+
+No se añaden corredores: las tres bocas de ancho 4 ya conectan con la red. Señales al lado de cada camino, sin colisión; piedras bajas fuera de la banda central. Los límites exteriores permanecen sólidos tras los marcadores `TransicionFutura`, por lo que no existe acceso al vacío. Al implementar cada región, crear su escena y punto de retorno, añadir Area3D antes del límite y coordinar la apertura exclusivamente durante la transición.
+
+Esquema previsto: Aldea → Bosque → Ruinas; Aldea → CamposYGranjas → CaminoMontañas → Minas. La salida oriental puede incorporarse a esa segunda cadena o a un camino comercial, pero siempre cruza el puente. No existen todavía escenas externas, transiciones, navegación regional ni guardado. Validación/captura: `RPG/tests/validar_salidas.gd`; galería `RPG/logs/fase4b6_salidas/2026-11-02T21-27-28/galeria.html`. Próximas fases: 4B.7 vegetación, 4B.8 paisaje/orillas, 4B.9 pulido/optimización.
+
+## Fase 4B.7 — árboles y vegetación general
+
+Escena `RPG/scenes/vegetacion_aldea.tscn`, instanciada como `Aldea/VegetacionGeneral` a identidad. Distribución fija: 16 árboles, 18 arbustos, 32 plantas pequeñas y 7 rocas. Los árboles se concentran en franjas periféricas: siete al norte (Z≈-33), cuatro al oeste (X≈-36) y cinco al sur (Z≈33). La ribera oriental recibe solo detalles bajos aislados para conservar la lectura del molino, puente, mirador y salida a montañas.
+
+Exclusiones conservadas: todas las reservas de edificios y jardines, plaza X=[-10,10]/Z=[-9,9], los 36 corredores con margen visual, cauce y bandas centrales de salida. Las bocas norte y sur mantienen X=[-2,2]; la oriental conserva Z=[-2,2] desde el puente hasta el límite. Los troncos usan 16 cilindros agrupados en un único cuerpo estático; el resto no colisiona. No se crean nuevas reservas, caminos ni metadatos de distribución.
+
+La composición introduce tres tipos de árbol, dos de arbusto, cuatro de planta pequeña y una roca del paquete natural, con giros y escalas deterministas. Validación propia: `RPG/tests/validar_vegetacion.gd`; galería `RPG/logs/fase4b7_vegetacion/2026-11-02T21-33-16/galeria.html`. Próximas fases: 4B.8 paisaje/orillas y 4B.9 pulido/optimización; requieren aprobación visual previa.

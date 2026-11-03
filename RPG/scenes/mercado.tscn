@@ -1,0 +1,187 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Stall_Empty.gltf" id="Stall"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Stall_Cart_Empty.gltf" id="StallCart"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/FarmCrate_Apple.gltf" id="AppleCrate"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/FarmCrate_Carrot.gltf" id="CarrotCrate"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/FarmCrate_Empty.gltf" id="EmptyCrate"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Barrel_Apples.gltf" id="AppleBarrel"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Crate_Wooden.gltf" id="WoodCrate"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Bag.gltf" id="Bag"]
+
+[sub_resource type="StandardMaterial3D" id="Wood"]
+albedo_color = Color(0.3, 0.18, 0.09, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="RedCloth"]
+albedo_color = Color(0.48, 0.18, 0.15, 1)
+roughness = 0.88
+
+[sub_resource type="StandardMaterial3D" id="BlueCloth"]
+albedo_color = Color(0.24, 0.34, 0.4, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="OliveCloth"]
+albedo_color = Color(0.34, 0.38, 0.19, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="BeigeCloth"]
+albedo_color = Color(0.68, 0.56, 0.38, 1)
+roughness = 0.92
+
+[sub_resource type="BoxMesh" id="Canopy"]
+size = Vector3(2.35, 0.1, 1.35)
+
+[sub_resource type="BoxMesh" id="Post"]
+size = Vector3(0.11, 1.75, 0.11)
+
+[sub_resource type="BoxMesh" id="FoldedCloth"]
+size = Vector3(0.52, 0.1, 0.36)
+
+[sub_resource type="CylinderMesh" id="Roll"]
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.62
+radial_segments = 8
+
+[sub_resource type="BoxShape3D" id="StallShape"]
+size = Vector3(2.35, 1.9, 1.25)
+
+[sub_resource type="BoxShape3D" id="CartShape"]
+size = Vector3(2.25, 1.95, 1.2)
+
+[node name="Mercado" type="Node3D"]
+metadata/puestos = 3
+
+[node name="Estructuras" type="Node3D" parent="."]
+
+[node name="FrutasVerduras" type="Node3D" parent="Estructuras"]
+position = Vector3(-6, 0, -6)
+metadata/identidad = "frutas_y_verduras"
+
+[node name="Puesto" parent="Estructuras/FrutasVerduras" instance=ExtResource("StallCart")]
+position = Vector3(0.65, 0.005, 0.25)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="Toldo" type="MeshInstance3D" parent="Estructuras/FrutasVerduras"]
+position = Vector3(0, 2.04, 0.05)
+rotation_degrees = Vector3(0, 0, -3)
+mesh = SubResource("Canopy")
+material_override = SubResource("RedCloth")
+
+[node name="CajaManzanas" parent="Estructuras/FrutasVerduras" instance=ExtResource("AppleCrate")]
+position = Vector3(-0.58, 0.72, -0.2)
+scale = Vector3(0.78, 0.78, 0.78)
+
+[node name="CajaZanahorias" parent="Estructuras/FrutasVerduras" instance=ExtResource("CarrotCrate")]
+position = Vector3(0.45, 0.58, -0.12)
+scale = Vector3(0.82, 0.82, 0.82)
+
+[node name="BarrilManzanas" parent="Estructuras/FrutasVerduras" instance=ExtResource("AppleBarrel")]
+position = Vector3(-0.86, 0, 0.62)
+scale = Vector3(0.72, 0.72, 0.72)
+
+[node name="ArtesaniasTextiles" type="Node3D" parent="Estructuras"]
+position = Vector3(6, 0, -6)
+metadata/identidad = "telas_y_artesanias"
+
+[node name="Puesto" parent="Estructuras/ArtesaniasTextiles" instance=ExtResource("Stall")]
+position = Vector3(0, 0, 0.15)
+scale = Vector3(0.9, 0.9, 0.9)
+
+[node name="PosteO" type="MeshInstance3D" parent="Estructuras/ArtesaniasTextiles"]
+position = Vector3(-1.05, 1.05, 0.18)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+
+[node name="PosteE" type="MeshInstance3D" parent="Estructuras/ArtesaniasTextiles"]
+position = Vector3(1.05, 1.05, 0.18)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+
+[node name="Toldo" type="MeshInstance3D" parent="Estructuras/ArtesaniasTextiles"]
+position = Vector3(0, 1.94, 0.15)
+rotation_degrees = Vector3(0, 0, 3)
+mesh = SubResource("Canopy")
+material_override = SubResource("BlueCloth")
+
+[node name="TelaBeige" type="MeshInstance3D" parent="Estructuras/ArtesaniasTextiles"]
+position = Vector3(-0.58, 0.68, -0.22)
+mesh = SubResource("FoldedCloth")
+material_override = SubResource("BeigeCloth")
+
+[node name="TelaOliva" type="MeshInstance3D" parent="Estructuras/ArtesaniasTextiles"]
+position = Vector3(0, 0.71, -0.22)
+mesh = SubResource("FoldedCloth")
+material_override = SubResource("OliveCloth")
+
+[node name="RolloRojo" type="MeshInstance3D" parent="Estructuras/ArtesaniasTextiles"]
+position = Vector3(0.65, 0.76, -0.2)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Roll")
+material_override = SubResource("RedCloth")
+
+[node name="CajaVacia" parent="Estructuras/ArtesaniasTextiles" instance=ExtResource("EmptyCrate")]
+position = Vector3(0.78, 0.02, 0.63)
+scale = Vector3(0.72, 0.72, 0.72)
+
+[node name="MercanciasGenerales" type="Node3D" parent="Estructuras"]
+position = Vector3(7, 0, 1)
+rotation_degrees = Vector3(0, -90, 0)
+metadata/identidad = "mercancias_generales"
+
+[node name="Puesto" parent="Estructuras/MercanciasGenerales" instance=ExtResource("Stall")]
+position = Vector3(0, 0, 0.12)
+scale = Vector3(0.9, 0.9, 0.9)
+
+[node name="PosteO" type="MeshInstance3D" parent="Estructuras/MercanciasGenerales"]
+position = Vector3(-1, 1.02, 0.15)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+
+[node name="PosteE" type="MeshInstance3D" parent="Estructuras/MercanciasGenerales"]
+position = Vector3(1, 1.02, 0.15)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+
+[node name="Toldo" type="MeshInstance3D" parent="Estructuras/MercanciasGenerales"]
+position = Vector3(0, 1.91, 0.12)
+mesh = SubResource("Canopy")
+material_override = SubResource("OliveCloth")
+
+[node name="Caja" parent="Estructuras/MercanciasGenerales" instance=ExtResource("WoodCrate")]
+position = Vector3(-0.65, 0.03, 0.58)
+scale = Vector3(0.52, 0.52, 0.52)
+
+[node name="Saco" parent="Estructuras/MercanciasGenerales" instance=ExtResource("Bag")]
+position = Vector3(0.45, 0.02, 0.62)
+scale = Vector3(0.62, 0.62, 0.62)
+
+[node name="MarcadoresFuturos" type="Node3D" parent="."]
+[node name="MerchantSpotFrutas" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(-6, 0.02, -6.55)
+[node name="CustomerSpotFrutas" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(-6, 0.02, -4.05)
+[node name="MerchantSpotTelas" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(6, 0.02, -6.55)
+[node name="CustomerSpotTelas" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(6, 0.02, -4.05)
+[node name="MerchantSpotGenerales" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(7.55, 0.02, 1)
+[node name="CustomerSpotGenerales" type="Marker3D" parent="MarcadoresFuturos"]
+position = Vector3(4.9, 0.02, 1)
+
+[node name="Colisiones" type="Node3D" parent="."]
+[node name="Frutas" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/Frutas"]
+position = Vector3(-6, 0.95, -5.8)
+shape = SubResource("CartShape")
+[node name="Telas" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/Telas"]
+position = Vector3(6, 0.95, -5.85)
+shape = SubResource("StallShape")
+[node name="Generales" type="StaticBody3D" parent="Colisiones"]
+[node name="Forma" type="CollisionShape3D" parent="Colisiones/Generales"]
+position = Vector3(7.15, 0.95, 1)
+rotation_degrees = Vector3(0, 90, 0)
+shape = SubResource("StallShape")

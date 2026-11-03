@@ -1,0 +1,170 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Wood"]
+albedo_color = Color(0.28, 0.16, 0.075, 1)
+roughness = 0.94
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.46, 0.29, 0.13, 1)
+roughness = 0.9
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.4, 0.4, 0.35, 1)
+roughness = 0.97
+[sub_resource type="BoxMesh" id="Post"]
+size = Vector3(0.16, 1.55, 0.16)
+[sub_resource type="BoxMesh" id="Board"]
+size = Vector3(1.75, 0.42, 0.12)
+[sub_resource type="PrismMesh" id="Arrow"]
+size = Vector3(0.48, 0.42, 0.12)
+[sub_resource type="CylinderMesh" id="RoadStone"]
+top_radius = 0.18
+bottom_radius = 0.24
+height = 0.12
+radial_segments = 7
+
+[node name="SalidasAldea" type="Node3D"]
+metadata/cantidad = 3
+metadata/transiciones_implementadas = false
+
+[node name="SalidaBosqueNorte" type="Node3D" parent="."]
+metadata/id_salida = "aldea_bosque_norte"
+metadata/destino_previsto = "Bosque"
+metadata/orientacion = Vector3(0, 0, -1)
+metadata/camino_conexion = "Caminos/EntradaNorte"
+metadata/limite_provisional = "Colisiones/LimiteNorte"
+metadata/retorno_previsto = "bosque_aldea_sur"
+[node name="Aproximacion" type="Marker3D" parent="SalidaBosqueNorte"]
+position = Vector3(0, 0.02, -34)
+[node name="TransicionFutura" type="Marker3D" parent="SalidaBosqueNorte"]
+position = Vector3(0, 0.02, -35.5)
+[node name="LimiteProvisional" type="Marker3D" parent="SalidaBosqueNorte"]
+position = Vector3(0, 0.02, -36)
+[node name="Senal" type="Node3D" parent="SalidaBosqueNorte"]
+position = Vector3(2.7, 0, -34.1)
+[node name="Poste" type="MeshInstance3D" parent="SalidaBosqueNorte/Senal"]
+position = Vector3(0, 0.78, 0)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+[node name="Tabla" type="MeshInstance3D" parent="SalidaBosqueNorte/Senal"]
+position = Vector3(-0.55, 1.3, 0)
+mesh = SubResource("Board")
+material_override = SubResource("WoodLight")
+[node name="Flecha" type="MeshInstance3D" parent="SalidaBosqueNorte/Senal"]
+position = Vector3(-1.6, 1.3, 0)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Arrow")
+material_override = SubResource("WoodLight")
+[node name="Rotulo" type="Label3D" parent="SalidaBosqueNorte/Senal"]
+position = Vector3(-0.55, 1.31, 0.07)
+billboard = 1
+no_depth_test = true
+text = "BOSQUE"
+font_size = 38
+pixel_size = 0.008
+outline_size = 6
+modulate = Color(0.93, 0.82, 0.58, 1)
+[node name="Piedra1" type="MeshInstance3D" parent="SalidaBosqueNorte"]
+position = Vector3(-2.45, 0.07, -34.6)
+mesh = SubResource("RoadStone")
+material_override = SubResource("Stone")
+[node name="Piedra2" type="MeshInstance3D" parent="SalidaBosqueNorte"]
+position = Vector3(2.2, 0.06, -35.1)
+scale = Vector3(0.8, 0.8, 1.1)
+mesh = SubResource("RoadStone")
+material_override = SubResource("Stone")
+
+[node name="SalidaCamposSur" type="Node3D" parent="."]
+metadata/id_salida = "aldea_campos_sur"
+metadata/destino_previsto = "CamposYGranjas"
+metadata/orientacion = Vector3(0, 0, 1)
+metadata/camino_conexion = "Caminos/EntradaSur"
+metadata/limite_provisional = "Colisiones/LimiteSur"
+metadata/retorno_previsto = "campos_aldea_norte"
+[node name="Aproximacion" type="Marker3D" parent="SalidaCamposSur"]
+position = Vector3(0, 0.02, 34)
+[node name="TransicionFutura" type="Marker3D" parent="SalidaCamposSur"]
+position = Vector3(0, 0.02, 35.5)
+[node name="LimiteProvisional" type="Marker3D" parent="SalidaCamposSur"]
+position = Vector3(0, 0.02, 36)
+[node name="Senal" type="Node3D" parent="SalidaCamposSur"]
+position = Vector3(-2.7, 0, 34.1)
+rotation_degrees = Vector3(0, 180, 0)
+[node name="Poste" type="MeshInstance3D" parent="SalidaCamposSur/Senal"]
+position = Vector3(0, 0.78, 0)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+[node name="Tabla" type="MeshInstance3D" parent="SalidaCamposSur/Senal"]
+position = Vector3(-0.55, 1.3, 0)
+mesh = SubResource("Board")
+material_override = SubResource("WoodLight")
+[node name="Flecha" type="MeshInstance3D" parent="SalidaCamposSur/Senal"]
+position = Vector3(-1.6, 1.3, 0)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Arrow")
+material_override = SubResource("WoodLight")
+[node name="Rotulo" type="Label3D" parent="SalidaCamposSur/Senal"]
+position = Vector3(-0.55, 1.31, 0.07)
+billboard = 1
+no_depth_test = true
+text = "CAMPOS"
+font_size = 38
+pixel_size = 0.008
+outline_size = 6
+modulate = Color(0.93, 0.82, 0.58, 1)
+[node name="Piedra1" type="MeshInstance3D" parent="SalidaCamposSur"]
+position = Vector3(-2.2, 0.07, 35)
+mesh = SubResource("RoadStone")
+material_override = SubResource("Stone")
+[node name="Piedra2" type="MeshInstance3D" parent="SalidaCamposSur"]
+position = Vector3(2.45, 0.06, 34.5)
+scale = Vector3(0.9, 0.8, 1.15)
+mesh = SubResource("RoadStone")
+material_override = SubResource("Stone")
+
+[node name="SalidaCaminoEste" type="Node3D" parent="."]
+metadata/id_salida = "aldea_camino_este"
+metadata/destino_previsto = "CaminoMontanas"
+metadata/orientacion = Vector3(1, 0, 0)
+metadata/camino_conexion = "Caminos/Ribera"
+metadata/requiere_puente = true
+metadata/limite_provisional = "Colisiones/LimiteEste"
+metadata/retorno_previsto = "camino_montanas_aldea_oeste"
+[node name="Aproximacion" type="Marker3D" parent="SalidaCaminoEste"]
+position = Vector3(37.2, 0.02, 0)
+[node name="TransicionFutura" type="Marker3D" parent="SalidaCaminoEste"]
+position = Vector3(39.5, 0.02, 0)
+[node name="LimiteProvisional" type="Marker3D" parent="SalidaCaminoEste"]
+position = Vector3(40, 0.02, 0)
+[node name="Senal" type="Node3D" parent="SalidaCaminoEste"]
+position = Vector3(38, 0, 2.7)
+rotation_degrees = Vector3(0, 90, 0)
+[node name="Poste" type="MeshInstance3D" parent="SalidaCaminoEste/Senal"]
+position = Vector3(0, 0.78, 0)
+mesh = SubResource("Post")
+material_override = SubResource("Wood")
+[node name="Tabla" type="MeshInstance3D" parent="SalidaCaminoEste/Senal"]
+position = Vector3(-0.55, 1.3, 0)
+mesh = SubResource("Board")
+material_override = SubResource("WoodLight")
+[node name="Flecha" type="MeshInstance3D" parent="SalidaCaminoEste/Senal"]
+position = Vector3(-1.6, 1.3, 0)
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Arrow")
+material_override = SubResource("WoodLight")
+[node name="Rotulo" type="Label3D" parent="SalidaCaminoEste/Senal"]
+position = Vector3(-0.55, 1.31, -0.07)
+billboard = 1
+no_depth_test = true
+text = "MONTANAS"
+font_size = 34
+pixel_size = 0.007
+outline_size = 6
+modulate = Color(0.93, 0.82, 0.58, 1)
+[node name="Piedra1" type="MeshInstance3D" parent="SalidaCaminoEste"]
+position = Vector3(38, 0.07, -2.45)
+mesh = SubResource("RoadStone")
+material_override = SubResource("Stone")
+[node name="Piedra2" type="MeshInstance3D" parent="SalidaCaminoEste"]
+position = Vector3(38.7, 0.06, 2.25)
+scale = Vector3(0.8, 0.8, 1.1)
+mesh = SubResource("RoadStone")
+material_override = SubResource("Stone")

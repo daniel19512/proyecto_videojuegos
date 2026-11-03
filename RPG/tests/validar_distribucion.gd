@@ -15,6 +15,10 @@ var solidos_exterior_e06: Array[PhysicsBody3D] = []
 var solidos_e07: Array[PhysicsBody3D] = []
 var solidos_rurales: Array[PhysicsBody3D] = []
 var solidos_ribera: Array[PhysicsBody3D] = []
+var solidos_huertos: Array[PhysicsBody3D] = []
+var solidos_mirador: Array[PhysicsBody3D] = []
+var solidos_mercado_plaza: Array[PhysicsBody3D] = []
+var solidos_vegetacion: Array[PhysicsBody3D] = []
 
 func _initialize() -> void:
 	call_deferred("validar")
@@ -212,7 +216,7 @@ func muestra_mobiliario(punto: Vector2) -> bool:
 		return false
 	var mobiliario := aldea.get_node("Edificios/E01/DetallesTaberna/Mobiliario")
 	for golpe in golpes:
-		if golpe.collider != mobiliario and golpe.collider not in solidos_exterior_e06 and golpe.collider not in solidos_panaderia and golpe.collider not in solidos_herreria and golpe.collider not in solidos_carpinteria and golpe.collider not in solidos_herbolario and golpe.collider not in solidos_e07 and golpe.collider not in solidos_rurales and golpe.collider not in solidos_ribera:
+		if golpe.collider != mobiliario and golpe.collider not in solidos_exterior_e06 and golpe.collider not in solidos_panaderia and golpe.collider not in solidos_herreria and golpe.collider not in solidos_carpinteria and golpe.collider not in solidos_herbolario and golpe.collider not in solidos_e07 and golpe.collider not in solidos_rurales and golpe.collider not in solidos_ribera and golpe.collider not in solidos_huertos and golpe.collider not in solidos_mirador and golpe.collider not in solidos_mercado_plaza and golpe.collider not in solidos_vegetacion:
 			return false
 	return true
 
@@ -350,7 +354,7 @@ func validar() -> void:
 	comprobar(caja.position.is_equal_approx(Vector3(-40, -0.5, -36)) and caja.size.is_equal_approx(Vector3(80, 0.5, 72)), "Terreno fisico 80x72 centrado, superficie Y=0")
 	var malla: MeshInstance3D = aldea.get_node("Terreno/Suelo/MallaSuelo")
 	comprobar((malla.global_transform * malla.get_aabb()).is_equal_approx(caja), "Suelo visual coincide con colision")
-	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 25, "Suelo, limites, doce edificios, rio y puente")
+	comprobar(aldea.find_children("*", "StaticBody3D", true, false).size() == 36, "Suelo, limites, edificios, rio, puente, espacios construidos y troncos agrupados")
 	comprobar(aldea.get_node("Edificios").get_child_count() == 12, "Doce edificios E01-E12 construidos")
 	var plaza := plano(aldea.get_node("Plaza/Marca"))
 	comprobar(plaza.is_equal_approx(Rect2(-10, -9, 20, 18)), "Plaza central 20x18")
@@ -380,6 +384,12 @@ func validar() -> void:
 	await validar_vivienda_final("E11")
 	await validar_molino()
 	await validar_ribera()
+	await validar_huertos()
+	await validar_jardin()
+	await validar_mirador()
+	await validar_mercado_plaza()
+	await validar_salidas_regionales()
+	await validar_vegetacion_general()
 	var nivelado := true
 	for x in range(-39, 40, 2):
 		for z in range(-35, 36, 2):
@@ -450,7 +460,10 @@ func validar() -> void:
 				# El plano reserva 4 estructurales y 3 libres en el puente definitivo.
 				var libre := 3.0 if centro.x >= 26 and centro.x <= 34 and absf(centro.y)<.01 else ancho
 				var punto: Vector2 = centro + lateral * proporcion * (libre*0.5-0.36)
-				pasos_libres = suelo_libre(punto) and pasos_libres
+				var punto_libre := suelo_libre(punto)
+				if not punto_libre:
+					print("CORREDOR BLOQUEADO: ",camino.name," ",punto)
+				pasos_libres = punto_libre and pasos_libres
 	comprobar(marcas_correctas and principales == 8, "Ocho corredores principales de 4 unidades y marcas coherentes con todos los anchos")
 	comprobar(pasos_libres, "Capsula y apoyo a lo largo y ancho de todos los corredores")
 	comprobar(conectadas(regiones) == regiones.size(), "Todos los corredores conectados a plaza")
@@ -1288,3 +1301,307 @@ func validar_extremos_rio() -> void:
 	var mat: ShaderMaterial = agua.mesh.surface_get_material(0)
 	comprobar(float(mat.get_shader_parameter("velocidad_corriente"))>0 and "posicion.z - TIME * velocidad_corriente" in mat.shader.code,"Agua: ambas capas advectadas hacia +Z con velocidad configurable positiva")
 	comprobar(is_equal_approx(float(mat.get_shader_parameter("velocidad_corriente")),.65),"Agua: capa principal 0.65 u/s, secundaria 0.468 u/s")
+
+# Fase 4B.2: solo registrar obstáculos tras validar sus formas y sus accesos.
+func validar_jardin() -> void:
+	var jardin: Node3D = aldea.get_node("JardinesConstruidos/JardinHierbas")
+	var reserva: Rect2 = aldea.get_node("Jardines/JardinHierbas").get_meta("reserva")
+	comprobar(reserva==Rect2(21,13,4,4) and jardin.position==Vector3(23,0,15) and jardin.scale==Vector3.ONE and jardin.rotation==Vector3.ZERO,"Jardin: unica reserva ornamental pendiente, centro y dimensiones aprobados")
+	var valido := true
+	for mesh: MeshInstance3D in jardin.find_children("*","MeshInstance3D",true,false):
+		var volumen: AABB = mesh.global_transform*mesh.get_aabb()
+		valido = reserva.encloses(plano(mesh)) and volumen.position.y>=-0.01 and volumen.end.y<0.9 and valido
+		for grupo in ["Parcelas","Caminos","Jardines","Reservas"]:
+			for zona in aldea.get_node(grupo).get_children():
+				if grupo=="Jardines" and zona.name=="JardinHierbas":
+					continue
+				if zona.has_node("Marca"):
+					valido = area_comun(plano(mesh),plano(zona.get_node("Marca")))<0.001 and valido
+		for s in mesh.mesh.get_surface_count():
+			valido = mesh.get_active_material(s)!=null and valido
+	comprobar(valido,"Jardin: materiales, apoyo, altura baja y contencion sin invadir caminos ni otras reservas")
+	comprobar(jardin.find_children("*","PhysicsBody3D",true,false).is_empty(),"Jardin: flores, losas y maceta bajas sin cuerpos innecesarios")
+	var libre := true
+	for segmento in [[Vector2(16,8),Vector2(16,15)],[Vector2(16,15),Vector2(23.4,15.1)]]:
+		for i in 81:
+			for lateral in [-0.25,0.0,0.25]:
+				libre = suelo_libre(segmento[0].lerp(segmento[1],float(i)/80)+Vector2(0,lateral)) and libre
+	comprobar(libre,"Jardin: acceso publico y sendero interno transitables para capsula")
+	jugador.position = Vector3(20,0.02,15)
+	jugador.velocity = Vector3.ZERO
+	await caminar("mover_derecha",18)
+	await esperar(30)
+	comprobar(jugador.is_on_floor() and jugador.position.x>21,"Jardin: entrada real desde oeste")
+	await caminar("mover_izquierda",18)
+	await esperar(30)
+	comprobar(jugador.is_on_floor() and jugador.position.x<21,"Jardin: retorno real al camino")
+
+# Fase 4B.4: terraza baja dentro de la reserva, con acceso norte y vista oeste al rio.
+func validar_mirador() -> void:
+	var mirador: Node3D = aldea.get_node("EspaciosConstruidos/Mirador")
+	var reserva: Rect2 = aldea.get_node("Jardines/Mirador").get_meta("reserva")
+	comprobar(reserva==Rect2(35,6,4,4) and mirador.position==Vector3(37,0,8) and mirador.scale==Vector3.ONE and mirador.rotation==Vector3.ZERO,"Mirador: centro 37,8 y reserva 4x4 aprobados")
+	var valido := true
+	for mesh: MeshInstance3D in mirador.find_children("*","MeshInstance3D",true,false):
+		var volumen := mesh.global_transform*mesh.get_aabb()
+		var malla_valida := reserva.encloses(plano(mesh)) and volumen.position.y>=-0.01 and volumen.end.y<=2.05
+		for superficie in mesh.mesh.get_surface_count():
+			malla_valida = mesh.get_active_material(superficie)!=null and malla_valida
+		if not malla_valida:
+			print("FUERA MIRADOR: ",mesh.get_path()," ",volumen)
+		valido = malla_valida and valido
+	comprobar(valido,"Mirador: mallas apoyadas, materiales presentes y geometria contenida en 4x4")
+	var solido: StaticBody3D = mirador.get_node("Colisiones")
+	var formas := solido.find_children("*","CollisionShape3D",true,false)
+	comprobar(formas.size()==2,"Mirador: colisiones simples solo para barandilla y banco")
+	var colisiones_validas := true
+	for forma: CollisionShape3D in formas:
+		var caja := forma.global_transform*AABB(-forma.shape.size*.5,forma.shape.size)
+		colisiones_validas = reserva.encloses(Rect2(Vector2(caja.position.x,caja.position.z),Vector2(caja.size.x,caja.size.z))) and caja.position.y>=0 and colisiones_validas
+	comprobar(colisiones_validas,"Mirador: colisiones visibles contenidas y sin invadir orilla")
+	solidos_mirador.append(solido)
+	var libre := true
+	# El acceso existente entra desde el norte y deja una zona central donde girar.
+	for segmento in [[Vector2(37,4.5),Vector2(37,8.8)],[Vector2(37,8.3),Vector2(36.1,8.3)]]:
+		for i in 61:
+			for lateral in [-0.22,0.0,0.22]:
+				var p: Vector2 = segmento[0].lerp(segmento[1],float(i)/60)
+				p.x += lateral
+				libre = suelo_libre(p) and libre
+	comprobar(libre,"Mirador: acceso norte, claro central y aproximacion a la vista transitables")
+	comprobar(not suelo_libre(Vector2(35.32,8)) and not suelo_libre(Vector2(38.18,9.3)),"Mirador: barandilla oeste y banco detectados como obstaculos reales")
+	jugador.position = Vector3(37,0.02,5.1)
+	jugador.velocity = Vector3.ZERO
+	await caminar("mover_abajo",24)
+	await esperar(25)
+	comprobar(jugador.is_on_floor() and jugador.position.z>6.1,"Mirador: entrada real desde sendero norte")
+	await caminar("mover_arriba",24)
+	await esperar(25)
+	comprobar(jugador.is_on_floor() and jugador.position.z<6.1,"Mirador: salida real hacia sendero")
+
+func validar_mercado_plaza() -> void:
+	var mercado: Node3D = aldea.get_node("MercadoConstruido")
+	var plaza_construida: Node3D = aldea.get_node("PlazaConstruida")
+	var plaza_reserva: Rect2 = aldea.get_node("Plaza").get_meta("reserva")
+	var reservas := {
+		"FrutasVerduras": aldea.get_node("Reservas/Puesto1").get_meta("reserva"),
+		"ArtesaniasTextiles": aldea.get_node("Reservas/Puesto2").get_meta("reserva"),
+		"MercanciasGenerales": aldea.get_node("Reservas/Puesto3").get_meta("reserva")
+	}
+	comprobar(plaza_reserva==Rect2(-10,-9,20,18) and mercado.get_meta("puestos")==3,"Mercado/plaza: area 20x18 y tres puestos aprobados")
+	var mercado_valido := true
+	for id in reservas:
+		var puesto: Node3D = mercado.get_node("Estructuras/"+id)
+		for mesh: MeshInstance3D in puesto.find_children("*","MeshInstance3D",true,false):
+			var caja := mesh.global_transform*mesh.get_aabb()
+			var pieza_valida: bool = (reservas[id] as Rect2).grow(0.02).encloses(Rect2(Vector2(caja.position.x,caja.position.z),Vector2(caja.size.x,caja.size.z))) and caja.position.y>=-0.05 and caja.end.y<2.8
+			for superficie in mesh.mesh.get_surface_count():
+				pieza_valida = mesh.get_active_material(superficie)!=null and pieza_valida
+			if not pieza_valida:
+				print("FUERA MERCADO: ",mesh.get_path()," ",caja)
+			mercado_valido = pieza_valida and mercado_valido
+	comprobar(mercado_valido,"Mercado: estructuras, toldos y mercancias apoyados y contenidos en sus reservas 3x3")
+	var cuerpos_mercado := mercado.get_node("Colisiones").find_children("*","StaticBody3D",true,false)
+	var cuerpos_plaza := plaza_construida.get_node("Colisiones").find_children("*","StaticBody3D",true,false)
+	comprobar(cuerpos_mercado.size()==3 and cuerpos_plaza.size()==3,"Mercado/plaza: seis cuerpos simples para puestos, pozo y bancos")
+	for cuerpo: StaticBody3D in cuerpos_mercado+cuerpos_plaza:
+		solidos_mercado_plaza.append(cuerpo)
+	var marcadores := mercado.get_node("MarcadoresFuturos").find_children("*","Marker3D",true,false)
+	marcadores.append_array(plaza_construida.get_node("MarcadoresFuturos").find_children("*","Marker3D",true,false))
+	comprobar(marcadores.size()==10,"Mercado/plaza: posiciones futuras de comerciantes, clientes, descanso y eventos")
+	var libre := true
+	# Centro y eje sur despejados; acceso norte rodea el pozo por ambos lados.
+	for segmento in [[Vector2(0,9),Vector2(0,-1.8)],[Vector2(-3.4,-9),Vector2(-3.4,0)],[Vector2(3.4,-9),Vector2(3.4,0)],[Vector2(-10,0),Vector2(4.5,0)]]:
+		for i in 81:
+			for lateral in [-0.3,0.0,0.3]:
+				var p: Vector2 = segmento[0].lerp(segmento[1],float(i)/80)
+				p += (segmento[1]-segmento[0]).normalized().orthogonal()*lateral
+				libre = suelo_libre(p) and libre
+	comprobar(libre,"Plaza: centro, eje sur, acceso oeste y dos brazos norte transitables")
+	for punto in [Vector2(-6,-4.05),Vector2(6,-4.05),Vector2(4.9,1)]:
+		comprobar(suelo_libre(punto),"Mercado: cliente puede aproximarse al mostrador en "+str(punto))
+	comprobar(not suelo_libre(Vector2(0,-4)) and not suelo_libre(Vector2(-6,-5.8)) and not suelo_libre(Vector2(7.15,1)),"Mercado/plaza: pozo y puestos detectados como obstaculos visibles")
+	jugador.position = Vector3(0,0.02,8.3)
+	jugador.velocity = Vector3.ZERO
+	await caminar("mover_arriba",50)
+	await esperar(25)
+	comprobar(jugador.is_on_floor() and jugador.position.z<1.5,"Plaza: marcha real entra al centro desde el sur")
+
+func validar_salidas_regionales() -> void:
+	var salidas: Node3D = aldea.get_node("SalidasRegionales")
+	var esperadas := {
+		"SalidaBosqueNorte": ["aldea_bosque_norte","Bosque",Vector3(0,0,-1),Vector3(0,0.02,-34),Vector3(0,0.02,-35.5),"Caminos/EntradaNorte","Colisiones/LimiteNorte"],
+		"SalidaCamposSur": ["aldea_campos_sur","CamposYGranjas",Vector3(0,0,1),Vector3(0,0.02,34),Vector3(0,0.02,35.5),"Caminos/EntradaSur","Colisiones/LimiteSur"],
+		"SalidaCaminoEste": ["aldea_camino_este","CaminoMontanas",Vector3(1,0,0),Vector3(37.2,0.02,0),Vector3(39.5,0.02,0),"Caminos/Ribera","Colisiones/LimiteEste"]
+	}
+	comprobar(salidas.get_meta("cantidad")==3 and not salidas.get_meta("transiciones_implementadas"),"Salidas: tres conexiones preparadas sin transiciones implementadas")
+	var validas := true
+	for nombre in esperadas:
+		var salida: Node3D = salidas.get_node(nombre)
+		var e: Array = esperadas[nombre]
+		validas = salida.get_meta("id_salida")==e[0] and salida.get_meta("destino_previsto")==e[1] and salida.get_meta("orientacion")==e[2] and salida.get_meta("camino_conexion")==e[5] and salida.get_meta("limite_provisional")==e[6] and validas
+		validas = salida.get_node("Aproximacion").global_position.is_equal_approx(e[3]) and salida.get_node("TransicionFutura").global_position.is_equal_approx(e[4]) and salida.has_node("LimiteProvisional") and validas
+		validas = aldea.has_node(e[5]) and aldea.has_node(e[6]) and validas
+	comprobar(validas,"Salidas: identificadores, destinos, orientaciones, caminos, marcadores y limites coherentes")
+	comprobar(salidas.find_children("*","CollisionObject3D",true,false).is_empty(),"Salidas: decoracion sin colisiones nuevas; cierres usan limites exteriores existentes")
+	var aproximaciones_libres := true
+	for nombre in esperadas:
+		var e: Array = esperadas[nombre]
+		var aproximacion: Vector3 = e[3]
+		var orientacion: Vector3 = e[2]
+		var p := Vector2(aproximacion.x,aproximacion.z)
+		for lateral in [-0.5,0.0,0.5]:
+			var lado: Vector2 = Vector2(orientacion.z,-orientacion.x)*lateral
+			aproximaciones_libres = suelo_libre(p+lado) and aproximaciones_libres
+	comprobar(aproximaciones_libres,"Salidas: puntos de aproximacion y anchura para protagonista/NPC libres")
+	var bloqueos := true
+	for nombre in esperadas:
+		var e: Array = esperadas[nombre]
+		var transicion: Vector3 = e[4]
+		var orientacion: Vector3 = e[2]
+		jugador.global_position = transicion-orientacion*0.4
+		jugador.velocity = Vector3.ZERO
+		var golpe := KinematicCollision3D.new()
+		bloqueos = jugador.test_move(jugador.global_transform,orientacion*1.2,golpe) and golpe.get_collider()==aldea.get_node(e[6]) and bloqueos
+	comprobar(bloqueos,"Salidas: limites provisionales impiden abandonar el terreno hacia el vacio")
+	comprobar(salidas.get_node("SalidaCaminoEste").get_meta("requiere_puente") and aldea.has_node("Puente"),"Salida este: ruta regional exige el puente real")
+
+func validar_vegetacion_general() -> void:
+	var vegetacion: Node3D = aldea.get_node("VegetacionGeneral")
+	comprobar(vegetacion.get_meta("arboles")==16 and vegetacion.get_meta("arbustos")==18 and vegetacion.get_meta("plantas_pequenas")==32 and vegetacion.get_meta("rocas")==7,"Vegetacion: recuentos deterministas por categoria")
+	var arboles := vegetacion.get_node("ArbolesPrincipales").get_children()
+	var troncos := vegetacion.get_node("ColisionesTroncos").find_children("*","CollisionShape3D",true,false)
+	comprobar(arboles.size()==16 and troncos.size()==16,"Vegetacion: dieciseis arboles y una forma simple por tronco")
+	var zonas: Array[Rect2] = []
+	for grupo in ["Parcelas","Jardines"]:
+		for zona in aldea.get_node(grupo).get_children():
+			zonas.append(plano(zona.get_node("Marca")))
+	for camino in aldea.get_node("Caminos").get_children():
+		zonas.append(plano(camino.get_node("Marca")))
+	zonas.append(aldea.get_node("Plaza").get_meta("reserva"))
+	var arboles_validos := true
+	for arbol: Node3D in arboles:
+		var p := Vector2(arbol.global_position.x,arbol.global_position.z)
+		arboles_validos = Rect2(-39.5,-35.5,79,71).has_point(p) and arboles_validos
+		for zona in zonas:
+			arboles_validos = not zona.grow(0.8).has_point(p) and arboles_validos
+	comprobar(arboles_validos,"Vegetacion: troncos dentro del terreno y fuera de parcelas, plaza y corredores")
+	var materiales := true
+	var apoyos := true
+	for mesh: MeshInstance3D in vegetacion.find_children("*","MeshInstance3D",true,false):
+		var caja := mesh.global_transform*mesh.get_aabb()
+		# Algunos modelos naturales conservan el pivote original ligeramente por
+		# encima de su base (hasta 0,28 unidades). La raíz se apoya en Y=0 y esta
+		# tolerancia valida la geometría importada sin alterar los assets.
+		var pieza_apoyada := caja.position.y>=-0.30 and caja.end.y<10
+		for superficie in mesh.mesh.get_surface_count():
+			materiales = mesh.get_active_material(superficie)!=null and materiales
+		if not pieza_apoyada:
+			print("FUERA VEGETACION: ",mesh.get_path()," ",caja)
+		apoyos = pieza_apoyada and apoyos
+	comprobar(materiales and apoyos,"Vegetacion: materiales presentes, apoyo y altura moderada")
+	var cuerpo: StaticBody3D = vegetacion.get_node("ColisionesTroncos")
+	solidos_vegetacion.append(cuerpo)
+	var salidas_libres := true
+	for caso in [[Vector2(0,-34),Vector2(1,0)],[Vector2(0,34),Vector2(1,0)],[Vector2(37.2,0),Vector2(0,1)]]:
+		for avance in 9:
+			for lateral in [-1.1,-0.55,0.0,0.55,1.1]:
+				salidas_libres = suelo_libre(caso[0]+caso[1]*lateral+Vector2(-caso[1].y,caso[1].x)*(avance*.35-1.4)) and salidas_libres
+	comprobar(salidas_libres,"Vegetacion: bandas amplias de las tres salidas permanecen transitables")
+	comprobar(vegetacion.get_node("ArbolesPrincipales").find_children("*","Script",true,false).is_empty(),"Vegetacion: sin scripts individuales por planta")
+
+func validar_huertos() -> void:
+	var esperados := {
+		"HuertoComunitario": [Vector2(-32.5,15), Vector2(6,5), 5],
+		"HuertoE09": [Vector2(-8,32), Vector2(6,4), 3],
+		"HuertoE10": [Vector2(8,33), Vector2(6,4), 8]}
+	var pendientes: Array[String] = []
+	for zona in aldea.get_node("Jardines").get_children():
+		if String(zona.name).begins_with("Huerto"):
+			pendientes.append(String(zona.name))
+	comprobar(pendientes.size()==3 and aldea.get_node("Huertos").get_child_count()==3,"Huertos: las tres reservas agrícolas tienen escena construida")
+	for id: String in esperados:
+		var datos: Array = esperados[id]
+		var huerto: Node3D = aldea.get_node("Huertos/"+id)
+		var centro: Vector2 = datos[0]
+		var reserva: Rect2 = aldea.get_node("Jardines/"+id).get_meta("reserva")
+		comprobar(Vector2(huerto.position.x,huerto.position.z).is_equal_approx(centro) and huerto.position.y==0 and huerto.scale==Vector3.ONE and huerto.rotation==Vector3.ZERO,id+": centro aprobado y raíz sin escalar")
+		comprobar(reserva.is_equal_approx(Rect2(centro-datos[1]*0.5,datos[1])) and huerto.get_meta("tamano")==datos[1],id+": dimensiones de reserva intactas")
+		var visuales := true
+		var bancales_visibles := true
+		var colores_cultivos := true
+		for mesh: MeshInstance3D in huerto.find_children("*","MeshInstance3D",true,false):
+			visuales = visuales and reserva.encloses(plano(mesh))
+			var volumen: AABB = mesh.global_transform*mesh.get_aabb()
+			if not reserva.encloses(plano(mesh)) or volumen.position.y < -0.025 or volumen.end.y > 1.35:
+				print("HUERTO_GEOMETRIA: ",mesh.get_path()," ",volumen," reserva=",reserva)
+			visuales = visuales and volumen.position.y >= -0.025 and volumen.end.y <= 1.35
+			for s in mesh.mesh.get_surface_count():
+				visuales = visuales and mesh.get_active_material(s)!=null
+				if "/Zanahoria" in String(mesh.get_path()) or "/FarmCrate_Carrot/" in String(mesh.get_path()):
+					var mat: Material = mesh.get_active_material(s)
+					colores_cultivos = colores_cultivos and mat is StandardMaterial3D and mat.vertex_color_use_as_albedo and mesh.get_surface_override_material(s)!=null
+			if String(mesh.name).begins_with("Bancal"):
+				var normales: PackedVector3Array = mesh.mesh.surface_get_arrays(0)[Mesh.ARRAY_NORMAL]
+				bancales_visibles = bancales_visibles and normales.size()>0 and normales[0].y>0.5
+			for parcela in aldea.get_node("Parcelas").get_children():
+				visuales = visuales and area_comun(plano(mesh),plano(parcela.get_node("Marca")))<0.001
+			for via in aldea.get_node("Caminos").get_children():
+				visuales = visuales and area_comun(plano(mesh),plano(via.get_node("Marca")))<0.001
+			for zona in aldea.get_node("Jardines").get_children():
+				if String(zona.name)!=id:
+					visuales = visuales and area_comun(plano(mesh),plano(zona.get_node("Marca")))<0.001
+		comprobar(visuales,id+": mallas apoyadas, materiales, altura baja y sin invasión de otras parcelas/reservas")
+		comprobar(bancales_visibles and colores_cultivos,id+": bancales orientados hacia arriba y colores de cultivos guardados como overrides locales")
+		var solido: StaticBody3D = huerto.get_node("Colisiones")
+		var formas_validas := solido.get_child_count()==int(datos[2]) and huerto.find_children("*","PhysicsBody3D",true,false).size()==1
+		for forma: CollisionShape3D in solido.get_children():
+			if not forma.shape is BoxShape3D:
+				formas_validas=false
+				continue
+			var volumen: AABB = forma.global_transform*forma.shape.get_debug_mesh().get_aabb()
+			var huella := Rect2(Vector2(volumen.position.x,volumen.position.z),Vector2(volumen.size.x,volumen.size.z))
+			formas_validas = formas_validas and reserva.encloses(huella) and not forma.disabled and minf(volumen.size.x,volumen.size.z)<0.8
+			for camino in aldea.get_node("Caminos").get_children():
+				formas_validas = formas_validas and area_comun(huella,plano(camino.get_node("Marca")))<0.001
+			consulta.transform = Transform3D(Basis.IDENTITY, Vector3(volumen.get_center().x,0.82,volumen.get_center().z))
+			var encontrado := false
+			for golpe in mundo.get_world_3d().direct_space_state.intersect_shape(consulta):
+				encontrado = encontrado or golpe.collider==solido
+			formas_validas = formas_validas and encontrado
+		comprobar(formas_validas,id+": cajas individuales contenidas, físicas y fuera de todos los corredores; ninguna colisión en cultivos")
+		# Muestreo de la banda peatonal completa, no solo del eje.
+		var camino: Node3D = aldea.get_node("Caminos/"+id)
+		var publico_a: Vector2 = camino.get_meta("a")
+		var publico_b: Vector2 = camino.get_meta("b")
+		var recorrido := PackedVector2Array([publico_a,publico_b])
+		for punto: Vector2 in huerto.get_meta("recorrido_local"):
+			recorrido.append(centro+punto)
+		var libre := true
+		for i in range(recorrido.size()-1):
+			for j in 61:
+				for lateral in [-0.25,0.0,0.25]:
+					libre = suelo_libre(recorrido[i].lerp(recorrido[i+1],float(j)/60)+Vector2(0,lateral)) and libre
+		comprobar(libre,id+": acceso público y banda interna libres para cápsula con apoyo continuo")
+		# Un obstáculo real dentro del paso tiene que seguir siendo detectado.
+		var control: CollisionShape3D = solido.get_child(0)
+		var original := control.position
+		var local: Vector2 = huerto.get_meta("recorrido_local")[1]
+		control.position = Vector3(local.x,0.3,local.y)
+		await esperar(2)
+		comprobar(not suelo_libre(centro+local),id+": control negativo detecta cerca desplazada al sendero")
+		control.position = original
+		await esperar(2)
+		var entrada: Vector2 = huerto.get_meta("entrada_local")
+		var desde_este := entrada.x>0
+		jugador.global_position = Vector3(centro.x+entrada.x+(1.0 if desde_este else -1.0),0.02,centro.y+entrada.y)
+		jugador.velocity=Vector3.ZERO
+		await caminar("mover_izquierda" if desde_este else "mover_derecha",24)
+		# Esperar frenado completo antes de invertir dirección con velocidad temporal 10.
+		await esperar(30)
+		comprobar(jugador.is_on_floor() and absf(jugador.position.x-centro.x)<2.1,id+": entrada real desde camino público")
+		await caminar("mover_derecha" if desde_este else "mover_izquierda",24)
+		await esperar(30)
+		comprobar(jugador.is_on_floor() and (jugador.position.x-centro.x>3.0 if desde_este else jugador.position.x-centro.x< -3.0),id+": retorno real al camino público")
+		if formas_validas and visuales and libre:
+			solidos_huertos.append(solido)
