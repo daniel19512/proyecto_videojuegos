@@ -18,7 +18,7 @@ __pycache__/
 !.env.example
 
 # Recursos locales: excluir temporalmente todos los assets del repositorio.
-/assets/
+#/assets/
 
 # Registros temporales de pruebas y validaciones
 /logs/
