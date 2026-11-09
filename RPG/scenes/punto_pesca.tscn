@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/pesca/punto_pesca.gd" id="1_punto"]
+[ext_resource type="PackedScene" path="res://scenes/minijuego_pesca.tscn" id="2_minijuego"]
+[ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Bucket_Wooden_1.gltf" id="3_cubo"]
+
+[sub_resource type="CylinderShape3D" id="ZonaPesca"]
+height = 2.0
+radius = 1.8
+
+[node name="PuntoPesca" type="Node3D"]
+script = ExtResource("1_punto")
+metadata/minijuego = "pesca"
+
+[node name="Zona" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="Forma" type="CollisionShape3D" parent="Zona"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ZonaPesca")
+
+[node name="Cubo" parent="." instance=ExtResource("3_cubo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.003, 0.9)
+
+[node name="Aviso" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
+pixel_size = 0.01
+billboard = 1
+no_depth_test = true
+modulate = Color(1, 0.95, 0.78, 1)
+outline_modulate = Color(0.15, 0.09, 0.04, 1)
+text = "[F] Pescar"
+font_size = 40
+outline_size = 12
+
+[node name="MinijuegoPesca" parent="." instance=ExtResource("2_minijuego")]

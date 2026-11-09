@@ -22,7 +22,7 @@ Proyecto inicialmente escolar: RPG medieval de fantasía y simulación de vida, 
 
 La visión futura incluye explorar aldeas y otros escenarios; NPCs con personalidades, rutinas, memoria, relaciones y comportamientos; diálogos e interacciones sociales; profesiones como herrería y agricultura con minijuegos; misiones y eventos relacionados con la vida de la aldea. No está previsto un sistema de combate tradicional.
 
-La base existente permite movimiento y presentación del protagonista en una aldea modular. Los sistemas sociales, NPCs, profesiones, minijuegos, misiones y eventos no están implementados. No confundir modelos decorativos o nombres de nodos con sistemas de juego.
+La base existente permite movimiento y presentación del protagonista en una aldea modular. El único minijuego implementado es la pesca junto al puente. Los sistemas sociales, NPCs, profesiones, otros minijuegos, misiones y eventos no están implementados. No confundir modelos decorativos o nombres de nodos con sistemas de juego.
 
 ## Tecnologías y arquitectura actual
 
@@ -72,6 +72,8 @@ La base existente permite movimiento y presentación del protagonista en una ald
 
 \| Terreno 80×72, plaza 20×18, corredores, parcelas y reservas visuales de la etapa 2; suelo y límites sólidos | `RPG/scenes/aldea.tscn`; cápsula del personaje en `RPG/scenes/jugador.tscn`. |
 
+\| Punto de interacción y minijuego de pesca | `RPG/scripts/pesca/`, `RPG/scenes/punto_pesca.tscn`, `RPG/scenes/minijuego_pesca.tscn`; acción `interactuar` en `RPG/project.godot`. |
+
 \| Composición principal, iluminación y ambiente | `RPG/scenes/mundo.tscn`; `RPG/scripts/mundo.gd` solo imprime mensajes de bienvenida. |
 
 \| Validación del mundo actual: movimiento, cámara, suelo, límites, conectividad, reservas y solapes | `RPG/tests/validar_aldea.gd` es la entrada de `RPG/tests/validar_distribucion.gd`. La composición anterior conserva sus comprobaciones en `RPG/tests/validar_aldea_anterior.gd`. Su existencia no equivale a una ejecución aprobada en cada sesión. |
@@ -86,7 +88,7 @@ Las reservas lógicas de parcelas y jardines conservan sus nodos `Marca` como pl
 
 El tamaño ortográfico aprobado para la cámara principal es **15**, configurado en `RPG/scenes/mundo.tscn` (`CamaraPrincipal.size`). El mundo y el laboratorio comparten `RPG/scripts/camara_orbital.gd`: órbita horizontal continua de 360°, inclinación de aproximadamente -32°, seguimiento del centro suavizado y radio conservado. `RPG/scripts/camara_orbital_assets.gd` es un adaptador del laboratorio sin duplicar la lógica. `camara_seguimiento.gd` conserva el seguimiento fijo de respaldos y muestras; ninguno de los scripts sobrescribe el tamaño ortográfico.
 
-Controles persistentes en `RPG/project.godot`: Q/E y stick derecho X mediante `girar_camara_izquierda/derecha` (zona muerta 0.20); WASD/flechas y stick izquierdo X/Y mediante acciones de movimiento existentes. Al salir de la cámara se liberan estados, sin borrar acciones ni eventos de InputMap. El jugador conserva cuerpo físico sin rotar, parámetros originales y movimiento/animaciones relativos a pantalla. No incorporar zoom dinámico, inclinación controlable ni transparencia de obstáculos sin una tarea específica.
+Controles persistentes en `RPG/project.godot`: Q/E y stick derecho X mediante `girar_camara_izquierda/derecha` (zona muerta 0.20); WASD/flechas y stick izquierdo X/Y mediante acciones de movimiento existentes. Al salir de la cámara se liberan estados, sin borrar acciones ni eventos de InputMap. El jugador conserva cuerpo físico sin rotar, parámetros originales y movimiento/animaciones relativos a pantalla. La acción `interactuar` (F y botón 0 del mando) es la tecla común para interacciones con el mundo; no reutilizar E, que gira la cámara. No incorporar zoom dinámico, inclinación controlable ni transparencia de obstáculos sin una tarea específica.
 
 Conservar el selector local de `RPG/scenes/pruebas_assets.tscn` (23/19/17/15, inicio en 15) para comparar; su tamaño opcional no modifica la cámara del mundo. Validación orbital compartida: `RPG/tests/validar_camara_orbital_assets.gd` para laboratorio y `RPG/tests/validar_camara_orbital.gd` para mundo. `RPG/tests/validar_edificios_360.gd` verifica cierres geométricos y captura E01/E06 en ocho ángulos; esta geometría y headless no sustituyen la revisión visual de texturas, encajes y oclusión.
 ## Recursos y assets
@@ -234,3 +236,11 @@ Tres escenas propias bajo `RPG/scenes/`: `huerto_comunitario.tscn`, `huerto_e09.
 El mundo futuro se organiza en escenas regionales independientes conectadas; la aldea sigue siendo la región principal. `RPG/scenes/salidas_aldea.tscn`, instanciada como `Aldea/SalidasRegionales`, define tres salidas estables: norte a Bosque, sur a CamposYGranjas y este a CaminoMontanas mediante el puente. Cada salida conserva metadatos `id_salida`, `destino_previsto`, `orientacion`, `camino_conexion`, `limite_provisional` y `retorno_previsto`, además de Marker3D `Aproximacion`, `TransicionFutura` y `LimiteProvisional`. Mantener estos identificadores al implementar transiciones.
 
 Las regiones exteriores, Area3D y cambios de escena aún no existen. Los cuatro límites físicos originales permanecen cerrados; los límites norte, sur y este son el cierre provisional documentado después de los marcadores futuros. No abrirlos ni permitir caminar fuera del terreno hasta que la escena de destino y el sistema de transición estén implementados conjuntamente. Las señales son geometría estática sin colisión; no bloquean los corredores. Minas y ruinas se conectarán a través de regiones futuras, no requieren salidas directas nuevas desde la aldea.
+
+## Interacciones y minijuego de pesca
+
+`RPG/scenes/punto_pesca.tscn`, instanciado como `Aldea/PuntoPesca` en la orilla oeste al sur del puente (26.9, 0, 4), es el patrón de punto de interacción: `Area3D` de solo detección (`collision_layer = 0`), sin cuerpos sólidos, aviso `Label3D` visible solo con el protagonista dentro y apertura con `interactuar`. Detecta al protagonista como el único `CharacterBody3D` del mundo; si aparecen NPCs con ese tipo, cambiar a un grupo o a una referencia explícita. No mover el punto dentro del agua, del tablero del puente ni de corredores sin revalidar.
+
+Los minijuegos se abren pausando el árbol (`get_tree().paused = true`) y su interfaz corre en `PROCESS_MODE_ALWAYS`. Así se congelan protagonista, cámara y animaciones sin editar sus scripts; quien abre el panel quita la pausa al recibir su señal `cerrado`. Mantener separadas las reglas puras (`RPG/scripts/pesca/logica_pesca.gd`, `LogicaPesca`, determinista con semilla) y la vista (`minijuego_pesca.gd`, dibujo con `_draw()` y estados instrucciones/partida/resultado). Los gráficos son formas provisionales dibujadas por código; pueden sustituirse por sprites sin tocar la lógica. Puntuación: pez +10, pez escapado −5, piedra atrapada −10; partida de 60 s. No hay recompensas, inventario ni guardado de récords.
+
+`RPG/tests/validar_pesca.gd` valida reglas e integración en `mundo.tscn` (aviso, pausa, inicio, resultado y Esc). Si se cambian reglas o constantes, actualizar la prueba. La aprobación jugable y visual sigue a cargo del usuario.

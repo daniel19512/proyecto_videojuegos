@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/terreno_aldea.gd" id="TerrenoVisual"]
 [ext_resource type="PackedScene" path="res://scenes/rio.tscn" id="Rio"]
 [ext_resource type="PackedScene" path="res://scenes/puente.tscn" id="PuenteReal"]
+[ext_resource type="PackedScene" path="res://scenes/punto_pesca.tscn" id="PuntoPesca"]
 [ext_resource type="PackedScene" path="res://scenes/molino.tscn" id="Molino"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_e10.tscn" id="ViviendaE10"]
 [ext_resource type="PackedScene" path="res://scenes/vivienda_e11.tscn" id="ViviendaE11"]
@@ -1501,3 +1502,6 @@ position = Vector3(18, 0.003, 24)
 
 [node name="Puente" parent="." instance=ExtResource("PuenteReal")]
 position = Vector3(30, 0, 0)
+
+[node name="PuntoPesca" parent="." instance=ExtResource("PuntoPesca")]
+position = Vector3(26.9, 0, 4)

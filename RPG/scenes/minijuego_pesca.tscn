@@ -1,0 +1,127 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/pesca/minijuego_pesca.gd" id="1_minijuego"]
+
+[sub_resource type="StyleBoxFlat" id="EstiloMarco"]
+bg_color = Color(0.36, 0.24, 0.13, 0.97)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.2, 0.13, 0.07, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="EstiloMensaje"]
+bg_color = Color(0.08, 0.06, 0.04, 0.78)
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="MinijuegoPesca" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_minijuego")
+
+[node name="Oscurecer" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="Marco" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -300.0
+offset_right = 380.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("EstiloMarco")
+
+[node name="Titulo" type="Label" parent="Marco"]
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 740.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.98, 0.9, 0.66, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.07, 0.03, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 26
+text = "Pesca en el río"
+horizontal_alignment = 1
+
+[node name="Puntos" type="Label" parent="Marco"]
+offset_left = 24.0
+offset_top = 46.0
+offset_right = 324.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.98, 0.94, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.07, 0.03, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "Puntos: 0"
+
+[node name="Tiempo" type="Label" parent="Marco"]
+offset_left = 436.0
+offset_top = 46.0
+offset_right = 736.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.98, 0.94, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.07, 0.03, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "Tiempo: 60"
+horizontal_alignment = 2
+
+[node name="Ayuda" type="Label" parent="Marco"]
+offset_left = 20.0
+offset_top = 564.0
+offset_right = 740.0
+offset_bottom = 588.0
+theme_override_colors/font_color = Color(0.9, 0.82, 0.62, 1)
+theme_override_font_sizes/font_size = 15
+text = "A/D o flechas: mover la red   ·   Esc: salir"
+horizontal_alignment = 1
+
+[node name="AreaJuego" type="Control" parent="Marco"]
+clip_contents = true
+layout_mode = 0
+offset_left = 20.0
+offset_top = 82.0
+offset_right = 500.0
+offset_bottom = 402.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Mensaje" type="Label" parent="Marco/AreaJuego"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -90.0
+offset_right = 190.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.98, 0.94, 0.82, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("EstiloMensaje")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
