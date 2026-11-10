@@ -1,0 +1,233 @@
+[gd_scene format=4]
+
+[ext_resource type="Shader" path="res://scripts/agua_laguna.gdshader" id="1_qvrkn"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf" id="2_w1qd3"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Rock_Medium_1.gltf" id="3_q0to7"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Fern_1.gltf" id="4_mr41i"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Flower_3_Group.gltf" id="5_knwxc"]
+[ext_resource type="PackedScene" path="res://assets/naturaleza/glTF/Flower_4_Group.gltf" id="6_metdi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvrkn"]
+render_priority = 0
+shader = ExtResource("1_qvrkn")
+shader_parameter/profundo = null
+shader_parameter/suave = null
+shader_parameter/tiempo = null
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w1qd3"]
+_surfaces = [{
+"aabb": AABB(-37, -0.12, 16, 16, 1e-05, 12),
+"format": 34359738375,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 288,
+"vertex_data": PackedByteArray("AADowY/C9b0AALBBAACowY/C9b0AALBBFCOowY/C9b2sI7NBAADowY/C9b0AALBBFCOowY/C9b2sI7NBK4yowY/C9b3oQ7ZBAADowY/C9b0AALBBK4yowY/C9b3oQ7ZB0DqpwY/C9b1FXblBAADowY/C9b0AALBB0DqpwY/C9b1FXblBRS6qwY/C9b1ebLxBAADowY/C9b0AALBBRS6qwY/C9b1ebLxBf2WrwY/C9b3Zbb9BAADowY/C9b0AALBBf2WrwY/C9b3Zbb9BKN+swY/C9b1qXsJBAADowY/C9b0AALBBKN+swY/C9b1qXsJBo5muwY/C9b3YOsVBAADowY/C9b0AALBBo5muwY/C9b3YOsVBCpOwwY/C9b0AAMhBAADowY/C9b0AALBBCpOwwY/C9b0AAMhBNMmywY/C9b3ZqspBAADowY/C9b0AALBBNMmywY/C9b3ZqspBszm1wY/C9b12OM1BAADowY/C9b0AALBBszm1wY/C9b12OM1B2+G3wY/C9b0Lps9BAADowY/C9b0AALBB2+G3wY/C9b0Lps9Bw766wY/C9b3u8NFBAADowY/C9b0AALBBw766wY/C9b3u8NFBR829wY/C9b2cFtRBAADowY/C9b0AALBBR829wY/C9b2cFtRBDgrBwY/C9b26FNZBAADowY/C9b0AALBBDgrBwY/C9b26FNZBinHEwY/C9b0Z6ddBAADowY/C9b0AALBBinHEwY/C9b0Z6ddBAADIwY/C9b24kdlBAADowY/C9b0AALBBAADIwY/C9b24kdlBi7HLwY/C9b3GDNtBAADowY/C9b0AALBBi7HLwY/C9b3GDNtBHYLPwY/C9b2iWNxBAADowY/C9b0AALBBHYLPwY/C9b2iWNxBiW3TwY/C9b3hc91BAADowY/C9b0AALBBiW3TwY/C9b3hc91Bgm/XwY/C9b1MXd5BAADowY/C9b0AALBBgm/XwY/C9b1MXd5BpIPbwY/C9b3kE99BAADowY/C9b0AALBBpIPbwY/C9b3kE99BdaXfwY/C9b3glt9BAADowY/C9b0AALBBdaXfwY/C9b3glt9Bb9DjwY/C9b2x5d9BAADowY/C9b0AALBBb9DjwY/C9b2x5d9BAADowY/C9b0AAOBBAADowY/C9b0AALBBAADowY/C9b0AAOBBkS/swY/C9b2x5d9B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AADowY/C9b0AALBBpIPbwY/C9b0c7IBBgm/XwY/C9b20ooFBAADowY/C9b0AALBBgm/XwY/C9b20ooFBiW3TwY/C9b0fjIJBAADowY/C9b0AALBBiW3TwY/C9b0fjIJBHYLPwY/C9b1ep4NBAADowY/C9b0AALBBHYLPwY/C9b1ep4NBi7HLwY/C9b0684RBAADowY/C9b0AALBBi7HLwY/C9b0684RBAADIwY/C9b1IboZBAADowY/C9b0AALBBAADIwY/C9b1IboZBinHEwY/C9b3nFohBAADowY/C9b0AALBBinHEwY/C9b3nFohBDgrBwY/C9b1G64lBAADowY/C9b0AALBBDgrBwY/C9b1G64lBR829wY/C9b1k6YtBAADowY/C9b0AALBBR829wY/C9b1k6YtBw766wY/C9b0SD45BAADowY/C9b0AALBBw766wY/C9b0SD45B2+G3wY/C9b31WZBBAADowY/C9b0AALBB2+G3wY/C9b31WZBBszm1wY/C9b2Kx5JBAADowY/C9b0AALBBszm1wY/C9b2Kx5JBNMmywY/C9b0nVZVBAADowY/C9b0AALBBNMmywY/C9b0nVZVBCpOwwY/C9b0AAJhBAADowY/C9b0AALBBCpOwwY/C9b0AAJhBo5muwY/C9b0oxZpBAADowY/C9b0AALBBo5muwY/C9b0oxZpBKN+swY/C9b2WoZ1BAADowY/C9b0AALBBKN+swY/C9b2WoZ1Bf2WrwY/C9b0nkqBBAADowY/C9b0AALBBf2WrwY/C9b0nkqBBRS6qwY/C9b2ik6NBAADowY/C9b0AALBBRS6qwY/C9b2ik6NB0DqpwY/C9b27oqZBAADowY/C9b0AALBB0DqpwY/C9b27oqZBK4yowY/C9b0YvKlBAADowY/C9b0AALBBK4yowY/C9b0YvKlBFCOowY/C9b1U3KxBAADowY/C9b0AALBBFCOowY/C9b1U3KxBAACowY/C9b0AALBB/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0to7"]
+albedo_color = Color(0.24, 0.39, 0.15, 1)
+roughness = 0.85
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mr41i"]
+top_radius = 0.19670676
+bottom_radius = 0.19670676
+height = 0.018
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_knwxc"]
+top_radius = 0.2414605
+bottom_radius = 0.2414605
+height = 0.018
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_metdi"]
+top_radius = 0.24645048
+bottom_radius = 0.24645048
+height = 0.018
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ttcos"]
+top_radius = 0.19146895
+bottom_radius = 0.19146895
+height = 0.018
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qg47l"]
+top_radius = 0.20141883
+bottom_radius = 0.20141883
+height = 0.018
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dc0iu"]
+top_radius = 0.25169864
+bottom_radius = 0.25169864
+height = 0.018
+radial_segments = 9
+
+[node name="Laguna" type="Node3D" unique_id=542314664]
+metadata/centro = Vector2(-29, 22)
+metadata/semiejes = Vector2(8, 6)
+metadata/cota_agua = -0.12
+metadata/semilla = 70422
+metadata/barrera_existente = "../Reservas/ReservaLagunaCerrada"
+
+[node name="Geometria" type="Node3D" parent="." unique_id=1490215184]
+
+[node name="Agua" type="MeshInstance3D" parent="Geometria" unique_id=823890539]
+material_override = SubResource("ShaderMaterial_qvrkn")
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_w1qd3")
+
+[node name="DecoracionOrillas" type="Node3D" parent="." unique_id=1989565717]
+
+[node name="Grass_Wispy_Tall2" type="Node3D" parent="DecoracionOrillas" unique_id=1216623408 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.49223518, 0, -0.096077524, 0, 0.50152403, 0, 0.096077524, 0, 0.49223518, -31.143497, 0.31881824, 27.95187)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="Rock_Medium_12" type="Node3D" parent="DecoracionOrillas" unique_id=2063087774 instance=ExtResource("3_q0to7")]
+transform = Transform3D(-0.23181528, 0, 0.1682754, 0, 0.28645232, 0, -0.1682754, 0, -0.23181528, -25.201738, 0.09971668, 16.370705)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@4" type="Node3D" parent="DecoracionOrillas" unique_id=1217461882 instance=ExtResource("3_q0to7")]
+transform = Transform3D(0.19802481, 0, -0.058133785, 0, 0.20638159, 0, 0.058133785, 0, 0.19802481, -36.92479, 0.31452394, 20.56907)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@5" type="Node3D" parent="DecoracionOrillas" unique_id=122565179 instance=ExtResource("3_q0to7")]
+transform = Transform3D(-0.18888938, 0, 0.07679317, 0, 0.2039029, 0, -0.07679317, 0, -0.18888938, -23.132046, 0.15478855, 17.692955)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@6" type="Node3D" parent="DecoracionOrillas" unique_id=1268497625 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.008628416, 0, 0.44356388, 0, 0.44364777, 0, -0.44356388, 0, 0.008628416, -34.893017, 0.3165791, 25.9754)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@7" type="Node3D" parent="DecoracionOrillas" unique_id=1955443202 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(-0.12720215, 0, -0.36860916, 0, 0.38993987, 0, 0.36860916, 0, -0.12720215, -35.67827, 0.23439305, 18.274078)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@8" type="Node3D" parent="DecoracionOrillas" unique_id=358471020 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.3976521, 0, -0.16973819, 0, 0.43236354, 0, 0.16973819, 0, 0.3976521, -29.779383, 0.31720033, 28.154566)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@9" type="Node3D" parent="DecoracionOrillas" unique_id=1181149414 instance=ExtResource("3_q0to7")]
+transform = Transform3D(-0.21597715, 0, -0.0073435297, 0, 0.21610196, 0, 0.0073435297, 0, -0.21597715, -23.20044, 0.15289667, 17.713512)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@10" type="Node3D" parent="DecoracionOrillas" unique_id=1277961399 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.3538982, 0, -0.057783447, 0, 0.35858452, 0, 0.057783447, 0, 0.3538982, -23.04962, 0.14154586, 17.577555)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@11" type="Node3D" parent="DecoracionOrillas" unique_id=1637837734 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.41006878, 0, 0.023401244, 0, 0.41073596, 0, -0.023401244, 0, 0.41006878, -24.636322, 0.33118734, 27.292875)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@12" type="Node3D" parent="DecoracionOrillas" unique_id=1899464676 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.39962783, 0, -0.014683263, 0, 0.3998975, 0, 0.014683263, 0, 0.39962783, -37.123577, 0.31732878, 21.737991)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@13" type="Node3D" parent="DecoracionOrillas" unique_id=1803680737 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(-0.42809284, 0, -0.14436467, 0, 0.4517794, 0, 0.14436467, 0, -0.42809284, -26.155088, 0.32823816, 27.84472)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@14" type="Node3D" parent="DecoracionOrillas" unique_id=60159041 instance=ExtResource("3_q0to7")]
+transform = Transform3D(0.121910915, 0, 0.15645538, 0, 0.19834454, 0, -0.15645538, 0, 0.121910915, -22.87108, 0.17563754, 17.597593)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@15" type="Node3D" parent="DecoracionOrillas" unique_id=1916911758 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(-0.16768669, 0, 0.32602513, 0, 0.36662135, 0, -0.32602513, 0, -0.16768669, -36.27734, 0.2594885, 19.335224)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@16" type="Node3D" parent="DecoracionOrillas" unique_id=1986854752 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.32196942, 0, 0.3395156, 0, 0.46790504, 0, -0.3395156, 0, 0.32196942, -36.700905, 0.28649926, 20.306768)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@17" type="Node3D" parent="DecoracionOrillas" unique_id=96766935 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.2323135, 0, 0.37316144, 0, 0.43956685, 0, -0.37316144, 0, 0.2323135, -36.929882, 0.32473466, 22.95967)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@18" type="Node3D" parent="DecoracionOrillas" unique_id=1872145159 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(-0.0614719, 0, 0.3506173, 0, 0.3559653, 0, -0.3506173, 0, -0.0614719, -23.849564, 0.31600246, 26.646336)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@19" type="Node3D" parent="DecoracionOrillas" unique_id=1334427345 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(-0.34364417, 0, -0.256084, 0, 0.42856777, 0, 0.256084, 0, -0.34364417, -31.146538, 0.07895773, 16.11735)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@20" type="Node3D" parent="DecoracionOrillas" unique_id=357360400 instance=ExtResource("3_q0to7")]
+transform = Transform3D(-0.0628118, 0, -0.24249549, 0, 0.25049827, 0, 0.24249549, 0, -0.0628118, -29.93288, 0.34862205, 28.207445)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@21" type="Node3D" parent="DecoracionOrillas" unique_id=1808471626 instance=ExtResource("3_q0to7")]
+transform = Transform3D(0.23003611, 0, -0.1475199, 0, 0.2732741, 0, 0.1475199, 0, 0.23003611, -36.58992, 0.3126239, 19.671741)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@22" type="Node3D" parent="DecoracionOrillas" unique_id=337633156 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.33651727, 0, -0.14713287, 0, 0.3672764, 0, 0.14713287, 0, 0.33651727, -23.383516, 0.3350317, 26.66167)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@23" type="Node3D" parent="DecoracionOrillas" unique_id=1310524923 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(-0.19293009, 0, -0.41013265, 0, 0.45324475, 0, 0.41013265, 0, -0.19293009, -35.579437, 0.23364453, 18.023169)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@24" type="Node3D" parent="DecoracionOrillas" unique_id=175479177 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(-0.3848687, 0, 0.26118532, 0, 0.46512544, 0, -0.26118532, 0, -0.3848687, -36.3129, 0.26569286, 19.185808)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@25" type="Node3D" parent="DecoracionOrillas" unique_id=1768981739 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.29384965, 0, 0.3775384, 0, 0.47841704, 0, -0.3775384, 0, 0.29384965, -36.504517, 0.27680933, 19.376753)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="@Node3D@26" type="Node3D" parent="DecoracionOrillas" unique_id=1629929877 instance=ExtResource("3_q0to7")]
+transform = Transform3D(-0.16142653, 0, 0.26292655, 0, 0.30852696, 0, -0.26292655, 0, -0.16142653, -22.854876, 0.38014638, 26.266233)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Rock_Medium_1.gltf"
+
+[node name="@Node3D@27" type="Node3D" parent="DecoracionOrillas" unique_id=1419466323 instance=ExtResource("2_w1qd3")]
+transform = Transform3D(0.23849884, 0, -0.35693154, 0, 0.42928058, 0, 0.35693154, 0, 0.23849884, -36.88183, 0.29545033, 19.899738)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Grass_Wispy_Tall.gltf"
+
+[node name="Fern_12" type="Node3D" parent="DecoracionOrillas" unique_id=127591707 instance=ExtResource("4_mr41i")]
+transform = Transform3D(-0.3501566, 0, -0.24958038, 0, 0.43, 0, 0.24958038, 0, -0.3501566, -33.2, 0.14475359, 17.2)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Fern_1.gltf"
+
+[node name="@Node3D@28" type="Node3D" parent="DecoracionOrillas" unique_id=479910942 instance=ExtResource("4_mr41i")]
+transform = Transform3D(0.47813994, 0, 0.042216122, 0, 0.48, 0, -0.042216122, 0, 0.47813994, -31.5, 0.35995072, 28.2)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Fern_1.gltf"
+
+[node name="Flower_3_Group2" type="Node3D" parent="DecoracionOrillas" unique_id=2042717605 instance=ExtResource("5_knwxc")]
+transform = Transform3D(-0.1814923, 0, -0.1412818, 0, 0.23, 0, 0.1412818, 0, -0.1814923, -25.4, 0.33543265, 27.8)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Flower_3_Group.gltf"
+
+[node name="Flower_4_Group2" type="Node3D" parent="DecoracionOrillas" unique_id=856269509 instance=ExtResource("6_metdi")]
+transform = Transform3D(-0.20707026, 0, -0.12133384, 0, 0.24, 0, 0.12133384, 0, -0.20707026, -35.5, 0.21571915, 19.2)
+metadata/ruta_original = "res://assets/naturaleza/glTF/Flower_4_Group.gltf"
+
+[node name="DetallesAgua" type="Node3D" parent="." unique_id=584394902]
+
+[node name="Nenufar1" type="MeshInstance3D" parent="DetallesAgua" unique_id=84663125]
+transform = Transform3D(-0.1257174, 0, -0.9920661, 0, 1, 0, 0.9920661, 0, -0.1257174, -32, -0.1, 20)
+material_override = SubResource("StandardMaterial3D_q0to7")
+mesh = SubResource("CylinderMesh_mr41i")
+
+[node name="Nenufar2" type="MeshInstance3D" parent="DetallesAgua" unique_id=556171016]
+transform = Transform3D(0.9672889, 0, 0.25367734, 0, 1, 0, -0.25367734, 0, 0.9672889, -31.4, -0.1, 20.3)
+material_override = SubResource("StandardMaterial3D_q0to7")
+mesh = SubResource("CylinderMesh_knwxc")
+
+[node name="Nenufar3" type="MeshInstance3D" parent="DetallesAgua" unique_id=1474529241]
+transform = Transform3D(-0.9999892, 0, -0.004638981, 0, 1, 0, 0.004638981, 0, -0.9999892, -31.9, -0.1, 20.65)
+material_override = SubResource("StandardMaterial3D_q0to7")
+mesh = SubResource("CylinderMesh_metdi")
+
+[node name="Nenufar4" type="MeshInstance3D" parent="DetallesAgua" unique_id=1804817372]
+transform = Transform3D(0.713988, 0, 0.70015794, 0, 1, 0, -0.70015794, 0, 0.713988, -27, -0.1, 24)
+material_override = SubResource("StandardMaterial3D_q0to7")
+mesh = SubResource("CylinderMesh_ttcos")
+
+[node name="Nenufar5" type="MeshInstance3D" parent="DetallesAgua" unique_id=171086553]
+transform = Transform3D(0.878198, 0, -0.47829723, 0, 1, 0, 0.47829723, 0, 0.878198, -27.5, -0.1, 24.3)
+material_override = SubResource("StandardMaterial3D_q0to7")
+mesh = SubResource("CylinderMesh_qg47l")
+
+[node name="Nenufar6" type="MeshInstance3D" parent="DetallesAgua" unique_id=1022871813]
+transform = Transform3D(0.72018874, 0, -0.6937782, 0, 1, 0, 0.6937782, 0, 0.72018874, -26.8, -0.1, 24.65)
+material_override = SubResource("StandardMaterial3D_q0to7")
+mesh = SubResource("CylinderMesh_dc0iu")

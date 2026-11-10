@@ -491,3 +491,15 @@ Escena `RPG/scenes/vegetacion_aldea.tscn`, instanciada como `Aldea/VegetacionGen
 Exclusiones conservadas: todas las reservas de edificios y jardines, plaza X=[-10,10]/Z=[-9,9], los 36 corredores con margen visual, cauce y bandas centrales de salida. Las bocas norte y sur mantienen X=[-2,2]; la oriental conserva Z=[-2,2] desde el puente hasta el límite. Los troncos usan 16 cilindros agrupados en un único cuerpo estático; el resto no colisiona. No se crean nuevas reservas, caminos ni metadatos de distribución.
 
 La composición introduce tres tipos de árbol, dos de arbusto, cuatro de planta pequeña y una roca del paquete natural, con giros y escalas deterministas. Validación propia: `RPG/tests/validar_vegetacion.gd`; galería `RPG/logs/fase4b7_vegetacion/2026-11-02T21-33-16/galeria.html`. Próximas fases: 4B.8 paisaje/orillas y 4B.9 pulido/optimización; requieren aprobación visual previa.
+
+## Fase 6B — conexión activa al bosque
+
+La salida norte `aldea_bosque_norte` ahora dispone de Area3D en `Mundo/Region/SalidaBosque`, centrada en el Marker3D existente (0;0,02;−35,5) +1 Y, caja 4×3×1,4. Cambia a `RPG/scenes/mundo_bosque.tscn`, entrada `bosque_aldea_sur`. Al regresar se usa `Mundo/Region/EntradaBosque` en (0;0,02;−32), más interior que Aproximacion y separado del detector. Edificios, caminos, vegetación y los cuatro cierres permanecen intactos; el área se activa antes del cierre. Sur/este siguen inactivos. Arquitectura, pruebas y ampliación en `RPG/docs/transiciones_regionales.md`.
+
+## Salida sur activa — fase 6E
+
+Desde el 4 de noviembre de 2026, `aldea_campos_sur` conecta con `RPG/scenes/mundo_campos_granjas.tscn`, entrada `campos_aldea_norte`. Area3D `Mundo/Region/SalidaCampos` reutiliza `SalidaCamposSur/TransicionFutura` (0;0,02;35,5), centro +1 Y y caja 4×3×1,4. El retorno usa entrada propia `Region/EntradaCampos` (0;0,02;32), ID `aldea_campos_sur`, mirando arriba/−Z; no reutiliza EntradaBosque. Cierre sur, camino, señal, parcelas y edificios intactos: la transición se dispara antes del cierre. Este sigue pendiente. Plano rural en `RPG/docs/plano_campos_granjas.md`; pruebas de ida/vuelta y cadena de cuatro regiones en estado y guía de transiciones. Este párrafo sustituye las referencias históricas a sur inactivo, sin alterar la geometría de la aldea.
+
+## Salida oriental activa — fase 6F, 5 de noviembre de 2026
+
+La señal y los marcadores estables de SalidaCaminoEste se conservan. En `RPG/scenes/mundo.tscn`, `Region/SalidaMontanas` activa la conexión a Montañas sobre TransicionFutura (39,5;0,02;0), después del puente y antes del límite físico. Retorno propio `Region/EntradaMontanas` (36;0,02;0), ID aldea_camino_este, izquierda/−X. Cierres, puente, distribución y contenido de aldea intactos; solo configuración regional invisible. Esta sección sustituye la descripción histórica de salida oriental pendiente. Configuración, pruebas y destino en `RPG/docs/plano_montanas.md` y `RPG/docs/transiciones_regionales.md`.

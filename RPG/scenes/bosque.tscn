@@ -1,0 +1,528 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://scenes/bosque_terreno.res" id="1_bcm3e"]
+[ext_resource type="Shape3D" path="res://scenes/bosque_colision.res" id="2_v4s7n"]
+
+[ext_resource type="PackedScene" path="res://scenes/vegetacion_bosque.tscn" id="3_vegetacion"]
+
+[ext_resource type="PackedScene" path="res://scenes/laguna_bosque.tscn" id="4_laguna"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsrwp"]
+size = Vector3(1.0637599, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f784t"]
+size = Vector3(1.0812553, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p313m"]
+size = Vector3(1.1136851, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4s8q"]
+size = Vector3(1.1566584, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hveib"]
+size = Vector3(1.205007, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cb3t3"]
+size = Vector3(1.25362, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fg14b"]
+size = Vector3(1.2979931, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yp07r"]
+size = Vector3(1.3344648, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tiggq"]
+size = Vector3(1.3602892, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pshql"]
+size = Vector3(1.3736545, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bht50"]
+size = Vector3(1.3736545, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hbvn"]
+size = Vector3(1.3602892, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ou43p"]
+size = Vector3(1.3344648, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p78hx"]
+size = Vector3(1.2979931, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l25kj"]
+size = Vector3(1.2536184, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr637"]
+size = Vector3(1.2050098, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_joxj6"]
+size = Vector3(1.1566572, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o1jqv"]
+size = Vector3(1.1136851, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_quuhn"]
+size = Vector3(1.0812559, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wuso0"]
+size = Vector3(1.0637597, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_857qt"]
+size = Vector3(1.0637597, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nrc7c"]
+size = Vector3(1.0812559, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xeu28"]
+size = Vector3(1.1136851, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhyyw"]
+size = Vector3(1.1566572, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nfsq2"]
+size = Vector3(1.2050098, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvuxv"]
+size = Vector3(1.2536184, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5ol3"]
+size = Vector3(1.2979931, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xmt45"]
+size = Vector3(1.3344648, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubq6l"]
+size = Vector3(1.3602892, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xcu2"]
+size = Vector3(1.3736545, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ogoah"]
+size = Vector3(1.3736545, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ht5xg"]
+size = Vector3(1.3602892, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtvrn"]
+size = Vector3(1.3344648, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clsdk"]
+size = Vector3(1.2979931, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6c70"]
+size = Vector3(1.25362, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aro0q"]
+size = Vector3(1.205007, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38267"]
+size = Vector3(1.1566584, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38ctc"]
+size = Vector3(1.1136851, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sd8yy"]
+size = Vector3(1.0812553, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2p4vw"]
+size = Vector3(1.0637599, 3, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1c8lh"]
+size = Vector3(1, 12, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trhj4"]
+size = Vector3(1, 12, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d14q2"]
+size = Vector3(100, 12, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qx6d1"]
+size = Vector3(100, 12, 1)
+
+[sub_resource type="Environment" id="Environment_d6x53"]
+background_mode = 1
+background_color = Color(0.16, 0.21, 0.22, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.75, 0.83, 0.9, 1)
+ambient_light_energy = 0.65
+
+[node name="Bosque" type="Node3D" unique_id=1067514999]
+metadata/fase = "6A.1"
+metadata/limites = Rect2(-50, -50, 100, 100)
+
+[node name="Terreno" type="Node3D" parent="." unique_id=1344924250]
+
+[node name="Superficie" type="MeshInstance3D" parent="Terreno" unique_id=593051970]
+mesh = ExtResource("1_bcm3e")
+
+[node name="Suelo" type="StaticBody3D" parent="Terreno" unique_id=576386610]
+
+[node name="SuperficieFisica" type="CollisionShape3D" parent="Terreno/Suelo" unique_id=1175004256]
+shape = ExtResource("2_v4s7n")
+
+[node name="Relieve" type="Node3D" parent="." unique_id=300667331]
+metadata/descripcion = "Colinas suaves incorporadas a la unica malla fisica del terreno"
+
+[node name="Caminos" type="Node3D" parent="." unique_id=695484106]
+
+[node name="P01" type="Node3D" parent="Caminos" unique_id=958204691]
+metadata/id_camino = "P01"
+metadata/ancho = 3.6
+metadata/eje = PackedVector2Array(0, 49, 0.017226562, 48.438046, 0.03599121, 48.061768, 0.0590625, 47.631874, 0.084594734, 47.15581, 0.1107422, 46.641014, 0.13565919, 46.094933, 0.1575, 45.525, 0.17441894, 44.938667, 0.18457031, 44.34336, 0.18610841, 43.746536, 0.1771875, 43.155624, 0.15596192, 42.578075, 0.12058593, 42.021328, 0.06921387, 41.49282, 0, 41, -0.10598145, 40.50779, -0.26097655, 39.978867, -0.45681155, 39.41731, -0.6853125, 38.827187, -0.9383056, 38.212574, -1.2076172, 37.577538, -1.3458381, 37.25364, -1.4850732, 36.92616, -1.6243012, 36.595608, -1.7625, 36.2625, -1.898648, 35.92734, -2.0317235, 35.590637, -2.160705, 35.252907, -2.2845702, 34.91465, -2.402298, 34.576378, -2.512866, 34.2386, -2.7084374, 33.566563, -2.8631105, 32.902615, -2.968711, 32.25082, -3.0170655, 31.61526, -3, 31, -2.899243, 30.357203, -2.8150725, 30.008467, -2.7105076, 29.643242, -2.5871491, 29.262827, -2.4465966, 28.86852, -2.290451, 28.461624, -2.1203125, 28.043438, -1.9377813, 27.615261, -1.744458, 27.178394, -1.5419428, 26.734137, -1.331836, 26.283789, -1.1157379, 25.828651, -0.8952489, 25.370026, -0.67196965, 24.909206, -0.4475, 24.4475, -0.22344053, 23.986202, -0.0013916492, 23.526615, 0.21704662, 23.070042, 0.43027347, 22.617773, 0.6366889, 22.171118, 0.8346924, 21.731373, 1.0226836, 21.299839, 1.1990626, 20.877813, 1.3622284, 20.466599, 1.510581, 20.067495, 1.6425202, 19.681803, 1.7564453, 19.310822, 1.8507562, 18.955849, 1.9238526, 18.618189, 2, 18, 1.9812256, 17.419043, 1.8798047, 16.832344, 1.7068408, 16.241661, 1.4734375, 15.648749, 1.1906981, 15.055371, 0.86972666, 14.463282, 0.5216261, 13.874239, 0.15750003, 13.290001, -0.21154779, 12.712324, -0.574414, 12.142969, -0.9199951, 11.583692, -1.2371875, 11.036251, -1.5148877, 10.502402, -1.7419922, 9.983907, -1.9073975, 9.482519, -2, 9, -2.0267577, 8.497485, -2.0059376, 7.9414454, -1.9433984, 7.3416357, -1.8449999, 6.7078123, -1.7166016, 6.0497313, -1.5640625, 5.3771486, -1.3932422, 4.6998196, -1.21, 4.0275, -1.0201952, 3.3699462, -0.82968754, 2.7369142, -0.6443359, 2.1381593, -0.47, 1.5834374, -0.31253907, 1.0825049, -0.1778125, 0.64511716, 0, 0)
+
+[node name="P02" type="Node3D" parent="Caminos" unique_id=1099122973]
+metadata/id_camino = "P02"
+metadata/ancho = 3.6
+metadata/eje = PackedVector2Array(0, 0, -0.3184082, -0.1484375, -0.7397656, -0.32968748, -1.2507715, -0.5414063, -1.838125, -0.78125, -2.1562757, -0.9109863, -2.4885254, -1.046875, -2.8332117, -1.1886231, -3.188672, -1.3359375, -3.5532436, -1.4885254, -3.925264, -1.6460938, -4.30307, -1.8083497, -4.685, -1.9750001, -5.0693913, -2.145752, -5.4545803, -2.3203125, -5.8389053, -2.4983888, -6.220703, -2.6796875, -6.598312, -2.8639162, -6.9700685, -3.0507813, -7.3343105, -3.2399902, -7.6893754, -3.43125, -8.0336, -3.6242676, -8.365322, -3.8187501, -8.68288, -4.0144043, -8.98461, -4.2109375, -9.533936, -4.6054688, -10, -5, -10.413452, -5.4276123, -10.814805, -5.9177732, -11.205551, -6.46272, -11.397415, -6.753311, -11.587187, -7.0546875, -11.775056, -7.365878, -11.961206, -7.685913, -12.145825, -8.013821, -12.329102, -8.348633, -12.511221, -8.689377, -12.692368, -9.035083, -12.872732, -9.384781, -13.0525, -9.737499, -13.231857, -10.09227, -13.410991, -10.44812, -13.590088, -10.80408, -13.769335, -11.15918, -13.948919, -11.512447, -14.129028, -11.862915, -14.309847, -12.20961, -14.491562, -12.551562, -14.674362, -12.887802, -14.858433, -13.217358, -15.043961, -13.539261, -15.2311325, -13.852539, -15.4201355, -14.156222, -15.611157, -14.449341, -16, -15, -16.207005, -15.271064, -16.4333, -15.55835, -16.677439, -15.860504, -16.93797, -16.17617, -17.21344, -16.503998, -17.502403, -16.842627, -17.803406, -17.190704, -18.115, -17.546875, -18.435736, -17.909782, -18.76416, -18.278076, -19.098825, -18.650396, -19.438282, -19.02539, -19.781076, -19.401703, -20.125763, -19.777977, -20.470886, -20.152863, -20.815, -20.525, -21.156652, -20.893036, -21.494394, -21.255615, -21.826775, -21.611383, -22.152344, -21.958984, -22.46965, -22.297064, -22.777245, -22.624268, -23.07368, -22.93924, -23.3575, -23.240625, -23.627258, -23.52707, -23.881504, -23.797218, -24.337656, -24.283203, -24.714355, -24.687744, -25, -25)
+
+[node name="P03" type="Node3D" parent="Caminos" unique_id=265259894]
+metadata/id_camino = "P03"
+metadata/ancho = 3.6
+metadata/eje = PackedVector2Array(0, 0, 0.3199463, -0.21242675, 0.7455078, -0.47878906, 1.2627685, -0.79396, 1.8578126, -1.1528125, 2.1801543, -1.3470173, 2.5167236, -1.5502198, 2.8657808, -1.7617793, 3.225586, -1.9810547, 3.5944002, -2.2074053, 3.9704833, -2.4401903, 4.3520966, -2.6787689, 4.7375, -2.9225001, 5.124954, -3.1707428, 5.5127196, -3.4228566, 5.8990574, -3.6782002, 6.2822266, -3.936133, 6.660489, -4.1960135, 7.0321045, -4.457202, 7.395334, -4.719057, 7.7484374, -4.9809375, 8.089676, -5.2422028, 8.41731, -5.502212, 8.729599, -5.760324, 9.024805, -6.0158987, 9.3011875, -6.2682943, 9.557007, -6.51687, 10, -7, 10.380689, -7.509595, 10.737383, -8.08707, 10.90773, -8.398306, 11.0732765, -8.722964, 11.234421, -9.05986, 11.391562, -9.407813, 11.545101, -9.765637, 11.695435, -10.1321535, 11.842964, -10.506176, 11.988086, -10.886524, 12.131202, -11.272013, 12.272711, -11.661461, 12.41301, -12.053683, 12.5525, -12.4475, 12.69158, -12.841726, 12.830649, -13.235181, 12.970108, -13.626678, 13.110352, -14.015039, 13.251783, -14.399078, 13.3948, -14.777612, 13.539803, -15.14946, 13.687188, -15.513437, 13.837357, -15.868362, 13.990707, -16.21305, 14.14764, -16.546322, 14.308556, -16.866993, 14.643921, -17.465796, 15, -18, 15.413305, -18.498974, 15.651792, -18.74862, 15.909258, -18.998358, 16.184025, -19.248188, 16.47441, -19.498096, 16.778732, -19.748077, 17.09531, -19.998127, 17.42247, -20.248232, 17.75852, -20.498388, 18.101788, -20.74859, 18.450584, -20.998829, 18.803238, -21.249096, 19.158062, -21.499384, 19.513376, -21.749687, 19.8675, -22, 20.218754, -22.25031, 20.565454, -22.500614, 20.905922, -22.750904, 21.238476, -23.001173, 21.561436, -23.25141, 21.87312, -23.50161, 22.171848, -23.751768, 22.455938, -24.001875, 22.72371, -24.251923, 22.97348, -24.501904, 23.412304, -25.00164, 23.75896, -25.501026, 24, -26, 24.145191, -26.526514, 24.2184, -27.104296, 24.22733, -27.726963, 24.179688, -28.388126, 24.08318, -29.081396, 24.019007, -29.438078, 23.945507, -29.80039, 23.863644, -30.167538, 23.77438, -30.53872, 23.678677, -30.913141, 23.5775, -31.289999, 23.471811, -31.668499, 23.362572, -32.047844, 23.250751, -32.427227, 23.137304, -32.80586, 23.0232, -33.182938, 22.909399, -33.557663, 22.796865, -33.929245, 22.686562, -34.296875, 22.579453, -34.65976, 22.476498, -35.017097, 22.378666, -35.368095, 22.286915, -35.711952, 22.125513, -36.37505, 22, -37, 21.88833, -37.64695, 21.8279, -38.000267, 21.764765, -38.371212, 21.6992, -38.75808, 21.631475, -39.159164, 21.56186, -39.57277, 21.490625, -39.997185, 21.418043, -40.430717, 21.344385, -40.87166, 21.26992, -41.3183, 21.194921, -41.768944, 21.11966, -42.221893, 21.044405, -42.675434, 20.969429, -43.127872, 20.895, -43.5775, 20.821392, -44.022617, 20.748878, -44.461517, 20.677723, -44.8925, 20.608204, -45.313866, 20.540588, -45.723907, 20.475147, -46.120926, 20.412151, -46.50321, 20.351875, -46.869064, 20.240559, -47.544662, 20.14336, -48.1341, 20.06245, -48.623756, 20, -49)
+
+[node name="P04" type="Node3D" parent="Caminos" unique_id=631403069]
+metadata/id_camino = "P04"
+metadata/ancho = 3.6
+metadata/eje = PackedVector2Array(0, 0, 0.34963378, 0.14997558, 0.8114453, 0.33542967, 1.3710496, 0.5534033, 2.0140624, 0.80093753, 2.3623517, 0.9348651, 2.7260985, 1.0750732, 3.103505, 1.221192, 3.4927733, 1.3728516, 3.892105, 1.5296819, 4.2997017, 1.6913135, 4.713766, 1.8573761, 5.1324997, 2.0275, 5.554105, 2.2013154, 5.976782, 2.3784523, 6.398734, 2.5585406, 6.8181634, 2.741211, 7.233272, 2.926093, 7.6422606, 3.1128173, 8.043331, 3.301014, 8.434687, 3.4903126, 8.814529, 3.6803436, 9.18106, 3.8707373, 9.53248, 4.061124, 9.866992, 4.251133, 10.182798, 4.440395, 10.478101, 4.62854, 11, 5, 11.466211, 5.401001, 11.9209385, 5.8633204, 12.365821, 6.3784328, 12.585083, 6.653122, 12.802501, 6.937812, 13.018276, 7.2314386, 13.232617, 7.532934, 13.445727, 7.841234, 13.657812, 8.155273, 13.869078, 8.473985, 14.079726, 8.796304, 14.289966, 9.121163, 14.5, 9.4475, 14.710033, 9.774246, 14.920274, 10.100336, 15.130922, 10.424706, 15.342188, 10.746288, 15.554273, 11.064019, 15.767383, 11.376831, 15.981723, 11.683659, 16.197498, 11.983438, 16.414917, 12.275101, 16.63418, 12.557583, 17.079062, 13.090742, 17.533789, 13.574389, 18, 14, 18.5219, 14.404223, 18.817202, 14.6133175, 19.133009, 14.826289, 19.46752, 15.042557, 19.818941, 15.2615385, 20.18547, 15.482651, 20.565313, 15.705313, 20.956669, 15.928942, 21.357738, 16.152954, 21.766727, 16.37677, 22.181835, 16.599804, 22.601265, 16.821478, 23.023216, 17.041206, 23.445896, 17.258408, 23.8675, 17.4725, 24.286234, 17.682901, 24.700298, 17.889029, 25.107895, 18.090302, 25.507227, 18.286133, 25.896496, 18.475945, 26.273901, 18.659157, 26.637648, 18.83518, 26.985935, 19.003437, 27.31697, 19.163345, 27.62895, 19.314322, 28.188553, 19.587149, 28.650366, 19.81726, 29, 20)
+
+[node name="P05" type="Node3D" parent="Caminos" unique_id=1904504527]
+metadata/id_camino = "P05"
+metadata/ancho = 3.6
+metadata/eje = PackedVector2Array(0, 0, -0.2887207, 0.24980469, -0.6738281, 0.5734375, -1.1424901, 0.96222657, -1.681875, 1.4075, -1.9740784, 1.6486084, -2.2791502, 1.9005859, -2.5954869, 2.1623487, -2.9214842, 2.4328127, -3.2555382, 2.7108936, -3.5960448, 2.995508, -3.9414, 3.2855716, -4.29, 3.5800002, -4.6402407, 3.8777099, -4.9905176, 4.177617, -5.339227, 4.4786377, -5.684766, 4.779688, -6.0255284, 5.0796824, -6.359912, 5.377539, -6.6863117, 5.672173, -7.0031247, 5.9625006, -7.3087463, 6.2474365, -7.601572, 6.5258985, -7.8799987, 6.7968016, -8.142422, 7.059063, -8.612842, 7.5533204, -9, 8, -9.331006, 8.43899, -9.642735, 8.912226, -9.937001, 9.414116, -10.215626, 9.939062, -10.480419, 10.48147, -10.733203, 11.035742, -10.975791, 11.596285, -11.21, 12.1575, -11.437647, 12.713794, -11.660547, 13.25957, -11.880518, 13.789234, -12.099375, 14.297188, -12.318935, 14.777838, -12.541016, 15.225586, -12.767431, 15.634839, -13, 16, -13.2561035, 16.348389, -13.54789, 16.708672, -13.869327, 17.077274, -14.2143755, 17.450624, -14.577002, 17.825146, -14.951172, 18.197266, -15.33085, 18.563408, -15.709999, 18.92, -16.082588, 19.263466, -16.442577, 19.590235, -16.783936, 19.896729, -17.100624, 20.179375, -17.386612, 20.434599, -17.635859, 20.658829, -18, 21)
+
+[node name="S01" type="Node3D" parent="Caminos" unique_id=168412043]
+metadata/id_camino = "S01"
+metadata/ancho = 2.6
+metadata/eje = PackedVector2Array(-25, -25, -25.227808, -24.75481, -25.536213, -24.443789, -25.91393, -24.073765, -26.349686, -23.651562, -26.832203, -23.18401, -27.08747, -22.935358, -27.350195, -22.677929, -27.61897, -22.412575, -27.892387, -22.14015, -28.169033, -21.861507, -28.4475, -21.5775, -28.726376, -21.28898, -29.004251, -20.996803, -29.27972, -20.701818, -29.551367, -20.404882, -29.817783, -20.106848, -30.077562, -19.80857, -30.329292, -19.510899, -30.571562, -19.214687, -30.802963, -18.920792, -31.022085, -18.630062, -31.41785, -18.061523, -31.747583, -17.515894, -32, -17, -32.206566, -16.47041, -32.404728, -15.884219, -32.592163, -15.249043, -32.766563, -14.5725, -32.84815, -14.221096, -32.92561, -13.862207, -32.998653, -13.496784, -33.066994, -13.125782, -33.130337, -12.75015, -33.188393, -12.37084, -33.240875, -11.988806, -33.2875, -11.6050005, -33.32797, -11.220373, -33.361996, -10.835878, -33.389294, -10.452469, -33.40957, -10.0710945, -33.42254, -9.692708, -33.427902, -9.318262, -33.425385, -8.9487095, -33.41469, -8.585, -33.395523, -8.228088, -33.367603, -7.878926, -33.284336, -7.2076564, -33.162575, -6.578809, -33, -6, -32.77019, -5.430884, -32.455273, -4.8295703, -32.269188, -4.5184965, -32.065765, -4.201362, -31.846329, -3.87883, -31.612188, -3.5515623, -31.364656, -3.220223, -31.105055, -2.8854737, -30.834692, -2.547978, -30.554882, -2.2083983, -30.266945, -1.867398, -29.97219, -1.5256398, -29.67194, -1.1837859, -29.3675, -0.8425, -29.06019, -0.5024445, -28.751324, -0.1642822, -28.442215, 0.17132384, -28.134178, 0.503711, -27.828533, 0.83221626, -27.526587, 1.1561768, -27.229658, 1.4749298, -26.93906, 1.7878125, -26.656113, 2.094162, -26.382124, 2.3933156, -26.11841, 2.68461, -25.866287, 2.967383, -25.627071, 3.240971, -25.402075, 3.5047119, -25, 4, -24.620386, 4.4789796, -24.21965, 4.9696484, -23.802446, 5.4701023, -23.373438, 5.9784374, -22.93728, 6.492749, -22.498632, 7.0111327, -22.062153, 7.5316844, -21.6325, 8.0525, -21.214333, 8.571674, -20.812305, 9.087305, -20.43108, 9.597485, -20.075312, 10.100312, -19.749662, 10.593882, -19.45879, 11.076289, -19.207348, 11.5456295, -19, 12, -18.828808, 12.479444, -18.681408, 13.018359, -18.555801, 13.606377, -18.45, 14.233126, -18.362011, 14.888233, -18.289845, 15.561328, -18.231503, 16.24204, -18.185, 16.92, -18.14834, 17.584833, -18.119532, 18.226171, -18.09658, 18.833641, -18.0775, 19.396873, -18.060291, 19.905499, -18.042969, 20.34914, -18, 21)
+
+[node name="S02" type="Node3D" parent="Caminos" unique_id=394956717]
+metadata/id_camino = "S02"
+metadata/ancho = 2.6
+metadata/eje = PackedVector2Array(24, -26, 24.290258, -25.725122, 24.67957, -25.377851, 25.154488, -24.965483, 25.419846, -24.737167, 25.701563, -24.495312, 25.997957, -24.240831, 26.307348, -23.974634, 26.628056, -23.697632, 26.958399, -23.410742, 27.296696, -23.11487, 27.641264, -22.810932, 27.990427, -22.499838, 28.342499, -22.182499, 28.695805, -21.859829, 29.048656, -21.532738, 29.39938, -21.20214, 29.746288, -20.868946, 30.087706, -20.534065, 30.42195, -20.198414, 30.747337, -19.8629, 31.062187, -19.528439, 31.364822, -19.195938, 31.653559, -18.866314, 31.92672, -18.540476, 32.182617, -18.219336, 32.419575, -17.903807, 32.635914, -17.594799, 33, -17, 33.30901, -16.384888, 33.458874, -16.050842, 33.60551, -15.7006645, 33.748817, -15.335501, 33.888706, -14.956499, 34.02507, -14.564804, 34.157814, -14.161562, 34.286835, -13.747921, 34.412037, -13.325025, 34.533318, -12.89402, 34.650585, -12.456055, 34.763737, -12.012274, 34.872673, -11.563824, 34.977295, -11.111851, 35.0775, -10.6575, 35.173195, -10.20192, 35.264282, -9.746255, 35.35066, -9.291653, 35.432228, -8.839258, 35.50889, -8.390219, 35.580544, -7.9456787, 35.64709, -7.5067863, 35.708435, -7.0746875, 35.76448, -6.650528, 35.81512, -6.235454, 35.860264, -5.830612, 35.899803, -5.4371486, 35.933647, -5.056209, 35.961693, -4.6889405, 36, -4, 36.011375, -3.3253663, 36.006317, -2.975201, 35.994453, -2.6173048, 35.976055, -2.252304, 35.951397, -1.8808252, 35.920746, -1.5034943, 35.884377, -1.1209375, 35.842556, -0.7337812, 35.795555, -0.3426515, 35.74365, 0.051825523, 35.68711, 0.44902337, 35.6262, 0.84831595, 35.561203, 1.2490771, 35.49238, 1.6506805, 35.42, 2.0525, 35.34434, 2.4539094, 35.265675, 2.8542821, 35.184265, 3.2529926, 35.10039, 3.649414, 35.014317, 4.04292, 34.926315, 4.4328856, 34.836662, 4.8186836, 34.745625, 5.1996875, 34.653473, 5.5752716, 34.56048, 5.9448094, 34.46691, 6.3076754, 34.373047, 6.6632423, 34.279152, 7.0108843, 34.185497, 7.3499756, 34, 8, 33.90142, 8.325275, 33.79004, 8.670019, 33.666763, 9.032605, 33.532497, 9.411406, 33.38816, 9.804798, 33.23465, 10.211153, 33.072876, 10.628845, 32.90375, 11.056251, 32.72818, 11.491741, 32.547073, 11.933691, 32.361336, 12.380476, 32.171875, 12.830469, 31.979603, 13.282043, 31.785429, 13.733574, 31.59026, 14.183435, 31.395, 14.63, 31.200562, 15.071644, 31.007853, 15.506739, 30.81778, 15.93366, 30.631252, 16.35078, 30.449177, 16.756477, 30.27246, 17.14912, 30.102016, 17.527088, 29.938751, 17.88875, 29.78357, 18.232483, 29.637383, 18.55666, 29.375626, 19.139843, 29.160742, 19.625294, 29, 20)
+
+[node name="Reservas" type="Node3D" parent="." unique_id=1871898935]
+
+[node name="Z01" type="Node3D" parent="Reservas" unique_id=86176987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38386926, 41)
+metadata/id_zona = "Z01"
+metadata/descripcion = "Entrada"
+metadata/semiejes = Vector2(6, 5)
+metadata/excluir_vegetacion = true
+
+[node name="PuntoInteres" type="Marker3D" parent="Reservas/Z01" unique_id=1229278614]
+
+[node name="SenalFutura" type="Marker3D" parent="Reservas/Z01" unique_id=1982043230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.34415647, 3)
+
+[node name="Z02" type="Node3D" parent="Reservas" unique_id=1911366555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+metadata/id_zona = "Z02"
+metadata/descripcion = "ClaroCentral"
+metadata/semiejes = Vector2(10, 9)
+metadata/excluir_vegetacion = true
+
+[node name="PuntoInteres" type="Marker3D" parent="Reservas/Z02" unique_id=1978287231]
+
+[node name="ArbolCentralFuturo" type="Marker3D" parent="Reservas/Z02" unique_id=140381202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="DescansoFuturo" type="Marker3D" parent="Reservas/Z02" unique_id=78051743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.03445822, 7)
+
+[node name="Z03" type="Node3D" parent="Reservas" unique_id=487983083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1.4, -25)
+metadata/id_zona = "Z03"
+metadata/descripcion = "Campamento"
+metadata/semiejes = Vector2(9, 7)
+metadata/excluir_vegetacion = true
+
+[node name="PuntoInteres" type="Marker3D" parent="Reservas/Z03" unique_id=1788273583]
+
+[node name="Z04" type="Node3D" parent="Reservas" unique_id=18030143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.8, -26)
+metadata/id_zona = "Z04"
+metadata/descripcion = "Ruinas"
+metadata/semiejes = Vector2(8, 7)
+metadata/excluir_vegetacion = true
+
+[node name="PuntoInteres" type="Marker3D" parent="Reservas/Z04" unique_id=292213299]
+
+[node name="Z05" type="Node3D" parent="Reservas" unique_id=2001964105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 3.8, 20)
+metadata/id_zona = "Z05"
+metadata/descripcion = "Mirador"
+metadata/semiejes = Vector2(6, 5)
+metadata/excluir_vegetacion = true
+
+[node name="PuntoInteres" type="Marker3D" parent="Reservas/Z05" unique_id=979021247]
+
+[node name="Z06" type="Node3D" parent="Reservas" unique_id=2096018358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.45, 21)
+metadata/id_zona = "Z06"
+metadata/descripcion = "RiberaLaguna"
+metadata/semiejes = Vector2(4, 5)
+metadata/excluir_vegetacion = true
+
+[node name="PuntoInteres" type="Marker3D" parent="Reservas/Z06" unique_id=504084513]
+
+[node name="Laguna" type="Node3D" parent="Reservas" unique_id=1399047411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, -0.007832908, 22)
+metadata/semiejes = Vector2(8, 6)
+metadata/estado = "Reserva seca cerrada; agua y orilla definitivas pendientes"
+
+[node name="Arroyo" type="Node3D" parent="Reservas" unique_id=2006789567]
+metadata/eje = PackedVector2Array(-41, -50, -40.96416, -49.37549, -40.939598, -48.99266, -40.911095, -48.566406, -40.879017, -48.099426, -40.84373, -47.594433, -40.805603, -47.05414, -40.765, -46.481247, -40.722286, -45.87848, -40.677834, -45.248535, -40.632, -44.594128, -40.585155, -43.91797, -40.537666, -43.222767, -40.513798, -42.86887, -40.489902, -42.51123, -40.46603, -42.150185, -40.442223, -41.78607, -40.418533, -41.41923, -40.395, -41.05, -40.371674, -40.67872, -40.348595, -40.305725, -40.32582, -39.93136, -40.30338, -39.555958, -40.28133, -39.17986, -40.259716, -38.803406, -40.23858, -38.426933, -40.217968, -38.05078, -40.19793, -37.67529, -40.17851, -37.300793, -40.159748, -36.927635, -40.1417, -36.556152, -40.124405, -36.186684, -40.10791, -35.81957, -40.09226, -35.455143, -40.0775, -35.09375, -40.063683, -34.735725, -40.050842, -34.38141, -40.0283, -33.685253, -40.010242, -33.007996, -39.997032, -32.35234, -39.989037, -31.721008, -39.98662, -31.1167, -39.990154, -30.542126, -40, -30, -40.01845, -29.46582, -40.04707, -28.914063, -40.08512, -28.3459, -40.131874, -27.762499, -40.186596, -27.16504, -40.248554, -26.55469, -40.317017, -25.932617, -40.39125, -25.300001, -40.470524, -24.658009, -40.5541, -24.007813, -40.641254, -23.350586, -40.73125, -22.6875, -40.823353, -22.019728, -40.916836, -21.348438, -41.010963, -20.674805, -41.105, -20, -41.19822, -19.325195, -41.289883, -18.651562, -41.37926, -17.980274, -41.465626, -17.3125, -41.548237, -16.649414, -41.626366, -15.9921875, -41.69928, -15.341992, -41.76625, -14.7, -41.826538, -14.067383, -41.879414, -13.4453125, -41.924145, -12.834961, -41.96, -12.2375, -41.986244, -11.654102, -42.002148, -11.0859375, -42.006977, -10.53418, -42, -10, -41.982254, -9.46145, -41.955544, -8.897143, -41.92027, -8.309099, -41.876835, -7.699336, -41.825657, -7.06987, -41.767136, -6.42272, -41.701675, -5.759903, -41.62969, -5.0834374, -41.551575, -4.3953414, -41.51035, -4.047562, -41.46775, -3.6976318, -41.423817, -3.3458028, -41.37861, -2.9923272, -41.33218, -2.6374574, -41.28457, -2.2814453, -41.235836, -1.9245434, -41.18603, -1.5670037, -41.135204, -1.2090788, -41.083405, -0.8510206, -41.03068, -0.4930811, -40.97709, -0.1355133, -40.92268, 0.22143102, -40.8675, 0.57749987, -40.811604, 0.93244076, -40.75504, 1.2860017, -40.697857, 1.6379299, -40.640114, 1.9879737, -40.581852, 2.3358805, -40.52313, 2.6813982, -40.40449, 3.3642578, -40.28461, 4.0345345, -40.16389, 4.6902103, -40.04274, 5.3292665, -39.921562, 5.9496875, -39.800766, 6.5494537, -39.680756, 7.126548, -39.561943, 7.678952, -39.444725, 8.204648, -39.329517, 8.701619, -39.216724, 9.167847, -39.10675, 9.601313, -39, 10, -38.889103, 10.379449, -38.766968, 10.756299, -38.634426, 11.130174, -38.492302, 11.500704, -38.34144, 11.867511, -38.182663, 12.230225, -38.0168, 12.58847, -37.84469, 12.941875, -37.667156, 13.290064, -37.485035, 13.632666, -37.299156, 13.969305, -37.11035, 14.299609, -36.919453, 14.623205, -36.72729, 14.939717, -36.5347, 15.248774, -36.3425, 15.55, -35.96263, 16.12747, -35.594337, 16.66914, -35.244263, 17.17202, -34.919064, 17.633125, -34.62539, 18.049463, -34.369884, 18.418047, -34, 19)
+metadata/ancho = 2.4
+metadata/excluir_vegetacion = true
+
+[node name="PuentePrevisto1" type="Marker3D" parent="Reservas/Arroyo" unique_id=1891119964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0.82436085, -30)
+metadata/estado = "Opcional, fuera de red peatonal actual; no construido"
+
+[node name="PuentePrevisto2" type="Marker3D" parent="Reservas/Arroyo" unique_id=1845668565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0.56219923, 9)
+metadata/estado = "Opcional, fuera de red peatonal actual; no construido"
+
+[node name="ReservaLagunaCerrada" type="StaticBody3D" parent="Reservas" unique_id=721723941]
+
+[node name="Orilla00" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1456324055]
+transform = Transform3D(-0.104363, 0, -0.99453926, 0, 1, 0, 0.99453926, 0, -0.104363, -21.049248, 1.0331833, 22.469303)
+shape = SubResource("BoxShape3D_jsrwp")
+
+[node name="Orilla01" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1286620621]
+transform = Transform3D(-0.30486652, 0, -0.9523951, 0, 1, 0, 0.9523951, 0, -0.30486652, -21.245022, 1.0080223, 23.396355)
+shape = SubResource("BoxShape3D_f784t")
+
+[node name="Orilla02" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=833574387]
+transform = Transform3D(-0.48345292, 0, -0.8753704, 0, 1, 0, 0.8753704, 0, -0.48345292, -21.631748, 0.96547234, 24.289022)
+shape = SubResource("BoxShape3D_p313m")
+
+[node name="Orilla03" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1545820742]
+transform = Transform3D(-0.63272166, 0, -0.7743793, 0, 1, 0, 0.7743793, 0, -0.63272166, -22.199905, 0.9196595, 25.125328)
+shape = SubResource("BoxShape3D_b4s8q")
+
+[node name="Orilla04" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=885697530]
+transform = Transform3D(-0.75140613, 0, -0.65984, 0, 1, 0, 0.65984, 0, -0.75140613, -22.935505, 0.8955075, 25.884676)
+shape = SubResource("BoxShape3D_hveib")
+
+[node name="Orilla05" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1641571386]
+transform = Transform3D(-0.84205693, 0, -0.5393886, 0, 1, 0, 0.5393886, 0, -0.84205693, -23.82043, 0.8974254, 26.548372)
+shape = SubResource("BoxShape3D_cb3t3")
+
+[node name="Orilla06" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1836625200]
+transform = Transform3D(-0.9086287, 0, -0.41760486, 0, 1, 0, 0.41760486, 0, -0.9086287, -24.832897, 0.8968009, 27.10007)
+shape = SubResource("BoxShape3D_fg14b")
+
+[node name="Orilla07" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1766219755]
+transform = Transform3D(-0.9549788, 0, -0.29667398, 0, 1, 0, 0.29667398, 0, -0.9549788, -25.947971, 0.89433396, 27.526188)
+shape = SubResource("BoxShape3D_yp07r")
+
+[node name="Orilla08" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=495616477]
+transform = Transform3D(-0.9841731, 0, -0.17720972, 0, 1, 0, 0.17720972, 0, -0.9841731, -27.138195, 0.8911773, 27.816235)
+shape = SubResource("BoxShape3D_tiggq")
+
+[node name="Orilla09" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=2001955299]
+transform = Transform3D(-0.9982625, 0, -0.058923576, 0, 1, 0, 0.058923576, 0, -0.9982625, -28.374262, 0.8884373, 27.963066)
+shape = SubResource("BoxShape3D_pshql")
+
+[node name="Orilla10" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1909892030]
+transform = Transform3D(-0.9982625, 0, 0.058923576, 0, 1, 0, -0.058923576, 0, -0.9982625, -29.625738, 0.88700646, 27.963066)
+shape = SubResource("BoxShape3D_bht50")
+
+[node name="Orilla11" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1470120261]
+transform = Transform3D(-0.9841731, 0, 0.17720972, 0, 1, 0, -0.17720972, 0, -0.9841731, -30.861805, 0.8874241, 27.816235)
+shape = SubResource("BoxShape3D_6hbvn")
+
+[node name="Orilla12" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1514914550]
+transform = Transform3D(-0.9549788, 0, 0.29667398, 0, 1, 0, -0.29667398, 0, -0.9549788, -32.05203, 0.8898011, 27.526188)
+shape = SubResource("BoxShape3D_ou43p")
+
+[node name="Orilla13" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1848137330]
+transform = Transform3D(-0.9086287, 0, 0.41760486, 0, 1, 0, -0.41760486, 0, -0.9086287, -33.167103, 0.8938229, 27.10007)
+shape = SubResource("BoxShape3D_p78hx")
+
+[node name="Orilla14" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1711174024]
+transform = Transform3D(-0.8420566, 0, 0.5393892, 0, 1, 0, -0.5393892, 0, -0.8420566, -34.179565, 0.898814, 26.548372)
+shape = SubResource("BoxShape3D_l25kj")
+
+[node name="Orilla15" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1898021114]
+transform = Transform3D(-0.75140774, 0, 0.6598382, 0, 1, 0, -0.6598382, 0, -0.75140774, -35.064495, 0.90383655, 25.884676)
+shape = SubResource("BoxShape3D_pr637")
+
+[node name="Orilla16" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1568195090]
+transform = Transform3D(-0.63272053, 0, 0.7743802, 0, 1, 0, -0.7743802, 0, -0.63272053, -35.800095, 0.90778995, 25.125328)
+shape = SubResource("BoxShape3D_joxj6")
+
+[node name="Orilla17" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1942343893]
+transform = Transform3D(-0.48345292, 0, 0.8753704, 0, 1, 0, -0.8753704, 0, -0.48345292, -36.36825, 0.9095012, 24.289022)
+shape = SubResource("BoxShape3D_o1jqv")
+
+[node name="Orilla18" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1842233354]
+transform = Transform3D(-0.30486834, 0, 0.9523945, 0, 1, 0, -0.9523945, 0, -0.30486834, -36.754982, 0.9078082, 23.396355)
+shape = SubResource("BoxShape3D_quuhn")
+
+[node name="Orilla19" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=2034860850]
+transform = Transform3D(-0.10436099, 0, 0.9945395, 0, 1, 0, -0.9945395, 0, -0.10436099, -36.950752, 0.9016435, 22.469303)
+shape = SubResource("BoxShape3D_wuso0")
+
+[node name="Orilla20" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=152428115]
+transform = Transform3D(0.10436102, 0, 0.9945395, 0, 1, 0, -0.9945395, 0, 0.10436102, -36.950752, 0.8901393, 21.530697)
+shape = SubResource("BoxShape3D_857qt")
+
+[node name="Orilla21" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=819135039]
+transform = Transform3D(0.30486825, 0, 0.95239455, 0, 1, 0, -0.95239455, 0, 0.30486825, -36.754982, 0.87274545, 20.603645)
+shape = SubResource("BoxShape3D_nrc7c")
+
+[node name="Orilla22" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=258110832]
+transform = Transform3D(0.48345295, 0, 0.8753703, 0, 1, 0, -0.8753703, 0, 0.48345295, -36.36825, 0.8493626, 19.710978)
+shape = SubResource("BoxShape3D_xeu28")
+
+[node name="Orilla23" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=479659351]
+transform = Transform3D(0.6327206, 0, 0.7743802, 0, 1, 0, -0.7743802, 0, 0.6327206, -35.800095, 0.8204665, 18.874672)
+shape = SubResource("BoxShape3D_lhyyw")
+
+[node name="Orilla24" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=181792458]
+transform = Transform3D(0.75140774, 0, 0.6598382, 0, 1, 0, -0.6598382, 0, 0.75140774, -35.064495, 0.7871892, 18.115324)
+shape = SubResource("BoxShape3D_nfsq2")
+
+[node name="Orilla25" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=565280751]
+transform = Transform3D(0.8420565, 0, 0.5393893, 0, 1, 0, -0.5393893, 0, 0.8420565, -34.179565, 0.7513287, 17.451628)
+shape = SubResource("BoxShape3D_uvuxv")
+
+[node name="Orilla26" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=201241103]
+transform = Transform3D(0.9086287, 0, 0.41760495, 0, 1, 0, -0.41760495, 0, 0.9086287, -33.167103, 0.7152516, 16.89993)
+shape = SubResource("BoxShape3D_k5ol3")
+
+[node name="Orilla27" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=599719013]
+transform = Transform3D(0.9549788, 0, 0.29667398, 0, 1, 0, -0.29667398, 0, 0.9549788, -32.05203, 0.68167454, 16.473812)
+shape = SubResource("BoxShape3D_xmt45")
+
+[node name="Orilla28" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=443440845]
+transform = Transform3D(0.9841731, 0, 0.17720981, 0, 1, 0, -0.17720981, 0, 0.9841731, -30.861805, 0.6533444, 16.183765)
+shape = SubResource("BoxShape3D_ubq6l")
+
+[node name="Orilla29" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1775177652]
+transform = Transform3D(0.9982625, 0, 0.058923494, 0, 1, 0, -0.058923494, 0, 0.9982625, -29.625738, 0.6326621, 16.036934)
+shape = SubResource("BoxShape3D_0xcu2")
+
+[node name="Orilla30" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=102940845]
+transform = Transform3D(0.9982625, 0, -0.058923494, 0, 1, 0, 0.058923494, 0, 0.9982625, -28.374262, 0.6213339, 16.036934)
+shape = SubResource("BoxShape3D_ogoah")
+
+[node name="Orilla31" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=602824911]
+transform = Transform3D(0.9841731, 0, -0.17720981, 0, 1, 0, 0.17720981, 0, 0.9841731, -27.138195, 0.6201293, 16.183765)
+shape = SubResource("BoxShape3D_ht5xg")
+
+[node name="Orilla32" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1329246237]
+transform = Transform3D(0.9549788, 0, -0.29667398, 0, 1, 0, 0.29667398, 0, 0.9549788, -25.947971, 0.62880504, 16.473812)
+shape = SubResource("BoxShape3D_jtvrn")
+
+[node name="Orilla33" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1703687206]
+transform = Transform3D(0.9086287, 0, -0.41760495, 0, 1, 0, 0.41760495, 0, 0.9086287, -24.832897, 0.64620596, 16.89993)
+shape = SubResource("BoxShape3D_clsdk")
+
+[node name="Orilla34" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1487170823]
+transform = Transform3D(0.842057, 0, -0.53938854, 0, 1, 0, 0.53938854, 0, 0.842057, -23.82043, 0.6705026, 17.451628)
+shape = SubResource("BoxShape3D_n6c70")
+
+[node name="Orilla35" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1761183489]
+transform = Transform3D(0.7514062, 0, -0.6598399, 0, 1, 0, 0.6598399, 0, 0.7514062, -22.935505, 0.7544322, 18.115324)
+shape = SubResource("BoxShape3D_aro0q")
+
+[node name="Orilla36" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1445905930]
+transform = Transform3D(0.63272166, 0, -0.7743793, 0, 1, 0, 0.7743793, 0, 0.63272166, -22.199905, 0.8865594, 18.874672)
+shape = SubResource("BoxShape3D_38267")
+
+[node name="Orilla37" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=1589315950]
+transform = Transform3D(0.48345295, 0, -0.8753703, 0, 1, 0, 0.8753703, 0, 0.48345295, -21.631748, 0.9845519, 19.710978)
+shape = SubResource("BoxShape3D_38ctc")
+
+[node name="Orilla38" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=687873655]
+transform = Transform3D(0.30486655, 0, -0.9523951, 0, 1, 0, 0.9523951, 0, 0.30486655, -21.245022, 1.0294131, 20.603645)
+shape = SubResource("BoxShape3D_sd8yy")
+
+[node name="Orilla39" type="CollisionShape3D" parent="Reservas/ReservaLagunaCerrada" unique_id=15371867]
+transform = Transform3D(0.10436292, 0, -0.99453926, 0, 1, 0, 0.99453926, 0, 0.10436292, -21.049248, 1.04, 21.530697)
+shape = SubResource("BoxShape3D_2p4vw")
+
+[node name="LimitesNaturales" type="Node3D" parent="." unique_id=385475322]
+metadata/reserva_arbolado_denso = "Banda perimetral |X| o |Z| >= 42; excluir accesos de 6 unidades"
+
+[node name="CierresProvisionales" type="StaticBody3D" parent="LimitesNaturales" unique_id=1724062733]
+
+[node name="BordeX-49_5" type="CollisionShape3D" parent="LimitesNaturales/CierresProvisionales" unique_id=1781826873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5, 3, 0)
+shape = SubResource("BoxShape3D_1c8lh")
+
+[node name="BordeX49_5" type="CollisionShape3D" parent="LimitesNaturales/CierresProvisionales" unique_id=1726735968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 3, 0)
+shape = SubResource("BoxShape3D_trhj4")
+
+[node name="BordeZ-49_5" type="CollisionShape3D" parent="LimitesNaturales/CierresProvisionales" unique_id=48057756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -49.5)
+shape = SubResource("BoxShape3D_d14q2")
+
+[node name="BordeZ49_5" type="CollisionShape3D" parent="LimitesNaturales/CierresProvisionales" unique_id=1146128904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 49.5)
+shape = SubResource("BoxShape3D_qx6d1")
+
+[node name="Marcadores" type="Node3D" parent="." unique_id=1586016842]
+
+[node name="RetornoAldea" type="Node3D" parent="Marcadores" unique_id=1810595618]
+metadata/id_salida = "bosque_aldea_sur"
+metadata/destino_previsto = "Aldea"
+metadata/retorno_previsto = "aldea_bosque_norte"
+metadata/orientacion = Vector3(0, 0, 1)
+metadata/camino_conexion = "Caminos/P01"
+metadata/limite_provisional = "LimitesNaturales/CierresProvisionales"
+
+[node name="Aproximacion" type="Marker3D" parent="Marcadores/RetornoAldea" unique_id=748928895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43386927, 41)
+
+[node name="TransicionFutura" type="Marker3D" parent="Marcadores/RetornoAldea" unique_id=1721008480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8026398, 48)
+
+[node name="LimiteProvisional" type="Marker3D" parent="Marcadores/RetornoAldea" unique_id=704152615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85369754, 49)
+
+[node name="AparicionSegura" type="Marker3D" parent="Marcadores/RetornoAldea" unique_id=1725121698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43386927, 41)
+
+[node name="SalidaRuinas" type="Node3D" parent="Marcadores" unique_id=184750357]
+metadata/id_salida = "bosque_ruinas_norte"
+metadata/destino_previsto = "Ruinas"
+metadata/retorno_previsto = "ruinas_bosque_sur"
+metadata/orientacion = Vector3(0, 0, -1)
+metadata/camino_conexion = "Caminos/P03"
+metadata/limite_provisional = "LimitesNaturales/CierresProvisionales"
+
+[node name="Aproximacion" type="Marker3D" parent="Marcadores/SalidaRuinas" unique_id=2086834552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1.8886713, -37)
+
+[node name="TransicionFutura" type="Marker3D" parent="Marcadores/SalidaRuinas" unique_id=316892542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.0035956, -48)
+
+[node name="LimiteProvisional" type="Marker3D" parent="Marcadores/SalidaRuinas" unique_id=446640716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.9366724, -49)
+
+[node name="AparicionSegura" type="Marker3D" parent="Marcadores/SalidaRuinas" unique_id=593621115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1.8886713, -37)
+
+[node name="Iluminacion" type="DirectionalLight3D" parent="." unique_id=688613631]
+transform = Transform3D(0.88294756, 0.36994863, -0.2890356, 0, 0.6156615, 0.7880107, 0.46947157, -0.6957722, 0.5435968, 0, 0, 0)
+light_color = Color(1, 0.91, 0.77, 1)
+light_energy = 1.15
+shadow_enabled = true
+
+[node name="Entorno" type="WorldEnvironment" parent="." unique_id=1062216586]
+environment = SubResource("Environment_d6x53")
+
+[node name="VistaGeneral" type="Camera3D" parent="." unique_id=433158861]
+transform = Transform3D(1, 0, 0, 0, 0.5504808, 0.83484787, 0, -0.83484787, 0.5504808, 0, 100, 66)
+projection = 1
+size = 116.0
+far = 250.0
+
+[node name="Vegetacion" parent="." instance=ExtResource("3_vegetacion")]
+
+[node name="Laguna" parent="." instance=ExtResource("4_laguna")]

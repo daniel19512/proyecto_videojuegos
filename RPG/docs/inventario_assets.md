@@ -1,8 +1,49 @@
 # Inventario y auditoría de assets — RPG
 
-Fecha: **30 de octubre de 2026**. Auditoría del contenido local, no del catálogo completo comercial de los paquetes. Las categorías describen usos propuestos a partir de nombres y estructura; no sustituyen una revisión visual artística.
+## Uso integrado en Campos y Granjas — fase 6E, 4 de noviembre de 2026
 
-## 1. Resumen ejecutivo
+La auditoría 6E.0 da paso a una región construida y conectada al sur de Aldea: `RPG/scenes/campos_granjas.tscn` y `mundo_campos_granjas.tscn`. Se utilizan los **14 GLB de Farm_Harvest** y originales de aldea/objetos medievales/naturaleza, detallados en `RPG/docs/plano_campos_granjas.md` y metadato `assets_utilizados` de la escena. **No se utiliza ningún animal**, ni se resuelve su escala ni se añaden clips/IA. La disponibilidad auditada de animales no equivale a integración.
+
+Geometría propia fuera de assets: granero/almacén, arquitectura doméstica complementaria y porches, establo/cobertizo, cercas/portones, leñeras, cartel, bebedero, 1408 plantas de trigo volumétrico en cuatro MultiMesh, terreno físico y faldón paisajístico. Vegetación menor en otros cinco MultiMesh. Materiales locales de Carrot/FarmCrate_Carrot habilitan COLOR_0 conservando fuentes y owners; tejados/frontones de viviendas 4×4/4×6 comparten factor vertical 0,60, X/Z=1. No se incorporan paquetes, modelos originales, texturas externas o dependencias: **524 canónicos**, licencias y exclusión de Git intactas.
+
+Autoría offline en `RPG/scripts/editor/construir_campos_granjas.gd`, con render real para serializar buffers MultiMesh; no generación al jugar. Escena independiente con cámara/protagonista compartidos sin editar; transición mediante gestor existente. Pruebas y capturas Forward+/D3D12 bajo `RPG/logs/fase6e_campos_granjas/`; resultados finales en estado. Aprobación visual del usuario pendiente, sin agricultura funcional ni animales.
+
+## Granja y animales — fase 6E.0, 4 de noviembre de 2026
+
+[Informe detallado](auditoria_assets_granja.md) y [catálogo por modelo/formato](catalogo_assets_granja.json). Carpetas reales `RPG/assets/granja/Farm_Harvest/` y `RPG/assets/granja/animales/`: **21 modelos** (14 agrícolas, 7 animales), **49 archivos de modelo** (14 GLB, 21 FBX, 7 OBJ, 7 Blend), sin sumar formatos alternativos. Las tres etapas de col cuentan como variantes, no especies distintas.
+
+Canónicos: 14 GLB agrícolas autocontenidos y siete FBX animales que conservan materiales y rig. **42/42 formatos GLB/FBX/OBJ cargados con mallas/materiales válidos**, tanto con caché principal como tras importación aislada sin caché; Blend se conserva sin prueba directa (importación deshabilitada previamente). **Siete animales, 26 clips**; Cow/Horse/Zebra con Death/Idle/Jump/Run/Walk/WalkSlow, Llama/Pig/Pug/Sheep solo Idle/Jump. Materiales agrícolas con paleta embebida; animales con colores planos sin texturas externas. No hay animaciones agrícolas ni mecánicas nuevas. Cotas detalladas por formato, materiales, texturas y duraciones en catálogo; medir animales con pose deformada, no AABB cruda. Escalas animales necesitan ajuste por instancia antes de integrarlos.
+
+**Total canónico actual: 524** (503 anteriores + 14 GLB + 7 FBX; 443 glTF, 74 GLB, 7 FBX). No se recalcula equivalencia topológica global. Ambos nuevos paquetes incluyen **CC0 1.0**: Avramania Farm & Harvest Free y Quaternius Farm Animals Pack; no extender esta evidencia a licencias históricas pendientes. Originales preservados por SHA-256, assets excluidos de Git, sin conversiones ni dependencias instaladas.
+
+Galería Forward+/D3D12 de **170 PNG**, cuatro orientaciones, detalles pequeños y tres tiempos por clip: `RPG/logs/auditoria_assets_granja/2026-11-04T21-02-22_2103/galeria.html`. Escena aislada `RPG/scenes/pruebas_granja.tscn`, F6, escala fuente/protagonista original y cámara compartida 15 sin editar. Advertencias OBJ sobre iluminación ambiente MTL ignorada por PBR y errores del entorno de certificados/ajustes globales registrados. Mapas, transiciones, cámara y protagonista sin cambios; **no hay Campos y Granjas construido ni animales en regiones actuales. Esperar aprobación visual.**
+
+Auditoría inicial: **30 de octubre de 2026**; actualización de paquetes forestales: **3 de noviembre de 2026, fase 6A.0**. Auditoría del contenido local, no del catálogo completo comercial de los paquetes. La clasificación inicial se conserva como historial; las revisiones forestales añaden inspección visual real y no sustituyen la aprobación artística del usuario.
+
+**Revisión complementaria del 3 de noviembre de 2026:** [auditoría visual para el bosque](auditoria_assets_bosque.md). Repite carga/instanciación de los 338 modelos con la importación local de Godot 4.7.2 y render Forward+/D3D12; selecciona 122 por utilidad forestal y registra medidas, materiales, texturas, limitaciones y 35 capturas. No es una importación nueva desde caché vacía. Sus diez categorías responden al bosque y no sustituyen la clasificación general siguiente. Los originales y el total de modelos permanecen intactos; la región no se construyó.
+
+## Paquetes forestales nuevos — fase 6A.0
+
+Revisión completa: [selección propuesta de 72 modelos](seleccion_assets_bosque.md) e [informe de importación y compatibilidad](compatibilidad_assets_bosque.md). Región del bosque sin construir. Se añaden **165 recursos canónicos**, con **161 geometrías distintas según la comparación documentada**; las variantes de formato/material no se presentan como variedad de modelos.
+
+| Paquete / carpeta relativa al repositorio | glTF | GLB | FBX | OBJ | Recursos canónicos | Geometrías distintas medidas |
+|---|---:|---:|---:|---:|---:|---:|
+| KayKit Forest Nature Pack 1.0 / `RPG/assets/bosque/kaykit_forest/` | 105 | 0 | 210 | 105 | 105 | 101 |
+| Forest Nature Updated, hooray4brains / `RPG/assets/bosque/forest_nature_updated/` | 0 | 60 | 0 | 0 | 60 | 60 |
+| **Nuevos** | **105** | **60** | **210** | **105** | **165** | **161** |
+| **Proyecto completo, incluidos los 338 glTF anteriores** | **443** | **60** | **210** | **105** | **503** | No se recalcula equivalencia global de los originales antiguos |
+
+Los 480 archivos nuevos de modelo no son 480 modelos diferentes. KayKit repite 105 nombres en glTF, OBJ, FBX y FBX Unity; los 105 BIN y 105 MTL son auxiliares. Las 315 comparaciones de triángulos/dimensiones entre formatos coinciden dentro de 0.0001 unidades. Cuatro pares Grass_*_Mesh/Color1 comparten geometría, aunque puedan diferir en materiales; las variantes de una/dos caras tampoco son variedad de paisaje. Se proponen rutas glTF/GLB canónicas, sin convertir ni modificar fuentes.
+
+KayKit usa un atlas `forest_texture.png`, copiado en las carpetas de formato y `Textures/`; incluye siete PNG en total contando las dos láminas de presentación. Su `License.txt` declara CC0 y crédito apreciado, no obligatorio. Forest Nature Updated usa colores planos y GLB; su `README.txt` permite uso personal/comercial y crédito opcional, **pero prohíbe revender o redistribuir archivos originales**. No extender esa licencia a otros paquetes ni etiquetarla CC0. Ambos textos se conservan; las limitaciones de licencia históricas Quaternius siguen pendientes.
+
+Selección: 23 Forest Nature Updated, 10 KayKit y 39 Quaternius (14 Nature, 14 Props, 11 Village). Robles/olmo y coníferas nuevas como base; CommonTree agrupados en transición a aldea; secos KayKit, tocón/tronco GLB, matorral verde, helecho, hongos, rocas y utilería. Se descartan copas cúbicas y tamaños redundantes. Agua, puentes pequeños, refugio/hoguera y ruina envejecida requieren autoría local posterior, no otro paquete por ahora.
+
+Godot 4.7.2: editor headless importó nuevos formatos; 818 recursos totales cargados con malla/material válidos. Render Forward+/D3D12 y 40 PNG finales en `RPG/logs/seleccion_assets_bosque/2026-11-03T22-04-32/galeria.html`; recarga de 72 modelos y asignación temporal de sus 73 mallas a MultiMesh, sin benchmark de región. Sin referencias externas glTF ausentes; fuentes originales intactas por comparación SHA-256 desde su lectura en esta fase. Logs e incidencias de certificados/ajustes/caché/OBJ se detallan en el informe técnico; no se declaran logs libres de avisos ni aprobada la estética.
+
+La regla `/assets/` estaba comentada al comenzar esta fase y se restableció en `RPG/.gitignore`, como exige AGENTS.md. Los 1193 archivos antiguos de assets ya seguidos por Git no se desversionaron: ignore no cambia su seguimiento. Los paquetes nuevos quedan excluidos; no se ejecutaron add, commits ni pushes.
+
+## 1. Resumen de la auditoría inicial de Quaternius
 
 **338 modelos glTF 2.0, 338 buffers BIN y 89 PNG.** Los 338 modelos se importaron y se instanciaron en Godot **4.7.2.stable.official.ed1daf0bf**, con 0 fallos, 339 nodos de malla, 542 superficies y 0 superficies sin material. Las 89 imágenes cargaron con dimensiones válidas. No se detectaron dependencias glTF ausentes ni referencias incorrectas en las comprobaciones realizadas.
 
@@ -765,3 +806,12 @@ Permanecen 338 modelos glTF y su exclusión de Git. Las señales no tienen colis
 Escalas, giros y posiciones se ajustan por instancia; no se modifican glTF, BIN, texturas ni materiales fuente. Los 16 árboles reciben cilindros simples agrupados en un cuerpo físico local; arbustos, plantas y rocas no reciben colisión. No se añaden scripts individuales, shaders, texturas, paquetes ni dependencias.
 
 Permanecen **338 glTF originales**, su exclusión intencional de Git y las licencias/procedencia pendientes. No se incorporan árboles talados, frutas, recolección, crecimiento, viento ni interacción forestal. Carga, materiales, apoyos, distribución y rendimiento técnico comprobados con Godot 4.7.2 headless y Forward+/D3D12; aprobación visual del usuario pendiente.
+
+## Uso incorporado en Montañas — fase 6F, 5 de noviembre de 2026
+
+`RPG/scenes/montanas.tscn` reutiliza originales intactos de Nature: Pine_1–5 (113 ejemplares), Rock_Medium_1–3, Fern_1, Flower_3_Group y Grass_Wispy_Short; de Props: Barrel, Crate_Wooden, Bag, Lantern_Wall y Pickaxe_Bronze. Rutas canónicas y ajustes por AABB en `RPG/scripts/editor/construir_montanas.gd`; detalle en `RPG/docs/plano_montanas.md`. Terreno, colisión, agua/cascadas, puentes, tiendas, torre cerrada, ruinas pequeñas y portal/raíles mineros son autoría propia fuera de assets. Sin modelo dedicado de vagoneta incorporado. Sin paquetes, originales, conversiones o dependencias nuevos: **524 canónicos**, mismas condiciones de licencia y exclusión de Git. Bosque, Ruinas y Campos conservados; Montañas sí está construida y conectada, sustituyendo las menciones históricas que la describían pendiente. Aprobación artística del usuario pendiente.
+## Uso incorporado en Minas — 8 de noviembre de 2026
+
+`RPG/scenes/minas.tscn` reutiliza originales intactos de Props (`RPG/assets/objetos_medievales/glTF/`): Lantern_Wall, Pickaxe_Bronze, Barrel, Crate_Wooden y Bag; de Nature (`RPG/assets/naturaleza/glTF/`): Rock_Medium_1. Rutas verificadas y ajustes de apoyo/tamaño por instancia mediante AABB. Colisiones propias individuales para objetos voluminosos; no por grava ni cristal.
+
+Geometría propia fuera de assets: terreno/paredes/bóvedas, macizos con vetas, cristales/estalactitas/estalagmitas, refuerzos y madera, palas, dos vagonetas con ruedas y carga, vías, estanque excavado, barandas, pasarela/plataforma, pescante antiguo y señal de retorno. Suelo, roca recortable y agua usan shaders propios locales; no se atribuyen vagonetas/palas a modelos importados inexistentes. Sin nuevos paquetes, modelos originales, conversiones, plugins o dependencias: **524 canónicos**, licencias y exclusión de Git conservadas. Nada en assets fue modificado ni incorporado a Git. Plano y limitaciones en `RPG/docs/plano_minas.md`; aprobación artística pendiente.

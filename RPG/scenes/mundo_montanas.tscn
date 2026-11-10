@@ -1,0 +1,79 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/montanas.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/camara_orbital.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/region_config.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/salida_region.gd" id="5"]
+
+[sub_resource type="BoxShape3D" id="Detector"]
+size = Vector3(1.4, 3, 6)
+
+[sub_resource type="BoxShape3D" id="DetectorMinas"]
+size = Vector3(3.5, 5, 5.4)
+
+[sub_resource type="Environment" id="Ambiente"]
+background_mode = 1
+background_color = Color(0.32, 0.40, 0.45, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.73, 0.82, 0.88, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 2
+
+[node name="MundoMontanas" type="Node3D"]
+
+[node name="Montanas" parent="." instance=ExtResource("1")]
+
+[node name="Jugador" parent="." instance=ExtResource("2")]
+position = Vector3(-52, 2.08, 48)
+
+[node name="CamaraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("objetivo")]
+projection = 1
+size = 15.0
+far = 240.0
+current = true
+script = ExtResource("3")
+objetivo = NodePath("../Jugador")
+
+[node name="LuzSolar" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-52, -32, 0)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 1.1
+shadow_enabled = true
+directional_shadow_max_distance = 130.0
+
+[node name="Ambiente" type="WorldEnvironment" parent="."]
+environment = SubResource("Ambiente")
+
+[node name="Region" type="Node" parent="."]
+script = ExtResource("4")
+id_region = &"Montanas"
+entradas = Dictionary[String, NodePath]({"camino_montanas_aldea_oeste": NodePath("../Montanas/Marcadores/EntradaAldea"), "montanas_minas_norte": NodePath("EntradaMinas")})
+
+[node name="SalidaAldea" type="Area3D" parent="Region"]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+script = ExtResource("5")
+escena_destino = "res://scenes/mundo.tscn"
+entrada_destino = "aldea_camino_este"
+marcador_salida = NodePath("../../Montanas/Marcadores/RetornoAldea")
+
+[node name="Detector" type="CollisionShape3D" parent="Region/SalidaAldea"]
+shape = SubResource("Detector")
+
+[node name="EntradaMinas" type="Marker3D" parent="Region"]
+position = Vector3(45, 20.05, -18)
+metadata/direccion_visual = "abajo"
+
+[node name="SalidaMinas" type="Area3D" parent="Region"]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+script = ExtResource("5")
+escena_destino = "res://scenes/mundo_minas.tscn"
+entrada_destino = "minas_montanas_sur"
+marcador_salida = NodePath("../../Montanas/Marcadores/ConexionMinasFutura")
+
+[node name="Detector" type="CollisionShape3D" parent="Region/SalidaMinas"]
+shape = SubResource("DetectorMinas")

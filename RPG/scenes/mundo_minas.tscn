@@ -1,0 +1,53 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/minas.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/camara_orbital.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/region_config.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/salida_region.gd" id="5"]
+
+[sub_resource type="Environment" id="Ambiente"]
+background_mode = 1
+background_color = Color(0.025, 0.032, 0.04, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.45, 0.52, 0.60, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="Detector"]
+size = Vector3(4, 3, 1.5)
+
+[node name="MundoMinas" type="Node3D"]
+
+[node name="Minas" parent="." instance=ExtResource("1")]
+
+[node name="Jugador" parent="." instance=ExtResource("2")]
+position = Vector3(0, 0.10, 0)
+
+[node name="CamaraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("objetivo")]
+projection = 1
+size = 15.0
+far = 180.0
+current = true
+script = ExtResource("3")
+objetivo = NodePath("../Jugador")
+
+[node name="Ambiente" type="WorldEnvironment" parent="."]
+environment = SubResource("Ambiente")
+
+[node name="Region" type="Node" parent="."]
+script = ExtResource("4")
+id_region = &"Minas"
+entradas = Dictionary[String, NodePath]({"minas_montanas_sur": NodePath("../Minas/Marcadores/EntradaMontanas")})
+
+[node name="SalidaMontanas" type="Area3D" parent="Region"]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+script = ExtResource("5")
+escena_destino = "res://scenes/mundo_montanas.tscn"
+entrada_destino = "montanas_minas_norte"
+marcador_salida = NodePath("../../Minas/Marcadores/RetornoMontanas")
+
+[node name="Detector" type="CollisionShape3D" parent="Region/SalidaMontanas"]
+shape = SubResource("Detector")

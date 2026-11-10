@@ -1,0 +1,2070 @@
+{
+  "fase": "6E.0",
+  "motor": "4.7.2-stable (official)",
+  "modelos_unicos_por_nombre": 21,
+  "archivos_modelo": 49,
+  "formatos_probados": 42,
+  "fallos": 0,
+  "modelos": [
+    {
+      "nombre": "Cow",
+      "archivos": [
+        "RPG/assets/granja/animales/Blends/Cow.blend",
+        "RPG/assets/granja/animales/FBX/Cow.fbx",
+        "RPG/assets/granja/animales/OBJ/Cow.obj"
+      ],
+      "canonico": "RPG/assets/granja/animales/FBX/Cow.fbx",
+      "importaciones": [
+        {
+          "animaciones": [
+            {
+              "duracion": 1.25,
+              "loop": 0,
+              "nombre": "Armature|Death",
+              "pistas": 39
+            },
+            {
+              "duracion": 6.25,
+              "loop": 0,
+              "nombre": "Armature|Idle",
+              "pistas": 39
+            },
+            {
+              "duracion": 1.70833333333333,
+              "loop": 0,
+              "nombre": "Armature|Jump",
+              "pistas": 39
+            },
+            {
+              "duracion": 1.41666666666667,
+              "loop": 0,
+              "nombre": "Armature|Run",
+              "pistas": 39
+            },
+            {
+              "duracion": 3.33333333333333,
+              "loop": 0,
+              "nombre": "Armature|Walk",
+              "pistas": 39
+            },
+            {
+              "duracion": 2.08333333333333,
+              "loop": 0,
+              "nombre": "Armature|WalkSlow",
+              "pistas": 39
+            }
+          ],
+          "dimensiones_xyz": [
+            2.266921043396,
+            5.14776754379272,
+            9.17282676696777
+          ],
+          "huesos": 39,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "d1d1d1ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "2a2a2aff",
+              "nombre": "Black",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "d16974ff",
+              "nombre": "Pink",
+              "textura": "sin textura",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -1.11787593364716,
+            -0.0681431218981743,
+            -3.77661871910095
+          ],
+          "ruta": "RPG/assets/granja/animales/FBX/Cow.fbx",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            2.26698899269104,
+            5.14784574508667,
+            9.17282962799072
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "a3a3a3ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "060606ff",
+              "nombre": "Black",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "a3242cff",
+              "nombre": "Pink",
+              "textura": "sin textura",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -1.11789095401764,
+            -0.0681440010666847,
+            -3.77661895751953
+          ],
+          "ruta": "RPG/assets/granja/animales/OBJ/Cow.obj",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "Horse",
+      "archivos": [
+        "RPG/assets/granja/animales/Blends/Horse.blend",
+        "RPG/assets/granja/animales/FBX/Horse.fbx",
+        "RPG/assets/granja/animales/OBJ/Horse.obj"
+      ],
+      "canonico": "RPG/assets/granja/animales/FBX/Horse.fbx",
+      "importaciones": [
+        {
+          "animaciones": [
+            {
+              "duracion": 1.08333333333333,
+              "loop": 0,
+              "nombre": "Armature|Death",
+              "pistas": 39
+            },
+            {
+              "duracion": 6.25,
+              "loop": 0,
+              "nombre": "Armature|Idle",
+              "pistas": 39
+            },
+            {
+              "duracion": 1.5,
+              "loop": 0,
+              "nombre": "Armature|Jump",
+              "pistas": 39
+            },
+            {
+              "duracion": 0.833333333333333,
+              "loop": 0,
+              "nombre": "Armature|Run",
+              "pistas": 39
+            },
+            {
+              "duracion": 2.66666666666667,
+              "loop": 0,
+              "nombre": "Armature|Walk",
+              "pistas": 39
+            },
+            {
+              "duracion": 2,
+              "loop": 0,
+              "nombre": "Armature|WalkSlow",
+              "pistas": 39
+            }
+          ],
+          "dimensiones_xyz": [
+            2.55942511558533,
+            6.9057092666626,
+            9.240647315979
+          ],
+          "huesos": 39,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "684536ff",
+              "nombre": "Material.003",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "222222ff",
+              "nombre": "Material.006",
+              "textura": "sin textura",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -1.27624213695526,
+            0.017968688160181,
+            -4.12366676330566
+          ],
+          "ruta": "RPG/assets/granja/animales/FBX/Horse.fbx",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            2.56109285354614,
+            6.90589761734009,
+            9.24070739746094
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "240f0aff",
+              "nombre": "Material.003",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "040404ff",
+              "nombre": "Material.006",
+              "textura": "sin textura",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -1.27727103233337,
+            0.0178859997540712,
+            -4.12372779846191
+          ],
+          "ruta": "RPG/assets/granja/animales/OBJ/Horse.obj",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "Llama",
+      "archivos": [
+        "RPG/assets/granja/animales/Blends/Llama.blend",
+        "RPG/assets/granja/animales/FBX/Llama.fbx",
+        "RPG/assets/granja/animales/OBJ/Llama.obj"
+      ],
+      "canonico": "RPG/assets/granja/animales/FBX/Llama.fbx",
+      "importaciones": [
+        {
+          "animaciones": [
+            {
+              "duracion": 6.25,
+              "loop": 0,
+              "nombre": "Armature|Idle",
+              "pistas": 35
+            },
+            {
+              "duracion": 1.125,
+              "loop": 0,
+              "nombre": "Armature|Jump",
+              "pistas": 35
+            }
+          ],
+          "dimensiones_xyz": [
+            1.56823098659515,
+            5.85789442062378,
+            4.90731573104858
+          ],
+          "huesos": 35,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "6d4e39ff",
+              "nombre": "Brown",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "d1d1d1ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "707070ff",
+              "nombre": "Grey",
+              "textura": "sin textura",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.792273461818695,
+            -0.017500713467598,
+            -2.02036643028259
+          ],
+          "ruta": "RPG/assets/granja/animales/FBX/Llama.fbx",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.56826603412628,
+            5.85798501968384,
+            4.90731573104858
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "27130aff",
+              "nombre": "Brown",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "a3a3a3ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "292929ff",
+              "nombre": "Grey",
+              "textura": "sin textura",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.792285025119781,
+            -0.0175010003149509,
+            -2.02036595344543
+          ],
+          "ruta": "RPG/assets/granja/animales/OBJ/Llama.obj",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "Pig",
+      "archivos": [
+        "RPG/assets/granja/animales/Blends/Pig.blend",
+        "RPG/assets/granja/animales/FBX/Pig.fbx",
+        "RPG/assets/granja/animales/OBJ/Pig.obj"
+      ],
+      "canonico": "RPG/assets/granja/animales/FBX/Pig.fbx",
+      "importaciones": [
+        {
+          "animaciones": [
+            {
+              "duracion": 6.25,
+              "loop": 0,
+              "nombre": "Armature|Idle",
+              "pistas": 35
+            },
+            {
+              "duracion": 1.5,
+              "loop": 0,
+              "nombre": "Armature|Jump",
+              "pistas": 35
+            }
+          ],
+          "dimensiones_xyz": [
+            3.30357837677002,
+            4.5749716758728,
+            9.77032661437988
+          ],
+          "huesos": 35,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "c49194ff",
+              "nombre": "Material.003",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "704b38ff",
+              "nombre": "Material",
+              "textura": "sin textura",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -1.65250265598297,
+            -0.0042611756362021,
+            -4.54190158843994
+          ],
+          "ruta": "RPG/assets/granja/animales/FBX/Pig.fbx",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            3.30362892150879,
+            4.57504081726074,
+            9.77046394348145
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "8c494cff",
+              "nombre": "Material.003",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "29120aff",
+              "nombre": "Material",
+              "textura": "sin textura",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -1.65252804756165,
+            -0.00426100008189678,
+            -4.54203987121582
+          ],
+          "ruta": "RPG/assets/granja/animales/OBJ/Pig.obj",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "Pug",
+      "archivos": [
+        "RPG/assets/granja/animales/Blends/Pug.blend",
+        "RPG/assets/granja/animales/FBX/Pug.fbx",
+        "RPG/assets/granja/animales/OBJ/Pug.obj"
+      ],
+      "canonico": "RPG/assets/granja/animales/FBX/Pug.fbx",
+      "importaciones": [
+        {
+          "animaciones": [
+            {
+              "duracion": 6.25,
+              "loop": 0,
+              "nombre": "Armature|Idle",
+              "pistas": 35
+            },
+            {
+              "duracion": 1.5,
+              "loop": 0,
+              "nombre": "Armature|Jump",
+              "pistas": 35
+            }
+          ],
+          "dimensiones_xyz": [
+            1.44699859619141,
+            2.6526038646698,
+            3.5003833770752
+          ],
+          "huesos": 35,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "d1b98eff",
+              "nombre": "Beige",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "321b14ff",
+              "nombre": "Brown",
+              "textura": "sin textura",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.724587082862854,
+            -0.0180641710758209,
+            -1.44907867908478
+          ],
+          "ruta": "RPG/assets/granja/animales/FBX/Pug.fbx",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.44703102111816,
+            2.6526460647583,
+            3.50045108795166
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "a37b45ff",
+              "nombre": "Beige",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "080302ff",
+              "nombre": "Brown",
+              "textura": "sin textura",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.724609017372131,
+            -0.0180649999529123,
+            -1.44914495944977
+          ],
+          "ruta": "RPG/assets/granja/animales/OBJ/Pug.obj",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "Sheep",
+      "archivos": [
+        "RPG/assets/granja/animales/Blends/Sheep.blend",
+        "RPG/assets/granja/animales/FBX/Sheep.fbx",
+        "RPG/assets/granja/animales/OBJ/Sheep.obj"
+      ],
+      "canonico": "RPG/assets/granja/animales/FBX/Sheep.fbx",
+      "importaciones": [
+        {
+          "animaciones": [
+            {
+              "duracion": 6.25,
+              "loop": 0,
+              "nombre": "Armature|Idle",
+              "pistas": 35
+            },
+            {
+              "duracion": 1.125,
+              "loop": 0,
+              "nombre": "Armature|Jump",
+              "pistas": 35
+            }
+          ],
+          "dimensiones_xyz": [
+            2.22498655319214,
+            4.36451959609985,
+            5.91940212249756
+          ],
+          "huesos": 35,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "d1d1d1ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "303030ff",
+              "nombre": "Black",
+              "textura": "sin textura",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -1.11247682571411,
+            -0.0150331761687994,
+            -2.40874218940735
+          ],
+          "ruta": "RPG/assets/granja/animales/FBX/Sheep.fbx",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            2.22503709793091,
+            4.36458587646484,
+            5.91940402984619
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "a3a3a3ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "080808ff",
+              "nombre": "Black",
+              "textura": "sin textura",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -1.11249399185181,
+            -0.0150330001488328,
+            -2.40874290466309
+          ],
+          "ruta": "RPG/assets/granja/animales/OBJ/Sheep.obj",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "Zebra",
+      "archivos": [
+        "RPG/assets/granja/animales/Blends/Zebra.blend",
+        "RPG/assets/granja/animales/FBX/Zebra.fbx",
+        "RPG/assets/granja/animales/OBJ/Zebra.obj"
+      ],
+      "canonico": "RPG/assets/granja/animales/FBX/Zebra.fbx",
+      "importaciones": [
+        {
+          "animaciones": [
+            {
+              "duracion": 1.08333333333333,
+              "loop": 0,
+              "nombre": "Armature|Death",
+              "pistas": 39
+            },
+            {
+              "duracion": 6.25,
+              "loop": 0,
+              "nombre": "Armature|Idle",
+              "pistas": 39
+            },
+            {
+              "duracion": 1.5,
+              "loop": 0,
+              "nombre": "Armature|Jump",
+              "pistas": 39
+            },
+            {
+              "duracion": 0.833333333333333,
+              "loop": 0,
+              "nombre": "Armature|Run",
+              "pistas": 39
+            },
+            {
+              "duracion": 2.66666666666667,
+              "loop": 0,
+              "nombre": "Armature|Walk",
+              "pistas": 39
+            },
+            {
+              "duracion": 2,
+              "loop": 0,
+              "nombre": "Armature|WalkSlow",
+              "pistas": 39
+            }
+          ],
+          "dimensiones_xyz": [
+            2.55943298339844,
+            7.07386255264282,
+            9.23359680175781
+          ],
+          "huesos": 39,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "d1d1d1ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": true
+            },
+            {
+              "color": "2a2a2aff",
+              "nombre": "Black",
+              "textura": "sin textura",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -1.27437555789948,
+            -0.0463267341256142,
+            -4.16262006759644
+          ],
+          "ruta": "RPG/assets/granja/animales/FBX/Zebra.fbx",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            2.55949211120605,
+            7.07397127151489,
+            9.23365783691406
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "a3a3a3ff",
+              "nombre": "White",
+              "textura": "sin textura",
+              "vertex_color": false
+            },
+            {
+              "color": "060606ff",
+              "nombre": "Black",
+              "textura": "sin textura",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -1.27439498901367,
+            -0.0463269986212254,
+            -4.162682056427
+          ],
+          "ruta": "RPG/assets/granja/animales/OBJ/Zebra.obj",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_apple_tree_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_apple_tree_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_apple_tree_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_apple_tree_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            3.59999990463257,
+            4.40000009536743,
+            3.41999983787537
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_apple_tree_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -1.79999995231628,
+            -0.150000005960464,
+            -1.54999995231628
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_apple_tree_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            3.59999990463257,
+            4.39999961853027,
+            3.42000007629395
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_apple_tree_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -1.79999995231628,
+            -0.150000169873238,
+            -1.55000030994415
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_apple_tree_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_beehive_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_beehive_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_beehive_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_beehive_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.560000002384186,
+            0.880999982357025,
+            0.554277956485748
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_beehive_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.280000001192093,
+            0,
+            -0.277138978242874
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_beehive_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.560000002384186,
+            0.880999982357025,
+            0.554278016090393
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_beehive_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.280000001192093,
+            -3.30375407031624e-8,
+            -0.277139067649841
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_beehive_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_cabbage_stage_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.0935974642634392,
+            0.090945690870285,
+            0.0902322381734848
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.052095603197813,
+            -0.0350000001490116,
+            -0.0473950058221817
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.0935974642634392,
+            0.090945690870285,
+            0.0902322381734848
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.0520955994725227,
+            -0.0350000038743019,
+            -0.0473950058221817
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_cabbage_stage_02",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_02.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_02.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_02.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.156729996204376,
+            0.125,
+            0.155865788459778
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_02_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.0747864991426468,
+            -0.0350000001490116,
+            -0.0823978409171104
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_02.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.156729996204376,
+            0.125,
+            0.155865803360939
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_02_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.0747864991426468,
+            -0.0350000075995922,
+            -0.0823978409171104
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_02.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_cabbage_stage_03",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_03.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_03.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_03.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.268629819154739,
+            0.185000002384186,
+            0.264969050884247
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_03_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.132756561040878,
+            -0.0350000001490116,
+            -0.127188831567764
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_03.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.268629819154739,
+            0.185000017285347,
+            0.264969050884247
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_03_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.132756561040878,
+            -0.0350000113248825,
+            -0.127188816666603
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_cabbage_stage_03.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_chicken_coop_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_chicken_coop_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_chicken_coop_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_chicken_coop_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.89292359352112,
+            1.92499995231628,
+            1.8155152797699
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_chicken_coop_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.946461796760559,
+            0,
+            -0.907757639884949
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_chicken_coop_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.89292359352112,
+            1.92500007152557,
+            1.8155152797699
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_chicken_coop_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.946461796760559,
+            -1.08213136229551e-7,
+            -0.907757759094238
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_chicken_coop_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_feed_trough_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_feed_trough_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_feed_trough_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_feed_trough_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.22000002861023,
+            0.509999990463257,
+            0.724969565868378
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_feed_trough_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.610000014305115,
+            0,
+            -0.362484782934189
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_feed_trough_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.22000002861023,
+            0.510000050067902,
+            0.724969565868378
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_feed_trough_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.610000014305115,
+            -4.32115534465538e-8,
+            -0.362484812736511
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_feed_trough_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_fruit_basket_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_fruit_basket_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_fruit_basket_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_fruit_basket_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.486000001430511,
+            0.532999992370605,
+            0.486000001430511
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_fruit_basket_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.243000000715256,
+            0,
+            -0.243000000715256
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_fruit_basket_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.486000031232834,
+            0.532999992370605,
+            0.486000031232834
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_fruit_basket_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.243000015616417,
+            -2.89678592224618e-8,
+            -0.243000045418739
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_fruit_basket_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_furrow_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_furrow_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_furrow_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_furrow_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1,
+            0.126544609665871,
+            1
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_furrow_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            0,
+            -0.0499999970197678,
+            -1
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_furrow_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1,
+            0.126544713973999,
+            0.99999988079071
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_furrow_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            0,
+            -0.050000112503767,
+            -0.99999988079071
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_furrow_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_haystack_02",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_haystack_02.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_haystack_02.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_haystack_02.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.33817863464355,
+            0.980897426605225,
+            0.993776679039001
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_haystack_02_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.669089317321777,
+            0,
+            -0.496888339519501
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_haystack_02.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.33817863464355,
+            0.980897486209869,
+            0.993776738643646
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_haystack_02_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.669089317321777,
+            -5.92337059401871e-8,
+            -0.496888428926468
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_haystack_02.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_hay_bale_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_hay_bale_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_hay_bale_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_hay_bale_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.578431367874146,
+            0.51626592874527,
+            0.814059436321259
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_hay_bale_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.289215683937073,
+            0,
+            -0.407029718160629
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_hay_bale_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.578431367874146,
+            0.516265988349915,
+            0.814059495925903
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_hay_bale_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.289215683937073,
+            -4.8521727080697e-8,
+            -0.407029777765274
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_hay_bale_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_milking_stool_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_milking_stool_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_milking_stool_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_milking_stool_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.358161449432373,
+            0.389999985694885,
+            0.354146063327789
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_milking_stool_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.179080724716187,
+            0,
+            -0.177073031663895
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_milking_stool_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            0.358161449432373,
+            0.390000015497208,
+            0.354146063327789
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_milking_stool_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.179080724716187,
+            -2.11087503032559e-8,
+            -0.177073061466217
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_milking_stool_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_scarecrow_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_scarecrow_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_scarecrow_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_scarecrow_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.37525749206543,
+            1.88499999046326,
+            0.565458178520203
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_scarecrow_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.687628746032715,
+            0,
+            -0.282729089260101
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_scarecrow_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.37525749206543,
+            1.88499987125397,
+            0.565458357334137
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_scarecrow_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.687628746032715,
+            -3.37039338660361e-8,
+            -0.282729297876358
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_scarecrow_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    },
+    {
+      "nombre": "mdvl_farm_well_cover_01",
+      "archivos": [
+        "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_well_cover_01.fbx",
+        "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_well_cover_01.glb"
+      ],
+      "canonico": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_well_cover_01.glb",
+      "importaciones": [
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.78999996185303,
+            2.38499999046326,
+            1.51931607723236
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/glTF/mdvl_farm_well_cover_01_mdvl_palette.png",
+              "vertex_color": false
+            }
+          ],
+          "minimo_xyz": [
+            -0.894999980926514,
+            0,
+            -0.75965803861618
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_well_cover_01.glb",
+          "sin_material": 0
+        },
+        {
+          "animaciones": [],
+          "dimensiones_xyz": [
+            1.78999996185303,
+            2.38499975204468,
+            1.51931619644165
+          ],
+          "huesos": 0,
+          "importa": true,
+          "mallas": 1,
+          "materiales": [
+            {
+              "color": "ffffffff",
+              "nombre": "mdvl_palette",
+              "textura": "res://assets/granja/Farm_Harvest/FBX/mdvl_farm_well_cover_01_0.png",
+              "vertex_color": true
+            }
+          ],
+          "minimo_xyz": [
+            -0.894999980926514,
+            -9.05582950849748e-8,
+            -0.75965827703476
+          ],
+          "ruta": "RPG/assets/granja/Farm_Harvest/FBX/mdvl_farm_well_cover_01.fbx",
+          "sin_material": 0
+        }
+      ]
+    }
+  ],
+  "estructura_glb": [
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_apple_tree_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_beehive_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_02.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_cabbage_stage_03.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_chicken_coop_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_feed_trough_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_fruit_basket_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_furrow_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_haystack_02.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_hay_bale_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_milking_stool_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_scarecrow_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    },
+    {
+      "ruta": "RPG/assets/granja/Farm_Harvest/glTF/mdvl_farm_well_cover_01.glb",
+      "materiales": [
+        {
+          "name": "mdvl_palette",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "imagenes": [
+        {
+          "bufferView": 4,
+          "mimeType": "image/png",
+          "name": "mdvl_palette"
+        }
+      ],
+      "texturas": [
+        {
+          "sampler": 0,
+          "source": 0
+        }
+      ],
+      "animaciones": 0,
+      "dependencias_externas": []
+    }
+  ],
+  "comparacion_glb_fbx": [
+    {
+      "nombre": "mdvl_farm_apple_tree_01",
+      "max_diferencia_dimensiones": 4.768371599794818e-7
+    },
+    {
+      "nombre": "mdvl_farm_beehive_01",
+      "max_diferencia_dimensiones": 5.960464499743523e-8
+    },
+    {
+      "nombre": "mdvl_farm_cabbage_stage_01",
+      "max_diferencia_dimensiones": 0
+    },
+    {
+      "nombre": "mdvl_farm_cabbage_stage_02",
+      "max_diferencia_dimensiones": 1.4901160999558627e-8
+    },
+    {
+      "nombre": "mdvl_farm_cabbage_stage_03",
+      "max_diferencia_dimensiones": 1.4901160999558627e-8
+    },
+    {
+      "nombre": "mdvl_farm_chicken_coop_01",
+      "max_diferencia_dimensiones": 1.1920928999487046e-7
+    },
+    {
+      "nombre": "mdvl_farm_feed_trough_01",
+      "max_diferencia_dimensiones": 5.960464510845753e-8
+    },
+    {
+      "nombre": "mdvl_farm_fruit_basket_01",
+      "max_diferencia_dimensiones": 2.9802322998317976e-8
+    },
+    {
+      "nombre": "mdvl_farm_furrow_01",
+      "max_diferencia_dimensiones": 1.1920928999487046e-7
+    },
+    {
+      "nombre": "mdvl_farm_haystack_02",
+      "max_diferencia_dimensiones": 5.960464499743523e-8
+    },
+    {
+      "nombre": "mdvl_farm_hay_bale_01",
+      "max_diferencia_dimensiones": 5.960464499743523e-8
+    },
+    {
+      "nombre": "mdvl_farm_milking_stool_01",
+      "max_diferencia_dimensiones": 2.9802322998317976e-8
+    },
+    {
+      "nombre": "mdvl_farm_scarecrow_01",
+      "max_diferencia_dimensiones": 1.7881393399310497e-7
+    },
+    {
+      "nombre": "mdvl_farm_well_cover_01",
+      "max_diferencia_dimensiones": 2.384185799897409e-7
+    }
+  ]
+}

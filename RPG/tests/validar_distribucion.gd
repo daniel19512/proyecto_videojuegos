@@ -337,6 +337,17 @@ func validar() -> void:
 		quit(1)
 		return
 	mundo = recurso.instantiate()
+	# Fixture físico local: probar los cuatro cierres sin abandonar la región.
+	# Las transiciones activas se cubren por validar_transiciones.gd (cinco ida/vuelta).
+	if mundo.has_node("Region/SalidaBosque"):
+		mundo.get_node("Region/SalidaBosque").monitoring = false
+	# Desde 6E tambien existe salida sur; esta fixture conserva la prueba del cierre,
+	# mientras validar_transicion_campos.gd prueba ambos detectores activos caminando.
+	if mundo.has_node("Region/SalidaCampos"):
+		mundo.get_node("Region/SalidaCampos").monitoring = false
+	# Solo fixture de cierres: el detector oriental activo se prueba en 6F.
+	if mundo.has_node("Region/SalidaMontanas"):
+		mundo.get_node("Region/SalidaMontanas").monitoring = false
 	root.add_child(mundo)
 	current_scene = mundo
 	aldea = mundo.get_node("Aldea")

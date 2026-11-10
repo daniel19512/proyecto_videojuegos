@@ -6,6 +6,15 @@
 [ext_resource type="PackedScene" path="res://scenes/aldea.tscn" id="4_aldea"]
 [ext_resource type="PackedScene" path="res://scenes/npc_pescador.tscn" id="5_pescador"]
 
+[ext_resource type="Script" path="res://scripts/region_config.gd" id="5_region"]
+[ext_resource type="Script" path="res://scripts/salida_region.gd" id="6_salida"]
+
+[sub_resource type="BoxShape3D" id="DetectorRegion"]
+size = Vector3(4, 3, 1.4)
+
+[sub_resource type="BoxShape3D" id="DetectorEste"]
+size = Vector3(1.4, 3, 4)
+
 [sub_resource type="Environment" id="Environment_mundo"]
 background_mode = 1
 background_color = Color(0.16, 0.19, 0.22, 1)
@@ -46,3 +55,56 @@ shadow_enabled = true
 
 [node name="AmbienteMundo" type="WorldEnvironment" parent="." unique_id=1446535498]
 environment = SubResource("Environment_mundo")
+
+[node name="Region" type="Node" parent="."]
+script = ExtResource("5_region")
+id_region = &"Aldea"
+entradas = Dictionary[String, NodePath]({"aldea_bosque_norte": NodePath("EntradaBosque"), "aldea_campos_sur": NodePath("EntradaCampos"), "aldea_camino_este": NodePath("EntradaMontanas")})
+
+[node name="EntradaBosque" type="Marker3D" parent="Region"]
+position = Vector3(0, 0.02, -32)
+metadata/direccion_visual = "abajo"
+
+[node name="SalidaBosque" type="Area3D" parent="Region"]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+script = ExtResource("6_salida")
+escena_destino = "res://scenes/mundo_bosque.tscn"
+entrada_destino = "bosque_aldea_sur"
+marcador_salida = NodePath("../../Aldea/SalidasRegionales/SalidaBosqueNorte/TransicionFutura")
+
+[node name="Detector" type="CollisionShape3D" parent="Region/SalidaBosque"]
+shape = SubResource("DetectorRegion")
+
+[node name="EntradaCampos" type="Marker3D" parent="Region"]
+position = Vector3(0, 0.02, 32)
+metadata/direccion_visual = "arriba"
+
+[node name="SalidaCampos" type="Area3D" parent="Region"]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+script = ExtResource("6_salida")
+escena_destino = "res://scenes/mundo_campos_granjas.tscn"
+entrada_destino = "campos_aldea_norte"
+marcador_salida = NodePath("../../Aldea/SalidasRegionales/SalidaCamposSur/TransicionFutura")
+
+[node name="Detector" type="CollisionShape3D" parent="Region/SalidaCampos"]
+shape = SubResource("DetectorRegion")
+
+[node name="EntradaMontanas" type="Marker3D" parent="Region"]
+position = Vector3(36, 0.02, 0)
+metadata/direccion_visual = "izquierda"
+
+[node name="SalidaMontanas" type="Area3D" parent="Region"]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+script = ExtResource("6_salida")
+escena_destino = "res://scenes/mundo_montanas.tscn"
+entrada_destino = "camino_montanas_aldea_oeste"
+marcador_salida = NodePath("../../Aldea/SalidasRegionales/SalidaCaminoEste/TransicionFutura")
+
+[node name="Detector" type="CollisionShape3D" parent="Region/SalidaMontanas"]
+shape = SubResource("DetectorEste")
