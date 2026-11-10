@@ -4,6 +4,8 @@ extends CanvasLayer
 ## en pausa (process_mode ALWAYS); quien lo abre decide pausar o no.
 
 signal cerrado
+## Se emite al agotarse el tiempo de cada partida.
+signal partida_terminada(puntuacion: int)
 
 enum Estado { CERRADO, INSTRUCCIONES, JUGANDO, RESULTADO }
 
@@ -80,6 +82,7 @@ func _process(delta: float) -> void:
 				_textos.append({puntos = evento.puntos, pos = evento.pos, vida = VIDA_TEXTO})
 			if logica.terminada():
 				_cambiar_estado(Estado.RESULTADO)
+				partida_terminada.emit(logica.puntuacion)
 	_actualizar_textos(delta)
 	_actualizar_marcador()
 	_area.queue_redraw()

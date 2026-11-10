@@ -1,6 +1,6 @@
 # Estado del proyecto RPG
 
-Última revisión: **9 de noviembre de 2026**. Primer minijuego jugable: **pesca junto al puente**, validado técnicamente y pendiente de prueba jugable del usuario. Fase **4B.7: árboles y vegetación general integrados técnicamente; a la espera de aprobación visual del usuario**. La solicitud confirma 4B.6 aprobado. Sistemas anteriores conservados; protagonista con velocidad temporal 10 y cámara orbital tamaño 15. No iniciar 4B.8 antes de aprobación visual.
+Última revisión: **9 de noviembre de 2026**. Primer minijuego jugable: **pesca junto al puente**, con el primer NPC, **Tomás el pescador**, con diálogo fijo; ambos validados técnicamente y pendientes de prueba jugable del usuario. Fase **4B.7: árboles y vegetación general integrados técnicamente; a la espera de aprobación visual del usuario**. La solicitud confirma 4B.6 aprobado. Sistemas anteriores conservados; protagonista con velocidad temporal 10 y cámara orbital tamaño 15. No iniciar 4B.8 antes de aprobación visual.
 
 ## 1. Información general
 
@@ -8,7 +8,7 @@
 - **Motor objetivo:** Godot **4.7.2**, GDScript. La configuración declara `4.7` y Forward Plus; el inventario registra la versión exacta de una auditoría previa: `4.7.2.stable.official.ed1daf0bf`.
 - **Renderizado y física:** Forward Plus, controlador Windows `d3d12`, Jolt Physics para 3D.
 - **Tipo y objetivo:** proyecto inicialmente escolar de RPG medieval de fantasía y simulación de vida. Entorno 3D, personajes pixel art 2D dentro del mundo y cámara ortográfica inclinada; explorar y participar en la vida de una aldea. No está previsto combate tradicional.
-- **Visión futura:** NPCs con personalidad, rutinas, memoria, relaciones y comportamientos; diálogos, interacciones sociales, profesiones como herrería y agricultura, minijuegos, misiones y eventos. Solo existe el minijuego de pesca; el resto no está implementado.
+- **Visión futura:** NPCs con personalidad, rutinas, memoria, relaciones y comportamientos; diálogos, interacciones sociales, profesiones como herrería y agricultura, minijuegos, misiones y eventos. Solo existen el minijuego de pesca y un NPC con diálogo fijo; el resto no está implementado.
 - **Continuidad:** leer primero `AGENTS.md`. El inventario detallado está en `RPG/docs/inventario_assets.md`.
 
 ## 2. Funcionalidades implementadas en archivos
@@ -26,6 +26,7 @@
 | Huertos decorativos | Tres reservas agrícolas construidas: comunitario, E09 y E10, con cultivos diferenciados, bancales y pasos internos. Sin agricultura jugable. El huerto previo de E06 permanece intacto. | `RPG/scenes/huerto_comunitario.tscn`, `RPG/scenes/huerto_e09.tscn`, `RPG/scenes/huerto_e10.tscn`; instancia en `RPG/scenes/aldea.tscn`. |
 | Vegetación general | Distribución manual determinista de 16 árboles, 18 arbustos, 32 plantas pequeñas y 7 rocas, concentrada en los perímetros norte, oeste y sur. Un único cuerpo físico agrupa las 16 formas simples de tronco; ribera, plaza y salidas permanecen despejadas. | `RPG/scenes/vegetacion_aldea.tscn`, instancia en `RPG/scenes/aldea.tscn`. |
 | Minijuego de pesca | Punto en la orilla oeste, al sur del puente (26.9, 0, 4). Al acercarse aparece «[F] Pescar»; `interactuar` (F / botón A) pausa el mundo y abre un panel 2D: peces y piedras caen y la red se mueve con las acciones de movimiento. Pez atrapado +10, pez escapado −5, piedra atrapada −10; partida de 60 s con resultado, repetir con F y salir con Esc. Sin inventario, recompensas ni guardado de récords. | `RPG/scripts/pesca/`, `RPG/scenes/punto_pesca.tscn`, `RPG/scenes/minijuego_pesca.tscn`, instancia en `RPG/scenes/aldea.tscn`, acción en `RPG/project.godot`. |
+| NPC pescador y diálogo | Tomás en `Mundo/NPCs/Pescador` (27, 0, 8): `StaticBody3D` sólido, sprite del protagonista recoloreado, aviso «[F] Hablar». Presentación, recordatorio y comentarios de su mejor marca y su última partida, recibidas mediante la señal del minijuego. Caja de diálogo reutilizable con efecto de escritura; pausa el mundo. Sin LLM, rutinas ni memoria persistente. | `RPG/scenes/npc_pescador.tscn`, `RPG/scripts/npc/npc_pescador.gd`, `RPG/scenes/caja_dialogo.tscn`, `RPG/scripts/dialogo/caja_dialogo.gd`, instancia en `RPG/scenes/mundo.tscn`. |
 | Inicio del mundo | Solo mensajes de bienvenida en `_ready()`; no implementa simulación social. | `RPG/scripts/mundo.gd`. |
 | Pruebas automatizadas | Específica de vegetación: 0 fallos y 135 comprobaciones. Regresión completa conserva únicamente los fallos conocidos E04/E12; 13.695 muestras y 36 corredores. | `RPG/tests/validar_vegetacion.gd`, `RPG/tests/validar_distribucion.gd`, entradas específicas existentes. |
 
@@ -72,7 +73,7 @@ Consultar `RPG/docs/inventario_assets.md` para modelos concretos, materiales, du
 4. **Revisión visual pendiente:** escala frente al protagonista, pivotes, encajes, normales, ventanas, enredaderas, hojas/flores con transparencias, sombras, legibilidad y oclusión del sprite. Headless no sustituye revisión gráfica D3D12. No se midió rendimiento real.
 5. **Elementos especiales:** el inventario no identifica agua/cauce/material de río, puente dedicado, rueda hidráulica ni mecanismo de molino. Hay módulos que podrían servir de base, no conjuntos listos. También quedan por preparar fragua/horno, huertos y sus etapas de cultivo, e interiores/interacciones.
 6. **Escena independiente creada:** `RPG/scenes/pruebas_assets.tscn`, con prueba propia aprobada; quedan ajustes artísticos y recorrido manual completo. Los ocho fallos del mundo quedaron resueltos al restaurar las transformaciones accidentales de aldea y protagonista; ver registro.
-7. **Sistemas de juego futuros ausentes:** NPCs, navegación de NPCs, rutinas/memoria/relaciones, diálogos, profesiones, minijuegos distintos de la pesca, inventario de jugador, misiones y eventos no se identificaron en el código actual. El inventario de assets es documentación, no un sistema de inventario jugable. No hay backend ni integración LLM implementada.
+7. **Sistemas de juego futuros ausentes:** NPCs autónomos, navegación de NPCs, rutinas/memoria/relaciones, diálogos generados por LLM, profesiones, minijuegos distintos de la pesca, inventario de jugador, misiones y eventos no se identificaron en el código actual. El inventario de assets es documentación, no un sistema de inventario jugable. No hay backend ni integración LLM implementada.
 8. **Trabajo previo sin consolidar en Git:** al comenzar esta tarea ya existían cambios en `RPG/.gitignore`, `RPG/project.godot`, `RPG/scenes/mundo.tscn` y `RPG/scripts/camara_seguimiento.gd`, y archivos no versionados de aldea, casa modular, pruebas y documentación. Se preservaron; comprobar siempre el estado actual antes de trabajar, pues esta nota es una fotografía histórica.
 
 ## 6. Objetivo visual: referencia artística, no escena terminada
@@ -85,7 +86,7 @@ La referencia conceptual aprobada descrita por el usuario es una aldea medieval 
 
 **Cámara aprobada:** el usuario eligió 15 tras comparar las cuatro vistas; ya está aplicado en el mundo y registrado en `AGENTS.md`. Se conserva `RPG/scenes/pruebas_assets.tscn` con su selector 23/19/17/15 para futuras comparaciones; su inicio actual en 15 es exclusivo de laboratorio; incorpora órbita experimental sin trasladarla al mundo.
 
-**Minijuego de pesca:** pendiente de prueba jugable del usuario (F6, acercarse al puente por la orilla oeste y pulsar F) para ajustar dificultad, velocidad de la red y aspecto.
+**Minijuego de pesca y pescador:** pendientes de prueba jugable del usuario (F6, ir a la orilla oeste al sur del puente, hablar con Tomás y pescar con F) para ajustar dificultad, velocidad de la red, textos y aspecto. Siguiente paso propuesto para la vida del pueblo: backend local con LLM para el diálogo del pescador, ya planteado al usuario y no iniciado.
 
 **Prioridad actual:** revisión visual de vegetación en `RPG/logs/fase4b7_vegetacion/2026-11-02T21-33-16/galeria.html`; esperar aprobación antes de 4B.8. Orden posterior: 4B.8 paisaje y orillas; 4B.9 pulido y optimización. Pendientes anteriores E03/E04/E05 y oclusión de cubiertas conservados.
 
@@ -535,3 +536,13 @@ Mantener este documento al completar etapas, cambiar prioridades/estado, detecta
 - Regresiones: `validar_rio_puente.gd` **0 fallos** (`pesca_regresion_rio_puente.log`); `validar_aldea.gd` **2 fallos conocidos** (E04 y E12), 13.695 muestras y 36 corredores (`pesca_regresion_aldea.log`). Mundo ejecutado en D3D12 mediante el MCP de Godot sin errores ni avisos.
 - Capturas con ventana en `RPG/logs/pesca_capturas/2026-11-09T17-57-35/`: punto con aviso, instrucciones, partida y resultado. La primera tanda, que se conserva, motivó ajustes de espuma, colores de los peces y una línea de ayuda. Prueba jugable con teclado y mando físico pendiente del usuario.
 - `AGENTS.md` actualizado con la acción `interactuar`, la pausa como convención de minijuegos y la sección de pesca. Sin commits ni pushes.
+
+### 9 de noviembre de 2026 — primer NPC: Tomás, el pescador
+
+- A petición del usuario, NPC junto al punto de pesca. Decisiones: diálogo fijo escrito a mano (base para un futuro diálogo con LLM) y sprite del protagonista recoloreado, porque no hay sprites de NPC.
+- `RPG/scenes/npc_pescador.tscn` + `RPG/scripts/npc/npc_pescador.gd`, instanciado en el nodo nuevo `Mundo/NPCs` en (27, 0, 8). Fuera de `Aldea` porque la regresión exige 36 `StaticBody3D` en la aldea. Es un `StaticBody3D`, para no confundirse con el protagonista en las zonas que detectan `CharacterBody3D`. Queda fuera de los 36 corredores, dentro de la reserva lógica Ribera.
+- Zona de conversación de radio 1,3, separada de la zona de pesca (radio 1,8): la prueba recorre el tramo entre ambas sin activar los dos avisos a la vez.
+- `RPG/scenes/caja_dialogo.tscn` + `RPG/scripts/dialogo/caja_dialogo.gd`: caja inferior reutilizable, efecto de escritura, F/A avanza o completa la línea, Esc cierra; el NPC pausa y quita la pausa.
+- `minijuego_pesca.gd` emite ahora `partida_terminada(puntuacion)`. El pescador guarda la mejor marca y la última partida solo durante la sesión.
+- Nueva prueba `RPG/tests/validar_npc_pescador.gd`: **0 fallos / 17 comprobaciones** (`validar_npc_pescador.log`). Regresiones: `validar_pesca.gd` 0 fallos, `validar_rio_puente.gd` 0, `validar_salidas.gd` 0 y `validar_aldea.gd` 2 fallos conocidos (E04 y E12), 13.695 muestras y 36 corredores (registros `npc_regresion_*`).
+- Capturas en `RPG/logs/npc_pescador_capturas/2026-11-09T20-41-59/`: pescador con aviso y caja de diálogo. Revisión jugable y prueba con mando físico pendientes del usuario. `AGENTS.md` actualizado. Sin commits ni pushes.

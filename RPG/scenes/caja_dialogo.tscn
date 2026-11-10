@@ -1,0 +1,65 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogo/caja_dialogo.gd" id="1_caja"]
+
+[sub_resource type="StyleBoxFlat" id="EstiloCaja"]
+bg_color = Color(0.13, 0.09, 0.05, 0.93)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.55, 0.38, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CajaDialogo" type="CanvasLayer"]
+process_mode = 3
+layer = 9
+script = ExtResource("1_caja")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -190.0
+offset_right = 420.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("EstiloCaja")
+
+[node name="Nombre" type="Label" parent="Panel"]
+offset_left = 22.0
+offset_top = 12.0
+offset_right = 600.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.98, 0.8, 0.42, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.05, 0.02, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 22
+text = "Nombre"
+
+[node name="Texto" type="Label" parent="Panel"]
+offset_left = 22.0
+offset_top = 48.0
+offset_right = 818.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.97, 0.93, 0.84, 1)
+theme_override_font_sizes/font_size = 20
+text = "Texto"
+autowrap_mode = 3
+
+[node name="Indicador" type="Label" parent="Panel"]
+offset_left = 618.0
+offset_top = 132.0
+offset_right = 818.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.9, 0.78, 0.55, 1)
+theme_override_font_sizes/font_size = 16
+text = "[F] Seguir"
+horizontal_alignment = 2
