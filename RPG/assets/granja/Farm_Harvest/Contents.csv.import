@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://biga455gdyex8"
+
+[deps]
+
+files=["res://assets/granja/Farm_Harvest/Contents.group.translation", "res://assets/granja/Farm_Harvest/Contents.edition.translation", "res://assets/granja/Farm_Harvest/Contents.width.translation", "res://assets/granja/Farm_Harvest/Contents.depth.translation", "res://assets/granja/Farm_Harvest/Contents.height.translation", "res://assets/granja/Farm_Harvest/Contents.triangles.translation"]
+
+source_file="res://assets/granja/Farm_Harvest/Contents.csv"
+dest_files=["res://assets/granja/Farm_Harvest/Contents.group.translation", "res://assets/granja/Farm_Harvest/Contents.edition.translation", "res://assets/granja/Farm_Harvest/Contents.width.translation", "res://assets/granja/Farm_Harvest/Contents.depth.translation", "res://assets/granja/Farm_Harvest/Contents.height.translation", "res://assets/granja/Farm_Harvest/Contents.triangles.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

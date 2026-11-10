@@ -18,7 +18,7 @@ __pycache__/
 !.env.example
 
 # Recursos locales: conservar los assets originales fuera de Git.
-/assets/
+#/assets/
 
 # Registros temporales de pruebas y validaciones
 /logs/
