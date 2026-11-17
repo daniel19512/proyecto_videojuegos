@@ -56,7 +56,8 @@ func comprobar_region(id: StringName) -> void:
 	comprobar(jugador.velocidad==10.0,"Velocidad conservada")
 	comprobar(gestor.negro.color.a<0.001,"Fundido final transparente")
 	var areas := current_scene.find_children("*","Area3D",true,false)
-	comprobar(areas.size()==(3 if id==&"Aldea" else 2),"Salidas autorizadas: tres en Aldea, dos en Bosque desde 6F")
+	var conexiones := areas.filter(func(area: Node) -> bool: return area.get_script()==load("res://scripts/salida_region.gd"))
+	comprobar(conexiones.size()==(3 if id==&"Aldea" else 2),"Salidas regionales autorizadas: tres en Aldea, dos en Bosque")
 	if id==&"Aldea":
 		comprobar(current_scene.get_node("Region/SalidaCampos").escena_destino=="res://scenes/mundo_campos_granjas.tscn","Salida sur configurada sin sustituir bosque")
 	for area in areas:

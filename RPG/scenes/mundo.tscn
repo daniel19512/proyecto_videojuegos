@@ -8,6 +8,7 @@
 
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="5_region"]
 [ext_resource type="Script" path="res://scripts/salida_region.gd" id="6_salida"]
+[ext_resource type="PackedScene" path="res://scenes/interiores/puerta_interior.tscn" id="7_interior"]
 
 [sub_resource type="BoxShape3D" id="DetectorRegion"]
 size = Vector3(4, 3, 1.4)
@@ -59,7 +60,7 @@ environment = SubResource("Environment_mundo")
 [node name="Region" type="Node" parent="."]
 script = ExtResource("5_region")
 id_region = &"Aldea"
-entradas = Dictionary[String, NodePath]({"aldea_bosque_norte": NodePath("EntradaBosque"), "aldea_campos_sur": NodePath("EntradaCampos"), "aldea_camino_este": NodePath("EntradaMontanas")})
+entradas = Dictionary[String, NodePath]({"aldea_bosque_norte": NodePath("EntradaBosque"), "aldea_campos_sur": NodePath("EntradaCampos"), "aldea_camino_este": NodePath("EntradaMontanas"), "aldea_taberna_e01": NodePath("EntradaTabernaE01"), "aldea_e02": NodePath("EntradaE02"), "aldea_e03": NodePath("EntradaE03"), "aldea_e04": NodePath("EntradaE04"), "aldea_e05": NodePath("EntradaE05"), "aldea_e06": NodePath("EntradaE06"), "aldea_e07": NodePath("EntradaE07"), "aldea_e08": NodePath("EntradaE08"), "aldea_e09": NodePath("EntradaE09"), "aldea_e10": NodePath("EntradaE10"), "aldea_e11": NodePath("EntradaE11")})
 
 [node name="EntradaBosque" type="Marker3D" parent="Region"]
 position = Vector3(0, 0.02, -32)
@@ -108,3 +109,122 @@ marcador_salida = NodePath("../../Aldea/SalidasRegionales/SalidaCaminoEste/Trans
 
 [node name="Detector" type="CollisionShape3D" parent="Region/SalidaMontanas"]
 shape = SubResource("DetectorEste")
+
+[node name="EntradaTabernaE01" type="Marker3D" parent="Region"]
+position = Vector3(-8, 0.02, -14.75)
+metadata/direccion_visual = "abajo"
+
+[node name="PuertaTabernaE01" parent="." instance=ExtResource("7_interior")]
+position = Vector3(-8, 0.003, -15)
+escena_destino = "res://scenes/interiores/taberna_e01.tscn"
+entrada_destino = "taberna_e01_entrada"
+
+[node name="EntradaE02" type="Marker3D" parent="Region"]
+position = Vector3(8.487, 0.02, -15.80)
+metadata/direccion_visual = "abajo"
+
+[node name="PuertaE02" parent="." instance=ExtResource("7_interior")]
+position = Vector3(8.487, 0.003, -16.05)
+
+escena_destino = "res://scenes/interiores/panaderia_e02.tscn"
+entrada_destino = "interior_e02"
+texto = "[F] Entrar a la panadería"
+
+[node name="EntradaE03" type="Marker3D" parent="Region"]
+position = Vector3(-18.85, 0.02, -6)
+metadata/direccion_visual = "derecha"
+
+[node name="PuertaE03" parent="." instance=ExtResource("7_interior")]
+position = Vector3(-19.1, 0.003, -6)
+rotation_degrees = Vector3(0, 90, 0)
+escena_destino = "res://scenes/interiores/herreria_e03.tscn"
+entrada_destino = "interior_e03"
+texto = "[F] Entrar a la herrería"
+
+[node name="EntradaE04" type="Marker3D" parent="Region"]
+position = Vector3(-18.85, 0.02, 7)
+metadata/direccion_visual = "derecha"
+
+[node name="PuertaE04" parent="." instance=ExtResource("7_interior")]
+position = Vector3(-19.1, 0.003, 7)
+rotation_degrees = Vector3(0, 90, 0)
+escena_destino = "res://scenes/interiores/carpinteria_e04.tscn"
+entrada_destino = "interior_e04"
+texto = "[F] Entrar a la carpintería"
+
+[node name="EntradaE05" type="Marker3D" parent="Region"]
+position = Vector3(17.70, 0.02, 8)
+metadata/direccion_visual = "izquierda"
+
+[node name="PuertaE05" parent="." instance=ExtResource("7_interior")]
+position = Vector3(17.95, 0.003, 8)
+rotation_degrees = Vector3(0, 90, 0)
+escena_destino = "res://scenes/interiores/herbolario_e05.tscn"
+entrada_destino = "interior_e05"
+texto = "[F] Entrar al herbolario"
+
+[node name="EntradaE06" type="Marker3D" parent="Region"]
+position = Vector3(-20.75, 0.02, -22.987)
+metadata/direccion_visual = "derecha"
+
+[node name="PuertaE06" parent="." instance=ExtResource("7_interior")]
+position = Vector3(-21, 0.003, -22.987)
+rotation_degrees = Vector3(0, 90, 0)
+escena_destino = "res://scenes/interiores/vivienda_e06.tscn"
+entrada_destino = "interior_e06"
+texto = "[F] Entrar a la vivienda del noroeste"
+
+[node name="EntradaE07" type="Marker3D" parent="Region"]
+position = Vector3(17.70, 0.02, -24.35)
+metadata/direccion_visual = "izquierda"
+
+[node name="PuertaE07" parent="." instance=ExtResource("7_interior")]
+position = Vector3(17.95, 0.003, -24.35)
+rotation_degrees = Vector3(0, 90, 0)
+escena_destino = "res://scenes/interiores/vivienda_e07.tscn"
+entrada_destino = "interior_e07"
+texto = "[F] Entrar a la vivienda del noreste"
+
+[node name="EntradaE08" type="Marker3D" parent="Region"]
+position = Vector3(-24, 0.02, 19.75)
+metadata/direccion_visual = "arriba"
+
+[node name="PuertaE08" parent="." instance=ExtResource("7_interior")]
+position = Vector3(-24, 0.003, 20)
+
+escena_destino = "res://scenes/interiores/vivienda_e08.tscn"
+entrada_destino = "interior_e08"
+texto = "[F] Entrar a la vivienda del suroeste"
+
+[node name="EntradaE09" type="Marker3D" parent="Region"]
+position = Vector3(-8.55, 0.02, 20.75)
+metadata/direccion_visual = "arriba"
+
+[node name="PuertaE09" parent="." instance=ExtResource("7_interior")]
+position = Vector3(-8.55, 0.003, 21)
+
+escena_destino = "res://scenes/interiores/vivienda_e09.tscn"
+entrada_destino = "interior_e09"
+texto = "[F] Entrar a la vivienda del sur"
+
+[node name="EntradaE10" type="Marker3D" parent="Region"]
+position = Vector3(8, 0.02, 21.75)
+metadata/direccion_visual = "arriba"
+
+[node name="PuertaE10" parent="." instance=ExtResource("7_interior")]
+position = Vector3(8, 0.003, 22)
+
+escena_destino = "res://scenes/interiores/vivienda_e10.tscn"
+entrada_destino = "interior_e10"
+texto = "[F] Entrar a la vivienda del granjero"
+
+[node name="EntradaE11" type="Marker3D" parent="Region"]
+position = Vector3(18, 0.02, 20.75)
+metadata/direccion_visual = "arriba"
+
+[node name="PuertaE11" parent="." instance=ExtResource("7_interior")]
+position = Vector3(18, 0.003, 21)
+
+escena_destino = "res://scenes/interiores/vivienda_e11.tscn"
+entrada_destino = "interior_e11"
+texto = "[F] Entrar a la vivienda floral"

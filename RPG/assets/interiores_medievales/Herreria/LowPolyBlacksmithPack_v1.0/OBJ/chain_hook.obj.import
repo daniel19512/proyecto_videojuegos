@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c5x3x1k5mht6x"
+path="res://.godot/imported/chain_hook.obj-cfe8970e59cc09e5f0057d3857dd64a3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chain_hook.obj-cfe8970e59cc09e5f0057d3857dd64a3.mesh"]
+
+source_file="res://assets/interiores_medievales/Herreria/LowPolyBlacksmithPack_v1.0/OBJ/chain_hook.obj"
+dest_files=["res://.godot/imported/chain_hook.obj-cfe8970e59cc09e5f0057d3857dd64a3.mesh", "res://.godot/imported/chain_hook.obj-cfe8970e59cc09e5f0057d3857dd64a3.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

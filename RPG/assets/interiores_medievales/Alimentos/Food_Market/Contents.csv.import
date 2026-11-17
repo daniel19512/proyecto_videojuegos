@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bqjmhrt246f6x"
+
+[deps]
+
+files=["res://assets/interiores_medievales/Alimentos/Food_Market/Contents.group.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.edition.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.width.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.depth.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.height.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.triangles.translation"]
+
+source_file="res://assets/interiores_medievales/Alimentos/Food_Market/Contents.csv"
+dest_files=["res://assets/interiores_medievales/Alimentos/Food_Market/Contents.group.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.edition.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.width.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.depth.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.height.translation", "res://assets/interiores_medievales/Alimentos/Food_Market/Contents.triangles.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

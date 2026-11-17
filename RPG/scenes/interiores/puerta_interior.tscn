@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/interiores/puerta_interior.gd" id="1"]
+[sub_resource type="BoxShape3D" id="Detector"]
+size = Vector3(1.8, 2.4, 1.5)
+
+[node name="PuertaInterior" type="Area3D"]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+script = ExtResource("1")
+
+[node name="Detector" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1, 0)
+shape = SubResource("Detector")
+
+[node name="Aviso" type="Label3D" parent="."]
+position = Vector3(0, 2.4, 0)
+billboard = 1
+no_depth_test = true
+font_size = 38
+pixel_size = 0.006
+outline_size = 9
+modulate = Color(1, 0.88, 0.6, 1)
+visible = false

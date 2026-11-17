@@ -78,8 +78,10 @@ func revisar_llegada(id: StringName, entrada_id: String) -> void:
 			activas += 1
 	comprobar(protagonistas==1 and orbitales==1 and activas==1,"Jugador y camara unicos")
 	var areas := current_scene.find_children("*","Area3D",true,false)
-	comprobar(areas.size()==(3 if id==&"Aldea" else (2 if id==&"Bosque" else 1)),"Solo conexiones autorizadas, incluida salida este 6F")
+	var conexiones := areas.filter(func(area: Node) -> bool: return area.get_script()==load("res://scripts/salida_region.gd"))
+	comprobar(conexiones.size()==(3 if id==&"Aldea" else (2 if id==&"Bosque" else 1)),"Conexiones regionales autorizadas; las interacciones F se validan aparte")
 	if id==&"Aldea":
+		comprobar(current_scene.get_node("PuertaTabernaE01").entrada_destino=="taberna_e01_entrada","Puerta E01 independiente de salidas regionales")
 		comprobar(current_scene.has_node("Region/SalidaCampos") and current_scene.has_node("Region/SalidaBosque"),"Dos salidas independientes de aldea")
 	for area in areas:
 		comprobar(not area.overlaps_body(jugador),"Aparicion fuera de todas las salidas")

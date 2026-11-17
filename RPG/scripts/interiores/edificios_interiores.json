@@ -1,0 +1,202 @@
+﻿[
+    {
+        "escena":  "res://scenes/interiores/panaderia_e02.tscn",
+        "id":  "E02",
+        "nombre":  "panadería",
+        "color":  "#c7aa7c",
+        "puerta":  [
+                       8.487,
+                       0.003,
+                       -16.05
+                   ],
+        "normal":  [
+                       0,
+                       0,
+                       1
+                   ],
+        "textil":  "#8b4324",
+        "fondo":  8,
+        "ancho":  6,
+        "diseno":  "panaderia"
+    },
+    {
+        "escena":  "res://scenes/interiores/herreria_e03.tscn",
+        "id":  "E03",
+        "nombre":  "herrería",
+        "color":  "#77736b",
+        "puerta":  [
+                       -19.1,
+                       0.003,
+                       -6
+                   ],
+        "normal":  [
+                       1,
+                       0,
+                       0
+                   ],
+        "textil":  "#563b2b",
+        "fondo":  6,
+        "ancho":  8,
+        "diseno":  "herreria"
+    },
+    {
+        "escena":  "res://scenes/interiores/carpinteria_e04.tscn",
+        "id":  "E04",
+        "nombre":  "carpintería",
+        "color":  "#b79768",
+        "puerta":  [
+                       -19.1,
+                       0.003,
+                       7
+                   ],
+        "normal":  [
+                       1,
+                       0,
+                       0
+                   ],
+        "textil":  "#725130",
+        "fondo":  6,
+        "ancho":  8,
+        "diseno":  "carpinteria"
+    },
+    {
+        "escena":  "res://scenes/interiores/herbolario_e05.tscn",
+        "id":  "E05",
+        "nombre":  "herbolario",
+        "color":  "#839275",
+        "puerta":  [
+                       17.95,
+                       0.003,
+                       8
+                   ],
+        "normal":  [
+                       -1,
+                       0,
+                       0
+                   ],
+        "textil":  "#4b6040",
+        "fondo":  6,
+        "ancho":  6,
+        "diseno":  "herbolario"
+    },
+    {
+        "escena":  "res://scenes/interiores/vivienda_e06.tscn",
+        "id":  "E06",
+        "nombre":  "vivienda del noroeste",
+        "color":  "#b6a284",
+        "puerta":  [
+                       -21,
+                       0.003,
+                       -22.987
+                   ],
+        "normal":  [
+                       1,
+                       0,
+                       0
+                   ],
+        "textil":  "#826841",
+        "fondo":  7,
+        "ancho":  5,
+        "diseno":  "vivienda06"
+    },
+    {
+        "escena":  "res://scenes/interiores/vivienda_e07.tscn",
+        "id":  "E07",
+        "nombre":  "vivienda del noreste",
+        "color":  "#b9aea0",
+        "puerta":  [
+                       17.95,
+                       0.003,
+                       -24.35
+                   ],
+        "normal":  [
+                       -1,
+                       0,
+                       0
+                   ],
+        "textil":  "#425b7a",
+        "fondo":  7,
+        "ancho":  7,
+        "diseno":  "vivienda07"
+    },
+    {
+        "escena":  "res://scenes/interiores/vivienda_e08.tscn",
+        "id":  "E08",
+        "nombre":  "vivienda del suroeste",
+        "color":  "#a39177",
+        "puerta":  [
+                       -24,
+                       0.003,
+                       20
+                   ],
+        "normal":  [
+                       0,
+                       0,
+                       -1
+                   ],
+        "textil":  "#785137",
+        "fondo":  6,
+        "ancho":  6,
+        "diseno":  "vivienda08"
+    },
+    {
+        "escena":  "res://scenes/interiores/vivienda_e09.tscn",
+        "id":  "E09",
+        "nombre":  "vivienda del sur",
+        "color":  "#c6af91",
+        "puerta":  [
+                       -8.55,
+                       0.003,
+                       21
+                   ],
+        "normal":  [
+                       0,
+                       0,
+                       -1
+                   ],
+        "textil":  "#9b6943",
+        "fondo":  5,
+        "ancho":  5,
+        "diseno":  "vivienda09"
+    },
+    {
+        "escena":  "res://scenes/interiores/vivienda_e10.tscn",
+        "id":  "E10",
+        "nombre":  "vivienda del granjero",
+        "color":  "#bda47d",
+        "puerta":  [
+                       8,
+                       0.003,
+                       22
+                   ],
+        "normal":  [
+                       0,
+                       0,
+                       -1
+                   ],
+        "textil":  "#6e7c45",
+        "fondo":  7,
+        "ancho":  6.5,
+        "diseno":  "vivienda10"
+    },
+    {
+        "escena":  "res://scenes/interiores/vivienda_e11.tscn",
+        "id":  "E11",
+        "nombre":  "vivienda floral",
+        "color":  "#c4b7a7",
+        "puerta":  [
+                       18,
+                       0.003,
+                       21
+                   ],
+        "normal":  [
+                       0,
+                       0,
+                       -1
+                   ],
+        "textil":  "#8d6981",
+        "fondo":  6,
+        "ancho":  6,
+        "diseno":  "vivienda11"
+    }
+]

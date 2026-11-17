@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c3c4cvel0gvok"
+path="res://.godot/imported/smith_hammer.obj-eebd8f7b1fe95e9dc72044d8a85b49c1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/smith_hammer.obj-eebd8f7b1fe95e9dc72044d8a85b49c1.mesh"]
+
+source_file="res://assets/interiores_medievales/Herreria/LowPolyBlacksmithPack_v1.0/OBJ/smith_hammer.obj"
+dest_files=["res://.godot/imported/smith_hammer.obj-eebd8f7b1fe95e9dc72044d8a85b49c1.mesh", "res://.godot/imported/smith_hammer.obj-eebd8f7b1fe95e9dc72044d8a85b49c1.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

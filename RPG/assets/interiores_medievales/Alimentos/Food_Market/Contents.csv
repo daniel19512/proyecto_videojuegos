@@ -1,0 +1,23 @@
+name,group,edition,width_m,depth_m,height_m,triangles
+mdvl_food_ale_mug_01,drink,free,0.14,0.10,0.12,388
+mdvl_food_apple_01,fruit,free,0.09,0.08,0.08,418
+mdvl_food_bowl_01,tableware,free,0.24,0.14,0.07,388
+mdvl_food_cabbage_01,vegetables,free,0.17,0.17,0.13,1448
+mdvl_food_carrot_01,vegetables,free,0.23,0.11,0.06,370
+mdvl_food_cask_01,drink,free,0.35,0.40,0.43,1300
+mdvl_food_cheese_wheel_01,dairy,free,0.29,0.30,0.11,1270
+mdvl_food_coin_01,money,free,0.03,0.03,0.00,148
+mdvl_food_coin_stack_01,money,free,0.06,0.05,0.03,396
+mdvl_food_cutlery_01,tableware,free,0.28,0.15,0.03,1004
+mdvl_food_fish_01,meat,free,0.37,0.12,0.06,600
+mdvl_food_grain_sack_01,grain,free,0.36,0.35,0.52,938
+mdvl_food_grapes_01,fruit,free,0.08,0.09,0.18,708
+mdvl_food_ham_01,meat,free,0.40,0.22,0.11,750
+mdvl_food_herb_bundle_01,market fixtures,free,0.34,0.34,0.28,666
+mdvl_food_loaf_01,bread,free,0.22,0.21,0.11,350
+mdvl_food_onion_01,vegetables,free,0.08,0.08,0.10,386
+mdvl_food_plate_01,tableware,free,0.24,0.24,0.03,376
+mdvl_food_potion_01,consumables,free,0.08,0.07,0.11,494
+mdvl_food_produce_crate_01,market fixtures,free,0.53,0.35,0.12,240
+mdvl_food_roll_01,bread,free,0.09,0.09,0.06,190
+mdvl_food_scales_01,market fixtures,free,0.52,0.20,0.56,686
