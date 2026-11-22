@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="16_c7rdq"]
 [ext_resource type="PackedScene" path="res://scenes/interiores/puerta_interior.tscn" id="17_vhxi4"]
 [ext_resource type="Script" path="res://scripts/interiores/puerta_interior.gd" id="18_klebc"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/punto_minijuego.tscn" id="m1_punto"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/minijuego_pan.tscn" id="m2_pan"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6ful"]
 albedo_color = Color(0.16, 0.105, 0.065, 1)
@@ -1521,3 +1523,8 @@ script = ExtResource("18_klebc")
 escena_destino = "res://scenes/mundo.tscn"
 entrada_destino = "aldea_e02"
 texto = "[F] Salir"
+
+[node name="PuntoMinijuego" parent="." instance=ExtResource("m1_punto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.6)
+escena_minijuego = ExtResource("m2_pan")
+texto_aviso = "[F] Hornear pan"

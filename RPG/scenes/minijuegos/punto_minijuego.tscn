@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/minijuegos/punto_minijuego.gd" id="1_punto"]
+
+[sub_resource type="CylinderShape3D" id="ZonaMinijuego"]
+height = 2.0
+radius = 0.9
+
+[node name="PuntoMinijuego" type="Node3D"]
+script = ExtResource("1_punto")
+
+[node name="Zona" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="Forma" type="CollisionShape3D" parent="Zona"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ZonaMinijuego")
+
+[node name="Aviso" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+pixel_size = 0.01
+billboard = 1
+no_depth_test = true
+modulate = Color(1, 0.95, 0.78, 1)
+outline_modulate = Color(0.15, 0.09, 0.04, 1)
+text = "[F] Jugar"
+font_size = 40
+outline_size = 12

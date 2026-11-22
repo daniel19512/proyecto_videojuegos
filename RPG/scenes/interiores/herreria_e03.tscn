@@ -22,6 +22,8 @@
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="20_gwoc3"]
 [ext_resource type="PackedScene" path="res://scenes/interiores/puerta_interior.tscn" id="21_esr0k"]
 [ext_resource type="Script" path="res://scripts/interiores/puerta_interior.gd" id="22_y2ixp"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/punto_minijuego.tscn" id="m1_punto"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/minijuego_forja.tscn" id="m2_forja"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ootll"]
 albedo_color = Color(0.16, 0.105, 0.065, 1)
@@ -1268,3 +1270,8 @@ script = ExtResource("22_y2ixp")
 escena_destino = "res://scenes/mundo.tscn"
 entrada_destino = "aldea_e03"
 texto = "[F] Salir"
+
+[node name="PuntoMinijuego" parent="." instance=ExtResource("m1_punto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.4)
+escena_minijuego = ExtResource("m2_forja")
+texto_aviso = "[F] Forjar"

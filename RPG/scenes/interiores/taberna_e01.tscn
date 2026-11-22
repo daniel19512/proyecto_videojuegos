@@ -30,6 +30,8 @@
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="28_ut6ud"]
 [ext_resource type="PackedScene" path="res://scenes/interiores/puerta_interior.tscn" id="29_50hvk"]
 [ext_resource type="Script" path="res://scripts/interiores/puerta_interior.gd" id="30_001yb"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/punto_minijuego.tscn" id="m1_punto"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/minijuego_cerveza.tscn" id="m2_cerveza"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr6ds"]
 albedo_color = Color(0.16, 0.085, 0.04, 1)
@@ -1420,3 +1422,8 @@ script = ExtResource("30_001yb")
 escena_destino = "res://scenes/mundo.tscn"
 entrada_destino = "aldea_taberna_e01"
 texto = "[F] Salir de la taberna"
+
+[node name="PuntoMinijuego" parent="." instance=ExtResource("m1_punto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, -3.6)
+escena_minijuego = ExtResource("m2_cerveza")
+texto_aviso = "[F] Elaborar cerveza"

@@ -159,6 +159,9 @@ func finalizar(datos: Dictionary) -> void:
 	puerta.set("escena_destino","res://scenes/mundo.tscn")
 	puerta.set("entrada_destino","aldea_"+id_edificio.to_lower())
 	puerta.set("texto","[F] Salir")
+	# Minijuegos de oficio dentro de su edificio, lejos de la zona de salida.
+	if id_edificio == "E02": punto_minijuego("pan",Vector3(-1,0,-1.6),"[F] Hornear pan")
+	if id_edificio == "E03": punto_minijuego("forja",Vector3(-0.6,0,-0.4),"[F] Forjar")
 	raiz.set_meta("assets_utilizados",usados)
 	raiz.set_meta("edificio",id_edificio)
 	raiz.set_meta("dimensiones",Vector2(ancho,fondo))

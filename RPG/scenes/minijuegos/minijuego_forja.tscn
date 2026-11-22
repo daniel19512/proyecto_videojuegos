@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/panel_minijuego.tscn" id="1_panel"]
+[ext_resource type="Script" path="res://scripts/minijuegos/minijuego_forja.gd" id="2_script"]
+
+[node name="MinijuegoForja" instance=ExtResource("1_panel")]
+script = ExtResource("2_script")
+
+[node name="Titulo" parent="Marco" index="0"]
+text = "Forja de la herrería"
+
+[node name="Ayuda" parent="Marco" index="3"]
+text = "F: golpear   ·   S o abajo: calentar   ·   Esc: salir"
