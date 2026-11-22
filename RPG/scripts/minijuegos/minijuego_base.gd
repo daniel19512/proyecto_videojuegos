@@ -16,6 +16,9 @@ const COLOR_SUMA := Color(0.55, 1.0, 0.45)
 const COLOR_RESTA := Color(1.0, 0.42, 0.36)
 const COLOR_TEXTO := Color(0.98, 0.94, 0.82)
 const VIDA_TEXTO: float = 0.8
+const AUDIO_INTERFAZ := "res://assets/audio/kenney_interface_sounds/"
+const AUDIO_IMPACTO := "res://assets/audio/kenney_impact_sounds/"
+const AUDIO_RPG := "res://assets/audio/kenney_rpg_audio/"
 
 var estado: Estado = Estado.CERRADO
 var logica: RefCounted
@@ -25,6 +28,7 @@ var semilla: int = -1
 var _textos: Array[Dictionary] = []
 var _tiempo_visual: float = 0.0
 var _fotograma_apertura: int = -1
+var sonido: ReproductorSonidos
 
 @onready var _area: Control = $Marco/AreaJuego
 @onready var _puntos: Label = $Marco/Puntos
@@ -35,6 +39,11 @@ var _fotograma_apertura: int = -1
 func _ready() -> void:
 	visible = false
 	_area.draw.connect(_dibujar_area)
+	sonido = ReproductorSonidos.new()
+	sonido.name = "Sonido"
+	sonido.sonidos = sonidos_comunes()
+	sonido.sonidos.merge(_sonidos(), true)
+	add_child(sonido)
 
 
 func abrir() -> void:
@@ -42,6 +51,7 @@ func abrir() -> void:
 	_textos.clear()
 	_fotograma_apertura = Engine.get_process_frames()
 	visible = true
+	sonido.reproducir(&"abrir")
 	_cambiar_estado(Estado.INSTRUCCIONES)
 
 
@@ -50,6 +60,7 @@ func cerrar() -> void:
 		return
 	visible = false
 	estado = Estado.CERRADO
+	sonido.reproducir(&"cerrar")
 	cerrado.emit()
 
 
@@ -74,7 +85,9 @@ func _process(delta: float) -> void:
 		Estado.JUGANDO:
 			_jugar(delta)
 			for evento in logica.ultimos_eventos:
-				_textos.append({puntos = evento.puntos, pos = evento.pos, vida = VIDA_TEXTO})
+				sonido.reproducir(evento.get("tipo", &""))
+				if evento.puntos != 0:
+					_textos.append({puntos = evento.puntos, pos = evento.pos, vida = VIDA_TEXTO})
 			if logica.terminada():
 				_cambiar_estado(Estado.RESULTADO)
 				partida_terminada.emit(logica.puntuacion)
@@ -90,7 +103,9 @@ func _cambiar_estado(nuevo: Estado) -> void:
 			_mensaje.text = _texto_instrucciones() + "\n\n[F] Empezar     [Esc] Salir"
 		Estado.JUGANDO:
 			_mensaje.text = ""
+			sonido.reproducir(&"empezar")
 		Estado.RESULTADO:
+			sonido.reproducir(&"fin")
 			_mensaje.text = "¡Tiempo!\n\nPuntuación: %d\n%s\n\n[F] Otra vez     [Esc] Salir" % [logica.puntuacion, _texto_resultado()]
 	_mensaje.visible = not _mensaje.text.is_empty()
 	_actualizar_marcador()
@@ -130,7 +145,27 @@ func escribir(pos: Vector2, cadena: String, tamano: int, color: Color, ancho: fl
 	_area.draw_string(fuente, pos, cadena, alineacion, ancho, tamano, color)
 
 
+## Sonidos de interfaz compartidos por todos los paneles (Kenney, CC0).
+static func sonidos_comunes() -> Dictionary:
+	return {
+		&"abrir": [AUDIO_INTERFAZ + "open_001.ogg"],
+		&"empezar": [AUDIO_INTERFAZ + "confirmation_001.ogg"],
+		&"fin": [AUDIO_INTERFAZ + "bong_001.ogg"],
+		&"cerrar": [AUDIO_INTERFAZ + "close_001.ogg"],
+	}
+
+
+## Rutas `prefijo + nombre + ".ogg"` para varias variantes de un sonido.
+static func variantes(prefijo: String, nombres: Array) -> Array:
+	return nombres.map(func(n): return prefijo + n + ".ogg")
+
+
 # --- Métodos que cada minijuego sobrescribe ---------------------------------
+
+## Sonidos propios: tipo de evento de la lógica -> rutas de audio.
+func _sonidos() -> Dictionary:
+	return {}
+
 
 func _crear_logica() -> RefCounted:
 	return null

@@ -16,6 +16,14 @@ func _crear_logica() -> RefCounted:
 	return LogicaPan.new(semilla)
 
 
+func _sonidos() -> Dictionary:
+	return {
+		&"dorado": variantes(AUDIO_IMPACTO, ["impactWood_light_000", "impactWood_light_001", "impactWood_light_002"]),
+		&"crudo": variantes(AUDIO_IMPACTO, ["impactSoft_medium_003", "impactSoft_medium_004"]),
+		&"quemado": [AUDIO_INTERFAZ + "error_006.ogg"],
+	}
+
+
 func _jugar(delta: float) -> void:
 	var mover := int(Input.is_action_just_pressed("mover_derecha")) - int(Input.is_action_just_pressed("mover_izquierda"))
 	var sacar := Input.is_action_just_pressed("interactuar") or Input.is_action_just_pressed("ui_accept")

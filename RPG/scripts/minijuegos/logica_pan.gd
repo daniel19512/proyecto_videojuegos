@@ -33,7 +33,8 @@ var hornos: Array[Dictionary] = []
 var doradas: int = 0
 var crudas: int = 0
 var quemadas: int = 0
-## Eventos del último avanzar(): {puntos: int, pos: Vector2}. La vista los consume.
+## Eventos del último avanzar(): {puntos: int, pos: Vector2, tipo: StringName}
+## (dorado, crudo o quemado). La vista los consume.
 var ultimos_eventos: Array[Dictionary] = []
 
 var _rng := RandomNumberGenerator.new()
@@ -81,7 +82,7 @@ func avanzar(delta: float, mover: int, sacar: bool) -> void:
 			horno.coccion += horno.velocidad * delta
 			if horno.coccion >= CARBONIZADO:
 				quemadas += 1
-				_vaciar(i, PUNTOS_QUEMADO)
+				_vaciar(i, PUNTOS_QUEMADO, &"quemado")
 		else:
 			horno.espera -= delta
 			if horno.espera <= 0.0:
@@ -97,19 +98,19 @@ func sacar_hogaza(i: int) -> void:
 	match punto(i):
 		Punto.CRUDO:
 			crudas += 1
-			_vaciar(i, PUNTOS_CRUDO)
+			_vaciar(i, PUNTOS_CRUDO, &"crudo")
 		Punto.DORADO:
 			doradas += 1
-			_vaciar(i, PUNTOS_DORADO)
+			_vaciar(i, PUNTOS_DORADO, &"dorado")
 		Punto.QUEMADO:
 			quemadas += 1
-			_vaciar(i, PUNTOS_QUEMADO)
+			_vaciar(i, PUNTOS_QUEMADO, &"quemado")
 
 
-func _vaciar(i: int, puntos: int) -> void:
+func _vaciar(i: int, puntos: int, tipo: StringName) -> void:
 	var horno: Dictionary = hornos[i]
 	horno.ocupado = false
 	horno.coccion = 0.0
 	horno.espera = _rng.randf_range(ESPERA_MIN, ESPERA_MAX)
 	puntuacion += puntos
-	ultimos_eventos.append({puntos = puntos, pos = centro_horno(i) + Vector2(0, -30)})
+	ultimos_eventos.append({puntos = puntos, pos = centro_horno(i) + Vector2(0, -30), tipo = tipo})

@@ -9,6 +9,13 @@ const INTERIORES := [
 	["res://scenes/interiores/herreria_e03.tscn", "MinijuegoForja", "Forjar"],
 ]
 
+## Tipos de evento de cada lógica que deben tener sonido.
+const TIPOS := {
+	"MinijuegoCerveza": [&"ingrediente", &"receta", &"error"],
+	"MinijuegoPan": [&"dorado", &"crudo", &"quemado"],
+	"MinijuegoForja": [&"golpe", &"pieza", &"flojo", &"frio", &"calentar"],
+}
+
 var fallos: int = 0
 
 
@@ -51,6 +58,7 @@ func validar() -> void:
 	validar_forja()
 	for datos in INTERIORES:
 		await validar_interior(datos[0], datos[1], datos[2])
+	await validar_sonidos_pesca()
 	print("RESULTADO_MINIJUEGOS_OFICIO: ", fallos, " fallos")
 	quit(0 if fallos == 0 else 1)
 
@@ -64,9 +72,12 @@ func validar_cerveza() -> void:
 	comprobar(otra.receta == l.receta, "cerveza: misma semilla, misma receta")
 	var equivocado: int = l.receta[1]
 	l.echar(equivocado, Vector2.ZERO)
+	comprobar(l.ultimos_eventos.back().tipo == &"error", "cerveza: el error lleva su tipo de sonido")
 	comprobar(l.puntuacion == LogicaCerveza.PUNTOS_ERROR and l.paso == 0 and l.errores == 1, "cerveza: ingrediente fuera de orden resta y no avanza")
 	for i in 4:
 		l.echar(l.ingrediente_necesario(), Vector2.ZERO)
+	var tipos_cerveza := l.ultimos_eventos.map(func(e): return e.tipo)
+	comprobar(tipos_cerveza.slice(-4) == [&"ingrediente", &"ingrediente", &"ingrediente", &"receta"], "cerveza: ingredientes y receta completa llevan su tipo")
 	comprobar(l.recetas_completadas == 1 and l.paso == 0 and l.puntuacion == LogicaCerveza.PUNTOS_ERROR + 4 * LogicaCerveza.PUNTOS_CORRECTO + LogicaCerveza.PUNTOS_RECETA, "cerveza: receta completa suma bonificacion y empieza otra")
 	# Un ingrediente que cae sobre el caldero se echa solo.
 	var c := LogicaCerveza.new(3)
@@ -91,7 +102,9 @@ func validar_pan() -> void:
 		ocupados += int(l.hornos[i].ocupado)
 	comprobar(ocupados == LogicaPan.HORNOS, "pan: las hogazas entran solas al horno")
 	l.hornos[0].coccion = 0.7
+	l.ultimos_eventos.clear()
 	l.sacar_hogaza(0)
+	comprobar(l.ultimos_eventos.back().tipo == &"dorado", "pan: la hogaza dorada lleva su tipo")
 	comprobar(l.puntuacion == LogicaPan.PUNTOS_DORADO and l.doradas == 1 and not l.hornos[0].ocupado, "pan: hogaza dorada suma")
 	l.hornos[1].coccion = 0.3
 	l.sacar_hogaza(1)
@@ -129,7 +142,7 @@ func validar_forja() -> void:
 	l.golpe()
 	comprobar(l.golpes_en_frio == 1 and l.golpes == 0, "forja: golpear en frio resta y no avanza")
 	l.avanzar(0.016, false, true)
-	comprobar(l.calentando > 0.0, "forja: abajo mete la pieza al fuego")
+	comprobar(l.calentando > 0.0 and l.ultimos_eventos.back().tipo == &"calentar" and l.ultimos_eventos.back().puntos == 0, "forja: abajo mete la pieza al fuego (evento sin puntos)")
 	var antes := l.golpes_buenos + l.golpes_flojos + l.golpes_en_frio
 	l.avanzar(0.016, true, false)
 	comprobar(l.golpes_buenos + l.golpes_flojos + l.golpes_en_frio == antes, "forja: no se golpea mientras se calienta")
@@ -148,6 +161,34 @@ func validar_forja() -> void:
 	comprobar(l.terminada() and l.temperatura < LogicaForja.TEMPERATURA_MINIMA, "forja: la pieza se enfria y la partida termina")
 
 
+## Cada nombre tiene al menos una ruta y todas cargan como audio.
+func comprobar_sonidos(reproductor: ReproductorSonidos, id: String, nombres: Array) -> void:
+	var correctos := true
+	for nombre in nombres:
+		var rutas: Array = reproductor.sonidos.get(nombre, [])
+		if rutas.is_empty():
+			correctos = false
+			push_error("sin sonido: %s %s" % [id, nombre])
+		for ruta in rutas:
+			if not load(ruta) is AudioStream:
+				correctos = false
+				push_error("audio no carga: " + ruta)
+	comprobar(correctos and reproductor.get_child_count() == ReproductorSonidos.CANALES, id + ": todos sus sonidos existen y cargan")
+
+
+func validar_sonidos_pesca() -> void:
+	var panel: CanvasLayer = load("res://scenes/minijuego_pesca.tscn").instantiate()
+	root.add_child(panel)
+	await process_frame
+	comprobar_sonidos(panel.sonido, "pesca", [&"abrir", &"empezar", &"fin", &"cerrar", &"pez", &"escapado", &"piedra"])
+	comprobar(panel._sonido_de(LogicaPesca.PUNTOS_PEZ) == &"pez" and panel._sonido_de(LogicaPesca.PUNTOS_PEZ_PERDIDO) == &"escapado" and panel._sonido_de(LogicaPesca.PUNTOS_PIEDRA) == &"piedra", "pesca: cada suceso tiene su sonido")
+	panel.abrir()
+	comprobar(panel.sonido.ultimo == &"abrir", "pesca: suena al abrir")
+	panel.cerrar()
+	comprobar(panel.sonido.ultimo == &"cerrar", "pesca: suena al cerrar")
+	panel.queue_free()
+
+
 func validar_interior(ruta: String, nombre_panel: String, texto: String) -> void:
 	var escena: Node3D = load(ruta).instantiate()
 	root.add_child(escena)
@@ -159,6 +200,7 @@ func validar_interior(ruta: String, nombre_panel: String, texto: String) -> void
 	var salida: Area3D = escena.get_node("Salida")
 	var panel: MinijuegoBase = punto.minijuego
 	comprobar(panel.name == nombre_panel and texto in punto.get_node("Aviso").text, id + ": punto con su minijuego y aviso propio")
+	comprobar_sonidos(panel.sonido, id, [&"abrir", &"empezar", &"fin", &"cerrar"] + TIPOS[nombre_panel])
 
 	# Se puede estar de pie en el centro del punto.
 	var consulta := PhysicsShapeQueryParameters3D.new()
@@ -186,19 +228,19 @@ func validar_interior(ruta: String, nombre_panel: String, texto: String) -> void
 	await esperar(12)
 	comprobar(punto.jugador_cerca and punto.get_node("Aviso").visible and not salida.habilitada, id + ": junto al punto solo aparece su aviso")
 	await pulsar(&"interactuar")
-	comprobar(paused and panel.visible and panel.estado == MinijuegoBase.Estado.INSTRUCCIONES, id + ": F abre las instrucciones y pausa")
+	comprobar(paused and panel.visible and panel.estado == MinijuegoBase.Estado.INSTRUCCIONES and panel.sonido.ultimo == &"abrir", id + ": F abre las instrucciones, pausa y suena")
 	await pulsar(&"interactuar")
-	comprobar(panel.estado == MinijuegoBase.Estado.JUGANDO, id + ": F empieza la partida")
+	comprobar(panel.estado == MinijuegoBase.Estado.JUGANDO and panel.sonido.ultimo == &"empezar", id + ": F empieza la partida con su sonido")
 	var resultados := []
 	panel.partida_terminada.connect(func(p): resultados.append(p))
 	panel.logica.puntuacion = 42
 	panel.logica.tiempo_restante = 0.01
 	await process_frame
 	await process_frame
-	comprobar(panel.estado == MinijuegoBase.Estado.RESULTADO and resultados == [42], id + ": al acabar el tiempo muestra el resultado")
+	comprobar(panel.estado == MinijuegoBase.Estado.RESULTADO and resultados == [42] and panel.sonido.ultimo == &"fin", id + ": al acabar el tiempo suena el final y muestra el resultado")
 	await pulsar(&"interactuar")
 	comprobar(panel.estado == MinijuegoBase.Estado.JUGANDO and panel.logica.puntuacion == 0, id + ": F juega otra vez desde cero")
 	await pulsar(&"ui_cancel")
-	comprobar(not panel.visible and not paused and punto.get_node("Aviso").visible, id + ": Esc cierra y quita la pausa")
+	comprobar(not panel.visible and not paused and punto.get_node("Aviso").visible and panel.sonido.ultimo == &"cerrar", id + ": Esc cierra, suena y quita la pausa")
 	escena.queue_free()
 	await esperar(2)

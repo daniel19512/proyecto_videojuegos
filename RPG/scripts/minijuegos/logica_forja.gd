@@ -34,7 +34,8 @@ var golpes_flojos: int = 0
 var golpes_en_frio: int = 0
 ## Segundos que faltan para sacar la pieza del fuego (0 = en el yunque).
 var calentando: float = 0.0
-## Eventos del último avanzar(): {puntos: int, pos: Vector2}. La vista los consume.
+## Eventos del último avanzar(): {puntos: int, pos: Vector2, tipo: StringName}
+## (golpe, pieza, flojo, frio o calentar, este con 0 puntos). La vista los consume.
 var ultimos_eventos: Array[Dictionary] = []
 
 var _sentido: float = 1.0
@@ -75,6 +76,7 @@ func avanzar(delta: float, golpear: bool, calentar: bool) -> void:
 	temperatura = maxf(temperatura - ENFRIAMIENTO * delta, 0.0)
 	if calentar:
 		calentando = CALENTAR_SEGUNDOS
+		_sumar(0, &"calentar")
 	elif golpear:
 		golpe()
 
@@ -84,22 +86,24 @@ func golpe() -> void:
 		return
 	if temperatura < TEMPERATURA_MINIMA:
 		golpes_en_frio += 1
-		_sumar(PUNTOS_FRIO)
+		_sumar(PUNTOS_FRIO, &"frio")
 	elif en_zona():
 		golpes_buenos += 1
 		golpes += 1
 		var puntos := PUNTOS_GOLPE
+		var tipo := &"golpe"
 		if golpes >= GOLPES_POR_PIEZA:
 			puntos += PUNTOS_PIEZA
 			piezas += 1
 			golpes = 0
 			temperatura = 1.0
-		_sumar(puntos)
+			tipo = &"pieza"
+		_sumar(puntos, tipo)
 	else:
 		golpes_flojos += 1
-		_sumar(PUNTOS_FLOJO)
+		_sumar(PUNTOS_FLOJO, &"flojo")
 
 
-func _sumar(puntos: int) -> void:
+func _sumar(puntos: int, tipo: StringName) -> void:
 	puntuacion += puntos
-	ultimos_eventos.append({puntos = puntos, pos = POS_PIEZA + Vector2(0, -40)})
+	ultimos_eventos.append({puntos = puntos, pos = POS_PIEZA + Vector2(0, -40), tipo = tipo})

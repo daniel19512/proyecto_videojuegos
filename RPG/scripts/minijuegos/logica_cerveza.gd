@@ -37,7 +37,8 @@ var paso: int = 0
 var recetas_completadas: int = 0
 var aciertos: int = 0
 var errores: int = 0
-## Eventos del último avanzar(): {puntos: int, pos: Vector2}. La vista los consume.
+## Eventos del último avanzar(): {puntos: int, pos: Vector2, tipo: StringName}
+## (ingrediente, receta o error). La vista los consume.
 var ultimos_eventos: Array[Dictionary] = []
 
 var _rng := RandomNumberGenerator.new()
@@ -88,19 +89,21 @@ func echar(tipo: int, pos: Vector2) -> void:
 		aciertos += 1
 		paso += 1
 		var puntos := PUNTOS_CORRECTO
+		var evento := &"ingrediente"
 		if paso >= receta.size():
 			puntos += PUNTOS_RECETA
 			recetas_completadas += 1
+			evento = &"receta"
 			_nueva_receta()
-		_sumar(puntos, pos)
+		_sumar(puntos, pos, evento)
 	else:
 		errores += 1
-		_sumar(PUNTOS_ERROR, pos)
+		_sumar(PUNTOS_ERROR, pos, &"error")
 
 
-func _sumar(puntos: int, pos: Vector2) -> void:
+func _sumar(puntos: int, pos: Vector2, tipo: StringName) -> void:
 	puntuacion += puntos
-	ultimos_eventos.append({puntos = puntos, pos = pos})
+	ultimos_eventos.append({puntos = puntos, pos = pos, tipo = tipo})
 
 
 func _nueva_receta() -> void:

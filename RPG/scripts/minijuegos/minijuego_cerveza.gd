@@ -19,6 +19,14 @@ func _crear_logica() -> RefCounted:
 	return LogicaCerveza.new(semilla)
 
 
+func _sonidos() -> Dictionary:
+	return {
+		&"ingrediente": variantes(AUDIO_INTERFAZ, ["drop_001", "drop_002", "drop_003"]),
+		&"receta": variantes(AUDIO_RPG, ["metalPot1", "metalPot2", "metalPot3"]),
+		&"error": [AUDIO_INTERFAZ + "error_004.ogg"],
+	}
+
+
 func _jugar(delta: float) -> void:
 	logica.avanzar(delta, Input.get_axis("mover_izquierda", "mover_derecha"))
 

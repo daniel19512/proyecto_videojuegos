@@ -15,6 +15,16 @@ func _crear_logica() -> RefCounted:
 	return LogicaForja.new(semilla)
 
 
+func _sonidos() -> Dictionary:
+	return {
+		&"golpe": variantes(AUDIO_IMPACTO, ["impactMetal_heavy_000", "impactMetal_heavy_001", "impactMetal_heavy_002", "impactMetal_heavy_003", "impactMetal_heavy_004"]),
+		&"pieza": variantes(AUDIO_IMPACTO, ["impactBell_heavy_000", "impactBell_heavy_001"]),
+		&"flojo": variantes(AUDIO_IMPACTO, ["impactMetal_light_000", "impactMetal_light_001", "impactMetal_light_002"]),
+		&"frio": variantes(AUDIO_IMPACTO, ["impactPlate_light_000", "impactPlate_light_001"]),
+		&"calentar": [AUDIO_RPG + "metalLatch.ogg"],
+	}
+
+
 func _jugar(delta: float) -> void:
 	var golpear := Input.is_action_just_pressed("interactuar") or Input.is_action_just_pressed("ui_accept")
 	logica.avanzar(delta, golpear, Input.is_action_just_pressed("mover_abajo"))

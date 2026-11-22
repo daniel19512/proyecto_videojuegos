@@ -30,6 +30,7 @@ var semilla: int = -1
 var _textos: Array[Dictionary] = []
 var _tiempo_visual: float = 0.0
 var _fotograma_apertura: int = -1
+var sonido: ReproductorSonidos
 
 @onready var _area: Control = $Marco/AreaJuego
 @onready var _puntos: Label = $Marco/Puntos
@@ -40,6 +41,16 @@ var _fotograma_apertura: int = -1
 func _ready() -> void:
 	visible = false
 	_area.draw.connect(_dibujar)
+	# Mismos sonidos de interfaz que los minijuegos de oficio (Kenney, CC0).
+	sonido = ReproductorSonidos.new()
+	sonido.name = "Sonido"
+	sonido.sonidos = MinijuegoBase.sonidos_comunes()
+	sonido.sonidos.merge({
+		&"pez": MinijuegoBase.variantes(MinijuegoBase.AUDIO_IMPACTO, ["impactSoft_medium_000", "impactSoft_medium_001", "impactSoft_medium_002"]),
+		&"escapado": [MinijuegoBase.AUDIO_INTERFAZ + "pluck_001.ogg"],
+		&"piedra": MinijuegoBase.variantes(MinijuegoBase.AUDIO_IMPACTO, ["impactMining_000", "impactMining_001", "impactMining_002"]),
+	})
+	add_child(sonido)
 
 
 func abrir() -> void:
@@ -47,6 +58,7 @@ func abrir() -> void:
 	_textos.clear()
 	_fotograma_apertura = Engine.get_process_frames()
 	visible = true
+	sonido.reproducir(&"abrir")
 	_cambiar_estado(Estado.INSTRUCCIONES)
 
 
@@ -55,6 +67,7 @@ func cerrar() -> void:
 		return
 	visible = false
 	estado = Estado.CERRADO
+	sonido.reproducir(&"cerrar")
 	cerrado.emit()
 
 
@@ -80,6 +93,7 @@ func _process(delta: float) -> void:
 			logica.avanzar(delta, Input.get_axis("mover_izquierda", "mover_derecha"))
 			for evento in logica.ultimos_eventos:
 				_textos.append({puntos = evento.puntos, pos = evento.pos, vida = VIDA_TEXTO})
+				sonido.reproducir(_sonido_de(evento.puntos))
 			if logica.terminada():
 				_cambiar_estado(Estado.RESULTADO)
 				partida_terminada.emit(logica.puntuacion)
@@ -96,12 +110,26 @@ func _cambiar_estado(nuevo: Estado) -> void:
 				LogicaPesca.PUNTOS_PEZ, LogicaPesca.PUNTOS_PEZ_PERDIDO, LogicaPesca.PUNTOS_PIEDRA]
 		Estado.JUGANDO:
 			_mensaje.text = ""
+			sonido.reproducir(&"empezar")
 		Estado.RESULTADO:
+			sonido.reproducir(&"fin")
 			_mensaje.text = "¡Tiempo!\n\nPuntuación: %d\nPeces atrapados: %d   Escapados: %d\nPiedras atrapadas: %d\n\n[F] Otra vez     [Esc] Salir" % [
 				logica.puntuacion, logica.peces_atrapados, logica.peces_perdidos, logica.piedras_atrapadas]
 	_mensaje.visible = not _mensaje.text.is_empty()
 	_actualizar_marcador()
 	_area.queue_redraw()
+
+
+## Cada valor de puntos corresponde a un único suceso de la pesca.
+func _sonido_de(puntos: int) -> StringName:
+	match puntos:
+		LogicaPesca.PUNTOS_PEZ:
+			return &"pez"
+		LogicaPesca.PUNTOS_PEZ_PERDIDO:
+			return &"escapado"
+		LogicaPesca.PUNTOS_PIEDRA:
+			return &"piedra"
+	return &""
 
 
 func _actualizar_marcador() -> void:
