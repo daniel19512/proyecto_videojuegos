@@ -9,6 +9,13 @@
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="5_region"]
 [ext_resource type="Script" path="res://scripts/salida_region.gd" id="6_salida"]
 [ext_resource type="PackedScene" path="res://scenes/interiores/puerta_interior.tscn" id="7_interior"]
+[ext_resource type="PackedScene" path="res://scenes/npc_aldeano.tscn" id="8_aldeano"]
+[ext_resource type="Script" path="res://scripts/npc/npc_patrulla.gd" id="9_patrulla"]
+[ext_resource type="Script" path="res://scripts/npc/recado_pan.gd" id="10_recado"]
+[ext_resource type="SpriteFrames" path="res://scenes/npcs/panadera_frames.tres" id="11_f_panadera"]
+[ext_resource type="SpriteFrames" path="res://scenes/npcs/herrero_frames.tres" id="12_f_herrero"]
+[ext_resource type="SpriteFrames" path="res://scenes/npcs/guardia_frames.tres" id="13_f_guardia"]
+[ext_resource type="SpriteFrames" path="res://scenes/npcs/tabernero_frames.tres" id="14_f_tabernero"]
 
 [sub_resource type="BoxShape3D" id="DetectorRegion"]
 size = Vector3(4, 3, 1.4)
@@ -34,6 +41,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="Pescador" parent="NPCs" instance=ExtResource("5_pescador")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 8)
 punto_pesca = NodePath("../../Aldea/PuntoPesca")
+
+[node name="RecadoPan" type="Node" parent="NPCs"]
+script = ExtResource("10_recado")
+
+[node name="Panadera" parent="NPCs" instance=ExtResource("8_aldeano")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -19.8)
+id_npc = &"panadera"
+nombre = "Marta, la panadera"
+frames = ExtResource("11_f_panadera")
+tamano_pixel = 0.0309
+desplazamiento = Vector2(0, 26.91)
+recado = NodePath("../RecadoPan")
+lineas_habituales = PackedStringArray("Hoy toca pan de centeno. ¡Vuelve mañana y habrá empanada!")
+
+[node name="Herrero" parent="NPCs" instance=ExtResource("8_aldeano")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -2)
+id_npc = &"herrero"
+nombre = "Gonzalo, el herrero"
+frames = ExtResource("12_f_herrero")
+tamano_pixel = 0.0323
+desplazamiento = Vector2(0, 26.79)
+mirada = Vector3(-1, 0, 0)
+lineas_primera_visita = PackedStringArray("¿Eh? Perdona, con el martillo no te oía. Soy Gonzalo.", "Herraduras, bisagras, clavos... si es de hierro, sale de esta forja.", "Dicen que Marta, la panadera, anda buscando quien le haga un recado.")
+lineas_habituales = PackedStringArray("El yunque no descansa. Vuelve cuando necesites algo de hierro.")
+
+[node name="Tabernero" parent="NPCs" instance=ExtResource("8_aldeano")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -15.2)
+id_npc = &"tabernero"
+nombre = "Anselmo, el tabernero"
+frames = ExtResource("14_f_tabernero")
+tamano_pixel = 0.0323
+desplazamiento = Vector2(0, 26.79)
+lineas_primera_visita = PackedStringArray("¡Bienvenido a la taberna! Soy Anselmo. Salgo a tomar el aire entre jarra y jarra.", "Dentro hay guiso caliente y sitio de sobra. La puerta está aquí al lado.", "Aquí se entera uno de todo: si buscas trabajo, pregunta a Marta, la panadera.")
+lineas_habituales = PackedStringArray("Pasa, pasa. La cerveza no se sirve sola.")
+
+[node name="Guardia" parent="NPCs" instance=ExtResource("8_aldeano")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8, 0, -10.8)
+script = ExtResource("9_patrulla")
+id_npc = &"guardia"
+nombre = "Bruno, el guardia"
+frames = ExtResource("13_f_guardia")
+tamano_pixel = 0.0309
+desplazamiento = Vector2(0, 26.91)
+recado = NodePath("../RecadoPan")
+solido = false
+lineas_primera_visita = PackedStringArray("Alto... ah, eres tú. Soy Bruno. Hago la ronda alrededor de la plaza.", "Si ves algo raro, avísame. Aunque aquí lo más raro es el gato del molinero.")
+lineas_habituales = PackedStringArray("Sin novedad en la aldea. Sigo con la ronda.")
+puntos = PackedVector3Array(12.8, 0, -10.8, 12.8, 0, 12.8, -12.8, 0, 12.8, -12.8, 0, -10.8)
 
 [node name="Jugador" parent="." unique_id=2062574165 instance=ExtResource("2_jugador")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
