@@ -584,6 +584,9 @@ No se identificaron modelos de edificios completos. El kit de arquitectura permi
 | `Shield_Wooden` | objetos | `RPG/assets/objetos_medievales/glTF/Shield_Wooden.gltf` |
 | `Sword_Bronze` | objetos | `RPG/assets/objetos_medievales/glTF/Sword_Bronze.gltf` |
 
+### NPC 2D (22 de noviembre de 2026)
+Diez hojas PNG generadas por el usuario, dos por personaje (idle y walk), con el mismo formato que el protagonista (160×192, fotogramas 40×48): `RPG/assets/personajes/npcs/{pescador,panadera,herrero,guardia,tabernero}/<nombre>_{idle,walk}.png`. Herramienta de generación y licencia sin documentar: confirmarlas antes de publicar el repositorio.
+
 ### Protagonista 2D
 - `RPG/assets/personajes/protagonista/Character_Idle.png`
 - `RPG/assets/personajes/protagonista/Character_Walk.png`
