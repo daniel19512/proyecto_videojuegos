@@ -110,6 +110,7 @@ Paquetes identificados por el proyecto y contenido local verificado:
 \| Forest Nature Updated, hooray4brains | `RPG/assets/bosque/forest_nature_updated/` | 60 GLB. |
 
 \| Sprites del protagonista | `RPG/assets/personajes/protagonista/` | 0; dos hojas PNG: `Character_Idle.png` y `Character_Walk.png`. |
+\| Kenney Interface Sounds, Impact Sounds y RPG Audio (CC0) | `RPG/assets/audio/kenney_*/` | 0; 37 efectos OGG seleccionados y el `License.txt` de cada paquete. |
 
 Total local verificado: ****503 recursos canónicos glTF/GLB**** (338 Quaternius anteriores y 165 nuevos). Los 480 archivos nuevos incluyen 315 exportaciones alternativas KayKit; sus 165 entradas contienen 161 geometrías según la comparación de 6A.0. No confundir rutas canónicas, geometrías y variedad visual. El inventario detallado y sus límites están en `RPG/docs/inventario_assets.md`; no confundir disponibilidad con integración en escenas o gameplay.
 
@@ -266,7 +267,8 @@ Tres minijuegos dentro de los interiores, uno por edificio: cerveza (receta en o
 - Panel común `MinijuegoBase` (`RPG/scripts/minijuegos/minijuego_base.gd`): instrucciones/partida/resultado, F/Esc, marcador y textos de puntos; cada vista (`minijuego_*.gd`) solo lee su entrada y dibuja con `_draw()`. Las escenas `RPG/scenes/minijuegos/minijuego_*.tscn` heredan de `panel_minijuego.tscn`. La pesca conserva su implementación propia.
 - `RPG/scenes/minijuegos/punto_minijuego.tscn` (`punto_minijuego.gd`) es el punto genérico: `escena_minijuego` y `texto_aviso` exportados, `Area3D` de detección de radio 0,9, pausa al abrir y quita la pausa al cerrar, como el punto de pesca.
 - Instancias `PuntoMinijuego` en `taberna_e01.tscn` (−1,3; 0; −3,6, detrás de la barra), `panaderia_e02.tscn` (−1; 0; −1,6, ante el horno) y `herreria_e03.tscn` (−0,6; 0; −0,4, junto al yunque). También se crean en `construir_taberna_interior.gd` (método `punto_minijuego`) y `construir_interiores_aldea.gd`, para que una regeneración los conserve. Su zona no puede solaparse con la de `Salida`, que también usa F.
-- Prueba: `RPG/tests/validar_minijuegos_oficio.gd` (reglas e integración en los tres interiores). Si se cambian reglas o constantes, actualizarla.
+- Sonido: `ReproductorSonidos` (`RPG/scripts/minijuegos/reproductor_sonidos.gd`), cuatro canales, variante al azar y tono ±6 %, −6 dB; suena con el árbol en pausa porque hereda el modo del panel. `MinijuegoBase` aporta abrir/empezar/fin/cerrar y cada vista declara `_sonidos()` por `tipo` de evento de su lógica (los eventos con 0 puntos solo suenan). La pesca usa el mismo reproductor y elige el sonido por los puntos del evento, sin cambiar `LogicaPesca`. Los paquetes no traen sonidos de agua: pesca y cerveza usan golpes suaves y gotas de interfaz.
+- Prueba: `RPG/tests/validar_minijuegos_oficio.gd` (reglas, sonidos e integración en los tres interiores, y sonidos de la pesca). Si se cambian reglas, constantes o sonidos, actualizarla.
 
 ## Assets del bosque — fase 6A.0
 

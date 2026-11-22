@@ -584,6 +584,13 @@ No se identificaron modelos de edificios completos. El kit de arquitectura permi
 | `Shield_Wooden` | objetos | `RPG/assets/objetos_medievales/glTF/Shield_Wooden.gltf` |
 | `Sword_Bronze` | objetos | `RPG/assets/objetos_medievales/glTF/Sword_Bronze.gltf` |
 
+### Audio de minijuegos (22 de noviembre de 2026)
+Tres paquetes de Kenney descargados de kenney.nl, **CC0 1.0** según su `License.txt` (crédito opcional). Solo se copian los 37 OGG usados, con sus nombres originales y sin modificar, más el `License.txt` de cada paquete:
+- `RPG/assets/audio/kenney_interface_sounds/` (Interface Sounds): open, close, confirmation, bong, error_004/006, drop_001–003, pluck_001.
+- `RPG/assets/audio/kenney_impact_sounds/` (Impact Sounds): impactSoft_medium_000–004, impactMining_000–002, impactWood_light_000–002, impactMetal_heavy_000–004, impactMetal_light_000–002, impactPlate_light_000–001, impactBell_heavy_000–001.
+- `RPG/assets/audio/kenney_rpg_audio/` (RPG Audio): metalPot1–3, metalLatch.
+Ninguno incluye sonidos de agua. Asignación a cada minijuego en `AGENTS.md`.
+
 ### NPC 2D (22 de noviembre de 2026)
 Diez hojas PNG generadas por el usuario, dos por personaje (idle y walk), con el mismo formato que el protagonista (160×192, fotogramas 40×48): `RPG/assets/personajes/npcs/{pescador,panadera,herrero,guardia,tabernero}/<nombre>_{idle,walk}.png`. Herramienta de generación y licencia sin documentar: confirmarlas antes de publicar el repositorio.
 
