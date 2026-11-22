@@ -157,6 +157,10 @@ Correcciones de iteración: una ruta de provisión agrícola supuesta se sustitu
 
 **E12 permanece sin interior y fuera del alcance.** Pendientes aprobación artística y recorrido manual del usuario, mando físico y benchmark general. Persistencia y memoria de NPCs se aplazan expresamente; no se implementaron soluciones temporales de guardado. Sin commits ni pushes.
 
+### Minijuegos de oficio — 22 de noviembre de 2026
+
+E01, E02 y E03 incluyen un `PuntoMinijuego` (cerveza, pan y forja) creado también por las herramientas de autoría. Es un `Area3D` sin cuerpo sólido, sobre suelo libre, cuya zona no se solapa con `Salida`. Detalle en `AGENTS.md` y prueba en `RPG/tests/validar_minijuegos_oficio.gd`.
+
 ### Cierre de validación E02–E11
 
 - **Headless definitivo: 0 fallos / 2.569 comprobaciones**, `RPG/logs/interiores_e02_e11/18_animaciones_cierre.log`, con confirmación de animación walk reproducida durante recorrido y reposo al detenerse. Tres ciclos por cada edificio, 60 viajes. Repetición anterior tras ajuste de visibilidad: 0/2.539 (`16_headless_cierre.log`).

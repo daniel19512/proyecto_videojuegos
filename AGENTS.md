@@ -22,7 +22,7 @@ Proyecto inicialmente escolar: RPG medieval de fantasía y simulación de vida, 
 
 La visión futura incluye explorar aldeas y otros escenarios; NPCs con personalidades, rutinas, memoria, relaciones y comportamientos; diálogos e interacciones sociales; profesiones como herrería y agricultura con minijuegos; misiones y eventos relacionados con la vida de la aldea. No está previsto un sistema de combate tradicional.
 
-La base existente permite movimiento y presentación del protagonista en una aldea modular. El único minijuego implementado es la pesca junto al puente, acompañada por un NPC pescador con diálogo fijo. En la aldea hay además panadera, herrero, tabernero y un guardia que patrulla, con diálogo fijo y un recado de ejemplo. Los sistemas sociales, NPCs con LLM, rutinas, profesiones, otros minijuegos, misiones y eventos no están implementados. No confundir modelos decorativos o nombres de nodos con sistemas de juego.
+La base existente permite movimiento y presentación del protagonista en una aldea modular. Hay cuatro minijuegos: la pesca junto al puente, acompañada por un NPC pescador con diálogo fijo, y tres de oficio dentro de sus edificios (cerveza en la taberna E01, pan en la panadería E02 y forja en la herrería E03). En la aldea hay además panadera, herrero, tabernero y un guardia que patrulla, con diálogo fijo y un recado de ejemplo. Los sistemas sociales, NPCs con LLM, rutinas, profesiones con progreso, recompensas, misiones y eventos no están implementados. No confundir modelos decorativos o nombres de nodos con sistemas de juego.
 
 ## Tecnologías y arquitectura actual
 
@@ -257,6 +257,16 @@ Sprites de NPC: dos hojas por personaje en `RPG/assets/personajes/npcs/<nombre>/
 =======
 =======
 Las escenas envolventes conectan Aldea ↔ Bosque desde 6B, Bosque ↔ Ruinas desde 6D y Aldea sur ↔ Campos y Granjas desde 6E; montañas, minas e interiores siguen pendientes. Los cuatro límites físicos originales permanecen cerrados; los límites norte, sur y este son el cierre provisional documentado después de los marcadores futuros. No abrirlos ni permitir caminar fuera del terreno hasta que la escena de destino y el sistema de transición estén implementados conjuntamente. Las señales son geometría estática sin colisión; no bloquean los corredores. Las ruinas se conectan a través del bosque desde 6D; las minas lo harán mediante regiones futuras. No requieren salidas directas nuevas desde la aldea.
+
+## Minijuegos de oficio
+
+Tres minijuegos dentro de los interiores, uno por edificio: cerveza (receta en orden; el caldero recoge ingredientes que caen), pan (cuatro bocas de horno; sacar cada hogaza cuando está dorada) y forja (golpear cuando la aguja pasa por la zona y la pieza sigue caliente; abajo vuelve a calentar). 60 s cada uno, sin recompensas, inventario ni récords guardados; los NPC exteriores no comentan las marcas porque cambiar de escena reinicia el estado y la persistencia está aplazada.
+
+- Reglas puras y deterministas: `RPG/scripts/minijuegos/logica_{cerveza,pan,forja}.gd` (`LogicaCerveza`, `LogicaPan`, `LogicaForja`), con `puntuacion`, `tiempo_restante`, `ultimos_eventos` y `terminada()`.
+- Panel común `MinijuegoBase` (`RPG/scripts/minijuegos/minijuego_base.gd`): instrucciones/partida/resultado, F/Esc, marcador y textos de puntos; cada vista (`minijuego_*.gd`) solo lee su entrada y dibuja con `_draw()`. Las escenas `RPG/scenes/minijuegos/minijuego_*.tscn` heredan de `panel_minijuego.tscn`. La pesca conserva su implementación propia.
+- `RPG/scenes/minijuegos/punto_minijuego.tscn` (`punto_minijuego.gd`) es el punto genérico: `escena_minijuego` y `texto_aviso` exportados, `Area3D` de detección de radio 0,9, pausa al abrir y quita la pausa al cerrar, como el punto de pesca.
+- Instancias `PuntoMinijuego` en `taberna_e01.tscn` (−1,3; 0; −3,6, detrás de la barra), `panaderia_e02.tscn` (−1; 0; −1,6, ante el horno) y `herreria_e03.tscn` (−0,6; 0; −0,4, junto al yunque). También se crean en `construir_taberna_interior.gd` (método `punto_minijuego`) y `construir_interiores_aldea.gd`, para que una regeneración los conserve. Su zona no puede solaparse con la de `Salida`, que también usa F.
+- Prueba: `RPG/tests/validar_minijuegos_oficio.gd` (reglas e integración en los tres interiores). Si se cambian reglas o constantes, actualizarla.
 
 ## Assets del bosque — fase 6A.0
 
