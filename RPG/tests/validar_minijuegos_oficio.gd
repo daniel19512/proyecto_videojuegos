@@ -234,7 +234,8 @@ func validar_interior(ruta: String, nombre_panel: String, texto: String) -> void
 	var resultados := []
 	panel.partida_terminada.connect(func(p): resultados.append(p))
 	panel.logica.puntuacion = 42
-	panel.logica.tiempo_restante = 0.01
+	# 0 y no un margen pequeño: en headless dos fotogramas pueden durar menos.
+	panel.logica.tiempo_restante = 0.0
 	await process_frame
 	await process_frame
 	comprobar(panel.estado == MinijuegoBase.Estado.RESULTADO and resultados == [42] and panel.sonido.ultimo == &"fin", id + ": al acabar el tiempo suena el final y muestra el resultado")
