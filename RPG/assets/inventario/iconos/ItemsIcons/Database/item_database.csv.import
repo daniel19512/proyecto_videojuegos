@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c66pvmo8lx8hh"
+
+[deps]
+
+files=["res://assets/inventario/iconos/ItemsIcons/Database/item_database.name.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.category.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.subcategory.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.type.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.base.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.sheet.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.cell.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.atlas.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.rarity.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.value.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.stats.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.source.translation"]
+
+source_file="res://assets/inventario/iconos/ItemsIcons/Database/item_database.csv"
+dest_files=["res://assets/inventario/iconos/ItemsIcons/Database/item_database.name.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.category.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.subcategory.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.type.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.base.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.sheet.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.cell.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.atlas.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.rarity.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.value.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.stats.translation", "res://assets/inventario/iconos/ItemsIcons/Database/item_database.source.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c2thb1si0se05"
+
+[deps]
+
+files=["res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.name.translation", "res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.category.translation", "res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.x.translation", "res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.y.translation"]
+
+source_file="res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.csv"
+dest_files=["res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.name.translation", "res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.category.translation", "res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.x.translation", "res://assets/inventario/iconos/larchrow-rpg-item-icons/icon_index.y.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
