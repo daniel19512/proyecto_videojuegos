@@ -1,5 +1,6 @@
-﻿[gd_scene format=3]
+[gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="PackedScene" path="res://scenes/pruebas_bosque.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/salida_region.gd" id="3"]
@@ -44,3 +45,10 @@ marcador_salida = NodePath("../../Bosque/Marcadores/SalidaRuinas/TransicionFutur
 shape = SubResource("Detector")
 
 [node name="VestigiosAccesoRuinas" parent="." instance=ExtResource("4")]
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente", "sol")]
+script = ExtResource("CicloLuz")
+ambiente = NodePath("../Bosque/Entorno")
+sol = NodePath("../Bosque/Iluminacion")
+tono_region = Color(0.89, 0.98, 0.94, 1)
+intensidad_region = 0.92

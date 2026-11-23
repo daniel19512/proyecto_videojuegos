@@ -134,7 +134,7 @@ func base_sala(datos: Dictionary) -> void:
 func finalizar(datos: Dictionary) -> void:
 	var jugador := (load("res://scenes/jugador.tscn") as PackedScene).instantiate() as CharacterBody3D
 	agregar(jugador,raiz,"Jugador")
-	jugador.position = Vector3(0,0.07,fondo/2-1.25)
+	jugador.position = datos.get("aparicion", Vector3(0,0.07,fondo/2-1.25))
 	var camara := Camera3D.new()
 	camara.set_script(load("res://scripts/camara_orbital.gd"))
 	agregar(camara,raiz,"CamaraPrincipal")
@@ -152,13 +152,13 @@ func finalizar(datos: Dictionary) -> void:
 	var marcador := Marker3D.new()
 	agregar(marcador,region,"Entrada")
 	marcador.position = jugador.position
-	marcador.set_meta("direccion_visual","arriba")
+	marcador.set_meta("direccion_visual",datos.get("direccion", "arriba"))
 	var puerta := (load("res://scenes/interiores/puerta_interior.tscn") as PackedScene).instantiate() as Area3D
 	agregar(puerta,raiz,"Salida")
-	puerta.position = Vector3(0,0,fondo/2-0.95)
+	puerta.position = datos.get("salida", Vector3(0,0,fondo/2-0.95))
 	puerta.set("escena_destino","res://scenes/mundo.tscn")
 	puerta.set("entrada_destino","aldea_"+id_edificio.to_lower())
-	puerta.set("texto","[F] Salir")
+	puerta.set("texto",datos.get("texto_salida", "[F] Salir"))
 	# Minijuegos de oficio dentro de su edificio, lejos de la zona de salida.
 	if id_edificio == "E02": punto_minijuego("pan",Vector3(-1,0,-1.6),"[F] Hornear pan")
 	if id_edificio == "E03": punto_minijuego("forja",Vector3(-0.6,0,-0.4),"[F] Forjar")
@@ -166,13 +166,13 @@ func finalizar(datos: Dictionary) -> void:
 	raiz.set_meta("edificio",id_edificio)
 	raiz.set_meta("dimensiones",Vector2(ancho,fondo))
 	var visitas := {"E02":Vector3(-0.8,0,-2.6),"E03":Vector3(-0.75,0,0.55),"E04":Vector3(-1.5,0,-1.5),"E05":Vector3(0.9,0,-0.1),"E06":Vector3(-0.5,0,-1.6),"E07":Vector3(-0.8,0,-2),"E08":Vector3(0.7,0,-1.5),"E09":Vector3(-0.35,0,-0.7),"E10":Vector3(0.1,0,-1),"E11":Vector3(-0.1,0,-0.5)}
-	raiz.set_meta("recorrido",PackedVector3Array([Vector3(0,0,fondo/2-1.25),Vector3(0,0,0.6),Vector3(0,0,-fondo/2+1.4),visitas[id_edificio]]))
+	raiz.set_meta("recorrido",datos.get("recorrido", PackedVector3Array([Vector3(0,0,fondo/2-1.25),Vector3(0,0,0.6),Vector3(0,0,-fondo/2+1.4),visitas.get(id_edificio, Vector3.ZERO)])))
+	completar_luz_interior(raiz.get_node_or_null("LuzVentana") as OmniLight3D)
 	var recurso := PackedScene.new()
 	assert(recurso.pack(raiz)==OK)
 	assert(ResourceSaver.save(recurso,datos.escena)==OK)
 	print("CONSTRUIDO ",id_edificio," assets=",usados.size()," escena=",datos.escena)
 	manifest.append({"id":id_edificio,"assets":usados.duplicate(),"escena":datos.escena,"ancho":ancho,"fondo":fondo})
-	root.remove_child(raiz)
 	raiz.free()
 
 func estante(pos: Vector3, tipo := "provisiones") -> void:
@@ -401,6 +401,7 @@ func vivienda11() -> void:
 func construir() -> void:
 	var datos: Array = JSON.parse_string(FileAccess.get_file_as_string(CONFIG))
 	for d: Dictionary in datos:
+		if d.id == "E12": continue # Tiene constructor propio.
 		base_sala(d)
 		call(d.diseno)
 		finalizar(d)

@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Shelf_Small_Bottles.gltf" id="1_xaes1"]
 [ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/SmallBottle.gltf" id="2_w5fou"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Mobiliario/Interiors_Furniture/glTF/mdvl_interiors_workbench_01.glb" id="3_oddnj"]
@@ -1241,3 +1242,7 @@ script = ExtResource("18_r4djy")
 escena_destino = "res://scenes/mundo.tscn"
 entrada_destino = "aldea_e05"
 texto = "[F] Salir"
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente")]
+script = ExtResource("CicloLuz")
+ambiente = NodePath("../Ambiente")

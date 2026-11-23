@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="PackedScene" path="res://scenes/campos_granjas.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2"]
 [ext_resource type="Script" path="res://scripts/camara_orbital.gd" id="3"]
@@ -58,3 +59,9 @@ marcador_salida = NodePath("../../CamposYGranjas/Marcadores/RetornoAldea")
 
 [node name="Detector" type="CollisionShape3D" parent="Region/SalidaAldea"]
 shape = SubResource("DetectorAldea")
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente", "sol")]
+script = ExtResource("CicloLuz")
+ambiente = NodePath("../Ambiente")
+sol = NodePath("../LuzSolar")
+intensidad_region = 0.96

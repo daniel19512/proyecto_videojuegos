@@ -111,6 +111,15 @@ func mesa(nombre: String, pos: Vector3, giro: float) -> void:
 	modelo("platter-meal01", pos + Vector3(-0.25, 0.815, -0.25))
 	modelo("bowl-of-stew", pos + Vector3(0.27, 0.815, 0.23))
 
+# La sala se separa para serializar el ambiente base, antes de que el ciclo lo aplique.
+func completar_luz_interior(luz_ventana: OmniLight3D = null) -> void:
+	root.remove_child(raiz)
+	var ciclo := Node.new()
+	ciclo.set_script(load("res://scripts/ciclo_dia_noche.gd"))
+	ciclo.set("ambiente", raiz.get_node("Ambiente"))
+	ciclo.set("luz_de_acceso", luz_ventana)
+	agregar(ciclo, raiz, "CicloDiaNoche")
+
 func construir() -> void:
 	raiz = Node3D.new()
 	raiz.name = "TabernaE01"
@@ -234,6 +243,7 @@ func construir() -> void:
 	puerta.set("texto","[F] Salir de la taberna")
 	punto_minijuego("cerveza",Vector3(-1.3,0,-3.6),"[F] Elaborar cerveza")
 	raiz.set_meta("assets_utilizados",usados)
+	completar_luz_interior()
 	var escena := PackedScene.new()
 	assert(escena.pack(raiz) == OK)
 	assert(ResourceSaver.save(escena,"res://scenes/interiores/taberna_e01.tscn") == OK)

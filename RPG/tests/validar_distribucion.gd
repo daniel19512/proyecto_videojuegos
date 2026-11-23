@@ -109,6 +109,22 @@ func caminar(accion: String, fotogramas: int) -> void:
 	Input.action_release(accion)
 	await esperar(12)
 
+# Marcha longitudinal con la velocidad real y un plazo ligado a la distancia.
+func caminar_hasta(accion: String, destino: float, eje := Vector3.RIGHT) -> void:
+	var distancia := absf(destino - jugador.position.dot(eje))
+	var sentido := signf(destino - jugador.position.dot(eje))
+	var plazo: float = distancia / jugador.velocidad + jugador.velocidad / jugador.aceleracion + 1.0
+	var limite := ceili(plazo * Engine.physics_ticks_per_second)
+	Input.action_press(accion)
+	for i in limite:
+		await physics_frame
+		if (jugador.position.dot(eje) - destino) * sentido >= 0.0:
+			break
+	Input.action_release(accion)
+	for i in ceili(jugador.velocidad / jugador.desaceleracion * Engine.physics_ticks_per_second) + 2:
+		await physics_frame
+	await process_frame
+
 func captura(nombre: String) -> void:
 	await esperar(70)
 	await RenderingServer.frame_post_draw
@@ -784,10 +800,10 @@ func validar_carpinteria() -> void:
 	comprobar(puestos_libres,"E04: pasillo continuo frente al banco y los caballetes accesible")
 	jugador.global_position = Vector3(-18,0.02,7)
 	jugador.velocity = Vector3.ZERO
-	await caminar("mover_izquierda",45)
+	await caminar_hasta("mover_izquierda", -20.8)
 	comprobar(jugador.is_on_floor() and jugador.position.x < -20.6,"E04: marcha real entra al taller abierto")
-	await caminar("mover_derecha",60)
-	comprobar(jugador.position.x > -18.5,"E04: retorno real hacia camino publico")
+	await caminar_hasta("mover_derecha", -18.4)
+	comprobar(jugador.is_on_floor() and jugador.position.x > -18.5,"E04: retorno real hacia camino publico")
 	var control: CollisionShape3D = solido.get_node("Corte")
 	var original := control.position
 	control.position = Vector3(3.9,0.54,0)
@@ -949,18 +965,27 @@ func validar_molino() -> void:
 	comprobar(libre,"E12: aproximacion oeste desde camino publico libre")
 	# El rio separa las margenes hasta los limites. Comprobar ambos accesos E12
 	# y la margen este por el unico cruce autorizado, nunca por los extremos.
-	var puntos := [Vector2(27,-16.4),Vector2(15.9,-16.4),Vector2(15.9,0),Vector2(35,0),Vector2(35,-35),Vector2(35,35),Vector2(35,0),Vector2(15.9,0),Vector2(15.9,-3.6),Vector2(27,-3.6)]
+	var puntos := [Vector2(27,-16.4),Vector2(15.9,-16.4),Vector2(15.9,0),Vector2(34.5,0),Vector2(34.5,-35),Vector2(34.5,35),Vector2(34.5,0),Vector2(15.9,0),Vector2(15.9,-3.6),Vector2(27,-3.6)]
 	var circuito := true
 	for i in range(puntos.size()-1):
 		for j in 101:
-			circuito = suelo_libre(puntos[i].lerp(puntos[i+1],float(j)/100)) and circuito
+			var punto: Vector2 = puntos[i].lerp(puntos[i+1], float(j)/100)
+			var transitable := suelo_libre(punto)
+			if not transitable and circuito:
+				print("E12: primera muestra bloqueada en ", punto)
+			circuito = transitable and circuito
 	comprobar(circuito,"E12: accesos norte/sur y ambas margenes conectados por puente, sin rodear extremos")
+	jugador.global_position = Vector3(34.5, 0.02, 5.5)
+	jugador.velocity = Vector3.ZERO
+	await caminar_hasta("mover_abajo", 10.5, Vector3.BACK)
+	comprobar(jugador.is_on_floor() and jugador.position.z >= 10.5 and absf(jugador.position.x - 34.5) < 0.1,
+		"E12: caminata real evita la barandilla del mirador por la margen este")
 	jugador.global_position = Vector3(16.5,.02,-10)
 	jugador.velocity = Vector3.ZERO
 	await caminar("mover_derecha",35)
 	comprobar(jugador.is_on_floor() and jugador.position.x > 17.3 and jugador.position.x < 17.72,"E12: marcha real hasta puerta oeste cerrada")
-	await caminar("mover_izquierda",20)
-	comprobar(jugador.position.x < 16.5,"E12: retorno real al camino")
+	await caminar_hasta("mover_izquierda", 16.4)
+	comprobar(jugador.is_on_floor() and jugador.position.x < 16.5,"E12: retorno real al camino")
 	var control: CollisionShape3D = solido.get_node("Barril")
 	var original := control.position
 	control.position = Vector3(-3.8,.5,0)
@@ -1248,9 +1273,12 @@ func validar_ribera() -> void:
 	camara.set_process(true)
 	var pivot: Node3D = aldea.get_node("Edificios/E12/MecanismoHidraulico/RuedaHidraulicaPivot")
 	var inicio := pivot.rotation.x
-	var tiempo := Time.get_ticks_msec()
-	await esperar(30)
-	var segundos := float(Time.get_ticks_msec()-tiempo)/1000
+	# La rueda usa delta de proceso, también si se ejecuta con --fixed-fps.
+	var segundos := 0.0
+	while segundos < 0.5:
+		await process_frame
+		segundos += pivot.get_process_delta_time()
+	await process_frame
 	var giro := wrapf(pivot.rotation.x-inicio,-PI,PI)
 	comprobar(giro<0 and absf(giro-deg_to_rad(-9)*segundos)<.05,"Rueda: giro X negativo suave de 9 grados/s, corriente +Z")
 	comprobar(pivot.global_position.is_equal_approx(Vector3(26.5,2.503,-10)) and .322 > pivot.global_position.y-2.26 and .322 < pivot.global_position.y-1.8,"Rueda: centro intacto y solo extremo inferior sumergido")

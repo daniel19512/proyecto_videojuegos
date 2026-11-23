@@ -1,0 +1,2159 @@
+{
+ "sheet": "Spritesheet/larchrow_rpg_icons_16x16.png",
+ "tile_size": 16,
+ "columns": 16,
+ "rows": 20,
+ "icons": [
+  {
+   "id": 0,
+   "name": "sword_wood",
+   "category": "weapons",
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 1,
+   "name": "sword_iron",
+   "category": "weapons",
+   "x": 16,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 2,
+   "name": "sword_steel",
+   "category": "weapons",
+   "x": 32,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 3,
+   "name": "sword_gold",
+   "category": "weapons",
+   "x": 48,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 4,
+   "name": "sword_crystal",
+   "category": "weapons",
+   "x": 64,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 5,
+   "name": "sword_flame",
+   "category": "weapons",
+   "x": 80,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 6,
+   "name": "sword_emerald",
+   "category": "weapons",
+   "x": 96,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 7,
+   "name": "sword_shadow",
+   "category": "weapons",
+   "x": 112,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 8,
+   "name": "broadsword",
+   "category": "weapons",
+   "x": 128,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 9,
+   "name": "rapier",
+   "category": "weapons",
+   "x": 144,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 10,
+   "name": "scimitar",
+   "category": "weapons",
+   "x": 160,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 11,
+   "name": "dagger_iron",
+   "category": "weapons",
+   "x": 176,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 12,
+   "name": "dagger_gold",
+   "category": "weapons",
+   "x": 192,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 13,
+   "name": "dagger_poison",
+   "category": "weapons",
+   "x": 208,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 14,
+   "name": "throwing_knife",
+   "category": "weapons",
+   "x": 224,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 15,
+   "name": "axe_hand",
+   "category": "weapons",
+   "x": 240,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 16,
+   "name": "axe_battle",
+   "category": "weapons",
+   "x": 0,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 17,
+   "name": "axe_gold",
+   "category": "weapons",
+   "x": 16,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 18,
+   "name": "axe_woodcutter",
+   "category": "weapons",
+   "x": 32,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 19,
+   "name": "bow_wood",
+   "category": "weapons",
+   "x": 48,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 20,
+   "name": "bow_gold",
+   "category": "weapons",
+   "x": 64,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 21,
+   "name": "bow_long",
+   "category": "weapons",
+   "x": 80,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 22,
+   "name": "crossbow",
+   "category": "weapons",
+   "x": 96,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 23,
+   "name": "arrow",
+   "category": "weapons",
+   "x": 112,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 24,
+   "name": "quiver",
+   "category": "weapons",
+   "x": 128,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 25,
+   "name": "staff_ruby",
+   "category": "weapons",
+   "x": 144,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 26,
+   "name": "staff_sapphire",
+   "category": "weapons",
+   "x": 160,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 27,
+   "name": "staff_emerald",
+   "category": "weapons",
+   "x": 176,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 28,
+   "name": "staff_amethyst",
+   "category": "weapons",
+   "x": 192,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 29,
+   "name": "wand_star",
+   "category": "weapons",
+   "x": 208,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 30,
+   "name": "wand_bone",
+   "category": "weapons",
+   "x": 224,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 31,
+   "name": "spear",
+   "category": "weapons",
+   "x": 240,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 32,
+   "name": "trident",
+   "category": "weapons",
+   "x": 0,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 33,
+   "name": "mace",
+   "category": "weapons",
+   "x": 16,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 34,
+   "name": "warhammer",
+   "category": "weapons",
+   "x": 32,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 35,
+   "name": "club",
+   "category": "weapons",
+   "x": 48,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 36,
+   "name": "helmet_leather",
+   "category": "armour",
+   "x": 0,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 37,
+   "name": "helmet_iron",
+   "category": "armour",
+   "x": 16,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 38,
+   "name": "helmet_gold",
+   "category": "armour",
+   "x": 32,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 39,
+   "name": "helmet_knight",
+   "category": "armour",
+   "x": 48,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 40,
+   "name": "helmet_horned",
+   "category": "armour",
+   "x": 64,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 41,
+   "name": "hat_wizard",
+   "category": "armour",
+   "x": 80,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 42,
+   "name": "hood_cloth",
+   "category": "armour",
+   "x": 96,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 43,
+   "name": "tunic_leather",
+   "category": "armour",
+   "x": 112,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 44,
+   "name": "tunic_cloth",
+   "category": "armour",
+   "x": 128,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 45,
+   "name": "chainmail",
+   "category": "armour",
+   "x": 144,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 46,
+   "name": "plate_iron",
+   "category": "armour",
+   "x": 160,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 47,
+   "name": "plate_gold",
+   "category": "armour",
+   "x": 176,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 48,
+   "name": "robe_mage",
+   "category": "armour",
+   "x": 192,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 49,
+   "name": "robe_frost",
+   "category": "armour",
+   "x": 208,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 50,
+   "name": "boots_leather",
+   "category": "armour",
+   "x": 224,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 51,
+   "name": "boots_iron",
+   "category": "armour",
+   "x": 240,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 52,
+   "name": "boots_gold",
+   "category": "armour",
+   "x": 0,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 53,
+   "name": "boots_winged",
+   "category": "armour",
+   "x": 16,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 54,
+   "name": "gloves_leather",
+   "category": "armour",
+   "x": 32,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 55,
+   "name": "gauntlet_iron",
+   "category": "armour",
+   "x": 48,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 56,
+   "name": "shield_round_wood",
+   "category": "armour",
+   "x": 64,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 57,
+   "name": "shield_round_iron",
+   "category": "armour",
+   "x": 80,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 58,
+   "name": "shield_kite_cross",
+   "category": "armour",
+   "x": 96,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 59,
+   "name": "shield_kite_chevron",
+   "category": "armour",
+   "x": 112,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 60,
+   "name": "shield_kite_band",
+   "category": "armour",
+   "x": 128,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 61,
+   "name": "shield_kite_star",
+   "category": "armour",
+   "x": 144,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 62,
+   "name": "shield_tower_green",
+   "category": "armour",
+   "x": 160,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 63,
+   "name": "ring_gold_ruby",
+   "category": "armour",
+   "x": 176,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 64,
+   "name": "ring_gold_sapphire",
+   "category": "armour",
+   "x": 192,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 65,
+   "name": "ring_gold_emerald",
+   "category": "armour",
+   "x": 208,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 66,
+   "name": "ring_silver_amethyst",
+   "category": "armour",
+   "x": 224,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 67,
+   "name": "ring_silver_band",
+   "category": "armour",
+   "x": 240,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 68,
+   "name": "amulet_ruby",
+   "category": "armour",
+   "x": 0,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 69,
+   "name": "amulet_sapphire",
+   "category": "armour",
+   "x": 16,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 70,
+   "name": "amulet_emerald",
+   "category": "armour",
+   "x": 32,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 71,
+   "name": "amulet_onyx",
+   "category": "armour",
+   "x": 48,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 72,
+   "name": "belt_leather",
+   "category": "armour",
+   "x": 64,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 73,
+   "name": "cape_red",
+   "category": "armour",
+   "x": 80,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 74,
+   "name": "potion_flask_red",
+   "category": "potions",
+   "x": 0,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 75,
+   "name": "potion_flask_blue",
+   "category": "potions",
+   "x": 16,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 76,
+   "name": "potion_flask_green",
+   "category": "potions",
+   "x": 32,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 77,
+   "name": "potion_flask_purple",
+   "category": "potions",
+   "x": 48,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 78,
+   "name": "potion_flask_yellow",
+   "category": "potions",
+   "x": 64,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 79,
+   "name": "potion_vial_red",
+   "category": "potions",
+   "x": 80,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 80,
+   "name": "potion_vial_blue",
+   "category": "potions",
+   "x": 96,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 81,
+   "name": "potion_vial_green",
+   "category": "potions",
+   "x": 112,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 82,
+   "name": "potion_vial_purple",
+   "category": "potions",
+   "x": 128,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 83,
+   "name": "potion_vial_yellow",
+   "category": "potions",
+   "x": 144,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 84,
+   "name": "potion_bottle_red",
+   "category": "potions",
+   "x": 160,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 85,
+   "name": "potion_bottle_blue",
+   "category": "potions",
+   "x": 176,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 86,
+   "name": "potion_bottle_green",
+   "category": "potions",
+   "x": 192,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 87,
+   "name": "potion_bottle_purple",
+   "category": "potions",
+   "x": 208,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 88,
+   "name": "potion_bottle_yellow",
+   "category": "potions",
+   "x": 224,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 89,
+   "name": "potion_cone_red",
+   "category": "potions",
+   "x": 240,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 90,
+   "name": "potion_cone_blue",
+   "category": "potions",
+   "x": 0,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 91,
+   "name": "potion_cone_green",
+   "category": "potions",
+   "x": 16,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 92,
+   "name": "potion_cone_purple",
+   "category": "potions",
+   "x": 32,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 93,
+   "name": "potion_cone_yellow",
+   "category": "potions",
+   "x": 48,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 94,
+   "name": "potion_heart_pink",
+   "category": "potions",
+   "x": 64,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 95,
+   "name": "potion_heart_red",
+   "category": "potions",
+   "x": 80,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 96,
+   "name": "flask_empty",
+   "category": "potions",
+   "x": 96,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 97,
+   "name": "apple_red",
+   "category": "food",
+   "x": 0,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 98,
+   "name": "apple_green",
+   "category": "food",
+   "x": 16,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 99,
+   "name": "pear",
+   "category": "food",
+   "x": 32,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 100,
+   "name": "bread_loaf",
+   "category": "food",
+   "x": 48,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 101,
+   "name": "baguette",
+   "category": "food",
+   "x": 64,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 102,
+   "name": "cheese",
+   "category": "food",
+   "x": 80,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 103,
+   "name": "meat_drumstick",
+   "category": "food",
+   "x": 96,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 104,
+   "name": "steak",
+   "category": "food",
+   "x": 112,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 105,
+   "name": "ham",
+   "category": "food",
+   "x": 128,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 106,
+   "name": "fish_raw",
+   "category": "food",
+   "x": 144,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 107,
+   "name": "fish_cooked",
+   "category": "food",
+   "x": 160,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 108,
+   "name": "fish_gold",
+   "category": "food",
+   "x": 176,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 109,
+   "name": "carrot",
+   "category": "food",
+   "x": 192,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 110,
+   "name": "mushroom_red",
+   "category": "food",
+   "x": 208,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 111,
+   "name": "mushroom_brown",
+   "category": "food",
+   "x": 224,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 112,
+   "name": "egg",
+   "category": "food",
+   "x": 240,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 113,
+   "name": "cheese_wheel",
+   "category": "food",
+   "x": 0,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 114,
+   "name": "pie",
+   "category": "food",
+   "x": 16,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 115,
+   "name": "cookie",
+   "category": "food",
+   "x": 32,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 116,
+   "name": "honey_jar",
+   "category": "food",
+   "x": 48,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 117,
+   "name": "grapes",
+   "category": "food",
+   "x": 64,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 118,
+   "name": "cherries",
+   "category": "food",
+   "x": 80,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 119,
+   "name": "banana",
+   "category": "food",
+   "x": 96,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 120,
+   "name": "tomato",
+   "category": "food",
+   "x": 112,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 121,
+   "name": "strawberry",
+   "category": "food",
+   "x": 128,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 122,
+   "name": "watermelon_slice",
+   "category": "food",
+   "x": 144,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 123,
+   "name": "corn",
+   "category": "food",
+   "x": 160,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 124,
+   "name": "potato",
+   "category": "food",
+   "x": 176,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 125,
+   "name": "pumpkin",
+   "category": "food",
+   "x": 192,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 126,
+   "name": "soup_bowl",
+   "category": "food",
+   "x": 208,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 127,
+   "name": "ale_mug",
+   "category": "food",
+   "x": 224,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 128,
+   "name": "milk_bottle",
+   "category": "food",
+   "x": 240,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 129,
+   "name": "cake_slice",
+   "category": "food",
+   "x": 0,
+   "y": 160,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 130,
+   "name": "ore_iron",
+   "category": "materials",
+   "x": 0,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 131,
+   "name": "ore_gold",
+   "category": "materials",
+   "x": 16,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 132,
+   "name": "ore_copper",
+   "category": "materials",
+   "x": 32,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 133,
+   "name": "ore_silver",
+   "category": "materials",
+   "x": 48,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 134,
+   "name": "ore_crystal",
+   "category": "materials",
+   "x": 64,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 135,
+   "name": "ore_ruby",
+   "category": "materials",
+   "x": 80,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 136,
+   "name": "coal",
+   "category": "materials",
+   "x": 96,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 137,
+   "name": "stone",
+   "category": "materials",
+   "x": 112,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 138,
+   "name": "crystal_cluster",
+   "category": "materials",
+   "x": 128,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 139,
+   "name": "ingot_iron",
+   "category": "materials",
+   "x": 144,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 140,
+   "name": "ingot_gold",
+   "category": "materials",
+   "x": 160,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 141,
+   "name": "ingot_copper",
+   "category": "materials",
+   "x": 176,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 142,
+   "name": "ingot_silver",
+   "category": "materials",
+   "x": 192,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 143,
+   "name": "gem_ruby",
+   "category": "materials",
+   "x": 208,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 144,
+   "name": "gem_sapphire",
+   "category": "materials",
+   "x": 224,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 145,
+   "name": "gem_emerald",
+   "category": "materials",
+   "x": 240,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 146,
+   "name": "gem_amethyst",
+   "category": "materials",
+   "x": 0,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 147,
+   "name": "gem_topaz",
+   "category": "materials",
+   "x": 16,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 148,
+   "name": "gem_diamond",
+   "category": "materials",
+   "x": 32,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 149,
+   "name": "log",
+   "category": "materials",
+   "x": 48,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 150,
+   "name": "planks",
+   "category": "materials",
+   "x": 64,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 151,
+   "name": "leather",
+   "category": "materials",
+   "x": 80,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 152,
+   "name": "wool",
+   "category": "materials",
+   "x": 96,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 153,
+   "name": "cloth_roll",
+   "category": "materials",
+   "x": 112,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 154,
+   "name": "thread_spool",
+   "category": "materials",
+   "x": 128,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 155,
+   "name": "feather",
+   "category": "materials",
+   "x": 144,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 156,
+   "name": "bone",
+   "category": "materials",
+   "x": 160,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 157,
+   "name": "slime_gel",
+   "category": "materials",
+   "x": 176,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 158,
+   "name": "herb_leaf",
+   "category": "materials",
+   "x": 192,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 159,
+   "name": "herb_flower",
+   "category": "materials",
+   "x": 208,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 160,
+   "name": "wheat",
+   "category": "materials",
+   "x": 224,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 161,
+   "name": "dragon_scale",
+   "category": "materials",
+   "x": 240,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 162,
+   "name": "magic_dust",
+   "category": "materials",
+   "x": 0,
+   "y": 208,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 163,
+   "name": "pickaxe_iron",
+   "category": "tools",
+   "x": 0,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 164,
+   "name": "pickaxe_gold",
+   "category": "tools",
+   "x": 16,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 165,
+   "name": "pickaxe_crystal",
+   "category": "tools",
+   "x": 32,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 166,
+   "name": "hoe",
+   "category": "tools",
+   "x": 48,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 167,
+   "name": "shovel",
+   "category": "tools",
+   "x": 64,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 168,
+   "name": "watering_can",
+   "category": "tools",
+   "x": 80,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 169,
+   "name": "fishing_rod",
+   "category": "tools",
+   "x": 96,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 170,
+   "name": "hammer",
+   "category": "tools",
+   "x": 112,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 171,
+   "name": "saw",
+   "category": "tools",
+   "x": 128,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 172,
+   "name": "sickle",
+   "category": "tools",
+   "x": 144,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 173,
+   "name": "shears",
+   "category": "tools",
+   "x": 160,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 174,
+   "name": "lantern",
+   "category": "tools",
+   "x": 176,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 175,
+   "name": "torch",
+   "category": "tools",
+   "x": 192,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 176,
+   "name": "bucket",
+   "category": "tools",
+   "x": 208,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 177,
+   "name": "bucket_water",
+   "category": "tools",
+   "x": 224,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 178,
+   "name": "rope_coil",
+   "category": "tools",
+   "x": 240,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 179,
+   "name": "magnifier",
+   "category": "tools",
+   "x": 0,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 180,
+   "name": "anvil",
+   "category": "tools",
+   "x": 16,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 181,
+   "name": "scroll_closed",
+   "category": "magic",
+   "x": 0,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 182,
+   "name": "scroll_open",
+   "category": "magic",
+   "x": 16,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 183,
+   "name": "scroll_sealed",
+   "category": "magic",
+   "x": 32,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 184,
+   "name": "scroll_arcane",
+   "category": "magic",
+   "x": 48,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 185,
+   "name": "book_fire",
+   "category": "magic",
+   "x": 64,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 186,
+   "name": "book_frost",
+   "category": "magic",
+   "x": 80,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 187,
+   "name": "book_nature",
+   "category": "magic",
+   "x": 96,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 188,
+   "name": "book_arcane",
+   "category": "magic",
+   "x": 112,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 189,
+   "name": "book_necro",
+   "category": "magic",
+   "x": 128,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 190,
+   "name": "rune_fire",
+   "category": "magic",
+   "x": 144,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 191,
+   "name": "rune_ice",
+   "category": "magic",
+   "x": 160,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 192,
+   "name": "rune_nature",
+   "category": "magic",
+   "x": 176,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 193,
+   "name": "rune_storm",
+   "category": "magic",
+   "x": 192,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 194,
+   "name": "rune_arcane",
+   "category": "magic",
+   "x": 208,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 195,
+   "name": "rune_shadow",
+   "category": "magic",
+   "x": 224,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 196,
+   "name": "orb_fire",
+   "category": "magic",
+   "x": 240,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 197,
+   "name": "orb_water",
+   "category": "magic",
+   "x": 0,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 198,
+   "name": "orb_nature",
+   "category": "magic",
+   "x": 16,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 199,
+   "name": "orb_void",
+   "category": "magic",
+   "x": 32,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 200,
+   "name": "mana_crystal",
+   "category": "magic",
+   "x": 48,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 201,
+   "name": "soul_gem",
+   "category": "magic",
+   "x": 64,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 202,
+   "name": "fire_essence",
+   "category": "magic",
+   "x": 80,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 203,
+   "name": "frost_shard",
+   "category": "magic",
+   "x": 96,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 204,
+   "name": "magic_star",
+   "category": "magic",
+   "x": 112,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 205,
+   "name": "hourglass",
+   "category": "magic",
+   "x": 128,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 206,
+   "name": "golden_idol",
+   "category": "magic",
+   "x": 144,
+   "y": 272,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 207,
+   "name": "key_iron",
+   "category": "misc",
+   "x": 0,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 208,
+   "name": "key_gold",
+   "category": "misc",
+   "x": 16,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 209,
+   "name": "key_skeleton",
+   "category": "misc",
+   "x": 32,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 210,
+   "name": "key_crystal",
+   "category": "misc",
+   "x": 48,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 211,
+   "name": "coin_gold",
+   "category": "misc",
+   "x": 64,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 212,
+   "name": "coin_silver",
+   "category": "misc",
+   "x": 80,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 213,
+   "name": "coin_copper",
+   "category": "misc",
+   "x": 96,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 214,
+   "name": "coin_stack",
+   "category": "misc",
+   "x": 112,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 215,
+   "name": "coin_pile",
+   "category": "misc",
+   "x": 128,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 216,
+   "name": "coin_bag",
+   "category": "misc",
+   "x": 144,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 217,
+   "name": "chest_wood",
+   "category": "misc",
+   "x": 160,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 218,
+   "name": "chest_gold",
+   "category": "misc",
+   "x": 176,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 219,
+   "name": "chest_open",
+   "category": "misc",
+   "x": 192,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 220,
+   "name": "map",
+   "category": "misc",
+   "x": 208,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 221,
+   "name": "compass",
+   "category": "misc",
+   "x": 224,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 222,
+   "name": "letter",
+   "category": "misc",
+   "x": 240,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 223,
+   "name": "heart",
+   "category": "misc",
+   "x": 0,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 224,
+   "name": "heart_crystal",
+   "category": "misc",
+   "x": 16,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 225,
+   "name": "star_gold",
+   "category": "misc",
+   "x": 32,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 226,
+   "name": "skull",
+   "category": "misc",
+   "x": 48,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 227,
+   "name": "bomb",
+   "category": "misc",
+   "x": 64,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 228,
+   "name": "lockpick",
+   "category": "misc",
+   "x": 80,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 229,
+   "name": "bell",
+   "category": "misc",
+   "x": 96,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 230,
+   "name": "candle",
+   "category": "misc",
+   "x": 112,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 231,
+   "name": "trophy",
+   "category": "misc",
+   "x": 128,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 232,
+   "name": "crown",
+   "category": "misc",
+   "x": 144,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 233,
+   "name": "dice",
+   "category": "misc",
+   "x": 160,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 234,
+   "name": "quest_marker",
+   "category": "misc",
+   "x": 176,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 235,
+   "name": "gem_heart_locket",
+   "category": "misc",
+   "x": 192,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 236,
+   "name": "pouch_gems",
+   "category": "misc",
+   "x": 208,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 237,
+   "name": "lock_padlock",
+   "category": "misc",
+   "x": 224,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "id": 238,
+   "name": "feather_quill_ink",
+   "category": "misc",
+   "x": 240,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  }
+ ]
+}

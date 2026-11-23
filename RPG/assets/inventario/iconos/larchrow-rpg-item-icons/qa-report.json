@@ -1,0 +1,163 @@
+{
+ "summary": {
+  "all_passed": true,
+  "icons": 239,
+  "categories": 8,
+  "sheet": [
+   256,
+   320
+  ]
+ },
+ "palette_identical_to_pack6_and_pack7": {
+  "passed": true,
+  "palette_size": 32
+ },
+ "index_header": {
+  "passed": true,
+  "header": [
+   "id",
+   "name",
+   "category",
+   "x",
+   "y"
+  ]
+ },
+ "index_ids_and_names_unique": {
+  "passed": true,
+  "icons": 239
+ },
+ "sheet_grid_16x16": {
+  "passed": true,
+  "sheet_1x": [
+   256,
+   320
+  ],
+  "columns": 16,
+  "rows": 20
+ },
+ "sheet_4x_is_exact_nearest_neighbour": {
+  "passed": true,
+  "sheet_4x": [
+   1024,
+   1280
+  ]
+ },
+ "all_icons_16x16_rgba": {
+  "passed": true,
+  "png_files": 239,
+  "indexed": 239,
+  "bad_size": [],
+  "bad_mode": []
+ },
+ "no_extra_png_files": {
+  "passed": true,
+  "png_files": 239
+ },
+ "palette_only_colours": {
+  "passed": true,
+  "colours_used_in_sheet": 32,
+  "bad": []
+ },
+ "no_semi_transparency": {
+  "passed": true,
+  "alpha_values": [
+   0,
+   255
+  ],
+  "bad": []
+ },
+ "transparent_pixels_rgb_zero": {
+  "passed": true,
+  "bad": []
+ },
+ "every_icon_non_empty": {
+  "passed": true,
+  "rule": ">= 20 opaque pixels",
+  "min_opaque": 42,
+  "max_opaque": 212,
+  "bad": []
+ },
+ "every_icon_has_closed_1px_outline": {
+  "passed": true,
+  "rule": "every opaque pixel touching transparency or the tile edge (4-neighbour) is the outline colour #120e1a",
+  "bad": []
+ },
+ "every_icon_at_least_4_colours": {
+  "passed": true,
+  "bad": []
+ },
+ "sheet_matches_index_and_png_files": {
+  "passed": true,
+  "bad": []
+ },
+ "no_unindexed_cells_on_sheet": {
+  "passed": true,
+  "stray": [],
+  "empty_cells": 81
+ },
+ "no_two_icons_pixel_identical": {
+  "passed": true,
+  "identical_pairs": [],
+  "closest_pair": [
+   "ring_gold_ruby",
+   "ring_gold_sapphire"
+  ],
+  "closest_pair_differing_pixels": 15
+ },
+ "closest_pair_differs_by_at_least_10_pixels": {
+  "passed": true,
+  "closest_pair": [
+   "ring_gold_ruby",
+   "ring_gold_sapphire"
+  ],
+  "differing_pixels": 15
+ },
+ "icons_per_category": {
+  "weapons": 36,
+  "armour": 38,
+  "potions": 23,
+  "food": 33,
+  "materials": 33,
+  "tools": 18,
+  "magic": 26,
+  "misc": 32
+ },
+ "godot_atlas_tres_match_index": {
+  "passed": true,
+  "tres_files": 239,
+  "bad": []
+ },
+ "godot_4_3_loads_all_atlas_textures_and_helper": {
+  "passed": true,
+  "result": "CHECK tres_ok=239 tres_bad=0 helper_icons=239",
+  "errors": [],
+  "godot": "4.3-stable headless"
+ },
+ "release_files_present": {
+  "passed": true,
+  "missing": [],
+  "screenshots": 3,
+  "sizes": {
+   "cover_630x500.png": [
+    630,
+    500
+   ],
+   "cover_1280x720.png": [
+    1280,
+    720
+   ],
+   "01_inventory_mockup_1280x720.png": [
+    1280,
+    720
+   ],
+   "02_categories_1280x720.png": [
+    1280,
+    720
+   ],
+   "03_spritesheet_1280x720.png": [
+    1280,
+    720
+   ]
+  }
+ }
+}

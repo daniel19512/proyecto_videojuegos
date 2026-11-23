@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="Texture2D" path="res://assets/aldea/glTF/T_RedBrick_BaseColor.png" id="1_x1qvf"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Alimentos/Food_Market/glTF/mdvl_food_loaf_01.glb" id="2_u6ng2"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Mobiliario/Interiors_Furniture/glTF/mdvl_interiors_woodpile_01.glb" id="3_4aht6"]
@@ -1528,3 +1529,7 @@ texto = "[F] Salir"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.6)
 escena_minijuego = ExtResource("m2_pan")
 texto_aviso = "[F] Hornear pan"
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente")]
+script = ExtResource("CicloLuz")
+ambiente = NodePath("../Ambiente")

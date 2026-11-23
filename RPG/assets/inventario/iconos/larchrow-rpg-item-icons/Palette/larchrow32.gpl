@@ -1,0 +1,36 @@
+GIMP Palette
+Name: Larchrow 32
+Columns: 8
+#
+ 18  14  26	outline
+ 42  36  54	ink
+ 70  66  86	slate
+106 104 122	stone
+150 150 162	stone light
+204 204 200	bone
+ 28  58  42	grass deepest
+ 42  92  50	grass dark
+ 68 130  56	grass
+110 168  66	grass light
+168 206  92	grass highlight
+ 66  42  32	earth dark
+104  66  42	earth
+146  98  60	dirt
+184 136  86	dirt light
+212 182 122	sand
+236 214 158	sand light
+ 18  38  82	water deep
+ 30  68 134	water dark
+ 48 108 178	water
+ 92 160 216	water light
+178 222 238	foam
+196 116  50	rust
+226  66  40	flame red
+246 148  42	flame orange
+252 224  98	flame yellow
+140  36  48	dark red
+ 84  46 100	purple
+120  82 140	lilac
+230 118 160	pink
+ 80  96 118	dungeon floor
+255 255 255	white

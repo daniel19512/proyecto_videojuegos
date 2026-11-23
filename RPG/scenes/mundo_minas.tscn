@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="PackedScene" path="res://scenes/minas.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2"]
 [ext_resource type="Script" path="res://scripts/camara_orbital.gd" id="3"]
@@ -51,3 +52,12 @@ marcador_salida = NodePath("../../Minas/Marcadores/RetornoMontanas")
 
 [node name="Detector" type="CollisionShape3D" parent="Region/SalidaMontanas"]
 shape = SubResource("Detector")
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("luz_de_acceso")]
+script = ExtResource("CicloLuz")
+luz_de_acceso = NodePath("../LuzBocamina")
+
+[node name="LuzBocamina" type="OmniLight3D" parent="."]
+position = Vector3(0, 2.25, 0)
+light_energy = 0.0
+omni_range = 5.0

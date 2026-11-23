@@ -1,4 +1,4 @@
-﻿# Estado del proyecto RPG
+# Estado del proyecto RPG
 
 <<<<<<< Updated upstream
 Última revisión: **9 de noviembre de 2026**. Primer minijuego jugable: **pesca junto al puente**, con el primer NPC, **Tomás el pescador**, con diálogo fijo; ambos validados técnicamente y pendientes de prueba jugable del usuario. Fase **4B.7: árboles y vegetación general integrados técnicamente; a la espera de aprobación visual del usuario**. La solicitud confirma 4B.6 aprobado. Sistemas anteriores conservados; protagonista con velocidad temporal 10 y cámara orbital tamaño 15. No iniciar 4B.8 antes de aprobación visual.
@@ -777,3 +777,15 @@ Mantener este documento al completar etapas, cambiar prioridades/estado, detecta
 - Las tres capas de NPC con IA están implementadas; pendiente la revisión jugable del usuario. Sin commits ni pushes.
 - Corrección tras la prueba del usuario («los NPC están quietos»): solo se planificaba al cambiar de franja y el reloj solo se guardaba al cambiar de franja o al cerrar la ventana; parar desde el editor no avisa, así que la hora volvía atrás (la partida del usuario seguía en el segundo 15 del día 1) y nunca llegaba el primer plan. Ahora se planifica al entrar en la aldea o activar la IA si la franja no tiene plan, el reloj se guarda cada 30 s y el planificador pide que al menos dos aldeanos se muevan de mañana a tarde. Arranque real con la clave del usuario: plan en ≈2 s y cuatro de cinco aldeanos en marcha (`RPG/logs/ia_prueba_real_arranque.log`). Pruebas: capa 1, 2 y 3, NPC y pescador, 0 fallos (`RPG/logs/plan_inicial_*.log`, `RPG/logs/validar_ia_capa2_plan_inicial.log`).
 - Los errores «Identifier not found» de autoloads en el editor del usuario se debían a que el editor abierto no relee `project.godot` cuando se edita desde fuera; se resuelven recargando el proyecto.
+
+## Molino E12 y ciclo visual día/noche — 22 de noviembre de 2026
+
+Los doce edificios disponen de interior conectado. E12 incorpora un molino de 6×8, acceso por la puerta oeste, muelas y transmisión animada, tolva y zona de almacenamiento. Los dos sentidos usan el fundido y los marcadores del gestor existente. Véase `RPG/docs/interiores_aldea.md`.
+
+La luz depende del autoload Reloj en las seis regiones y los doce interiores. Minas conserva su iluminación de galerías y solo cambia el aporte de bocamina. El reloj mantiene sus 720 segundos, sus nombres de franja para los NPC y su guardado previo. Diseño y reproducción en `RPG/docs/ciclo_dia_noche.md`.
+
+La base reprodujo dos fallos en distribución. E04 se corrigió en la prueba al esperar la posición y el frenado con el protagonista a 10 u/s. E12 ya permitía llegar a la puerta y volver. La segunda incidencia era el itinerario prefijado contra el mirador, resuelta verificando físicamente el desvío de la misma margen. Aldea pasa con 13.695 muestras y 36 corredores. Se conserva el diagnóstico histórico en las entradas anteriores. Queda pendiente la aprobación artística del usuario.
+
+Validación final en Godot 4.7.2: Aldea, E12 exterior, río/puente, cámara, movimiento en cuatro direcciones, cinco suites de transiciones regionales, NPC y minijuegos pasaron. E01 pasó 225 comprobaciones. E02–E12 pasaron 2.897 comprobaciones, 33 circuitos y 66 viajes. Las tres capas de IA pasaron con simulador; capa 1 usa un perfil aislado para el fixture de persistencia. El ensayo de velocidad que partía del centro de plaza reprodujo dos fallos en la escena base; la repetición por caminos libres alcanzó 10 u/s en las cuatro direcciones y conservó los cuatro bloqueos de E05.
+
+Ciclo: 75 comprobaciones headless y 92 con Forward+/D3D12, todas aprobadas. Galería de 17 PNG en `RPG/logs/e12_ciclo_2026-11-22T22-03-08_2414/galeria.html`. Los registros de cierre están en `RPG/logs/`. La medición gráfica puntual no sustituye una prueba de rendimiento prolongada.

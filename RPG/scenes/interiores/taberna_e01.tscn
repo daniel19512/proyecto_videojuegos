@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Taberna/medv-cafe/fbx/table03.fbx" id="1_f2pin"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Taberna/medv-cafe/fbx/chair01.fbx" id="2_fws43"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Taberna/medv-cafe/fbx/table-candle.fbx" id="3_xfjbn"]
@@ -1427,3 +1428,7 @@ texto = "[F] Salir de la taberna"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, -3.6)
 escena_minijuego = ExtResource("m2_cerveza")
 texto_aviso = "[F] Elaborar cerveza"
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente")]
+script = ExtResource("CicloLuz")
+ambiente = NodePath("../Ambiente")

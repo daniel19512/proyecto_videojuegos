@@ -1,5 +1,5 @@
 extends "res://tests/validar_interior_taberna.gd"
-## Tres circuitos por edificio. Aproximación exterior desde fixture próxima;
+## Tres circuitos por edificio, E02 a E12. Aproximación exterior desde fixture próxima;
 ## recorridos interiores mediante Input y controlador original, sin teletransporte.
 var datos: Array
 var resultados: Array = []
@@ -100,7 +100,11 @@ func comprobar_escena(d: Dictionary) -> void:
 				comprobar(caja.position.x > -dimensiones.x/2-0.12 and caja.end.x < dimensiones.x/2+0.12 and caja.position.z > -dimensiones.y/2-0.12 and caja.end.z < dimensiones.y/2+0.12,d.id+" modelo contenido "+str(n.name))
 	var jugador := current_scene.get_node("Jugador") as CharacterBody3D
 	var origen := jugador.global_transform
-	origen.origin = Vector3(0,0.04,0)
+	if d.id == "E12":
+		# El centro de la sala ocupa la bancada; partir desde el pasillo sur.
+		origen.origin = Vector3(0, 0.04, 1.0)
+	else:
+		origen.origin = Vector3(0, 0.04, 0)
 	comprobar(jugador.test_move(origen,Vector3(dimensiones.x,0,0)),d.id+" pared bloquea capsula")
 	# Cada cuerpo mayor tiene forma física propia; consulta con cápsula en volumen.
 	for cuerpo in current_scene.get_node("Colisiones").get_children():

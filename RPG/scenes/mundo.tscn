@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://8b5rhmh5q8qk"]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="Script" uid="uid://8dy8d4pu1gww" path="res://scripts/mundo.gd" id="1_wqn8j"]
 [ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2_jugador"]
 [ext_resource type="Script" path="res://scripts/camara_orbital.gd" id="3_camara"]
@@ -122,7 +123,7 @@ environment = SubResource("Environment_mundo")
 [node name="Region" type="Node" parent="."]
 script = ExtResource("5_region")
 id_region = &"Aldea"
-entradas = Dictionary[String, NodePath]({"aldea_bosque_norte": NodePath("EntradaBosque"), "aldea_campos_sur": NodePath("EntradaCampos"), "aldea_camino_este": NodePath("EntradaMontanas"), "aldea_taberna_e01": NodePath("EntradaTabernaE01"), "aldea_e02": NodePath("EntradaE02"), "aldea_e03": NodePath("EntradaE03"), "aldea_e04": NodePath("EntradaE04"), "aldea_e05": NodePath("EntradaE05"), "aldea_e06": NodePath("EntradaE06"), "aldea_e07": NodePath("EntradaE07"), "aldea_e08": NodePath("EntradaE08"), "aldea_e09": NodePath("EntradaE09"), "aldea_e10": NodePath("EntradaE10"), "aldea_e11": NodePath("EntradaE11")})
+entradas = Dictionary[String, NodePath]({"aldea_bosque_norte": NodePath("EntradaBosque"), "aldea_campos_sur": NodePath("EntradaCampos"), "aldea_camino_este": NodePath("EntradaMontanas"), "aldea_taberna_e01": NodePath("EntradaTabernaE01"), "aldea_e02": NodePath("EntradaE02"), "aldea_e03": NodePath("EntradaE03"), "aldea_e04": NodePath("EntradaE04"), "aldea_e05": NodePath("EntradaE05"), "aldea_e06": NodePath("EntradaE06"), "aldea_e07": NodePath("EntradaE07"), "aldea_e08": NodePath("EntradaE08"), "aldea_e09": NodePath("EntradaE09"), "aldea_e10": NodePath("EntradaE10"), "aldea_e11": NodePath("EntradaE11"), "aldea_e12": NodePath("EntradaE12")})
 
 [node name="EntradaBosque" type="Marker3D" parent="Region"]
 position = Vector3(0, 0.02, -32)
@@ -290,3 +291,19 @@ position = Vector3(18, 0.003, 21)
 escena_destino = "res://scenes/interiores/vivienda_e11.tscn"
 entrada_destino = "interior_e11"
 texto = "[F] Entrar a la vivienda floral"
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente", "sol")]
+script = ExtResource("CicloLuz")
+ambiente = NodePath("../AmbienteMundo")
+sol = NodePath("../LuzSolar")
+
+[node name="EntradaE12" type="Marker3D" parent="Region"]
+position = Vector3(17.4, 0.02, -10)
+metadata/direccion_visual = "derecha"
+
+[node name="PuertaE12" parent="." instance=ExtResource("7_interior")]
+position = Vector3(17.88, 0.003, -10)
+rotation_degrees = Vector3(0, 90, 0)
+escena_destino = "res://scenes/interiores/molino_e12.tscn"
+entrada_destino = "interior_e12"
+texto = "[F] Entrar al molino"

@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "escena":  "res://scenes/interiores/panaderia_e02.tscn",
         "id":  "E02",
@@ -198,5 +198,14 @@
         "fondo":  6,
         "ancho":  6,
         "diseno":  "vivienda11"
+    },
+    {
+        "escena": "res://scenes/interiores/molino_e12.tscn",
+        "id": "E12",
+        "nombre": "molino",
+        "puerta": [17.88, 0.003, -10],
+        "normal": [-1, 0, 0],
+        "ancho": 6,
+        "fondo": 8
     }
 ]

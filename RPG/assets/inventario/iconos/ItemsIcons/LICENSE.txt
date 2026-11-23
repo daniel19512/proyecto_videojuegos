@@ -1,0 +1,23 @@
+ITEMS & ICONS MEGA PACK - 16x16 Asset Pack
+LICENSE AGREEMENT
+
+By downloading this asset pack you get a non-exclusive, worldwide,
+perpetual license to:
+
+  YOU CAN
+  - Use the assets in unlimited personal and commercial
+    projects (games, apps, videos, prototypes, game jams).
+  - Modify, recolor, cut, combine and edit the assets.
+  - Sell games/products that include the assets, as long as
+    the assets are part of a larger work.
+
+  YOU CANNOT
+  - Resell, share, or redistribute the assets (original or
+    modified) as standalone files, asset packs, tilesets,
+    templates or in any "asset" marketplace.
+  - Claim the assets themselves as your own original art.
+  - Use the assets in NFTs or as AI-training datasets.
+
+Credit in your game is appreciated but not required.
+
+The assets are provided "as is", without warranty of any kind.

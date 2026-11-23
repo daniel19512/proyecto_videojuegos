@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="CicloLuz"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Herreria/LowPolyBlacksmithPack_v1.0/GLB/forge.glb" id="1_um4ul"]
 [ext_resource type="PackedScene" path="res://assets/interiores_medievales/Herreria/LowPolyBlacksmithPack_v1.0/GLB/bellows.glb" id="2_l7tyl"]
 [ext_resource type="PackedScene" path="res://assets/objetos_medievales/glTF/Anvil_Log.gltf" id="3_7q5u1"]
@@ -1275,3 +1276,7 @@ texto = "[F] Salir"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.4)
 escena_minijuego = ExtResource("m2_forja")
 texto_aviso = "[F] Forjar"
+
+[node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente")]
+script = ExtResource("CicloLuz")
+ambiente = NodePath("../Ambiente")

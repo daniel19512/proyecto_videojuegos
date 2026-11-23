@@ -1,4 +1,4 @@
-﻿extends "res://tests/validar_distribucion.gd"
+extends "res://tests/validar_distribucion.gd"
 ## Headless: fisica. Con ventana y -- --capturas: vistas y secuencia temporal fija.
 func validar() -> void:
 	print("VERSION: ",Engine.get_version_info().string)
@@ -10,6 +10,8 @@ func validar() -> void:
 	await esperar(20)
 	consulta.shape = jugador.get_node("ColisionJugador").shape
 	consulta.exclude = [jugador.get_rid()]
+	# Esta fixture mide el puente y los límites, sin cambiar de región.
+	mundo.get_node("Region/SalidaMontanas").monitoring = false
 	await validar_ribera()
 	if "--capturas" in OS.get_cmdline_user_args() and DisplayServer.get_name() != "headless":
 		await capturar_mejoras()
