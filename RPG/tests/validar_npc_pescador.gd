@@ -56,7 +56,7 @@ func validar() -> void:
 	root.add_child(mundo)
 	current_scene = mundo
 	var jugador: CharacterBody3D = mundo.get_node("Jugador")
-	var npc: StaticBody3D = mundo.get_node("NPCs/Pescador")
+	var npc: Node3D = mundo.get_node("NPCs/Pescador")
 	var punto: Node3D = mundo.get_node("Aldea/PuntoPesca")
 	var caja: CanvasLayer = npc.get_node("CajaDialogo")
 	var aviso: Label3D = npc.get_node("Aviso")
@@ -73,7 +73,7 @@ func validar() -> void:
 	consulta.transform = Transform3D(Basis(), npc.global_position + Vector3(0, 0.8, 0))
 	consulta.exclude = [jugador.get_rid()]
 	var golpes := jugador.get_world_3d().direct_space_state.intersect_shape(consulta)
-	comprobar(golpes.any(func(g): return g.collider == npc), "el pescador tiene colision solida")
+	comprobar(golpes.any(func(g): return g.collider == npc.get_node("Cuerpo")), "el pescador tiene colision solida")
 
 	# Zonas separadas: en ninguna posicion se activan ambos avisos a la vez.
 	var solapes := 0
@@ -109,7 +109,9 @@ func validar() -> void:
 	var lineas: PackedStringArray = npc.lineas_dialogo()
 	comprobar(lineas.size() == 2 and "150" in lineas[0] and "40" in lineas[1], "comenta la mejor marca y la ultima partida")
 
-	var nuevo: StaticBody3D = load("res://scenes/npc_pescador.tscn").instantiate()
+	# Tomás es un aldeano con el script del pescador; basta su lógica, fuera del árbol.
+	var nuevo: Node3D = load("res://scenes/npc_aldeano.tscn").instantiate()
+	nuevo.set_script(load("res://scripts/npc/npc_pescador.gd"))
 	nuevo.registrar_partida(-20)
 	comprobar("-20" in nuevo.lineas_dialogo()[0], "una marca negativa tambien se comenta")
 	nuevo.registrar_partida(260)

@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2_jugador"]
 [ext_resource type="Script" path="res://scripts/camara_orbital.gd" id="3_camara"]
 [ext_resource type="PackedScene" path="res://scenes/aldea.tscn" id="4_aldea"]
-[ext_resource type="PackedScene" path="res://scenes/npc_pescador.tscn" id="5_pescador"]
+[ext_resource type="Script" path="res://scripts/npc/npc_pescador.gd" id="5_pescador"]
+[ext_resource type="SpriteFrames" path="res://scenes/npcs/pescador_frames.tres" id="15_f_pescador"]
 
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="5_region"]
 [ext_resource type="Script" path="res://scripts/salida_region.gd" id="6_salida"]
@@ -38,8 +39,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=1902384417]
 
-[node name="Pescador" parent="NPCs" instance=ExtResource("5_pescador")]
+[node name="Pescador" parent="NPCs" instance=ExtResource("8_aldeano")]
+script = ExtResource("5_pescador")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 8)
+id_npc = &"pescador"
+nombre = "Tomás, el pescador"
+frames = ExtResource("15_f_pescador")
+tamano_pixel = 0.0309
+desplazamiento = Vector2(0, 26.91)
 punto_pesca = NodePath("../../Aldea/PuntoPesca")
 
 [node name="RecadoPan" type="Node" parent="NPCs"]

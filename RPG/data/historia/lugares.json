@@ -1,0 +1,19 @@
+{
+	"plaza": {"nombre": "la plaza", "pos": [0, 2]},
+	"bancos": {"nombre": "los bancos de la plaza", "pos": [4, 5.2]},
+	"mercado": {"nombre": "el puesto de fruta del mercado", "pos": [-6, -4]},
+	"pozo": {"nombre": "el pozo", "pos": [3, -4]},
+	"taberna": {"nombre": "la puerta de la taberna", "pos": [-12, -15.2]},
+	"panaderia": {"nombre": "el horno de la panadería", "pos": [5, -19.8]},
+	"herreria": {"nombre": "el patio de la herrería", "pos": [-18, -2]},
+	"carpinteria": {"nombre": "la carpintería", "pos": [-16, 10]},
+	"molino": {"nombre": "la puerta del molino", "pos": [16, -10]},
+	"puente": {"nombre": "el puente, orilla oeste", "pos": [24, -2.5]},
+	"rio": {"nombre": "la orilla de pesca", "pos": [27, 8]},
+	"camino_este": {"nombre": "el camino de las montañas, al otro lado del puente", "pos": [36, -2.5]},
+	"mirador": {"nombre": "el mirador del río", "pos": [37, 6]},
+	"huerto": {"nombre": "el huerto comunitario", "pos": [-28, 16]},
+	"jardin": {"nombre": "el jardín de hierbas", "pos": [18.5, 15]},
+	"entrada_norte": {"nombre": "la salida norte hacia el bosque", "pos": [0, -30]},
+	"entrada_sur": {"nombre": "la salida sur hacia los campos", "pos": [0, 30]}
+}

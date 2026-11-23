@@ -1,43 +1,21 @@
-extends StaticBody3D
-## Pescador junto al rio. Dialogo fijo escrito a mano que comenta las partidas
-## de pesca del jugador. Al hablar pausa el mundo, como los minijuegos.
+extends "res://scripts/npc/npc_aldeano.gd"
+## Tomás, el pescador junto al río: aldeano con diálogo fijo propio que comenta
+## las partidas de pesca del jugador (señal `partida_terminada` del minijuego).
+## Con IA conversa y actúa como los demás; sus partidas quedan como recuerdos.
 
-@export var nombre: String = "Tomás, el pescador"
 ## Punto de pesca cuyas partidas comenta (su hijo MinijuegoPesca).
 @export var punto_pesca: NodePath
 
-var jugador_cerca: bool = false
-var conversaciones: int = 0
 var partidas: int = 0
 var mejor_puntuacion: int = 0
 var ultima_puntuacion: int = 0
 
-@onready var _zona: Area3D = $Zona
-@onready var _aviso: Label3D = $Aviso
-@onready var _caja: CanvasLayer = $CajaDialogo
-
 
 func _ready() -> void:
-	_aviso.visible = false
-	_zona.body_entered.connect(_al_entrar)
-	_zona.body_exited.connect(_al_salir)
-	_caja.cerrado.connect(_al_cerrar_dialogo)
+	super._ready()
 	if not punto_pesca.is_empty():
 		var minijuego: Node = get_node(punto_pesca).get_node("MinijuegoPesca")
 		minijuego.partida_terminada.connect(registrar_partida)
-
-
-func _process(_delta: float) -> void:
-	# Con el arbol en pausa este nodo no se procesa, asi que no reabre la caja.
-	if jugador_cerca and Input.is_action_just_pressed("interactuar"):
-		hablar()
-
-
-func hablar() -> void:
-	_aviso.visible = false
-	get_tree().paused = true
-	_caja.mostrar(nombre, lineas_dialogo())
-	conversaciones += 1
 
 
 func registrar_partida(puntuacion: int) -> void:
@@ -45,6 +23,8 @@ func registrar_partida(puntuacion: int) -> void:
 		mejor_puntuacion = puntuacion
 	ultima_puntuacion = puntuacion
 	partidas += 1
+	# Recuerdo persistente para la conversación con IA (vale también sin ella).
+	Historia.recordar(&"pescador", "El viajero pescó en el río y logró %d puntos." % puntuacion)
 
 
 func lineas_dialogo() -> PackedStringArray:
@@ -69,20 +49,3 @@ func lineas_dialogo() -> PackedStringArray:
 	if partidas > 1 and ultima_puntuacion < mejor_puntuacion:
 		lineas.append("La última vez hiciste %d. Seguro que puedes repetir lo de antes." % ultima_puntuacion)
 	return lineas
-
-
-func _al_cerrar_dialogo() -> void:
-	get_tree().paused = false
-	_aviso.visible = jugador_cerca
-
-
-func _al_entrar(cuerpo: Node3D) -> void:
-	if cuerpo is CharacterBody3D:
-		jugador_cerca = true
-		_aviso.visible = true
-
-
-func _al_salir(cuerpo: Node3D) -> void:
-	if cuerpo is CharacterBody3D:
-		jugador_cerca = false
-		_aviso.visible = false

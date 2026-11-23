@@ -3,6 +3,8 @@ extends "res://scripts/npc/npc_aldeano.gd"
 ## mientras el jugador está en su zona de conversación y lo mira; hace una
 ## pausa breve en cada punto. Se mueve de forma cinemática, sin física, sobre
 ## una ruta que debe ir por suelo libre (los corredores de la aldea).
+## Con IA, patrulla solo con la orden «rutina» y ya de vuelta en su puesto;
+## cualquier otra orden la ejecuta como el resto de aldeanos.
 
 ## Puntos del recorrido en coordenadas del mundo (Y se conserva la del NPC).
 @export var puntos: PackedVector3Array = []
@@ -11,11 +13,17 @@ extends "res://scripts/npc/npc_aldeano.gd"
 
 var indice_destino: int = 0
 var _espera: float = 0.0
-var _caminando: bool = false
+var _patrullando: bool = false
 
 
 func _physics_process(delta: float) -> void:
-	_caminando = false
+	_patrullando = false
+	ultima_posicion = global_position
+	if conversando:
+		return
+	if Aldeanos.activo() and (orden().accion != "rutina" or not orden().llegado):
+		super._physics_process(delta)
+		return
 	if puntos.is_empty() or hablando:
 		return
 	if jugador_cerca:
@@ -39,8 +47,8 @@ func _physics_process(delta: float) -> void:
 		return
 	mirada = resto.normalized()
 	global_position += mirada * paso
-	_caminando = true
+	_patrullando = true
 
 
 func esta_caminando() -> bool:
-	return _caminando
+	return _patrullando or super.esta_caminando()

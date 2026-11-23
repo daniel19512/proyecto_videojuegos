@@ -128,7 +128,7 @@ func validar() -> void:
 	var herrero: Node3D = mundo.get_node("NPCs/Herrero")
 	var guardia: Node3D = mundo.get_node("NPCs/Guardia")
 	var tabernero: Node3D = mundo.get_node("NPCs/Tabernero")
-	var pescador: StaticBody3D = mundo.get_node("NPCs/Pescador")
+	var pescador: Node3D = mundo.get_node("NPCs/Pescador")
 	var recado: Node = mundo.get_node("NPCs/RecadoPan")
 	await esperar(10)
 

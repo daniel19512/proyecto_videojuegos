@@ -1,0 +1,47 @@
+{
+	"mundo": "Aldea medieval pequeña y acogedora junto a un río con puente, molino, taberna, panadería y herrería. El protagonista es un viajero recién llegado que se queda a vivir. No hay combate ni violencia; los conflictos son vecinales y los misterios, leves.",
+	"npcs": {
+		"pescador": {
+			"nombre": "Tomás",
+			"ficha": "Pescador viejo y paciente, junto al puente. Cuenta historias del río, exagera sus capturas y desconfía del molino nuevo."
+		},
+		"panadera": {
+			"nombre": "Marta",
+			"ficha": "Panadera alegre y madrugadora. Lo sabe todo de todos porque todos pasan por su horno. Le falta harina últimamente."
+		},
+		"herrero": {
+			"nombre": "Gonzalo",
+			"ficha": "Herrero callado y orgulloso de su oficio. Habla poco pero ayuda mucho. Guarda una herramienta antigua que no quiere enseñar."
+		},
+		"guardia": {
+			"nombre": "Bruno",
+			"ficha": "Guardia joven y responsable que hace la ronda de la plaza. Se toma muy en serio cualquier rumor y adora el pan de Marta."
+		},
+		"tabernero": {
+			"nombre": "Anselmo",
+			"ficha": "Tabernero bonachón y charlatán. Recoge rumores de los viajeros y siempre tiene una recomendación o un chisme."
+		}
+	},
+	"hilos": [
+		{
+			"id": "harina",
+			"titulo": "La harina que falta",
+			"estado": "abierto",
+			"nota": "A Marta le llegan menos sacos del molino de los que paga. Nadie sabe por qué."
+		},
+		{
+			"id": "pan_bruno",
+			"titulo": "El pan de Bruno",
+			"estado": "abierto",
+			"nota": "Bruno no ha ido a por su pan; Marta busca a alguien que se lo lleve."
+		},
+		{
+			"id": "luces_puente",
+			"titulo": "Luces en el puente",
+			"estado": "abierto",
+			"nota": "Tomás dice haber visto una luz moverse por la noche cerca del puente."
+		}
+	],
+	"resumen": "El viajero acaba de llegar a la aldea. Marta echa en falta harina del molino y busca quien lleve pan a Bruno; Tomás habla de luces nocturnas junto al puente.",
+	"diario": "Llegas a la aldea. La gente parece amable, pero se habla de harina que desaparece y de luces junto al puente."
+}
