@@ -8,15 +8,18 @@ SapientIA es un RPG de simulación de vida medieval desarrollado como proyecto a
 
 ## Descargar SapientIA para Windows (64 bits)
 
-**[Ver GitHub Releases](https://github.com/daniel19512/proyecto_videojuegos/releases)**
+**Versión oficial v1.0.0**
 
-**v1.0.0 · Pendiente de publicación.** El [enlace directo a SapientIA_Windows_x64.zip](https://github.com/daniel19512/proyecto_videojuegos/releases/download/v1.0.0/SapientIA_Windows_x64.zip) estará disponible cuando se publique la versión.
+### Cómo jugar
 
-1. Descarga `SapientIA_Windows_x64.zip` desde **Assets** en GitHub Releases.
-2. Extrae el ZIP completo en una carpeta.
-3. Abre `SapientIA.exe` y elige **Nueva partida**. Mantén `SapientIA.pck` junto al ejecutable.
+1. Descarga el archivo ZIP.
+2. Extrae todos los archivos en una carpeta.
+3. Ejecuta `SapientIA.exe`.
+4. ¡Disfruta de SapientIA!
 
-La descarga incluye todo lo necesario para jugar. Puedes abrirla sin instalar Godot ni herramientas de desarrollo y sin descargar el código fuente. El juego usa Direct3D 12. La publicación está sujeta a los permisos indicados en [Créditos y licencias](CREDITOS_Y_LICENCIAS.md).
+No necesitas instalar Godot ni descargar el código fuente.
+
+[Ver publicación oficial de SapientIA v1.0.0](https://github.com/daniel19512/proyecto_videojuegos/releases/tag/v1.0.0)
 
 ## Qué puedes hacer
 
