@@ -16,18 +16,24 @@ var _fotograma_apertura: int = -1
 @onready var _nombre: Label = $Panel/Nombre
 @onready var _texto: Label = $Panel/Texto
 @onready var _indicador: Label = $Panel/Indicador
+@onready var _retrato: TextureRect = $Panel/Retrato
 
 
 func _ready() -> void:
+	$Panel.add_theme_stylebox_override("panel", $Panel.get_theme_stylebox("panel", "PanelContainer"))
 	visible = false
 
 
-func mostrar(nombre: String, nuevas_lineas: PackedStringArray) -> void:
+func mostrar(nombre: String, nuevas_lineas: PackedStringArray, retrato: Texture2D = null) -> void:
 	if nuevas_lineas.is_empty():
 		return
 	lineas = nuevas_lineas
 	indice = 0
 	_nombre.text = nombre
+	_retrato.texture = retrato
+	_retrato.visible = retrato != null
+	_texto.offset_left = 118.0 if retrato else 22.0
+	_nombre.offset_left = _texto.offset_left
 	_fotograma_apertura = Engine.get_process_frames()
 	abierta = true
 	visible = true
@@ -51,7 +57,7 @@ func _process(delta: float) -> void:
 		return
 	if not linea_completa():
 		var total: int = maxi(_texto.text.length(), 1)
-		_texto.visible_ratio = minf(_texto.visible_ratio + CARACTERES_POR_SEGUNDO * delta / total, 1.0)
+		_texto.visible_ratio = minf(_texto.visible_ratio + CARACTERES_POR_SEGUNDO * Ajustes.valores.dialogo * delta / total, 1.0)
 	_indicador.visible = linea_completa()
 	# La pulsacion que abrio la caja no debe saltar la primera linea.
 	if Engine.get_process_frames() == _fotograma_apertura:
@@ -75,6 +81,6 @@ func _avanzar() -> void:
 
 func _mostrar_linea() -> void:
 	_texto.text = lineas[indice]
-	_texto.visible_ratio = 0.0
-	_indicador.text = "[F] Seguir" if indice < lineas.size() - 1 else "[F] Cerrar"
+	_texto.visible_ratio = 1.0 if Ajustes.valores.instantaneo else 0.0
+	_indicador.text = "[%s] %s" % [Ajustes.indicacion("interactuar"), "Seguir" if indice < lineas.size() - 1 else "Cerrar"]
 	_indicador.visible = false

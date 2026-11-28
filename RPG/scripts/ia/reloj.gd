@@ -1,18 +1,22 @@
 extends Node
-## Autoload `Reloj`: día lógico de 12 min reales en cuatro franjas (mañana,
+## Autoload `Reloj`: día de 30 minutos reales en cuatro franjas (mañana,
 ## mediodía, tarde y noche). Se para con el árbol en pausa (diálogos, menús,
 ## minijuegos). Su estado se guarda dentro de la historia (estado.reloj).
-## No cambia la luz: es solo el ritmo con el que planifican los NPC.
+## También alimenta el ciclo visual y el progreso de los cultivos.
 
 signal franja_cambiada(dia: int, franja: int)
 
-const DURACION_DIA: float = 720.0
+const DURACION_REAL_DIA: float = 1800.0
+const Calendario = preload("res://scripts/ia/calendario.gd")
+const DURACION_DIA: float = Calendario.UNIDADES_DIA
 const FRANJAS: PackedStringArray = ["mañana", "mediodía", "tarde", "noche"]
 ## Guardado periódico: parar el juego desde el editor no avisa al cerrarse.
 const GUARDAR_CADA: float = 30.0
 
 var dia: int = 1
 var segundos: float = 0.0
+## Tiempo lógico acumulado para el mundo jugable, incluso si se reinicia la historia.
+var tiempo_juego: float = 0.0
 ## Multiplicador de velocidad (pruebas).
 var escala: float = 1.0
 var _desde_guardado: float = 0.0
@@ -38,17 +42,27 @@ func descripcion() -> String:
 
 
 func _process(delta: float) -> void:
-	var antes := franja()
-	segundos += delta * escala
+	if GestorRegiones.en_transicion or GestorRegiones.region_actual == &"":
+		return
+	_avanzar(delta * escala * DURACION_DIA / DURACION_REAL_DIA)
 	_desde_guardado += delta
 	if _desde_guardado >= GUARDAR_CADA:
 		_desde_guardado = 0.0
 		guardar()
-	if segundos >= DURACION_DIA:
-		segundos -= DURACION_DIA
-		dia += 1
-		_cambio()
-	elif franja() != antes:
+
+
+func descansar_hasta_manana() -> void:
+	_avanzar(DURACION_DIA - segundos)
+
+
+func _avanzar(avance: float) -> void:
+	var antes := franja()
+	var total := segundos + avance
+	var dias := floori(total / DURACION_DIA)
+	segundos = fposmod(total, DURACION_DIA)
+	tiempo_juego += avance
+	dia += dias
+	if dias > 0 or franja() != antes:
 		_cambio()
 
 

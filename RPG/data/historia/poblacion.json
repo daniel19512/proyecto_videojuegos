@@ -1,0 +1,646 @@
+{
+	"rodrigo": {
+		"nombre": "Rodrigo",
+		"edad": "adulto",
+		"profesion": "Carpintero",
+		"region": "Aldea",
+		"apariencia": 1,
+		"personalidad": "Paciente, práctico y perfeccionista",
+		"historia": "Aprendió a elegir tablones reparando carros.",
+		"habla": "Habla con comparaciones de taller.",
+		"gustos": "madera seca",
+		"disgustos": "cortes apresurados",
+		"intereses": "ensambles y vetas",
+		"trabajo": [
+			-18.5,
+			9.5
+		],
+		"descanso": [
+			-13,
+			8
+		],
+		"paseo": [
+			-12,
+			-13
+		],
+		"horario": [
+			"trabajo",
+			"paseo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "La madera recta se guarda bajo techo.",
+		"relaciones": {
+			"martin": "proveedor",
+			"ines": "vecina y amiga"
+		},
+		"encargo": {
+			"tipo": "producción",
+			"objetivo": "tablas"
+		}
+	},
+	"elias": {
+		"nombre": "Elías",
+		"edad": "adulto",
+		"profesion": "Molinero",
+		"region": "Aldea",
+		"apariencia": 2,
+		"personalidad": "Tranquilo, metódico y responsable",
+		"historia": "Aprendió a escuchar las muelas de su familia.",
+		"habla": "Habla en frases tranquilas y precisas.",
+		"gustos": "harina fina",
+		"disgustos": "costales húmedos",
+		"intereses": "molienda y trigo",
+		"trabajo": [
+			16,
+			-12.5
+		],
+		"descanso": [
+			14,
+			-8
+		],
+		"paseo": [
+			13,
+			-6
+		],
+		"horario": [
+			"paseo",
+			"trabajo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "Para obtener harina fina hay que ajustar bien las muelas.",
+		"relaciones": {
+			"mateo": "proveedor",
+			"panadera": "cliente"
+		},
+		"encargo": {
+			"tipo": "entrega",
+			"objetivo": "trigo"
+		},
+		"visita": "CamposYGranjas"
+	},
+	"ines": {
+		"nombre": "Inés",
+		"edad": "adulta",
+		"profesion": "Herbolaria",
+		"region": "Aldea",
+		"apariencia": 3,
+		"personalidad": "Curiosa, amable y observadora",
+		"historia": "Organizó el herbolario con esquejes regalados por vecinos.",
+		"habla": "Hace preguntas antes de aconsejar.",
+		"gustos": "flores",
+		"disgustos": "plantas arrancadas de raíz",
+		"intereses": "clasificación de hierbas",
+		"trabajo": [
+			18.5,
+			13.5
+		],
+		"descanso": [
+			16.5,
+			15
+		],
+		"paseo": [
+			15,
+			12
+		],
+		"horario": [
+			"trabajo",
+			"trabajo",
+			"paseo",
+			"descanso"
+		],
+		"conoce": "Las hierbas de la entrada del Bosque vuelven a brotar.",
+		"relaciones": {
+			"alba": "colaboradora",
+			"rodrigo": "vecino y amigo"
+		},
+		"encargo": {
+			"tipo": "recolección",
+			"objetivo": "hierbas"
+		},
+		"visita": "Bosque"
+	},
+	"baltasar": {
+		"nombre": "Baltasar",
+		"edad": "adulto mayor",
+		"profesion": "Comerciante",
+		"region": "Aldea",
+		"apariencia": 4,
+		"personalidad": "Sociable, hábil para negociar y atento a rumores",
+		"historia": "Volvió a la Aldea tras acompañar caravanas.",
+		"habla": "Saluda con familiaridad y compara precios.",
+		"gustos": "trueques",
+		"disgustos": "promesas incumplidas",
+		"intereses": "rutas mercantiles",
+		"trabajo": [
+			-6,
+			-4
+		],
+		"descanso": [
+			-9,
+			-14
+		],
+		"paseo": [
+			-6,
+			-7
+		],
+		"horario": [
+			"trabajo",
+			"paseo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "En el Mercado puedes comprar una caña o semillas.",
+		"relaciones": {
+			"samuel": "proveedor",
+			"rodrigo": "cliente"
+		},
+		"encargo": {
+			"tipo": "entrega",
+			"objetivo": "pan"
+		}
+	},
+	"martin": {
+		"nombre": "Martín",
+		"edad": "adulto",
+		"profesion": "Leñador",
+		"region": "Bosque",
+		"apariencia": 5,
+		"personalidad": "Reservado, trabajador y amable",
+		"historia": "Conoce la madera desde que ayudaba a reparar cercas.",
+		"habla": "Usa pocas palabras y ofrece ayuda concreta.",
+		"gustos": "troncos secos",
+		"disgustos": "dañar brotes",
+		"intereses": "árboles y senderos",
+		"trabajo": [
+			6.5,
+			2
+		],
+		"descanso": [
+			4.5,
+			7
+		],
+		"paseo": [
+			5.5,
+			14
+		],
+		"horario": [
+			"paseo",
+			"trabajo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "Con el hacha puedes aprovechar los troncos del claro.",
+		"relaciones": {
+			"rodrigo": "cliente"
+		},
+		"encargo": {
+			"tipo": "recolección",
+			"objetivo": "madera"
+		},
+		"visita": "Aldea"
+	},
+	"alba": {
+		"nombre": "Alba",
+		"edad": "joven adulta",
+		"profesion": "Recolectora",
+		"region": "Bosque",
+		"apariencia": 6,
+		"personalidad": "Alegre, curiosa y aventurera",
+		"historia": "Empezó a llevar un registro de plantas junto al camino.",
+		"habla": "Habla vivazmente y cuenta pequeños detalles.",
+		"gustos": "setas",
+		"disgustos": "cestas mojadas",
+		"intereses": "flores y hierbas",
+		"trabajo": [
+			4,
+			3
+		],
+		"descanso": [
+			5,
+			8
+		],
+		"paseo": [
+			5.5,
+			34
+		],
+		"horario": [
+			"trabajo",
+			"trabajo",
+			"paseo",
+			"descanso"
+		],
+		"conoce": "En el claro hay flores y setas.",
+		"relaciones": {
+			"ines": "colaboradora",
+			"hernan": "conocido"
+		},
+		"encargo": {
+			"tipo": "recolección",
+			"objetivo": "flores"
+		}
+	},
+	"hernan": {
+		"nombre": "Hernán",
+		"edad": "adulto",
+		"profesion": "Guardabosques",
+		"region": "Bosque",
+		"apariencia": 7,
+		"personalidad": "Protector, tranquilo y observador",
+		"historia": "Mantiene transitables las veredas que recorrió de niño.",
+		"habla": "Da indicaciones usando hitos del terreno.",
+		"gustos": "senderos despejados",
+		"disgustos": "atajos sin marcar",
+		"intereses": "accesos y rutas",
+		"trabajo": [
+			4.5,
+			25
+		],
+		"descanso": [
+			-4.5,
+			31
+		],
+		"paseo": [
+			4.5,
+			36
+		],
+		"horario": [
+			"trabajo",
+			"paseo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "El camino del norte lleva a las Ruinas.",
+		"relaciones": {
+			"guardia": "colega",
+			"alba": "vecina"
+		},
+		"encargo": {
+			"tipo": "exploración",
+			"objetivo": "ruinas_mojon"
+		}
+	},
+	"mateo": {
+		"nombre": "Mateo",
+		"edad": "adulto mayor",
+		"profesion": "Agricultor",
+		"region": "CamposYGranjas",
+		"apariencia": 8,
+		"personalidad": "Perseverante, humilde y experimentado",
+		"historia": "Conserva semilla de sus cosechas para la temporada siguiente.",
+		"habla": "Explica con ejemplos de cosechas pasadas.",
+		"gustos": "trigo",
+		"disgustos": "tierra encharcada",
+		"intereses": "rotación de cultivos",
+		"trabajo": [
+			-10.5,
+			-18.5
+		],
+		"descanso": [
+			-11.5,
+			-12.5
+		],
+		"paseo": [
+			-14.5,
+			-8.5
+		],
+		"horario": [
+			"paseo",
+			"trabajo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "El trigo bien regado se cosecha antes que las patatas.",
+		"relaciones": {
+			"elias": "cliente",
+			"panadera": "cliente",
+			"clara": "amiga"
+		},
+		"encargo": {
+			"tipo": "entrega",
+			"objetivo": "trigo"
+		},
+		"visita": "Aldea"
+	},
+	"clara": {
+		"nombre": "Clara",
+		"edad": "adulta",
+		"profesion": "Granjera",
+		"region": "CamposYGranjas",
+		"apariencia": 9,
+		"personalidad": "Alegre, organizada y hospitalaria",
+		"historia": "Aprendió a mantener los bancales de una granja compartida.",
+		"habla": "Invita a probar antes de dar consejos.",
+		"gustos": "zanahorias",
+		"disgustos": "herramientas fuera de lugar",
+		"intereses": "preparación de tierra",
+		"trabajo": [
+			14.5,
+			-8.5
+		],
+		"descanso": [
+			14.5,
+			-10.5
+		],
+		"paseo": [
+			17.5,
+			-8.5
+		],
+		"horario": [
+			"trabajo",
+			"trabajo",
+			"paseo",
+			"descanso"
+		],
+		"conoce": "Antes de sembrar, prepara la tierra con la azada.",
+		"relaciones": {
+			"mateo": "amigo",
+			"samuel": "proveedor"
+		},
+		"encargo": {
+			"tipo": "entrega",
+			"objetivo": "zanahoria"
+		}
+	},
+	"samuel": {
+		"nombre": "Samuel",
+		"edad": "joven adulto",
+		"profesion": "Comerciante de semillas",
+		"region": "CamposYGranjas",
+		"apariencia": 10,
+		"personalidad": "Conversador, optimista y curioso",
+		"historia": "Abrió el puesto cuando los vecinos empezaron a intercambiar semillas.",
+		"habla": "Ofrece alternativas y explica para qué sirve cada semilla.",
+		"gustos": "nuevas variedades",
+		"disgustos": "sacos sin etiqueta",
+		"intereses": "semillas y precios",
+		"trabajo": [
+			-4.5,
+			-17.5
+		],
+		"descanso": [
+			-8.5,
+			-14.5
+		],
+		"paseo": [
+			-9.5,
+			-12.5
+		],
+		"horario": [
+			"trabajo",
+			"paseo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "Mi puesto vende semillas de trigo, zanahoria y patata.",
+		"relaciones": {
+			"mateo": "cliente",
+			"clara": "clienta",
+			"baltasar": "proveedor"
+		},
+		"encargo": {
+			"tipo": "entrega",
+			"objetivo": "semilla_patata"
+		}
+	},
+	"esteban": {
+		"nombre": "Esteban",
+		"edad": "adulto",
+		"profesion": "Cantero",
+		"region": "Montanas",
+		"apariencia": 11,
+		"personalidad": "Serio, paciente y resistente",
+		"historia": "Ha seleccionado piedra para muros y dinteles de la Aldea.",
+		"habla": "Responde despacio con términos de cantería.",
+		"gustos": "piedra firme",
+		"disgustos": "cantos quebradizos",
+		"intereses": "materiales de construcción",
+		"trabajo": [
+			-48.5,
+			52.5
+		],
+		"descanso": [
+			-46.5,
+			52.5
+		],
+		"paseo": [
+			-47.5,
+			53.5
+		],
+		"horario": [
+			"paseo",
+			"trabajo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "En el valle hay piedra y vetas de carbón cerca del camino.",
+		"relaciones": {
+			"herrero": "cliente",
+			"aurora": "conocida"
+		},
+		"encargo": {
+			"tipo": "recolección",
+			"objetivo": "piedra"
+		}
+	},
+	"aurora": {
+		"nombre": "Aurora",
+		"edad": "adulta",
+		"profesion": "Exploradora",
+		"region": "Montanas",
+		"apariencia": 12,
+		"personalidad": "Aventurera, curiosa e independiente",
+		"historia": "Cartografía los miradores por los que pasaban los convoyes.",
+		"habla": "Describe rutas usando direcciones breves.",
+		"gustos": "miradores",
+		"disgustos": "mapas sin referencias",
+		"intereses": "senderos de altura",
+		"trabajo": [
+			18.5,
+			34.5
+		],
+		"descanso": [
+			14.5,
+			34.5
+		],
+		"paseo": [
+			20.5,
+			34.5
+		],
+		"horario": [
+			"trabajo",
+			"trabajo",
+			"paseo",
+			"descanso"
+		],
+		"conoce": "El mirador conserva una marca de las rutas antiguas.",
+		"relaciones": {
+			"hernan": "colega",
+			"octavio": "colaborador"
+		},
+		"encargo": {
+			"tipo": "exploración",
+			"objetivo": "mirador_antiguo"
+		}
+	},
+	"diego": {
+		"nombre": "Diego",
+		"edad": "adulto",
+		"profesion": "Minero",
+		"region": "Minas",
+		"apariencia": 13,
+		"personalidad": "Trabajador, amigable y bromista",
+		"historia": "Entró como aprendiz y ahora reconoce el mineral por su veta.",
+		"habla": "Bromea sobre el polvo y explica con sencillez.",
+		"gustos": "hierro",
+		"disgustos": "picos mellados",
+		"intereses": "veta y carbón",
+		"trabajo": [
+			7.5,
+			-41.5
+		],
+		"descanso": [
+			4.5,
+			-38.5
+		],
+		"paseo": [
+			7.5,
+			-39.5
+		],
+		"horario": [
+			"trabajo",
+			"paseo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "Lleva un pico para el hierro y el cobre de la galería.",
+		"relaciones": {
+			"herrero": "cliente",
+			"ramiro": "colega"
+		},
+		"encargo": {
+			"tipo": "recolección",
+			"objetivo": "hierro"
+		}
+	},
+	"ramiro": {
+		"nombre": "Ramiro",
+		"edad": "adulto mayor",
+		"profesion": "Capataz",
+		"region": "Minas",
+		"apariencia": 14,
+		"personalidad": "Organizado, responsable y exigente",
+		"historia": "Lleva la cuenta de los turnos y cargas de mineral.",
+		"habla": "Habla como si repasara una lista de trabajo.",
+		"gustos": "herramientas cuidadas",
+		"disgustos": "cargas sin registrar",
+		"intereses": "rutas y galerías",
+		"trabajo": [
+			-3.5,
+			-8.5
+		],
+		"descanso": [
+			-4.5,
+			-11.5
+		],
+		"paseo": [
+			-3.5,
+			-15.5
+		],
+		"horario": [
+			"paseo",
+			"trabajo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "El carbón de la bocamina sirve de combustible para la fragua.",
+		"relaciones": {
+			"diego": "colega",
+			"herrero": "cliente"
+		},
+		"encargo": {
+			"tipo": "entrega",
+			"objetivo": "carbon"
+		}
+	},
+	"octavio": {
+		"nombre": "Octavio",
+		"edad": "adulto mayor",
+		"profesion": "Historiador",
+		"region": "Ruinas",
+		"apariencia": 15,
+		"personalidad": "Reflexivo, culto y algo distraído",
+		"historia": "Compara inscripciones con las cuentas antiguas del mercado.",
+		"habla": "Se corrige al citar una inscripción de memoria.",
+		"gustos": "registros antiguos",
+		"disgustos": "deducciones sin pruebas",
+		"intereses": "historia del comercio",
+		"trabajo": [
+			-8.5,
+			16.5
+		],
+		"descanso": [
+			-10.5,
+			15.5
+		],
+		"paseo": [
+			4.5,
+			20.5
+		],
+		"horario": [
+			"trabajo",
+			"trabajo",
+			"paseo",
+			"descanso"
+		],
+		"conoce": "Las cuentas de los graneros relacionan el trigo con la harina y las herramientas.",
+		"relaciones": {
+			"aurora": "colaboradora",
+			"leonor": "colega"
+		},
+		"encargo": {
+			"tipo": "investigación",
+			"objetivo": "ruinas_registro"
+		}
+	},
+	"leonor": {
+		"nombre": "Leonor",
+		"edad": "adulta",
+		"profesion": "Arqueóloga",
+		"region": "Ruinas",
+		"apariencia": 16,
+		"personalidad": "Curiosa, entusiasta y meticulosa",
+		"historia": "Documenta los restos de los antiguos puestos de paso.",
+		"habla": "Distingue con cuidado hallazgos de hipótesis.",
+		"gustos": "objetos bien documentados",
+		"disgustos": "reliquias sin procedencia",
+		"intereses": "excavaciones e inscripciones",
+		"trabajo": [
+			3.5,
+			1.5
+		],
+		"descanso": [
+			4.5,
+			6.5
+		],
+		"paseo": [
+			4.5,
+			11.5
+		],
+		"horario": [
+			"trabajo",
+			"paseo",
+			"trabajo",
+			"descanso"
+		],
+		"conoce": "En el puesto de pesaje se puede examinar una ficha de arcilla.",
+		"relaciones": {
+			"octavio": "colega"
+		},
+		"encargo": {
+			"tipo": "investigación",
+			"objetivo": "ruinas_ficha"
+		}
+	}
+}

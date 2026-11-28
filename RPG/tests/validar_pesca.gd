@@ -141,7 +141,11 @@ func validar_integracion() -> void:
 	jugador.global_position = punto.global_position + Vector3(-0.6, 0.5, 0)
 	await esperar(20)
 	comprobar(jugador.is_on_floor(), "el jugador se apoya en suelo junto al punto")
-	comprobar(punto.jugador_cerca and aviso.visible, "al acercarse aparece el aviso [F] Pescar")
+	comprobar(punto.jugador_cerca and aviso.visible, "al acercarse aparece el aviso [F/A] Pescar")
+	await pulsar(&"interactuar")
+	comprobar(not paused and not minijuego.visible, "sin caña no se inicia la pesca")
+	var bolsa: GDScript = load("res://scripts/vida/bolsa.gd")
+	bolsa.anadir(bolsa.jugador(), "cana", 1)
 
 	await pulsar(&"interactuar")
 	comprobar(paused and minijuego.visible, "F abre el minijuego y pausa el mundo")

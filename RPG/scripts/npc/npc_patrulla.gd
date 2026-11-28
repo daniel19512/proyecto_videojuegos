@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	ultima_posicion = global_position
 	if conversando:
 		return
-	if Aldeanos.activo() and (orden().accion != "rutina" or not orden().llegado):
+	if orden().accion != "rutina" or not orden().llegado:
 		super._physics_process(delta)
 		return
 	if puntos.is_empty() or hablando:
@@ -40,6 +40,9 @@ func _physics_process(delta: float) -> void:
 	destino.y = global_position.y
 	var resto := destino - global_position
 	var paso := velocidad * delta
+	if _ocupa_persona(global_position + resto.limit_length(paso)):
+		_espera = espera_en_punto
+		return
 	if resto.length() <= paso:
 		global_position = destino
 		indice_destino = (indice_destino + 1) % puntos.size()

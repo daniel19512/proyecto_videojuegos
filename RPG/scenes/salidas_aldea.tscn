@@ -54,13 +54,19 @@ rotation_degrees = Vector3(0, 0, 90)
 mesh = SubResource("Arrow")
 material_override = SubResource("WoodLight")
 [node name="Rotulo" type="Label3D" parent="SalidaBosqueNorte/Senal"]
-position = Vector3(-0.55, 1.31, 0.07)
-billboard = 1
-no_depth_test = true
+position = Vector3(-0.55, 1.31, 0.063)
 text = "BOSQUE"
 font_size = 38
-pixel_size = 0.008
-outline_size = 6
+pixel_size = 0.007
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
+[node name="RotuloReverso" type="Label3D" parent="SalidaBosqueNorte/Senal"]
+position = Vector3(-0.55, 1.31, -0.063)
+rotation_degrees = Vector3(0, 180, 0)
+text = "BOSQUE"
+font_size = 38
+pixel_size = 0.007
+outline_size = 3
 modulate = Color(0.93, 0.82, 0.58, 1)
 [node name="Piedra1" type="MeshInstance3D" parent="SalidaBosqueNorte"]
 position = Vector3(-2.45, 0.07, -34.6)
@@ -102,13 +108,19 @@ rotation_degrees = Vector3(0, 0, 90)
 mesh = SubResource("Arrow")
 material_override = SubResource("WoodLight")
 [node name="Rotulo" type="Label3D" parent="SalidaCamposSur/Senal"]
-position = Vector3(-0.55, 1.31, 0.07)
-billboard = 1
-no_depth_test = true
-text = "CAMPOS"
-font_size = 38
-pixel_size = 0.008
-outline_size = 6
+position = Vector3(-0.55, 1.31, 0.063)
+text = "CAMPOS Y GRANJAS"
+font_size = 32
+pixel_size = 0.0048
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
+[node name="RotuloReverso" type="Label3D" parent="SalidaCamposSur/Senal"]
+position = Vector3(-0.55, 1.31, -0.063)
+rotation_degrees = Vector3(0, 180, 0)
+text = "CAMPOS Y GRANJAS"
+font_size = 32
+pixel_size = 0.0048
+outline_size = 3
 modulate = Color(0.93, 0.82, 0.58, 1)
 [node name="Piedra1" type="MeshInstance3D" parent="SalidaCamposSur"]
 position = Vector3(-2.2, 0.07, 35)
@@ -151,13 +163,19 @@ rotation_degrees = Vector3(0, 0, 90)
 mesh = SubResource("Arrow")
 material_override = SubResource("WoodLight")
 [node name="Rotulo" type="Label3D" parent="SalidaCaminoEste/Senal"]
-position = Vector3(-0.55, 1.31, -0.07)
-billboard = 1
-no_depth_test = true
-text = "MONTANAS"
+position = Vector3(-0.55, 1.31, 0.063)
+text = "MONTAÑAS"
 font_size = 34
 pixel_size = 0.007
-outline_size = 6
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
+[node name="RotuloReverso" type="Label3D" parent="SalidaCaminoEste/Senal"]
+position = Vector3(-0.55, 1.31, -0.063)
+rotation_degrees = Vector3(0, 180, 0)
+text = "MONTAÑAS"
+font_size = 34
+pixel_size = 0.007
+outline_size = 3
 modulate = Color(0.93, 0.82, 0.58, 1)
 [node name="Piedra1" type="MeshInstance3D" parent="SalidaCaminoEste"]
 position = Vector3(38, 0.07, -2.45)

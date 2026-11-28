@@ -7,6 +7,14 @@
 
 [ext_resource type="PackedScene" path="res://scenes/laguna_bosque.tscn" id="4_laguna"]
 
+[sub_resource type="StandardMaterial3D" id="MaterialContinuidad"]
+albedo_color = Color(0.23, 0.32, 0.16, 1)
+roughness = 0.98
+
+[sub_resource type="PlaneMesh" id="Continuidad"]
+material = SubResource("MaterialContinuidad")
+size = Vector2(150, 150)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_jsrwp"]
 size = Vector3(1.0637599, 3, 0.25)
 
@@ -151,6 +159,10 @@ metadata/fase = "6A.1"
 metadata/limites = Rect2(-50, -50, 100, 100)
 
 [node name="Terreno" type="Node3D" parent="." unique_id=1344924250]
+
+[node name="Continuidad" type="MeshInstance3D" parent="Terreno"]
+position = Vector3(0, 0.05, 0)
+mesh = SubResource("Continuidad")
 
 [node name="Superficie" type="MeshInstance3D" parent="Terreno" unique_id=593051970]
 mesh = ExtResource("1_bcm3e")

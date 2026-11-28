@@ -1,2 +1,5 @@
 # Configuración local de VS Code
 .vscode/settings.json
+
+# Distribución local para GitHub Releases
+/Distribucion/

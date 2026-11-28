@@ -1,7 +1,6 @@
 extends Node
 ## Recado de ejemplo entre NPCs: la panadera pide llevar una hogaza al guardia
-## y luego da las gracias. El estado solo dura la sesión (como la memoria de
-## Tomás); no hay inventario: la hogaza es implícita en el estado.
+## y luego da las gracias. La hogaza del encargo es implícita en su fase guardada.
 
 signal estado_cambiado(estado: Estado)
 
@@ -11,6 +10,10 @@ enum Estado { SIN_EMPEZAR, LLEVANDO_PAN, ENTREGADO, COMPLETADO }
 @export var id_destinatario: StringName = &"guardia"
 
 var estado: Estado = Estado.SIN_EMPEZAR
+
+
+func _ready() -> void:
+	estado = clampi(int(EstadoMundo.objeto("Aldea", "recado_pan").get("fase", 0)), 0, 3) as Estado
 
 
 ## Líneas del recado para ese NPC, avanzando el estado si corresponde.
@@ -29,8 +32,11 @@ func lineas_para(id_npc: StringName) -> PackedStringArray:
 				return PackedStringArray(["Bruno estará patrullando alrededor de la plaza. ¡Que no se enfríe la hogaza!"])
 			Estado.ENTREGADO:
 				_cambiar(Estado.COMPLETADO)
+				EstadoMundo.datos.monedas += 12
+				Misiones.reconocer_recado()
+				EstadoMundo.guardar_actual()
 				return PackedStringArray([
-					"¿Ya se la diste? ¡Muchas gracias!",
+					"¿Ya se la diste? ¡Muchas gracias! Aquí tienes 12 monedas.",
 					"Vuelve cuando quieras: siempre habrá algo recién horneado para ti.",
 				])
 	elif id_npc == id_destinatario and estado == Estado.LLEVANDO_PAN:
@@ -44,4 +50,5 @@ func lineas_para(id_npc: StringName) -> PackedStringArray:
 
 func _cambiar(nuevo: Estado) -> void:
 	estado = nuevo
+	EstadoMundo.objeto("Aldea", "recado_pan").fase = int(estado)
 	estado_cambiado.emit(estado)

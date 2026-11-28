@@ -27,6 +27,13 @@ func _ready() -> void:
 	imagen.generate_mipmaps()
 	material.set_shader_parameter("mascara", ImageTexture.create_from_image(imagen))
 	aldea.get_node("Terreno/Suelo/MallaSuelo").material_override = material
+	var continuidad := aldea.get_node_or_null("Terreno/Continuidad") as MeshInstance3D
+	if continuidad:
+		continuidad.material_override = material
+	var colinas := aldea.get_node_or_null("Terreno/ColinasRibera")
+	if colinas:
+		for colina in colinas.get_children():
+			colina.material_override = material
 	for grupo in ["Caminos", "Plaza", "Parcelas", "Jardines", "Reservas"]:
 		for nodo in aldea.get_node(grupo).find_children("*", "GeometryInstance3D", true, false):
 			if nodo.name == "Marca" or nodo is Label3D:

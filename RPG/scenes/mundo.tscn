@@ -32,11 +32,49 @@ ambient_light_source = 2
 ambient_light_color = Color(0.72, 0.77, 0.85, 1)
 ambient_light_energy = 0.6
 
+[sub_resource type="StandardMaterial3D" id="MaderaCasa"]
+albedo_color = Color(0.28, 0.16, 0.075, 1)
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="TablaCasa"]
+size = Vector3(2.05, 0.36, 0.11)
+
+[sub_resource type="BoxMesh" id="PosteCasa"]
+size = Vector3(0.15, 1.42, 0.15)
+
 [node name="Mundo" type="Node3D" unique_id=872652748]
 script = ExtResource("1_wqn8j")
 
 [node name="Aldea" parent="." unique_id=517062927 instance=ExtResource("4_aldea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CartelCasa" type="MeshInstance3D" parent="."]
+position = Vector3(-20.45, 1.42, -21.22)
+rotation_degrees = Vector3(0, 90, 0)
+mesh = SubResource("TablaCasa")
+material_override = SubResource("MaderaCasa")
+
+[node name="Poste" type="MeshInstance3D" parent="CartelCasa"]
+position = Vector3(0, -0.72, 0)
+mesh = SubResource("PosteCasa")
+material_override = SubResource("MaderaCasa")
+
+[node name="Rotulo" type="Label3D" parent="CartelCasa"]
+position = Vector3(0, 0, 0.057)
+text = "Casa de Viajero"
+font_size = 32
+pixel_size = 0.006
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
+
+[node name="Reverso" type="Label3D" parent="CartelCasa"]
+position = Vector3(0, 0, -0.057)
+rotation_degrees = Vector3(0, 180, 0)
+text = "Casa de Viajero"
+font_size = 32
+pixel_size = 0.006
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=1902384417]
 
@@ -235,7 +273,7 @@ position = Vector3(-21, 0.003, -22.987)
 rotation_degrees = Vector3(0, 90, 0)
 escena_destino = "res://scenes/interiores/vivienda_e06.tscn"
 entrada_destino = "interior_e06"
-texto = "[F] Entrar a la vivienda del noroeste"
+texto = "[F] Entrar a tu casa"
 
 [node name="EntradaE07" type="Marker3D" parent="Region"]
 position = Vector3(17.70, 0.02, -24.35)

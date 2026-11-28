@@ -31,7 +31,7 @@ func _jugar(delta: float) -> void:
 
 
 func _texto_instrucciones() -> String:
-	return "Elige la boca del horno con A/D o las flechas y saca la hogaza con F.\nDorada: +%d. Cruda: %d. Quemada: %d.\nSi la dejas demasiado, se carboniza sola." % [
+	return "Elige la boca con A/D, flechas o stick. Saca la hogaza con F o A.\nDorada: +%d. Cruda: %d. Quemada: %d.\nSi la dejas demasiado, se carboniza sola." % [
 		LogicaPan.PUNTOS_DORADO, LogicaPan.PUNTOS_CRUDO, LogicaPan.PUNTOS_QUEMADO]
 
 

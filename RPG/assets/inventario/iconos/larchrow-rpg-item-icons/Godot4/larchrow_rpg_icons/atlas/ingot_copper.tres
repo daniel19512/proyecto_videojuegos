@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3]
-
-[ext_resource type="Texture2D" path="res://larchrow_rpg_icons/larchrow_rpg_icons_16x16.png" id="1_sheet"]
-
-[resource]
-atlas = ExtResource("1_sheet")
-region = Rect2(176, 176, 16, 16)

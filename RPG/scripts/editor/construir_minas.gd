@@ -75,11 +75,13 @@ func decoracion() -> void:
 	# Final del ramal abandonado: derrumbe sÃ³lido, filÃ³n integrado detrÃ¡s.
 	for i in 4: caja(profunda,"Derrumbe",punto(Vector2(-28+i,-76))+Vector3.UP*.6,Vector3(1.2,1.2,1.1),roca,true)
 	var cartel := Label3D.new()
-	cartel.text = "MONTAÃ‘AS  â†‘"
-	cartel.position = Vector3(3.4,2.4,6.8)
-	cartel.font_size = 32
-	cartel.pixel_size = .012
-	cartel.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	cartel.text = "MONTAÑAS"
+	cartel.position = Vector3(3.4,1.8,6.922)
+	cartel.rotation.y = PI
+	cartel.font_size = 36
+	cartel.pixel_size = .007
+	cartel.outline_size = 3
+	cartel.modulate = Color(0.93, 0.82, 0.58)
 	entrada.add_child(cartel)
 	caja(entrada,"TablillaSalida",Vector3(3.4,1.8,7),Vector3(2.7,.7,.15),madera)
 	caja(entrada,"PosteCartel",Vector3(3.4,.8,7),Vector3(.18,1.6,.18),madera,true)

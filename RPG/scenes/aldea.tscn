@@ -80,6 +80,13 @@ material = SubResource("MaterialSuelo")
 size = Vector3(80, 0.5, 72)
 [sub_resource type="BoxShape3D" id="FormaSuelo"]
 size = Vector3(80, 0.5, 72)
+[sub_resource type="PlaneMesh" id="ContinuidadSuelo"]
+material = SubResource("MaterialSuelo")
+size = Vector2(136, 128)
+[sub_resource type="SphereMesh" id="ColinaRibera"]
+material = SubResource("MaterialSuelo")
+radial_segments = 12
+rings = 5
 [sub_resource type="BoxShape3D" id="Horizontal"]
 size = Vector3(80.4, 3, 0.2)
 [sub_resource type="BoxShape3D" id="Vertical"]
@@ -90,6 +97,26 @@ script = ExtResource("DepuracionParcelas")
 metadata/etapa = 2
 metadata/tamano_terreno = Vector2(80, 72)
 [node name="Terreno" type="Node3D" parent="."]
+[node name="Continuidad" type="MeshInstance3D" parent="Terreno"]
+position = Vector3(0, -0.012, 0)
+mesh = SubResource("ContinuidadSuelo")
+[node name="ColinasRibera" type="Node3D" parent="Terreno"]
+[node name="NorteOeste" type="MeshInstance3D" parent="Terreno/ColinasRibera"]
+position = Vector3(21, -2, -54)
+scale = Vector3(15, 7, 13)
+mesh = SubResource("ColinaRibera")
+[node name="NorteEste" type="MeshInstance3D" parent="Terreno/ColinasRibera"]
+position = Vector3(43, -2, -58)
+scale = Vector3(25, 9, 16)
+mesh = SubResource("ColinaRibera")
+[node name="SurOeste" type="MeshInstance3D" parent="Terreno/ColinasRibera"]
+position = Vector3(22, -2, 53)
+scale = Vector3(15, 7, 12)
+mesh = SubResource("ColinaRibera")
+[node name="SurEste" type="MeshInstance3D" parent="Terreno/ColinasRibera"]
+position = Vector3(39, -2, 59)
+scale = Vector3(24, 8, 16)
+mesh = SubResource("ColinaRibera")
 [node name="AcabadoTerreno" type="Node" parent="."]
 script = ExtResource("TerrenoVisual")
 [node name="Suelo" type="StaticBody3D" parent="Terreno"]

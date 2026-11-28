@@ -29,6 +29,8 @@ var _textos: Array[Dictionary] = []
 var _tiempo_visual: float = 0.0
 var _fotograma_apertura: int = -1
 var sonido: ReproductorSonidos
+var _resultado_oficio := false
+var _confirmacion_raton := false
 
 @onready var _area: Control = $Marco/AreaJuego
 @onready var _puntos: Label = $Marco/Puntos
@@ -38,7 +40,14 @@ var sonido: ReproductorSonidos
 
 func _ready() -> void:
 	visible = false
+	var tema := load("res://scenes/presentacion/sapientia.tres") as Theme
+	$Marco.add_theme_stylebox_override("panel", tema.get_stylebox("panel", "PanelContainer"))
+	var titulo := $Marco.get_node_or_null("Titulo") as Label
+	if titulo:
+		titulo.theme_type_variation = &"Titulo"
 	_area.draw.connect(_dibujar_area)
+	_mensaje.mouse_filter = Control.MOUSE_FILTER_STOP
+	_mensaje.gui_input.connect(_confirmar_con_raton)
 	sonido = ReproductorSonidos.new()
 	sonido.name = "Sonido"
 	sonido.sonidos = sonidos_comunes()
@@ -47,6 +56,8 @@ func _ready() -> void:
 
 
 func abrir() -> void:
+	_resultado_oficio = false
+	_confirmacion_raton = false
 	logica = _crear_logica()
 	_textos.clear()
 	_fotograma_apertura = Engine.get_process_frames()
@@ -74,10 +85,14 @@ func _process(delta: float) -> void:
 		cerrar()
 		return
 	var confirmar: bool = nueva_pulsacion and (
-		Input.is_action_just_pressed("interactuar") or Input.is_action_just_pressed("ui_accept")
+		Input.is_action_just_pressed("interactuar") or Input.is_action_just_pressed("ui_accept") or _confirmacion_raton
 	)
+	_confirmacion_raton = false
 	match estado:
 		Estado.INSTRUCCIONES, Estado.RESULTADO:
+			if confirmar and _resultado_oficio:
+				cerrar()
+				return
 			if confirmar:
 				logica = _crear_logica()
 				_textos.clear()
@@ -100,7 +115,7 @@ func _cambiar_estado(nuevo: Estado) -> void:
 	estado = nuevo
 	match estado:
 		Estado.INSTRUCCIONES:
-			_mensaje.text = _texto_instrucciones() + "\n\n[F] Empezar     [Esc] Salir"
+			_mensaje.text = _texto_instrucciones() + "\n\n[F/A/Clic] Empezar     [Esc/B] Salir"
 		Estado.JUGANDO:
 			_mensaje.text = ""
 			sonido.reproducir(&"empezar")
@@ -129,7 +144,7 @@ func _dibujar_area() -> void:
 	if logica == null:
 		return
 	_dibujar()
-	var fuente: Font = ThemeDB.fallback_font
+	var fuente: Font = _mensaje.get_theme_default_font()
 	for texto in _textos:
 		var valor: int = texto.puntos
 		var cadena: String = ("+%d" if valor > 0 else "%d") % valor
@@ -140,7 +155,7 @@ func _dibujar_area() -> void:
 
 ## Texto con contorno sobre el área de juego.
 func escribir(pos: Vector2, cadena: String, tamano: int, color: Color, ancho: float = -1, alineacion := HORIZONTAL_ALIGNMENT_LEFT) -> void:
-	var fuente: Font = ThemeDB.fallback_font
+	var fuente: Font = _mensaje.get_theme_default_font()
 	_area.draw_string_outline(fuente, pos, cadena, alineacion, ancho, tamano, 4, Color(0, 0, 0, color.a))
 	_area.draw_string(fuente, pos, cadena, alineacion, ancho, tamano, color)
 
@@ -186,3 +201,16 @@ func _texto_resultado() -> String:
 
 func _dibujar() -> void:
 	pass
+
+func _confirmar_con_raton(evento: InputEvent) -> void:
+	if evento is InputEventMouseButton and evento.pressed and evento.button_index == MOUSE_BUTTON_LEFT:
+		_confirmacion_raton = true
+
+
+func mostrar_resultado_oficio(mensaje: String) -> void:
+	_resultado_oficio = true
+	var resumen := _texto_resultado()
+	if not resumen.is_empty():
+		resumen += "\n"
+	_mensaje.text = "Puntuación: %d\n%s\n%s\n\n[F/A/Clic] Continuar    [Esc/B] Salir" % [
+		logica.puntuacion, resumen, mensaje]

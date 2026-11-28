@@ -1828,11 +1828,19 @@ size = Vector3(5, 0.12, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lbcsn"]
 size = Vector3(5, 0.12, 4)
 
+[sub_resource type="PlaneMesh" id="ContinuidadRoca"]
+size = Vector2(170, 180)
+
 [node name="Minas" type="Node3D" unique_id=1843325384]
 script = ExtResource("1_0begl")
 superficies = Array[ShaderMaterial]([SubResource("ShaderMaterial_hgk35"), SubResource("ShaderMaterial_33nvw")])
 
 [node name="TerrenoYTuneles" type="Node3D" parent="." unique_id=416663356]
+
+[node name="ContinuidadRoca" type="MeshInstance3D" parent="TerrenoYTuneles"]
+position = Vector3(0, -15.5, -48)
+material_override = SubResource("ShaderMaterial_hgk35")
+mesh = SubResource("ContinuidadRoca")
 
 [node name="SueloExcavado" type="MeshInstance3D" parent="TerrenoYTuneles" unique_id=591335543]
 material_override = SubResource("ShaderMaterial_er5nq")
@@ -2489,10 +2497,13 @@ transform = Transform3D(0.41136637, 0, 0, 0, 0.41136637, 0, 0, 0, 0.41136637, 2,
 transform = Transform3D(1.001986, 0, 0, 0, 1.001986, 0, 0, 0, 1.001986, 4.0038757, 0.49485174, -3)
 
 [node name="@Label3D@445" type="Label3D" parent="ZonaA_Entrada" unique_id=1240818130]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 2.4, 6.8)
-pixel_size = 0.012
-billboard = 1
-text = "MONTAÃ‘AS  â†‘"
+position = Vector3(3.4, 1.8, 6.922)
+rotation_degrees = Vector3(0, 180, 0)
+pixel_size = 0.007
+text = "MONTAÑAS"
+font_size = 36
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
 
 [node name="TablillaSalida" type="MeshInstance3D" parent="ZonaA_Entrada" unique_id=1094985082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 1.8, 7)

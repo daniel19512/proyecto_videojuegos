@@ -3,23 +3,160 @@
 	"npcs": {
 		"pescador": {
 			"nombre": "Tomás",
-			"ficha": "Pescador viejo y paciente, junto al puente. Cuenta historias del río, exagera sus capturas y desconfía del molino nuevo."
+			"ficha": "Pescador viejo y paciente, junto al puente. Cuenta historias del río, exagera sus capturas y desconfía del molino nuevo.",
+			"edad": "adulto mayor",
+			"profesion": "Pescador",
+			"region": "Aldea",
+			"apariencia": "res://scenes/npcs/pescador_frames.tres",
+			"trabajo": "rio",
+			"paseo": "puente",
+			"descanso": "rio",
+			"horario": [
+				"trabajo",
+				"trabajo",
+				"paseo",
+				"descanso"
+			],
+			"gustos": "Historias del río",
+			"disgustos": "Ruido junto al agua",
+			"intereses": "Pesca y corrientes",
+			"historia": "Aprendió a pescar junto al puente.",
+			"habla": "Cuenta anécdotas y deja pausas.",
+			"conoce": "Pesca y corrientes",
+			"relaciones": {
+				"guardia": "conocido",
+				"tabernero": "amigo"
+			},
+			"encargo": {
+				"tipo": "recolección",
+				"objetivo": "pescado"
+			}
 		},
 		"panadera": {
 			"nombre": "Marta",
-			"ficha": "Panadera alegre y madrugadora. Lo sabe todo de todos porque todos pasan por su horno. Le falta harina últimamente."
+			"ficha": "Panadera alegre y madrugadora. Lo sabe todo de todos porque todos pasan por su horno. Le falta harina últimamente.",
+			"edad": "adulta",
+			"profesion": "Panadera",
+			"region": "Aldea",
+			"apariencia": "res://scenes/npcs/panadera_frames.tres",
+			"trabajo": "panaderia",
+			"paseo": "bancos",
+			"descanso": "panaderia",
+			"horario": [
+				"trabajo",
+				"trabajo",
+				"paseo",
+				"descanso"
+			],
+			"gustos": "Pan recién hecho",
+			"disgustos": "Sacos que llegan tarde",
+			"intereses": "Panadería y molienda",
+			"historia": "Trabaja en el horno que heredó de su familia.",
+			"habla": "Saluda con entusiasmo y recuerda los encargos.",
+			"conoce": "Panadería y molienda",
+			"relaciones": {
+				"guardia": "cliente",
+				"elias": "proveedor",
+				"mateo": "proveedor"
+			},
+			"encargo": {
+				"tipo": "producción",
+				"objetivo": "pan"
+			}
 		},
 		"herrero": {
 			"nombre": "Gonzalo",
-			"ficha": "Herrero callado y orgulloso de su oficio. Habla poco pero ayuda mucho. Guarda una herramienta antigua que no quiere enseñar."
+			"ficha": "Herrero callado y orgulloso de su oficio. Habla poco pero ayuda mucho. Guarda una herramienta antigua que no quiere enseñar.",
+			"edad": "adulto",
+			"profesion": "Herrero",
+			"region": "Aldea",
+			"apariencia": "res://scenes/npcs/herrero_frames.tres",
+			"trabajo": "herreria",
+			"paseo": "pozo",
+			"descanso": "herreria",
+			"horario": [
+				"trabajo",
+				"trabajo",
+				"paseo",
+				"descanso"
+			],
+			"gustos": "Herramientas bien cuidadas",
+			"disgustos": "Mangos flojos",
+			"intereses": "Forja y minerales",
+			"historia": "Le gusta enseñar su oficio a quien pregunta.",
+			"habla": "Habla poco y da consejos concretos.",
+			"conoce": "Forja y minerales",
+			"relaciones": {
+				"diego": "proveedor",
+				"ramiro": "proveedor",
+				"rodrigo": "colega"
+			},
+			"encargo": {
+				"tipo": "producción",
+				"objetivo": "lingote"
+			}
 		},
 		"guardia": {
 			"nombre": "Bruno",
-			"ficha": "Guardia joven y responsable que hace la ronda de la plaza. Se toma muy en serio cualquier rumor y adora el pan de Marta."
+			"ficha": "Guardia joven y responsable que hace la ronda de la plaza. Se toma muy en serio cualquier rumor y adora el pan de Marta.",
+			"edad": "joven adulto",
+			"profesion": "Guardia",
+			"region": "Aldea",
+			"apariencia": "res://scenes/npcs/guardia_frames.tres",
+			"trabajo": "plaza",
+			"paseo": "plaza",
+			"descanso": "plaza",
+			"horario": [
+				"trabajo",
+				"trabajo",
+				"paseo",
+				"descanso"
+			],
+			"gustos": "Pan de Marta",
+			"disgustos": "Rumores sin comprobar",
+			"intereses": "Caminos y señales",
+			"historia": "Se hizo cargo de la ronda de la plaza.",
+			"habla": "Habla con seriedad y da direcciones.",
+			"conoce": "Caminos y señales",
+			"relaciones": {
+				"panadera": "conocida",
+				"hernan": "colega"
+			},
+			"encargo": {
+				"tipo": "exploración",
+				"objetivo": "camino_este"
+			}
 		},
 		"tabernero": {
 			"nombre": "Anselmo",
-			"ficha": "Tabernero bonachón y charlatán. Recoge rumores de los viajeros y siempre tiene una recomendación o un chisme."
+			"ficha": "Tabernero bonachón y charlatán. Recoge rumores de los viajeros y siempre tiene una recomendación o un chisme.",
+			"edad": "adulto",
+			"profesion": "Tabernero",
+			"region": "Aldea",
+			"apariencia": "res://scenes/npcs/tabernero_frames.tres",
+			"trabajo": "taberna",
+			"paseo": "mercado",
+			"descanso": "taberna",
+			"horario": [
+				"trabajo",
+				"trabajo",
+				"paseo",
+				"descanso"
+			],
+			"gustos": "Conversaciones de sobremesa",
+			"disgustos": "Jarras vacías",
+			"intereses": "Cerveza y noticias del mercado",
+			"historia": "Conoce a viajeros de las cuatro rutas.",
+			"habla": "Habla con familiaridad y alguna broma.",
+			"conoce": "Cerveza y noticias del mercado",
+			"relaciones": {
+				"pescador": "amigo",
+				"baltasar": "cliente"
+			},
+			"encargo": {
+				"tipo": "producción",
+				"objetivo": "cerveza"
+			}
 		}
 	},
 	"hilos": [

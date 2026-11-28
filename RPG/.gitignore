@@ -1,24 +1,28 @@
-# Godot 4
+﻿# Godot
 .godot/
 .android/
- /android/
+/android/
 
-# Archivos temporales
+# Registros y temporales locales
+/logs/
+*.log
 *.tmp
 *.bak
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# Python - futuro backend de NPCs
-__pycache__/
-*.pyc
-.venv/
-
-# Variables de entorno y claves API
+# Datos de usuario y credenciales
 .env
 .env.*
 !.env.example
-
-# Recursos locales: conservar los assets originales fuera de Git.
-#/assets/
-
-# Registros temporales de pruebas y validaciones
-/logs/
+/ia.cfg
+/opciones.cfg
+/partidas/
+*.save
+*.save.bak
+export_credentials.cfg
+*.pem
+*.key
+*.pfx
+*.p12

@@ -1,0 +1,213 @@
+[gd_resource type="Theme" load_steps=11 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fuentes/Alegreya/Alegreya-Regular.ttf" id="1"]
+[ext_resource type="FontFile" path="res://assets/fuentes/Cinzel/Cinzel-Regular.ttf" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.2196, 0.1765, 0.1373, 0.97)
+border_color = Color(0.7255, 0.6039, 0.3490, 1)
+content_margin_left = 14.0
+border_width_left = 2
+content_margin_top = 14.0
+border_width_top = 2
+content_margin_right = 14.0
+border_width_right = 2
+content_margin_bottom = 14.0
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="normal"]
+bg_color = Color(0.2863, 0.2157, 0.1529, 1)
+border_color = Color(0.5294, 0.4314, 0.2745, 1)
+content_margin_left = 8.0
+border_width_left = 1
+content_margin_top = 8.0
+border_width_top = 1
+content_margin_right = 8.0
+border_width_right = 1
+content_margin_bottom = 8.0
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="hover"]
+bg_color = Color(0.3804, 0.4510, 0.2941, 1)
+border_color = Color(0.8471, 0.7373, 0.4706, 1)
+content_margin_left = 8.0
+border_width_left = 2
+content_margin_top = 8.0
+border_width_top = 2
+content_margin_right = 8.0
+border_width_right = 2
+content_margin_bottom = 8.0
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="pressed"]
+bg_color = Color(0.5333, 0.3020, 0.2510, 1)
+border_color = Color(0.9020, 0.8392, 0.7098, 1)
+content_margin_left = 8.0
+border_width_left = 2
+content_margin_top = 8.0
+border_width_top = 2
+content_margin_right = 8.0
+border_width_right = 2
+content_margin_bottom = 8.0
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="focus"]
+bg_color = Color(0.2196, 0.1765, 0.1373, 0)
+border_color = Color(1.0000, 0.8863, 0.6275, 1)
+content_margin_left = 8.0
+border_width_left = 3
+content_margin_top = 8.0
+border_width_top = 3
+content_margin_right = 8.0
+border_width_right = 3
+content_margin_bottom = 8.0
+border_width_bottom = 3
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="disabled"]
+bg_color = Color(0.2000, 0.1725, 0.1529, 1)
+border_color = Color(0.4039, 0.3412, 0.2667, 1)
+content_margin_left = 8.0
+border_width_left = 1
+content_margin_top = 8.0
+border_width_top = 1
+content_margin_right = 8.0
+border_width_right = 1
+content_margin_bottom = 8.0
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="field"]
+bg_color = Color(0.1373, 0.1098, 0.0863, 1)
+border_color = Color(0.5294, 0.4314, 0.2745, 1)
+content_margin_left = 8.0
+border_width_left = 1
+content_margin_top = 8.0
+border_width_top = 1
+content_margin_right = 8.0
+border_width_right = 1
+content_margin_bottom = 8.0
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="papel"]
+bg_color = Color(0.9020, 0.8392, 0.7098, 1)
+border_color = Color(0.7255, 0.6039, 0.3490, 1)
+content_margin_left = 14.0
+border_width_left = 2
+content_margin_top = 14.0
+border_width_top = 2
+content_margin_right = 14.0
+border_width_right = 2
+content_margin_bottom = 14.0
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[resource]
+default_font = ExtResource("1")
+default_font_size = 20
+Button/colors/font_color = Color(0.9569, 0.9020, 0.7882, 1)
+Button/colors/font_hover_color = Color(0.9569, 0.9020, 0.7882, 1)
+Button/colors/font_focus_color = Color(0.9569, 0.9020, 0.7882, 1)
+Button/colors/font_pressed_color = Color(0.9569, 0.9020, 0.7882, 1)
+Button/colors/font_disabled_color = Color(0.6745, 0.6078, 0.5216, 1)
+Button/styles/normal = SubResource("normal")
+Button/styles/hover = SubResource("hover")
+Button/styles/pressed = SubResource("pressed")
+Button/styles/focus = SubResource("focus")
+Button/styles/disabled = SubResource("disabled")
+OptionButton/colors/font_color = Color(0.9569, 0.9020, 0.7882, 1)
+OptionButton/colors/font_hover_color = Color(0.9569, 0.9020, 0.7882, 1)
+OptionButton/colors/font_focus_color = Color(0.9569, 0.9020, 0.7882, 1)
+OptionButton/colors/font_pressed_color = Color(0.9569, 0.9020, 0.7882, 1)
+OptionButton/colors/font_disabled_color = Color(0.6745, 0.6078, 0.5216, 1)
+OptionButton/styles/normal = SubResource("normal")
+OptionButton/styles/hover = SubResource("hover")
+OptionButton/styles/pressed = SubResource("pressed")
+OptionButton/styles/focus = SubResource("focus")
+OptionButton/styles/disabled = SubResource("disabled")
+CheckButton/colors/font_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckButton/colors/font_hover_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckButton/colors/font_focus_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckButton/colors/font_pressed_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckButton/colors/font_disabled_color = Color(0.6745, 0.6078, 0.5216, 1)
+CheckButton/styles/normal = SubResource("normal")
+CheckButton/styles/hover = SubResource("hover")
+CheckButton/styles/pressed = SubResource("pressed")
+CheckButton/styles/focus = SubResource("focus")
+CheckButton/styles/disabled = SubResource("disabled")
+CheckBox/colors/font_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckBox/colors/font_hover_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckBox/colors/font_focus_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckBox/colors/font_pressed_color = Color(0.9569, 0.9020, 0.7882, 1)
+CheckBox/colors/font_disabled_color = Color(0.6745, 0.6078, 0.5216, 1)
+CheckBox/styles/normal = SubResource("normal")
+CheckBox/styles/hover = SubResource("hover")
+CheckBox/styles/pressed = SubResource("pressed")
+CheckBox/styles/focus = SubResource("focus")
+CheckBox/styles/disabled = SubResource("disabled")
+LineEdit/colors/font_color = Color(0.9569, 0.9020, 0.7882, 1)
+LineEdit/colors/font_hover_color = Color(0.9569, 0.9020, 0.7882, 1)
+LineEdit/colors/font_focus_color = Color(0.9569, 0.9020, 0.7882, 1)
+LineEdit/colors/font_pressed_color = Color(0.9569, 0.9020, 0.7882, 1)
+LineEdit/colors/font_disabled_color = Color(0.6745, 0.6078, 0.5216, 1)
+LineEdit/styles/normal = SubResource("field")
+LineEdit/styles/focus = SubResource("focus")
+LineEdit/styles/read_only = SubResource("disabled")
+Label/colors/font_color = Color(0.9569, 0.9020, 0.7882, 1)
+RichTextLabel/colors/default_color = Color(0.9569, 0.9020, 0.7882, 1)
+Titulo/base_type = &"Label"
+Titulo/fonts/font = ExtResource("2")
+Titulo/colors/font_color = Color(1.0000, 0.8745, 0.6235, 1)
+TituloMenu/base_type = &"Button"
+TituloMenu/fonts/font = ExtResource("2")
+TituloMenu/colors/font_color = Color(1.0000, 0.8745, 0.6235, 1)
+TituloMenu/colors/font_hover_color = Color(1.0000, 0.8745, 0.6235, 1)
+TituloMenu/colors/font_focus_color = Color(1.0000, 0.8745, 0.6235, 1)
+TituloMenu/colors/font_pressed_color = Color(1.0000, 0.8745, 0.6235, 1)
+TituloMenu/colors/font_disabled_color = Color(0.6745, 0.6078, 0.5216, 1)
+Tinta/base_type = &"Label"
+Tinta/colors/font_color = Color(0.2196, 0.1765, 0.1373, 1)
+TituloTinta/base_type = &"Label"
+TituloTinta/fonts/font = ExtResource("2")
+TituloTinta/colors/font_color = Color(0.2196, 0.1765, 0.1373, 1)
+PanelContainer/styles/panel = SubResource("panel")
+Pergamino/base_type = &"PanelContainer"
+Pergamino/styles/panel = SubResource("papel")
+PopupMenu/styles/panel = SubResource("panel")
+PopupMenu/styles/hover = SubResource("hover")
+Window/styles/embedded_border = SubResource("panel")
+Window/styles/embedded_unfocused_border = SubResource("panel")
+VBoxContainer/constants/separation = 8
+HBoxContainer/constants/separation = 10
+GridContainer/constants/h_separation = 6
+GridContainer/constants/v_separation = 6
+

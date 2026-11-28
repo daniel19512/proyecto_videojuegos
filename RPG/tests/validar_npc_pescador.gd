@@ -90,13 +90,15 @@ func validar() -> void:
 	await esperar(15)
 	comprobar(npc.jugador_cerca and aviso.visible and not punto.jugador_cerca, "junto al pescador aparece solo [F] Hablar")
 	await pulsar(&"interactuar")
-	comprobar(paused and caja.visible and caja.indice == 0, "F abre el dialogo en la primera linea y pausa el mundo")
+	await pulsar(&"ui_accept")
+	comprobar(paused and caja.visible and caja.indice == 0, "F abre las opciones y A/Intro inicia el diálogo")
 	comprobar(caja.lineas.size() == 3 and "Tomás" in caja.lineas[0], "presentacion de tres lineas")
 	var vistas := await leer_todo(caja)
 	comprobar(vistas == 3 and not caja.abierta and not paused, "F recorre las tres lineas, cierra y quita la pausa")
 	comprobar(aviso.visible, "el aviso reaparece al cerrar")
 
 	await pulsar(&"interactuar")
+	await pulsar(&"ui_accept")
 	comprobar(caja.lineas.size() == 1 and "probado" in caja.lineas[0], "sin partidas, segunda visita recuerda la red")
 	await pulsar(&"ui_cancel")
 	comprobar(not caja.abierta and not paused, "Esc cierra el dialogo")
@@ -118,13 +120,15 @@ func validar() -> void:
 	comprobar("260" in nuevo.lineas_dialogo()[0] and nuevo.lineas_dialogo().size() == 1, "marca alta sin comentario de ultima partida")
 	nuevo.free()
 
+	var bolsa: GDScript = load("res://scripts/vida/bolsa.gd")
+	bolsa.anadir(bolsa.jugador(), "cana", 1)
 	# Flujo real: una partida completa del minijuego llega al pescador.
 	jugador.global_position = punto.global_position + Vector3(-0.6, 0.5, 0)
 	await esperar(15)
 	await pulsar(&"interactuar")
 	await pulsar(&"interactuar")
 	minijuego.logica.puntuacion = 230
-	minijuego.logica.tiempo_restante = 0.01
+	minijuego.logica.tiempo_restante = 0.0
 	await process_frame
 	await process_frame
 	await pulsar(&"ui_cancel")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c5d8v3ilch2w3"
+path="res://.godot/imported/9. Sorrow’s Edge  .ogg-f1060eb90f7fc886c80d1cf3c92bd8c2.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/musica/alkakrab/9. Sorrow’s Edge  .ogg"
+dest_files=["res://.godot/imported/9. Sorrow’s Edge  .ogg-f1060eb90f7fc886c80d1cf3c92bd8c2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

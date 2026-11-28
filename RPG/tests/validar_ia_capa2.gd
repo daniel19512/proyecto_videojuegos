@@ -35,9 +35,6 @@ func esperar(n: int) -> void:
 
 
 func simular(mensajes: Array, esquema: Dictionary) -> Dictionary:
-	# Los encuentros (capa 3) se prueban aparte: aquí se usa la plantilla.
-	if esquema.properties.has("aprende_a"):
-		return {}
 	if esquema.properties.has("planes"):
 		llamadas_plan.append(mensajes)
 		var por_npc := {}
@@ -153,7 +150,7 @@ func validar() -> void:
 	comprobar(llamadas_plan.size() == 1, "con la franja ya planificada no se repite la llamada")
 	var usuario: String = llamadas_plan[0][1].content
 	comprobar("Lugares:" in usuario and "plaza (la plaza)" in usuario and "herrero (Gonzalo)" in usuario and "Ahora: rutina." in usuario and "día 1, mañana" in usuario, "el planificador recibe momento, lugares y aldeanos")
-	var esquema_plan: Dictionary = PromptsIA.esquema_planificador(historia.premisa.npcs.keys())
+	var esquema_plan: Dictionary = PromptsIA.esquema_planificador(historia.ids_originales)
 	comprobar(esquema_plan.properties.planes.required.size() == 5 and esquema_plan.properties.planes.properties.has("guardia"), "el esquema exige un plan por aldeano")
 	comprobar(aldeanos.estado_de(&"pescador").accion == "rutina", "un lugar inexistente se convierte en rutina")
 	comprobar(aldeanos.estado_de(&"panadera").accion == "ir" and not aldeanos.estado_de(&"panadera").llegado, "la panadera recibe su orden")
@@ -162,11 +159,16 @@ func validar() -> void:
 	var llega := await esperar_hasta(func(): return aldeanos.estado_de(&"panadera").llegado)
 	comprobar(llega and plano(npc("Panadera").global_position).distance_to(plano(pos_lugar("plaza"))) < 1.0, "la panadera llega a la plaza")
 	var encuentro := await esperar_hasta(func(): return aldeanos.estado_de(&"herrero").llegado)
+	if not encuentro:
+		print("Herrero detenido en ", npc("Herrero").global_position, "; ruta ", npc("Herrero")._ruta, "; paso ", npc("Herrero")._paso)
 	comprobar(encuentro and plano(npc("Herrero").global_position).distance_to(plano(npc("Tabernero").global_position)) <= aldeanos.DISTANCIA_ENCUENTRO + 0.3, "el herrero llega hasta el tabernero")
-	comprobar(historia.estado.hechos.any(func(h): return "Gonzalo fue a hablar con Anselmo" in h), "el encuentro queda como hecho para el narrador")
+	var social: Dictionary = root.get_node("EstadoMundo").objeto("@poblacion", "@social")
+	comprobar(social.get("hechos", []).any(func(h): return "Gonzalo habló con Anselmo" in h.texto), "el encuentro queda en el historial social")
 	var hallado := await esperar_hasta(func(): return aldeanos.estado_de(&"guardia").llegado)
 	var guardia := npc("Guardia")
-	comprobar(hallado and guardia.jugador_cerca and guardia.get_node("Aviso").visible and guardia.get_node("Aviso").text == "[F] Hablar", "el guardia encuentra al viajero y ofrece hablar")
+	if not hallado:
+		print("Guardia detenido en ", guardia.global_position, "; ruta ", guardia._ruta, "; paso ", guardia._paso)
+	comprobar(hallado and guardia.jugador_cerca and guardia.get_node("Aviso").visible and guardia.get_node("Aviso").text.begins_with("[F] Hablar"), "el guardia encuentra al viajero y ofrece hablar")
 	jugador.global_position = Vector3(0, 0.05, -3)
 	await esperar(10)
 	comprobar(guardia.get_node("Aviso").visible and guardia.get_node("Aviso").text == "¡!", "si el viajero se aleja, el guardia muestra «¡!» y espera")

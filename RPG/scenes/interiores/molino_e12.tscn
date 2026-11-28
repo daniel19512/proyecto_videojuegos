@@ -18,6 +18,9 @@
 [ext_resource type="Script" path="res://scripts/interiores/puerta_interior.gd" id="16_iti8j"]
 [ext_resource type="Script" path="res://scripts/ciclo_dia_noche.gd" id="17_gxdpb"]
 
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/punto_minijuego.tscn" id="OficioPunto"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/minijuego_molienda.tscn" id="OficioPanel"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vapn8"]
 albedo_color = Color(0.16, 0.105, 0.065, 1)
 roughness = 0.92
@@ -1586,6 +1589,12 @@ script = ExtResource("16_iti8j")
 escena_destino = "res://scenes/mundo.tscn"
 entrada_destino = "aldea_e12"
 texto = "[F] Salir del molino"
+
+[node name="PuntoMinijuego" parent="." instance=ExtResource("OficioPunto")]
+position = Vector3(0.2, 0, 0.9)
+estacion = "molienda"
+escena_minijuego = ExtResource("OficioPanel")
+texto_aviso = "[F/A] Muelas del molino"
 
 [node name="CicloDiaNoche" type="Node" parent="." unique_id=264003267 node_paths=PackedStringArray("ambiente", "luz_de_acceso")]
 script = ExtResource("17_gxdpb")

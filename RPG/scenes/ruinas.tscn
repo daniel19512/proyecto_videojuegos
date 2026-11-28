@@ -16,7 +16,7 @@ render_priority = 0
 shader = ExtResource("1_fhtju")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0rd35"]
-size = Vector3(80, 0.6, 80)
+size = Vector3(116, 0.6, 116)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vk7m8"]
 size = Vector3(80, 0.6, 80)

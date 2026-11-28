@@ -495,7 +495,14 @@ func construir() -> void:
 	label.font_size = 32
 	label.pixel_size = .0038
 	label.position = Vector3(.5,1.61,.09)
+	label.outline_size = 3
+	label.modulate = Color(0.93, 0.82, 0.58)
 	cartel.add_child(label)
+	var reverso := label.duplicate() as Label3D
+	reverso.position.z = -.078
+	reverso.rotation.y = PI
+	reverso.text = "ALDEA"
+	cartel.add_child(reverso)
 	var principal := grupo(mapa,"GranjaPrincipal")
 	edificio(principal,"Granero",Vector2(-12,-24),8,10,true)
 	edificio(principal,"CasaGranjero",Vector2(10,-25),4,6)

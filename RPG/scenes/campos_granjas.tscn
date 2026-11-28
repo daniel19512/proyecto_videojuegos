@@ -8075,6 +8075,16 @@ mesh = SubResource("BoxMesh_y0nvn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.61, 0.09)
 pixel_size = 0.0038
 text = "CAMPOS Y GRANJAS"
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
+
+[node name="RotuloReverso" type="Label3D" parent="Entrada/Cartel"]
+position = Vector3(0.5, 1.61, -0.078)
+rotation_degrees = Vector3(0, 180, 0)
+pixel_size = 0.0038
+text = "ALDEA"
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
 
 [node name="GranjaPrincipal" type="Node3D" parent="." unique_id=1934074471]
 

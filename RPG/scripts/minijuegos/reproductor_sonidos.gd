@@ -22,6 +22,7 @@ var _cache: Dictionary = {}
 func _ready() -> void:
 	for i in CANALES:
 		var canal := AudioStreamPlayer.new()
+		canal.bus = "Efectos"
 		canal.volume_db = VOLUMEN_DB
 		add_child(canal)
 		_canales.append(canal)

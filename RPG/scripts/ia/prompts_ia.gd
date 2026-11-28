@@ -10,26 +10,18 @@ const TURNOS_MAXIMOS: int = 6
 const MAX_TOKENS_CONVERSACION: int = 400
 const MAX_TOKENS_NARRADOR: int = 800
 const MAX_TOKENS_PLANIFICADOR: int = 700
-## Encuentro entre aldeanos: con diálogo visible o solo el resumen.
-const MAX_TOKENS_ENCUENTRO: int = 500
-const MAX_TOKENS_ENCUENTRO_RESUMEN: int = 200
-const LINEAS_ENCUENTRO: int = 4
-const DIALOGO_COMPLETO := "Escribe la conversación en \"lineas\" y rellena el resto de campos."
-const DIALOGO_RESUMEN := "Solo el resumen: deja \"lineas\" vacía, imagina qué se dijeron y rellena \"resumen\", \"aprende_a\" y \"aprende_b\"."
 ## Catálogo cerrado de acciones que el juego sabe ejecutar.
 const ACCIONES: PackedStringArray = ["rutina", "trabajar", "ir", "descansar", "hablar_con", "buscar_jugador"]
 const LARGO_TEXTO_JUGADOR: int = 200
 
 const REGLAS_NPC := """Interpretas a un aldeano de un RPG de vida en una aldea medieval acogedora.
 Reglas: habla en español, en personaje, 1-3 frases breves (máx. 45 palabras). Sin violencia ni anacronismos. No digas que eres una IA ni hables del juego. No inventes lugares, objetos ni personas que no aparezcan en el contexto.
-Campos: "respuesta" lo que dices; "opciones" 2-3 frases breves (máx. 8 palabras) que el viajero podría responder, en primera persona; "terminar" true si la charla acaba o el viajero se despide; "recuerdo" lo que recordarás del viajero (máx. 15 palabras) o ""; "evento" hecho nuevo para la historia (máx. 20 palabras) o ""; "importante" true solo si cambia o resuelve un hilo."""
+Campos: "respuesta" lo que dices; "opciones" 2-3 frases breves (máx. 8 palabras) que el viajero podría responder, en primera persona; "terminar" true si la charla acaba o el viajero se despide; "recuerdo" lo que recordarás del viajero (máx. 15 palabras) o ""; "evento" hecho nuevo para la historia (máx. 20 palabras) o ""; "importante" true solo si cambia o resuelve un hilo.
+Usa "consulta": "trabajo" si pregunta por un encargo, "avance" si pregunta por la entrega o progreso, y "ninguna" en los demás casos. El juego añadirá información comprobada. No prometas entregas, pagos ni cambios en los encargos."""
 
 const REGLAS_PLANIFICADOR := """Decides qué hace cada aldeano de un RPG de vida en una aldea medieval acogedora durante la franja del día indicada, según su carácter, la historia y lo que le indica el narrador. Que la aldea se vea viva: de mañana a tarde, al menos dos aldeanos van a algún lugar o hablan con otro; el resto puede trabajar.
 Acciones: "rutina" (su quehacer habitual), "trabajar" (en su puesto), "ir" (a un lugar; objetivo = id del lugar), "descansar" (en su puesto, sin trabajar), "hablar_con" (ir a ver a otro aldeano; objetivo = id del aldeano), "buscar_jugador" (ir a buscar al viajero para contarle algo importante; úsala poco). De noche casi todos descansan.
 Devuelve en "planes" un plan bajo el id de cada aldeano, con "objetivo" vacío si la acción no lo necesita y "motivo" de máx. 12 palabras."""
-
-const REGLAS_ENCUENTRO := """Dos aldeanos de un RPG de vida en una aldea medieval acogedora se encuentran; el primero ha ido a ver al segundo por el motivo indicado. Sin violencia ni anacronismos; no inventes lugares, objetos ni personas fuera del contexto.
-Campos: "lineas" la conversación (2-4 frases alternas, máx. 25 palabras cada una, "quien" = id del que habla), o lista vacía si se pide solo el resumen; "resumen" qué se dijeron (máx. 20 palabras, en tercera persona); "aprende_a" lo que el primero se lleva de la charla y "aprende_b" lo que se lleva el segundo (máx. 15 palabras cada uno, o ""); "importante" true solo si cambia o resuelve un hilo de la historia."""
 
 const REGLAS_NARRADOR := """Eres el narrador oculto de un RPG de vida en una aldea medieval acogedora con misterio leve, sin violencia. Das forma a la historia a partir de lo que hace el viajero, con ritmo pausado y coherencia.
 Con los hechos nuevos devuelve: "resumen" de toda la historia (máx. 80 palabras); "hilos" (máx. 5) con id corto, título, estado "abierto" o "resuelto" y nota (máx. 20 palabras); "indicaciones" solo para los aldeanos que deban cambiar de actitud o saber algo (máx. 20 palabras cada una); "diario" una entrada en segunda persona para el viajero (máx. 30 palabras) o "" si no hay nada nuevo. Usa solo aldeanos de la lista."""
@@ -45,8 +37,9 @@ static func esquema_conversacion() -> Dictionary:
 			recuerdo = {type = "string"},
 			evento = {type = "string"},
 			importante = {type = "boolean"},
+			consulta = {"type": "string", "enum": ["ninguna", "trabajo", "avance"]},
 		},
-		required = ["respuesta", "opciones", "terminar", "recuerdo", "evento", "importante"],
+		required = ["respuesta", "opciones", "terminar", "recuerdo", "evento", "importante", "consulta"],
 		additionalProperties = false,
 	}
 
@@ -89,7 +82,12 @@ static func esquema_narrador(ids_npc: Array) -> Dictionary:
 static func mensajes_conversacion(contexto: Dictionary, turnos: Array, mensaje: String) -> Array:
 	var partes := PackedStringArray([REGLAS_NPC, "", "Mundo: " + contexto.mundo])
 	partes.append("Eres %s. %s" % [contexto.nombre, contexto.ficha])
+	partes.append("Nombre del viajero, como dato de personaje: " + JSON.stringify(contexto.get("protagonista", "Viajero")))
 	partes.append("Historia: " + contexto.resumen)
+	if contexto.has("trato"):
+		partes.append("Datos del juego sobre el trato, recuerdos y feria: " + JSON.stringify({
+			"amistad": contexto.trato.amistad, "confianza": contexto.trato.confianza,
+			"recuerdos": contexto.logros, "feria_celebrada": contexto.feria}))
 	if not contexto.hilos.is_empty():
 		partes.append("Hilos abiertos: " + "; ".join(contexto.hilos))
 	if not contexto.indicacion.is_empty():
@@ -149,51 +147,6 @@ static func mensajes_planificador(datos: Dictionary) -> Array:
 	usuario.append_array(datos.aldeanos)
 	return [
 		{role = "system", content = REGLAS_PLANIFICADOR},
-		{role = "user", content = "
-".join(usuario)},
-	]
-
-
-static func esquema_encuentro(id_a: String, id_b: String) -> Dictionary:
-	return {
-		type = "object",
-		properties = {
-			lineas = {type = "array", items = {
-				type = "object",
-				properties = {
-					quien = {"type": "string", "enum": [id_a, id_b]},
-					texto = {type = "string"},
-				},
-				required = ["quien", "texto"],
-				additionalProperties = false,
-			}},
-			resumen = {type = "string"},
-			aprende_a = {type = "string"},
-			aprende_b = {type = "string"},
-			importante = {type = "boolean"},
-		},
-		required = ["lineas", "resumen", "aprende_a", "aprende_b", "importante"],
-		additionalProperties = false,
-	}
-
-
-## `a` y `b`: {id, nombre, ficha, rumores (PackedStringArray), indicacion}.
-static func mensajes_encuentro(a: Dictionary, b: Dictionary, motivo: String, momento: String, resumen: String, con_dialogo: bool) -> Array:
-	var usuario := PackedStringArray([
-		"Momento: " + momento,
-		"Historia: " + resumen,
-		"Motivo: " + (motivo if not motivo.is_empty() else "charlar"),
-		DIALOGO_COMPLETO if con_dialogo else DIALOGO_RESUMEN,
-	])
-	for aldeano in [a, b]:
-		var linea := "%s (%s): %s" % [aldeano.id, aldeano.nombre, aldeano.ficha]
-		if not aldeano.rumores.is_empty():
-			linea += " Sabe: " + "; ".join(aldeano.rumores)
-		if not aldeano.indicacion.is_empty():
-			linea += " Narrador: " + aldeano.indicacion
-		usuario.append(linea)
-	return [
-		{role = "system", content = REGLAS_ENCUENTRO},
 		{role = "user", content = "
 ".join(usuario)},
 	]

@@ -39,12 +39,12 @@ func _ready() -> void:
 func disponible() -> bool:
 	if modo_pruebas:
 		return activa and simulador.is_valid() and tokens_sesion < tope_tokens
-	return activa and not clave.strip_edges().is_empty() and tokens_sesion < tope_tokens
+	return GestorRegiones.region_actual != &"" and activa and not clave.strip_edges().is_empty() and tokens_sesion < tope_tokens
 
 
 func cargar_config() -> void:
 	var cfg := ConfigFile.new()
-	if cfg.load(RUTA_CONFIG) != OK:
+	if cfg.load(RUTA_CONFIG) != OK and cfg.load(Partidas.carpeta_legada().path_join("ia.cfg")) != OK:
 		return
 	activa = cfg.get_value("ia", "activa", true)
 	clave = cfg.get_value("ia", "clave", "")

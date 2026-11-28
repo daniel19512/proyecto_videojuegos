@@ -80,7 +80,7 @@ func modelo(p: Node3D, ruta: String, pos: Vector3, alto: float, giro: float, sol
 	n.set_meta("original",ruta)
 	usados[ruta] = int(usados.get(ruta,0))+1
 	if solido:
-		var ancho := .45 if "Pine" in ruta else minf(bounds.size.x*escala,.95)
+		var ancho := .45 if "Pine" in ruta else minf(bounds.size.x,bounds.size.z)*escala*.72
 		colision(p,pos+Vector3.UP*alto*.4,Vector3(ancho,alto*.8,ancho))
 
 func rio_x(z: float) -> float:
@@ -331,7 +331,11 @@ func puntos_interes() -> void:
 	modelo(g,PROPS+"Pickaxe_Bronze.gltf",origen+Vector3(3.2,0,0),1,0)
 	for i in 5:
 		modelo(g,NATURE+"Rock_Medium_2.gltf",origen+Vector3(-1.5+i*.7,0,-3.2),1.0, i*.7,true)
-	for x in [-3.8,3.8]: modelo(g,NATURE+"Rock_Medium_3.gltf",origen+Vector3(x,-.1,-4.5),6.5,x)
+	for x in [-3.8,3.8]:
+		modelo(g,NATURE+"Rock_Medium_3.gltf",origen+Vector3(x,-.1,-4.5),6.5,x)
+		var macizo := grupo(g,"MacizoLateral",origen+Vector3(x,2.2,-4.5))
+		macizo.rotation.y = signf(x)*.66
+		colision(macizo,Vector3.ZERO,Vector3(3.5,4.4,4.2))
 
 func paisaje() -> void:
 	var g := grupo(mapa,"Paisaje")
@@ -356,12 +360,24 @@ func paisaje() -> void:
 	var cartel := grupo(mapa,"SenalEntrada",Vector3(-48,2,49.5))
 	caja(cartel,"Poste",Vector3(0,1,0),Vector3(.18,2,.18),madera)
 	caja(cartel,"Tabla",Vector3(0,1.7,0),Vector3(2.5,.5,.15),tablas)
-	var rotulo := Label3D.new()
-	rotulo.text = "MONTANAS / ALDEA"
-	rotulo.font_size = 30
-	rotulo.pixel_size = .004
-	rotulo.position = Vector3(0,1.7,.09)
-	cartel.add_child(rotulo)
+	for lado in [1, -1]:
+		var rotulo := Label3D.new()
+		rotulo.text = "MONTAÑAS · ALDEA" if lado == 1 else "ALDEA"
+		rotulo.font_size = 30
+		rotulo.pixel_size = .004
+		rotulo.position = Vector3(0,1.7,.078*lado)
+		rotulo.rotation.y = 0.0 if lado == 1 else PI
+		rotulo.outline_size = 3
+		rotulo.modulate = Color(0.93, 0.82, 0.58)
+		cartel.add_child(rotulo)
+	var fondo := MeshInstance3D.new()
+	fondo.name = "FondoLaderaBocamina"
+	var plano := PlaneMesh.new()
+	plano.size = Vector2(54, 49)
+	plano.material = material(Color(0.27, 0.34, 0.22))
+	fondo.mesh = plano
+	fondo.position = Vector3(54, 12, -19)
+	mapa.add_child(fondo)
 
 func construir() -> void:
 	rng.seed = 60661

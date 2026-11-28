@@ -160,8 +160,12 @@ func finalizar(datos: Dictionary) -> void:
 	puerta.set("entrada_destino","aldea_"+id_edificio.to_lower())
 	puerta.set("texto",datos.get("texto_salida", "[F] Salir"))
 	# Minijuegos de oficio dentro de su edificio, lejos de la zona de salida.
-	if id_edificio == "E02": punto_minijuego("pan",Vector3(-1,0,-1.6),"[F] Hornear pan")
-	if id_edificio == "E03": punto_minijuego("forja",Vector3(-0.6,0,-0.4),"[F] Forjar")
+	if id_edificio == "E02": punto_minijuego("pan","panaderia",Vector3(-1,0,-1.6),"[F] Hornear pan")
+	if id_edificio == "E03": punto_minijuego("forja","herreria",Vector3(-0.6,0,-0.4),"[F] Forjar")
+	if id_edificio == "E04":
+		punto_minijuego("carpinteria", "carpinteria", Vector3(-1.65, 0, -1.5), "[F/A] Banco de carpintería")
+	if id_edificio == "E12":
+		punto_minijuego("molienda", "molienda", Vector3(0.2, 0, 0.9), "[F/A] Muelas del molino")
 	raiz.set_meta("assets_utilizados",usados)
 	raiz.set_meta("edificio",id_edificio)
 	raiz.set_meta("dimensiones",Vector2(ancho,fondo))

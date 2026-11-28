@@ -1,16 +1,13 @@
 extends Node
-## Autoload `Aldeanos`: qué hace cada NPC y dónde está, aunque su escena no
-## esté cargada. Con IA disponible, una sola llamada por franja del día (y
-## tras cada narración) planifica a todos los aldeanos con el catálogo cerrado
-## de PromptsIA.ACCIONES; el plan se valida y los nodos presentes lo ejecutan
-## caminando por MapaAldea. Los ausentes llegan de forma abstracta a su
-## destino. Sin IA no hace nada y los NPC siguen en sus puestos de siempre.
-## El estado vive en Historia.estado.aldeanos y se guarda con la historia.
+## Población, rutas y encuentros del mundo. Los cinco originales conservan
+## las órdenes narrativas de Historia. Las rutinas regionales usan el Reloj
+## y EstadoMundo. Los encuentros entre personajes se resuelven localmente.
 
 signal orden_cambiada(id: StringName)
 signal encuentro_terminado(id: StringName, otro: StringName)
 
 const RUTA_LUGARES := "res://data/historia/lugares.json"
+const RutinasRegionales = preload("res://scripts/npc/rutinas_regionales.gd")
 ## Segundos mínimos entre planificaciones (las narraciones pueden encadenarse).
 const PAUSA_ENTRE_PLANES: float = 20.0
 ## Distancia a la que se da por alcanzado a otro aldeano o al viajero.
@@ -31,6 +28,12 @@ var segundos_minimos_linea: float = 2.5
 var encuentros_en_curso: Dictionary = {}
 
 var _ultimo_plan_ms: int = -1000000
+var _rutinas := RutinasRegionales.new()
+var _intervalo_local := 1.0
+var _momento_local: Array = []
+var _escena_mapa: Node
+var _acercamiento: Array = []
+var _destinos_originales: Dictionary = {}
 
 
 func _ready() -> void:
@@ -38,6 +41,179 @@ func _ready() -> void:
 	lugares = JSON.parse_string(FileAccess.get_file_as_string(RUTA_LUGARES))
 	Reloj.franja_cambiada.connect(func(_dia, _franja): planificar())
 	Historia.historia_actualizada.connect(_al_actualizar_historia)
+
+
+func _process(delta: float) -> void:
+	if get_tree().paused or GestorRegiones.en_transicion or EstadoMundo.restaurando:
+		return
+	_intervalo_local -= delta
+	if _intervalo_local > 0.0:
+		return
+	_intervalo_local = 1.0
+	_rutinas.actualizar(get_tree().current_scene, Historia.poblacion)
+	if not activo():
+		_rutina_original()
+	_buscar_charla()
+
+func al_descansar() -> void:
+	_rutinas.al_descansar(Historia.poblacion)
+	_intervalo_local = 0.0
+
+
+func reiniciar_sesion() -> void:
+	_momento_local.clear()
+	_acercamiento.clear()
+	_destinos_originales.clear()
+	encuentros_en_curso.clear()
+	_ultimo_plan_ms = -1000000
+	_intervalo_local = 1.0
+	_escena_mapa = null
+	mapa = null
+	_rutinas = RutinasRegionales.new()
+
+
+func _rutina_original() -> void:
+	var momento := [Reloj.dia, Reloj.franja()]
+	if _momento_local == momento or Reloj.franja() < 2:
+		return
+	_momento_local = momento
+	for id in Historia.ids_originales:
+		var estado := estado_de(StringName(id))
+		estado.rutina_local = momento
+		var ficha: Dictionary = Historia.premisa.npcs[id]
+		var paseo: bool = ficha.horario[Reloj.franja()] == "paseo"
+		_ordenar(StringName(id), "ir" if paseo else "rutina", ficha.paseo if paseo else "", "")
+
+
+func _buscar_charla() -> void:
+	if not _acercamiento.is_empty():
+		_comprobar_acercamiento()
+		return
+	if not encuentros_en_curso.is_empty():
+		return
+	var social := EstadoMundo.objeto("@poblacion", "@social")
+	if Reloj.tiempo_juego < float(social.get("proxima", 30.0)):
+		return
+	var ids := nodos.keys()
+	for i in ids.size():
+		var a: Node3D = nodos[ids[i]]
+		if not _disponible_social(a):
+			continue
+		for j in range(i + 1, ids.size()):
+			var b: Node3D = nodos[ids[j]]
+			var distancia := a.global_position.distance_to(b.global_position)
+			if not _disponible_social(b) or distancia < 1.0 or distancia > 6.0:
+				continue
+			if not _linea_social(a, b):
+				continue
+			if distancia > 3.0:
+				if not _rutinas.acercar(a, b):
+					continue
+				_acercamiento = [ids[i], ids[j], Reloj.tiempo_juego + 9.0]
+				social.proxima = Reloj.tiempo_juego + 20.0
+				return
+			social.proxima = Reloj.tiempo_juego + 55.0
+			_charla_local(ids[i], ids[j])
+			return
+
+
+func _disponible_social(npc: Node3D) -> bool:
+	if npc.hablando or npc.conversando or npc.jugador_cerca or npc.esta_caminando():
+		return false
+	if npc.regional:
+		var actividad := EstadoMundo.objeto("@poblacion", String(npc.id_npc))
+		return actividad.get("actividad", "") not in ["viaje", "regreso", "descanso"] and (
+			Reloj.franja() != 1 or actividad.get("actividad", "") != "trabajo")
+	return true
+
+
+func _comprobar_acercamiento() -> void:
+	var id: StringName = _acercamiento[0]
+	var otro: StringName = _acercamiento[1]
+	var a: Node3D = nodos.get(id)
+	var b: Node3D = nodos.get(otro)
+	if not a or not b or Reloj.tiempo_juego >= float(_acercamiento[2]) or a.jugador_cerca or b.jugador_cerca:
+		_acercamiento.clear()
+		for npc in [a, b]:
+			if is_instance_valid(npc):
+				npc.replanificar_regional = true
+	elif a.ruta_regional_acabada() and b.ruta_regional_acabada():
+		_acercamiento.clear()
+		var distancia := a.global_position.distance_to(b.global_position)
+		if distancia >= 1.0 and distancia <= 3.0 and _linea_social(a, b):
+			EstadoMundo.objeto("@poblacion", "@social").proxima = Reloj.tiempo_juego + 55.0
+			_charla_local(id, otro)
+
+
+func _linea_social(a: Node3D, b: Node3D) -> bool:
+	var excluir: Array[RID] = []
+	for npc in [a, b]:
+		var cuerpo := npc.get_node_or_null("Cuerpo") as StaticBody3D
+		if cuerpo:
+			excluir.append(cuerpo.get_rid())
+	var altura_cara := Vector3.UP * 1.25
+	var rayo := PhysicsRayQueryParameters3D.create(a.global_position + altura_cara, b.global_position + altura_cara, 1, excluir)
+	return a.get_world_3d().direct_space_state.intersect_ray(rayo).is_empty()
+
+
+func _charla_local(id: StringName, otro: StringName) -> void:
+	if not encuentros_en_curso.is_empty() or not nodos.has(id) or not nodos.has(otro):
+		return
+	var a: Node3D = nodos[id]
+	var b: Node3D = nodos[otro]
+	if a.hablando or b.hablando or a.conversando or b.conversando:
+		return
+	encuentros_en_curso[id] = otro
+	var nombres := Historia.nombres_npc()
+	var tema := _registrar_charla(id, otro)
+	if encuentro_visible(id, otro):
+		await _representar(id, otro, [{quien = id, texto = tema}, {quien = otro, texto = "Gracias por contármelo, %s." % nombres[String(id)]}])
+	for npc in [a, b]:
+		if is_instance_valid(npc) and npc.regional:
+			npc.replanificar_regional = true
+	encuentros_en_curso.erase(id)
+	encuentro_terminado.emit(id, otro)
+
+
+func _registrar_charla(id: StringName, otro: StringName) -> String:
+	var voces := {
+		"pescador": "La pesca está junto al puente. Para probar suerte hace falta una caña.",
+		"panadera": "Con el trigo del campo y la harina del molino hacemos pan.",
+		"herrero": "Para trabajar el hierro en la fragua hace falta carbón.",
+		"tabernero": "En la taberna se prepara cerveza de malta.",
+		"guardia": "El puente es el paso seguro para llegar a la otra orilla.",
+	}
+	var tema: String = Historia.poblacion.get(String(id), {}).get("conoce", voces.get(String(id), "Los puestos se abastecen durante el día."))
+	var resumen := "%s habló con %s. %s" % [Historia.premisa.npcs[String(id)].nombre, Historia.premisa.npcs[String(otro)].nombre, tema]
+	var social := EstadoMundo.objeto("@poblacion", "@social")
+	var hechos: Array = social.get("hechos", [])
+	var pareja := [String(id), String(otro)]
+	pareja.sort()
+	var contacto := "%s/%s" % pareja
+	var clave := "%s/%d/%d" % [contacto, Reloj.dia, Reloj.franja()]
+	if not hechos.any(func(hecho): return hecho.id == clave):
+		var rumor := Misiones.compartir_recuerdo(String(id), String(otro))
+		if not rumor.is_empty():
+			tema = rumor
+			resumen = "%s dijo a %s: %s" % [Historia.premisa.npcs[String(id)].nombre, Historia.premisa.npcs[String(otro)].nombre, tema]
+		hechos.append({id = clave, texto = resumen, participantes = [String(id), String(otro)]})
+		social.hechos = hechos.slice(-20)
+		var relaciones: Dictionary = social.get("relaciones", {})
+		relaciones[contacto] = int(relaciones.get(contacto, 0)) + 1
+		social.relaciones = relaciones
+		Historia.aprender(id, resumen)
+		Historia.aprender(otro, resumen)
+	return tema
+
+
+func interrumpir_charla(id: StringName) -> void:
+	for emisor in encuentros_en_curso:
+		var otro: Variant = encuentros_en_curso[emisor]
+		if otro is StringName and id in [emisor, otro]:
+			for participante in [emisor, otro]:
+				if nodos.has(participante):
+					nodos[participante].ocultar_bocadillo()
+			return
 
 
 func activo() -> bool:
@@ -59,6 +235,8 @@ func estado_de(id: StringName) -> Dictionary:
 func registrar(npc: Node3D) -> void:
 	var id: StringName = npc.id_npc
 	nodos[id] = npc
+	if npc.regional:
+		return
 	var estado := estado_de(id)
 	estado.puesto = [npc.puesto.x, npc.puesto.z]
 	# En «rutina» ya cumplida está en su puesto (el guardia retoma su ronda).
@@ -68,6 +246,39 @@ func registrar(npc: Node3D) -> void:
 	if activo():
 		npc.ejecutar.call_deferred()
 		planificar_si_falta.call_deferred()
+	elif estado.get("rutina_local", []) == [Reloj.dia, Reloj.franja()] and Reloj.franja() == 2:
+		_reubicar_original.call_deferred(id)
+	_separar_aparicion_original.call_deferred(id)
+
+
+func _reubicar_original(id: StringName) -> void:
+	if not nodos.has(id) or not _asegurar_mapa():
+		return
+	var npc: Node3D = nodos[id]
+	_reservar_original(id, _pos_lugar(Historia.premisa.npcs[String(id)].paseo))
+	var pos: Vector3 = _destinos_originales.get(id, npc.puesto)
+	var jugador := _jugador()
+	if jugador and jugador.global_position.distance_to(pos) < 1.8:
+		return
+	npc.global_position = Vector3(pos.x, mapa.altura(pos), pos.z)
+	npc._actualizar_solidez()
+
+
+func _separar_aparicion_original(id: StringName) -> void:
+	var jugador := _jugador()
+	var npc: Node3D = nodos.get(id)
+	if not jugador or not npc or jugador.global_position.distance_to(npc.global_position) >= 0.95 or not _asegurar_mapa():
+		return
+	var reserva: Variant = _destinos_originales.get(id)
+	_destinos_originales.erase(id)
+	_reservar_original(id, npc.global_position)
+	if _destinos_originales.has(id):
+		var pos: Vector3 = _destinos_originales[id]
+		npc.global_position = Vector3(pos.x, mapa.altura(pos), pos.z)
+		npc._actualizar_solidez()
+	_destinos_originales.erase(id)
+	if reserva is Vector3:
+		_destinos_originales[id] = reserva
 
 
 ## Planifica si la franja actual aún no tiene plan: al entrar en la aldea o al
@@ -83,6 +294,12 @@ func baja(npc: Node3D) -> void:
 	if nodos.get(id) != npc:
 		return
 	nodos.erase(id)
+	_destinos_originales.erase(id)
+	if npc.regional:
+		_rutinas.reservas.erase(String(id))
+		return
+	if EstadoMundo.restaurando:
+		return
 	var estado := estado_de(id)
 	estado.pos = [npc.ultima_posicion.x, npc.ultima_posicion.z]
 	if activo() and not estado.llegado:
@@ -104,6 +321,8 @@ func llegada(id: StringName) -> void:
 
 ## Tras hablar con el viajero que buscaba, el aldeano vuelve a su rutina.
 func cumplido(id: StringName) -> void:
+	if Historia.poblacion.has(String(id)):
+		return
 	var estado := estado_de(id)
 	if estado.accion != "buscar_jugador":
 		return
@@ -116,7 +335,7 @@ func destino(id: StringName) -> Vector3:
 	var estado := estado_de(id)
 	match estado.accion:
 		"ir":
-			return _pos_lugar(estado.objetivo)
+			return _destinos_originales.get(id, _pos_lugar(estado.objetivo))
 		"hablar_con":
 			return posicion_de(StringName(estado.objetivo))
 		"buscar_jugador":
@@ -134,10 +353,41 @@ func posicion_de(id: StringName) -> Vector3:
 	return _vector(estado.pos if estado.pos.size() == 2 else estado.puesto)
 
 
-func ruta(desde: Vector3, hasta: Vector3) -> PackedVector3Array:
+func ruta(desde: Vector3, hasta: Vector3, evitar: PackedVector3Array = []) -> PackedVector3Array:
 	if not _asegurar_mapa():
 		return PackedVector3Array()
-	return mapa.ruta(desde, hasta)
+	return mapa.ruta(desde, hasta, evitar)
+
+
+func obstaculos_personales(npc: Node3D, objetivo: Vector3) -> PackedVector3Array:
+	var obstaculos := PackedVector3Array()
+	var jugador := _jugador()
+	if jugador and jugador.global_position.distance_to(objetivo) > 1.2:
+		obstaculos.append(jugador.global_position)
+	for otro in nodos.values():
+		if otro != npc and otro.global_position.distance_to(objetivo) > 1.0:
+			obstaculos.append(otro.global_position)
+	return obstaculos
+
+
+func separar_jugador(posicion: Vector3, paso: Vector3) -> Vector3:
+	var horizontal := _plano(paso)
+	if horizontal.is_zero_approx():
+		return paso
+	const RADIO := 0.66
+	for npc in nodos.values():
+		if not is_instance_valid(npc) or absf(npc.global_position.y - posicion.y) >= 1.6:
+			continue
+		var separacion := _plano(posicion - npc.global_position)
+		if (separacion + horizontal).length_squared() >= RADIO * RADIO:
+			continue
+		var normal := separacion.normalized()
+		if normal.is_zero_approx():
+			continue
+		var acercamiento := minf(horizontal.dot(normal), 0.0)
+		if acercamiento < 0.0:
+			horizontal -= normal * acercamiento
+	return Vector3(horizontal.x, paso.y, horizontal.y)
 
 
 func altura(pos: Vector3) -> float:
@@ -153,7 +403,7 @@ func planificar(forzar: bool = false) -> void:
 		return
 	planificando = true
 	_ultimo_plan_ms = Time.get_ticks_msec()
-	var ids: Array = Historia.premisa.npcs.keys()
+	var ids: Array = Historia.ids_originales
 	var mensajes := PromptsIA.mensajes_planificador(_datos_planificador(ids))
 	var resultado: Dictionary = await IA.solicitar(mensajes, "planificador", PromptsIA.esquema_planificador(ids), PromptsIA.MAX_TOKENS_PLANIFICADOR)
 	planificando = false
@@ -172,7 +422,7 @@ func planificar(forzar: bool = false) -> void:
 func aplicar_planes(planes: Array) -> void:
 	for plan in planes:
 		var id := StringName(str(plan.get("npc", "")))
-		if not Historia.tiene_npc(id):
+		if not String(id) in Historia.ids_originales:
 			continue
 		var accion := str(plan.get("accion", "rutina"))
 		var objetivo := str(plan.get("objetivo", "")).strip_edges()
@@ -180,7 +430,7 @@ func aplicar_planes(planes: Array) -> void:
 			accion = "rutina"
 		if accion == "ir" and not lugares.has(objetivo):
 			accion = "rutina"
-		if accion == "hablar_con" and (not Historia.tiene_npc(StringName(objetivo)) or objetivo == String(id)):
+		if accion == "hablar_con" and (not objetivo in Historia.ids_originales or objetivo == String(id)):
 			accion = "rutina"
 		if not accion in ["ir", "hablar_con"]:
 			objetivo = ""
@@ -190,6 +440,10 @@ func aplicar_planes(planes: Array) -> void:
 
 ## Frase para el contexto de la conversación: qué hace y en qué momento.
 func descripcion(id: StringName) -> String:
+	if Historia.poblacion.has(String(id)):
+		var actividad := EstadoMundo.objeto("@poblacion", String(id))
+		return "Actividad: %s. Región: %s. %s." % [actividad.get("actividad", "reposo"),
+			actividad.get("region", Historia.poblacion[String(id)].region), Reloj.descripcion()]
 	var estado := estado_de(id)
 	var nombres := Historia.nombres_npc()
 	var texto: String
@@ -217,11 +471,35 @@ func _ordenar(id: StringName, accion: String, objetivo: String, motivo: String) 
 	estado.objetivo = objetivo
 	estado.motivo = motivo
 	estado.llegado = false
+	_destinos_originales.erase(id)
 	if nodos.has(id):
+		if accion == "ir" and _asegurar_mapa():
+			_reservar_original(id, _pos_lugar(objetivo))
 		nodos[id].ejecutar()
 	else:
 		_simular_llegada(id)
 	orden_cambiada.emit(id)
+
+
+func _reservar_original(id: StringName, centro: Vector3) -> void:
+	var npc: Node3D = nodos[id]
+	var ocupadas: Array = _destinos_originales.values() + _rutinas.reservas.values()
+	var jugador := _jugador()
+	if jugador:
+		ocupadas.append(jugador.global_position)
+	for otro in nodos.values():
+		if otro != npc:
+			ocupadas.append(otro.global_position)
+	for desplazamiento: Vector3 in [Vector3.ZERO, Vector3.RIGHT * 1.3, Vector3.LEFT * 1.3,
+			Vector3.FORWARD * 1.3, Vector3.BACK * 1.3]:
+		var candidato := centro + desplazamiento
+		if ocupadas.any(func(punto): return _plano(punto - candidato).length_squared() < 1.0):
+			continue
+		if desplazamiento != Vector3.ZERO and not mapa.transitable(candidato):
+			continue
+		if not mapa.ruta(npc.global_position, candidato).is_empty():
+			_destinos_originales[id] = candidato
+			return
 
 
 func _datos_planificador(ids: Array) -> Dictionary:
@@ -272,42 +550,17 @@ func _simular_llegada(id: StringName) -> void:
 		encuentro(id)
 
 
-## Encuentro de `id` con el aldeano al que fue a ver (acción hablar_con).
-## Con el viajero cerca y ambos en escena, el modelo escribe 2-4 frases que se
-## ven en bocadillos; si no, solo el resumen (llamada más corta). Cada uno
-## aprende algo del otro y el resumen llega al narrador. Sin respuesta, queda
-## una frase de plantilla.
+## Cierra una orden de visita con un intercambio local.
 func encuentro(id: StringName) -> void:
 	var estado := estado_de(id)
 	var otro := StringName(estado.objetivo)
 	if encuentros_en_curso.has(id) or not Historia.tiene_npc(otro):
 		return
-	encuentros_en_curso[id] = true
-	var con_dialogo := encuentro_visible(id, otro)
-	var nombres := Historia.nombres_npc()
-	var mensajes := PromptsIA.mensajes_encuentro(_ficha_encuentro(id), _ficha_encuentro(otro), str(estado.motivo), Reloj.descripcion(), Historia.estado.resumen, con_dialogo)
-	var resultado: Dictionary = {ok = false}
-	if activo():
-		resultado = await IA.solicitar(mensajes, "encuentro", PromptsIA.esquema_encuentro(String(id), String(otro)),
-			PromptsIA.MAX_TOKENS_ENCUENTRO if con_dialogo else PromptsIA.MAX_TOKENS_ENCUENTRO_RESUMEN)
-	if not resultado.ok:
-		encuentros_en_curso.erase(id)
-		var texto := "%s fue a hablar con %s" % [nombres[String(id)], nombres.get(String(otro), "alguien")]
-		if not str(estado.motivo).is_empty():
-			texto += ": " + estado.motivo
-		Historia.registrar_hecho(texto)
-		return
-	var datos: Dictionary = resultado.datos
-	if con_dialogo and encuentro_visible(id, otro):
-		await _representar(id, otro, datos.get("lineas", []))
-	encuentros_en_curso.erase(id)
-	Historia.aprender(id, str(datos.get("aprende_a", "")))
-	Historia.aprender(otro, str(datos.get("aprende_b", "")))
-	var resumen := str(datos.get("resumen", "")).strip_edges()
-	if resumen.is_empty():
-		resumen = "hablaron un rato"
-	Historia.registrar_hecho("%s y %s: %s" % [nombres[String(id)], nombres[String(otro)], resumen], bool(datos.get("importante", false)))
-	encuentro_terminado.emit(id, otro)
+	if nodos.has(id) and nodos.has(otro):
+		_charla_local(id, otro)
+	elif String(id) in Historia.ids_originales and String(otro) in Historia.ids_originales:
+		_registrar_charla(id, otro)
+		encuentro_terminado.emit(id, otro)
 
 
 ## Ambos en escena y el viajero lo bastante cerca para leer los bocadillos.
@@ -328,9 +581,11 @@ func _representar(id: StringName, otro: StringName, lineas: Array) -> void:
 	b._refrescar_aviso()
 	a.mirar_a(b.global_position)
 	b.mirar_a(a.global_position)
-	for linea in lineas.slice(0, PromptsIA.LINEAS_ENCUENTRO):
+	for linea in lineas:
 		var quien := StringName(str(linea.get("quien", "")))
 		var texto := str(linea.get("texto", "")).strip_edges().left(180)
+		if not is_instance_valid(a) or not is_instance_valid(b) or not a.conversando or not b.conversando:
+			break
 		if texto.is_empty() or not quien in [id, otro] or not nodos.has(quien):
 			continue
 		var hablante: Node3D = nodos[quien]
@@ -341,18 +596,6 @@ func _representar(id: StringName, otro: StringName, lineas: Array) -> void:
 			npc._refrescar_aviso()
 
 
-func _ficha_encuentro(id: StringName) -> Dictionary:
-	var ficha: Dictionary = Historia.premisa.npcs[String(id)]
-	var memoria: Dictionary = Historia.estado.npcs[String(id)]
-	return {
-		id = String(id),
-		nombre = ficha.nombre,
-		ficha = ficha.ficha,
-		rumores = PackedStringArray(memoria.get("rumores", [])),
-		indicacion = memoria.indicacion,
-	}
-
-
 func _plano(v: Vector3) -> Vector2:
 	return Vector2(v.x, v.z)
 
@@ -360,8 +603,11 @@ func _plano(v: Vector3) -> Vector2:
 func _al_actualizar_historia() -> void:
 	# «Nueva historia»: estado sin aldeanos; los presentes vuelven a su puesto.
 	if not Historia.estado.has("aldeanos"):
+		_momento_local.clear()
 		for id in nodos:
 			var npc: Node3D = nodos[id]
+			if npc.regional:
+				continue
 			estado_de(id).puesto = [npc.puesto.x, npc.puesto.z]
 			if activo():
 				npc.ejecutar()
@@ -370,11 +616,12 @@ func _al_actualizar_historia() -> void:
 
 
 func _asegurar_mapa() -> bool:
-	if mapa:
-		return true
 	var escena := get_tree().current_scene
 	if escena == null or not escena.has_node("Aldea"):
 		return false
+	if mapa and _escena_mapa == escena:
+		return true
+	_escena_mapa = escena
 	var excluir: Array[RID] = []
 	for cuerpo in escena.find_children("*", "CharacterBody3D", true, false):
 		excluir.append(cuerpo.get_rid())
@@ -389,7 +636,7 @@ func _asegurar_mapa() -> bool:
 
 func _jugador() -> Node3D:
 	var escena := get_tree().current_scene
-	if escena == null or not escena.is_inside_tree() or not escena.has_node("Aldea"):
+	if escena == null or not escena.is_inside_tree():
 		return null
 	var jugador := escena.get_node_or_null("Jugador") as Node3D
 	return jugador if jugador and jugador.is_inside_tree() else null

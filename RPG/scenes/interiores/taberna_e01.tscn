@@ -1425,6 +1425,7 @@ entrada_destino = "aldea_taberna_e01"
 texto = "[F] Salir de la taberna"
 
 [node name="PuntoMinijuego" parent="." instance=ExtResource("m1_punto")]
+estacion = "cerveza"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, -3.6)
 escena_minijuego = ExtResource("m2_cerveza")
 texto_aviso = "[F] Elaborar cerveza"

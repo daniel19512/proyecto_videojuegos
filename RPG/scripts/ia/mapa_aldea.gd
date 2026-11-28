@@ -16,20 +16,46 @@ const PESO_CAMINO: float = 1.0
 const PESO_CAMPO: float = 4.0
 ## Distancia máxima entre la última casilla libre y el destino exacto.
 const CIERRE: float = 1.5
+const DESNIVEL_MAXIMO := 0.7
 
-var rejilla := AStarGrid2D.new()
+class RejillaSuelo extends AStarGrid2D:
+	var cotas := PackedFloat32Array()
+
+	func _compute_cost(desde: Vector2i, hasta: Vector2i) -> float:
+		var a := desde - region.position
+		var b := hasta - region.position
+		var salto := absf(cotas[a.x * region.size.y + a.y] - cotas[b.x * region.size.y + b.y])
+		return 1000000.0 if salto > DESNIVEL_MAXIMO else Vector2(desde - hasta).length()
+
+
+var rejilla := RejillaSuelo.new()
 var alturas := PackedFloat32Array()
+var origen := ORIGEN
+var tamano := TAMANO
 
 
 ## `excluir`: RID de cuerpos que no cuentan como obstáculo (jugador y NPC).
-func construir(mundo: Node3D, excluir: Array[RID]) -> void:
-	rejilla.region = Rect2i(ORIGEN, TAMANO)
+func construir(mundo: Node3D, excluir: Array[RID], region: String = "Aldea") -> void:
+	var limites := {
+		"Bosque": Rect2i(-48, -48, 96, 96),
+		"CamposYGranjas": Rect2i(-48, -48, 96, 96),
+		"Montanas": Rect2i(-63, -63, 126, 126),
+		"Minas": Rect2i(-13, -48, 26, 57),
+		"Ruinas": Rect2i(-40, -38, 80, 76),
+		"TabernaE01": Rect2i(-4, -5, 8, 10),
+		"InteriorE06": Rect2i(-3, -4, 6, 8),
+		"InteriorE11": Rect2i(-3, -4, 6, 8),
+	}
+	var recinto: Rect2i = limites.get(region, Rect2i(ORIGEN, TAMANO))
+	origen = recinto.position
+	tamano = recinto.size
+	rejilla.region = recinto
 	rejilla.cell_size = Vector2.ONE
 	rejilla.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
 	rejilla.default_compute_heuristic = AStarGrid2D.HEURISTIC_OCTILE
 	rejilla.default_estimate_heuristic = AStarGrid2D.HEURISTIC_OCTILE
 	rejilla.update()
-	alturas.resize(TAMANO.x * TAMANO.y)
+	alturas.resize(tamano.x * tamano.y)
 	var espacio := mundo.get_world_3d().direct_space_state
 	var forma := CapsuleShape3D.new()
 	forma.radius = RADIO
@@ -38,23 +64,27 @@ func construir(mundo: Node3D, excluir: Array[RID]) -> void:
 	consulta.shape = forma
 	consulta.exclude = excluir
 	var caminos := _rectangulos_caminos(mundo)
-	for x in TAMANO.x:
-		for z in TAMANO.y:
-			var celda := Vector2i(ORIGEN.x + x, ORIGEN.y + z)
+	var maximo: float = {"Aldea": SUELO_MAXIMO, "Bosque": 7.0, "CamposYGranjas": 1.0,
+		"Montanas": 31.0, "Minas": 0.15, "Ruinas": 0.45}.get(region, SUELO_MAXIMO)
+	var techo := 1.5 if region == "Minas" else maximo + 1.0
+	for x in tamano.x:
+		for z in tamano.y:
+			var celda := origen + Vector2i(x, z)
 			var centro := Vector2(celda) + Vector2(0.5, 0.5)
-			var rayo := PhysicsRayQueryParameters3D.create(Vector3(centro.x, 1.5, centro.y), Vector3(centro.x, -0.5, centro.y))
+			var rayo := PhysicsRayQueryParameters3D.create(Vector3(centro.x, techo, centro.y), Vector3(centro.x, -6.0, centro.y))
 			rayo.exclude = excluir
 			var golpe := espacio.intersect_ray(rayo)
-			var transitable: bool = not golpe.is_empty() and golpe.position.y <= SUELO_MAXIMO
+			var transitable: bool = not golpe.is_empty() and golpe.position.y <= maximo and golpe.normal.y > 0.8
 			var altura: float = golpe.position.y if transitable else 0.0
 			if transitable:
 				consulta.transform = Transform3D(Basis(), Vector3(centro.x, altura + 0.15 + ALTURA_CAPSULA * 0.5, centro.y))
 				transitable = espacio.intersect_shape(consulta, 1).is_empty()
-			alturas[x * TAMANO.y + z] = altura
+			alturas[x * tamano.y + z] = altura
 			rejilla.set_point_solid(celda, not transitable)
 			if transitable:
 				var en_camino := caminos.any(func(r: Rect2): return r.has_point(centro))
 				rejilla.set_point_weight_scale(celda, PESO_CAMINO if en_camino else PESO_CAMPO)
+	rejilla.cotas = alturas
 
 
 func celda_de(pos: Vector3) -> Vector2i:
@@ -67,10 +97,10 @@ func transitable(pos: Vector3) -> bool:
 
 
 func altura(pos: Vector3) -> float:
-	var celda := celda_de(pos) - ORIGEN
-	if celda.x < 0 or celda.y < 0 or celda.x >= TAMANO.x or celda.y >= TAMANO.y:
-		return 0.0
-	return alturas[celda.x * TAMANO.y + celda.y]
+	var celda := celda_de(pos) - origen
+	if celda.x < 0 or celda.y < 0 or celda.x >= tamano.x or celda.y >= tamano.y:
+		return pos.y
+	return alturas[celda.x * tamano.y + celda.y]
 
 
 ## Casilla transitable más cercana a `pos` (búsqueda en anillos hasta 4 u).
@@ -96,11 +126,30 @@ func celda_libre_cercana(pos: Vector3) -> Vector2i:
 ## `hasta`. Termina exactamente en `hasta` si está a menos de `CIERRE` de la
 ## última casilla: un puesto junto a una pared puede caer en una casilla cuyo
 ## centro no está libre aunque él sí lo esté. Vacío si no hay ruta.
-func ruta(desde: Vector3, hasta: Vector3) -> PackedVector3Array:
+func ruta(desde: Vector3, hasta: Vector3, evitar: PackedVector3Array = []) -> PackedVector3Array:
+	var bloqueadas: Array[Vector2i] = []
+	for pos in evitar:
+		var centro := celda_de(pos)
+		for x in range(-1, 2):
+			for z in range(-1, 2):
+				var celda := centro + Vector2i(x, z)
+				var punto := Vector3(celda.x + 0.5, pos.y, celda.y + 0.5)
+				if celda != celda_de(desde) and punto.distance_squared_to(pos) < 1.35 and transitable(punto):
+					rejilla.set_point_solid(celda)
+					bloqueadas.append(celda)
+	var puntos := _ruta(desde, hasta)
+	for celda in bloqueadas:
+		rejilla.set_point_solid(celda, false)
+	if not evitar.is_empty() and puntos.size() > 1 and celda_de(puntos[0]) == celda_de(desde):
+		puntos.remove_at(0)
+	return puntos
+
+
+func _ruta(desde: Vector3, hasta: Vector3) -> PackedVector3Array:
 	var puntos := PackedVector3Array()
 	var origen := celda_libre_cercana(desde)
 	var destino := celda_libre_cercana(hasta)
-	if rejilla.is_point_solid(origen) or rejilla.is_point_solid(destino):
+	if not rejilla.is_in_boundsv(origen) or not rejilla.is_in_boundsv(destino) or rejilla.is_point_solid(origen) or rejilla.is_point_solid(destino):
 		return puntos
 	var celdas := rejilla.get_id_path(origen, destino)
 	if celdas.is_empty():
@@ -108,6 +157,8 @@ func ruta(desde: Vector3, hasta: Vector3) -> PackedVector3Array:
 	for celda in celdas:
 		var centro := Vector3(celda.x + 0.5, 0.0, celda.y + 0.5)
 		centro.y = altura(centro)
+		if not puntos.is_empty() and absf(centro.y - puntos[-1].y) > DESNIVEL_MAXIMO:
+			return PackedVector3Array()
 		puntos.append(centro)
 	var final := Vector3(hasta.x, altura(hasta), hasta.z)
 	if Vector2(final.x, final.z).distance_to(Vector2(puntos[-1].x, puntos[-1].z)) <= CIERRE:

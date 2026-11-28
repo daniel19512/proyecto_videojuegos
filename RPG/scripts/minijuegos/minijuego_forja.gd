@@ -31,7 +31,7 @@ func _jugar(delta: float) -> void:
 
 
 func _texto_instrucciones() -> String:
-	return "Golpea con F cuando la aguja pase por la zona verde (+%d).\nCada %d golpes buenos terminan una pieza (+%d).\nFuera de la zona: %d. Si la pieza se enfría: %d.\nS o flecha abajo: volver a calentarla." % [
+	return "Golpea con F o A cuando la aguja pase por la zona verde (+%d).\nCada %d golpes buenos terminan una pieza (+%d).\nFuera de la zona: %d. Si la pieza se enfría: %d.\nS, flecha abajo o stick abajo: volver a calentarla." % [
 		LogicaForja.PUNTOS_GOLPE, LogicaForja.GOLPES_POR_PIEZA, LogicaForja.PUNTOS_PIEZA,
 		LogicaForja.PUNTOS_FLOJO, LogicaForja.PUNTOS_FRIO]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ci38nkubq6b1c"
+path="res://.godot/imported/5. Emberlight .ogg-24e558f50771ea3d4aee8710edeb6697.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/musica/alkakrab/5. Emberlight .ogg"
+dest_files=["res://.godot/imported/5. Emberlight .ogg-24e558f50771ea3d4aee8710edeb6697.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

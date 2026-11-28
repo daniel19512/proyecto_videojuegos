@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		return
 	var giro := Input.get_axis(GIRAR_IZQUIERDA, GIRAR_DERECHA)
 	# Se envuelve el angulo numerico; la posicion/basis son continuas en +/-PI.
-	angulo_horizontal = wrapf(angulo_horizontal - giro * deg_to_rad(velocidad_giro) * delta, -PI, PI)
+	angulo_horizontal = wrapf(angulo_horizontal - giro * (-1.0 if Ajustes.valores.invertir else 1.0) * deg_to_rad(velocidad_giro * Ajustes.valores.camara) * delta, -PI, PI)
 	centro_seguimiento = centro_seguimiento.lerp(objetivo.global_position, 1.0 - exp(-suavizado * delta))
 	actualizar_orbita()
 

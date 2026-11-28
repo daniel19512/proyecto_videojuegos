@@ -1,0 +1,245 @@
+{
+	"cana": {"nombre": "Caña de pescar", "categoria": "Herramientas", "descripcion": "Llévala a la orilla para pescar.", "pila": 1, "compra": 10, "venta": 4, "icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/tools/fishing_rod.png"},
+	"carpa_dorada": {"nombre": "Carpa dorada", "categoria": "Alimentos", "descripcion": "Una captura de calidad del río.", "pila": 24, "compra": 14, "venta": 7, "icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/food/fish_gold.png"},
+	"cuenco": {"nombre": "Cuenco de madera", "categoria": "Productos elaborados", "descripcion": "Un cuenco útil para servir la comida.", "pila": 24, "compra": 12, "venta": 10, "icono": "res://assets/inventario/iconos/ItemsIcons/08_Quest_Misc/Pet_Items/icons/quest_pet_bowl.png"},
+	"trigo": {
+		"nombre": "Trigo",
+		"categoria": "Cultivos",
+		"descripcion": "Espigas para moler o vender.",
+		"pila": 24,
+		"compra": 6,
+		"venta": 3,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/wheat.png"
+	},
+	"semilla_trigo": {
+		"nombre": "Semillas de trigo",
+		"categoria": "Semillas",
+		"descripcion": "Siembra en tierra preparada. Crece en 45 segundos de juego tras el riego.",
+		"pila": 24,
+		"compra": 3,
+		"venta": 1,
+		"icono": "res://assets/inventario/iconos/ItemsIcons/08_Quest_Misc/Seeds_Sprouts/icons/quest_glowing_seed.png",
+		"cultivo": "trigo",
+		"segundos": 45
+	},
+	"semilla_zanahoria": {
+		"nombre": "Semillas de zanahoria",
+		"categoria": "Semillas",
+		"descripcion": "Siembra en tierra preparada. Crece en 60 segundos tras el riego.",
+		"pila": 24,
+		"compra": 4,
+		"venta": 2,
+		"icono": "res://assets/inventario/iconos/ItemsIcons/08_Quest_Misc/Seeds_Sprouts/icons/quest_flower_bulbs.png",
+		"cultivo": "zanahoria",
+		"segundos": 60
+	},
+	"semilla_patata": {
+		"nombre": "Patata de siembra",
+		"categoria": "Semillas",
+		"descripcion": "Siembra en tierra preparada. Crece en 75 segundos tras el riego.",
+		"pila": 24,
+		"compra": 5,
+		"venta": 2,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/food/potato.png",
+		"cultivo": "patata",
+		"segundos": 75
+	},
+	"zanahoria": {
+		"nombre": "Zanahoria",
+		"categoria": "Cultivos",
+		"descripcion": "Raíz dulce de la huerta.",
+		"pila": 24,
+		"compra": 9,
+		"venta": 5,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/food/carrot.png"
+	},
+	"patata": {
+		"nombre": "Patata",
+		"categoria": "Cultivos",
+		"descripcion": "Tubérculo de la huerta.",
+		"pila": 24,
+		"compra": 11,
+		"venta": 6,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/food/potato.png"
+	},
+	"flores": {
+		"nombre": "Flores",
+		"categoria": "Materiales",
+		"descripcion": "Flores silvestres para el herbolario.",
+		"pila": 24,
+		"compra": 6,
+		"venta": 3,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/herb_flower.png"
+	},
+	"hierbas": {
+		"nombre": "Hierbas",
+		"categoria": "Materiales",
+		"descripcion": "Hojas aromáticas del bosque.",
+		"pila": 24,
+		"compra": 6,
+		"venta": 3,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/herb_leaf.png"
+	},
+	"setas": {
+		"nombre": "Setas",
+		"categoria": "Alimentos",
+		"descripcion": "Setas comestibles del bosque.",
+		"pila": 24,
+		"compra": 8,
+		"venta": 4,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/food/mushroom_brown.png"
+	},
+	"madera": {
+		"nombre": "Madera",
+		"categoria": "Materiales",
+		"descripcion": "Ramas secas aprovechables.",
+		"pila": 24,
+		"compra": 5,
+		"venta": 2,
+		"icono": "res://assets/inventario/iconos/ItemsIcons/08_Quest_Misc/Misc_Junk/icons/quest_driftwood.png"
+	},
+	"piedra": {
+		"nombre": "Piedra",
+		"categoria": "Materiales",
+		"descripcion": "Canto recogido del suelo.",
+		"pila": 24,
+		"compra": 4,
+		"venta": 2,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/stone.png"
+	},
+	"carbon": {
+		"nombre": "Carbón",
+		"categoria": "Minerales",
+		"descripcion": "Combustible para la fragua.",
+		"pila": 24,
+		"compra": 6,
+		"venta": 3,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/coal.png"
+	},
+	"hierro": {
+		"nombre": "Hierro",
+		"categoria": "Minerales",
+		"descripcion": "Mineral de hierro sin refinar.",
+		"pila": 24,
+		"compra": 9,
+		"venta": 5,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/ore_iron.png"
+	},
+	"cobre": {
+		"nombre": "Cobre",
+		"categoria": "Minerales",
+		"descripcion": "Mineral de cobre sin refinar.",
+		"pila": 24,
+		"compra": 8,
+		"venta": 4,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/ore_copper.png"
+	},
+	"harina": {
+		"nombre": "Harina",
+		"categoria": "Materiales",
+		"descripcion": "Trigo molido para hornear.",
+		"pila": 24,
+		"compra": 6,
+		"venta": 3,
+		"icono": "res://assets/inventario/iconos/ItemsIcons/03_Food_Drink/Raw_Ingredients/icons/food_flour_dough_ball.png"
+	},
+	"pan": {
+		"nombre": "Pan",
+		"categoria": "Alimentos",
+		"descripcion": "Hogaza de la panadería.",
+		"pila": 24,
+		"compra": 10,
+		"venta": 5,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/food/bread_loaf.png"
+	},
+	"pescado": {
+		"nombre": "Pescado",
+		"categoria": "Alimentos",
+		"descripcion": "Pieza fresca del río.",
+		"pila": 24,
+		"compra": 10,
+		"venta": 5,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/food/fish_raw.png"
+	},
+	"cerveza": {
+		"nombre": "Cerveza",
+		"categoria": "Productos elaborados",
+		"descripcion": "Bebida de malta elaborada en la taberna.",
+		"pila": 24,
+		"compra": 12,
+		"venta": 6,
+		"icono": "res://assets/inventario/iconos/ItemsIcons/03_Food_Drink/Drinks/icons/food_herbal_flask.png"
+	},
+	"tablas": {
+		"nombre": "Tablas",
+		"categoria": "Productos elaborados",
+		"descripcion": "Madera preparada para carpintería.",
+		"pila": 24,
+		"compra": 8,
+		"venta": 4,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/planks.png"
+	},
+	"lingote": {
+		"nombre": "Lingote de hierro",
+		"categoria": "Productos elaborados",
+		"descripcion": "Hierro trabajado en la fragua.",
+		"pila": 24,
+		"compra": 18,
+		"venta": 10,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/materials/ingot_iron.png"
+	},
+	"azada": {
+		"nombre": "Azada",
+		"categoria": "Herramientas",
+		"descripcion": "Equípala para preparar un bancal.",
+		"pila": 1,
+		"compra": 15,
+		"venta": 7,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/tools/hoe.png"
+	},
+	"regadera": {
+		"nombre": "Regadera",
+		"categoria": "Herramientas",
+		"descripcion": "Equípala para regar un cultivo recién sembrado.",
+		"pila": 1,
+		"compra": 15,
+		"venta": 7,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/tools/watering_can.png"
+	},
+	"hacha": {
+		"nombre": "Hacha",
+		"categoria": "Herramientas",
+		"descripcion": "Permite aprovechar los troncos del bosque mientras la lleves.",
+		"pila": 1,
+		"compra": 20,
+		"venta": 10,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/weapons/axe_woodcutter.png"
+	},
+	"pico": {
+		"nombre": "Pico",
+		"categoria": "Herramientas",
+		"descripcion": "Permite extraer mineral mientras lo lleves.",
+		"pila": 1,
+		"compra": 20,
+		"venta": 10,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/tools/pickaxe_iron.png"
+	},
+	"ficha_pesaje": {
+		"nombre": "Ficha de pesaje",
+		"categoria": "Objetos especiales",
+		"descripcion": "Una ficha de arcilla que documenta el antiguo comercio de las Minas.",
+		"pila": 1,
+		"compra": 0,
+		"venta": 0,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/misc/coin_copper.png"
+	},
+	"recuerdo": {
+		"nombre": "Recuerdo",
+		"categoria": "Objetos especiales",
+		"descripcion": "Una ficha de viaje.",
+		"pila": 1,
+		"compra": 0,
+		"venta": 0,
+		"icono": "res://assets/inventario/iconos/larchrow-rpg-item-icons/PNG/misc/coin_copper.png"
+	}
+}

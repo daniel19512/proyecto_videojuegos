@@ -1994,6 +1994,17 @@ size = Vector3(0.95, 0.8, 0.95)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rnqt0"]
 size = Vector3(0.95, 0.8, 0.95)
 
+[sub_resource type="BoxShape3D" id="FormaMacizoBocamina"]
+size = Vector3(3.5, 4.4, 4.2)
+
+[sub_resource type="StandardMaterial3D" id="MaterialLaderaExterior"]
+albedo_color = Color(0.27, 0.34, 0.22, 1)
+roughness = 1.0
+
+[sub_resource type="PlaneMesh" id="LaderaExterior"]
+material = SubResource("MaterialLaderaExterior")
+size = Vector2(54, 49)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovgk3"]
 size = Vector3(0.95, 0.7566102, 0.95)
 
@@ -2004,13 +2015,13 @@ size = Vector3(0.45, 4.968788, 0.45)
 size = Vector3(0.45, 3.8649077, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_78uje"]
-size = Vector3(0.95, 1.7962894, 0.95)
+size = Vector3(2.13843, 1.7962894, 2.13843)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pk6p0"]
-size = Vector3(0.95, 0.99982166, 0.95)
+size = Vector3(1.19026, 0.99982166, 1.19026)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l2vo"]
-size = Vector3(0.95, 1.7760541, 0.95)
+size = Vector3(2.11434, 1.7760541, 2.11434)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m30i1"]
 size = Vector3(0.45, 3.4430954, 0.45)
@@ -2019,7 +2030,7 @@ size = Vector3(0.45, 3.4430954, 0.45)
 size = Vector3(0.45, 4.8388376, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5d135"]
-size = Vector3(0.95, 2.0041773, 0.95)
+size = Vector3(2.38592, 2.0041773, 2.38592)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unxpf"]
 size = Vector3(0.45, 4.519173, 0.45)
@@ -2046,16 +2057,16 @@ size = Vector3(0.45, 4.2367306, 0.45)
 size = Vector3(0.45, 2.8640897, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cqln4"]
-size = Vector3(0.95, 2.1261153, 0.95)
+size = Vector3(2.53108, 2.1261153, 2.53108)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bdwoi"]
-size = Vector3(0.95, 1.5151529, 0.95)
+size = Vector3(1.80375, 1.5151529, 1.80375)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_su4d1"]
-size = Vector3(0.95, 1.5917332, 0.95)
+size = Vector3(1.89491, 1.5917332, 1.89491)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_urh56"]
-size = Vector3(0.95, 0.9244133, 0.95)
+size = Vector3(1.10049, 0.9244133, 1.10049)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cth8x"]
 size = Vector3(0.45, 4.3326273, 0.45)
@@ -2073,37 +2084,37 @@ size = Vector3(0.45, 2.8668864, 0.45)
 size = Vector3(0.45, 4.731116, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxwke"]
-size = Vector3(0.95, 1.4521348, 0.95)
+size = Vector3(1.72872, 1.4521348, 1.72872)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ti1s"]
 size = Vector3(0.45, 4.1614084, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pvqnl"]
-size = Vector3(0.95, 1.7488213, 0.95)
+size = Vector3(2.08192, 1.7488213, 2.08192)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1h7fh"]
 size = Vector3(0.45, 2.867915, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_326qj"]
-size = Vector3(0.95, 1.6999531, 0.95)
+size = Vector3(2.02375, 1.6999531, 2.02375)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2adkg"]
 size = Vector3(0.45, 3.1261277, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ts1n7"]
-size = Vector3(0.95, 0.8972044, 0.95)
+size = Vector3(1.0681, 0.8972044, 1.0681)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x1q42"]
 size = Vector3(0.45, 3.553537, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x67aq"]
-size = Vector3(0.95, 1.0949539, 0.95)
+size = Vector3(1.30351, 1.0949539, 1.30351)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s6bl"]
 size = Vector3(0.45, 3.5136714, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gc82g"]
-size = Vector3(0.95, 1.7637438, 0.95)
+size = Vector3(2.09969, 1.7637438, 2.09969)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_as215"]
 size = Vector3(0.45, 4.5346465, 0.45)
@@ -2112,16 +2123,16 @@ size = Vector3(0.45, 4.5346465, 0.45)
 size = Vector3(0.45, 4.2206354, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xyhfa"]
-size = Vector3(0.95, 0.9940961, 0.95)
+size = Vector3(1.18344, 0.9940961, 1.18344)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lam2n"]
-size = Vector3(0.95, 2.0686936, 0.95)
+size = Vector3(2.46272, 2.0686936, 2.46272)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymi8a"]
 size = Vector3(0.45, 4.487719, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kdddb"]
-size = Vector3(0.95, 0.9692106, 0.95)
+size = Vector3(1.15382, 0.9692106, 1.15382)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j58a0"]
 size = Vector3(0.45, 3.781016, 0.45)
@@ -2130,7 +2141,7 @@ size = Vector3(0.45, 3.781016, 0.45)
 size = Vector3(0.45, 4.487892, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_127ah"]
-size = Vector3(0.95, 1.6251576, 0.95)
+size = Vector3(1.9347, 1.6251576, 1.9347)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_px34v"]
 size = Vector3(0.45, 3.1516159, 0.45)
@@ -2142,7 +2153,7 @@ size = Vector3(0.45, 3.5871673, 0.45)
 size = Vector3(0.45, 4.851428, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jai52"]
-size = Vector3(0.95, 1.7042059, 0.95)
+size = Vector3(2.02881, 1.7042059, 2.02881)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f807e"]
 size = Vector3(0.45, 4.726176, 0.45)
@@ -2151,7 +2162,7 @@ size = Vector3(0.45, 4.726176, 0.45)
 size = Vector3(0.45, 3.3753953, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fnj3t"]
-size = Vector3(0.95, 2.0580635, 0.95)
+size = Vector3(2.45007, 2.0580635, 2.45007)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qylf5"]
 size = Vector3(0.45, 4.4393396, 0.45)
@@ -2163,10 +2174,10 @@ size = Vector3(0.45, 4.2069483, 0.45)
 size = Vector3(0.45, 3.22881, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq1mc"]
-size = Vector3(0.95, 1.5935144, 0.95)
+size = Vector3(1.89703, 1.5935144, 1.89703)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v14yp"]
-size = Vector3(0.95, 1.0975002, 0.95)
+size = Vector3(1.30654, 1.0975002, 1.30654)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vux0u"]
 size = Vector3(0.45, 4.156089, 0.45)
@@ -2175,7 +2186,7 @@ size = Vector3(0.45, 4.156089, 0.45)
 size = Vector3(0.45, 2.9360418, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvyia"]
-size = Vector3(0.95, 1.8814529, 0.95)
+size = Vector3(2.23982, 1.8814529, 2.23982)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1b48e"]
 size = Vector3(0.45, 3.3680966, 0.45)
@@ -2184,7 +2195,7 @@ size = Vector3(0.45, 3.3680966, 0.45)
 size = Vector3(0.45, 4.536036, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llxo2"]
-size = Vector3(0.95, 1.7786487, 0.95)
+size = Vector3(2.11743, 1.7786487, 2.11743)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6ibv"]
 size = Vector3(0.45, 4.4926057, 0.45)
@@ -2208,7 +2219,7 @@ size = Vector3(0.45, 2.8015494, 0.45)
 size = Vector3(0.45, 4.001149, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mdypo"]
-size = Vector3(0.95, 1.3930676, 0.95)
+size = Vector3(1.65841, 1.3930676, 1.65841)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_47cnh"]
 size = Vector3(0.45, 4.465347, 0.45)
@@ -2226,13 +2237,13 @@ size = Vector3(0.45, 4.703541, 0.45)
 size = Vector3(0.45, 2.890305, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t2o1i"]
-size = Vector3(0.95, 2.0532153, 0.95)
+size = Vector3(2.44429, 2.0532153, 2.44429)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aw3jf"]
 size = Vector3(0.45, 3.9276671, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn2ed"]
-size = Vector3(0.95, 1.9389156, 0.95)
+size = Vector3(2.30822, 1.9389156, 2.30822)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vfp24"]
 size = Vector3(0.45, 3.3840573, 0.45)
@@ -2244,10 +2255,10 @@ size = Vector3(0.95, 0.6515957, 0.95)
 size = Vector3(0.45, 3.8395991, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pknl7"]
-size = Vector3(0.95, 1.9456648, 0.95)
+size = Vector3(2.31626, 1.9456648, 2.31626)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4fty2"]
-size = Vector3(0.95, 0.886549, 0.95)
+size = Vector3(1.05541, 0.886549, 1.05541)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ybhgd"]
 size = Vector3(0.45, 3.0568948, 0.45)
@@ -2259,7 +2270,7 @@ size = Vector3(0.45, 4.1006823, 0.45)
 size = Vector3(0.45, 2.8662088, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x37yr"]
-size = Vector3(0.95, 1.3816401, 0.95)
+size = Vector3(1.6448, 1.3816401, 1.6448)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hol25"]
 size = Vector3(0.45, 3.2138684, 0.45)
@@ -2277,31 +2288,31 @@ size = Vector3(0.45, 4.3201303, 0.45)
 size = Vector3(0.45, 3.8963509, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h0dfn"]
-size = Vector3(0.95, 1.5800865, 0.95)
+size = Vector3(1.88105, 1.5800865, 1.88105)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b1pep"]
 size = Vector3(0.45, 3.2918296, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3m3cq"]
-size = Vector3(0.95, 1.103511, 0.95)
+size = Vector3(1.3137, 1.103511, 1.3137)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2smtc"]
 size = Vector3(0.45, 3.9260697, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0tv8k"]
-size = Vector3(0.95, 0.8695799, 0.95)
+size = Vector3(1.03521, 0.8695799, 1.03521)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gr7jj"]
 size = Vector3(0.45, 3.6202235, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7g0b5"]
-size = Vector3(0.95, 1.4694127, 0.95)
+size = Vector3(1.74929, 1.4694127, 1.74929)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g8yvl"]
 size = Vector3(0.45, 3.5438728, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_etyea"]
-size = Vector3(0.95, 0.84842145, 0.95)
+size = Vector3(1.01002, 0.84842145, 1.01002)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_frwts"]
 size = Vector3(0.45, 3.5862916, 0.45)
@@ -2310,10 +2321,10 @@ size = Vector3(0.45, 3.5862916, 0.45)
 size = Vector3(0.45, 4.074539, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppxl5"]
-size = Vector3(0.95, 1.1794453, 0.95)
+size = Vector3(1.4041, 1.1794453, 1.4041)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0uwe"]
-size = Vector3(0.95, 1.5942872, 0.95)
+size = Vector3(1.89795, 1.5942872, 1.89795)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0akv"]
 size = Vector3(0.45, 4.5045166, 0.45)
@@ -2325,10 +2336,10 @@ size = Vector3(0.45, 3.3437188, 0.45)
 size = Vector3(0.45, 4.478451, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r7yp5"]
-size = Vector3(0.95, 1.9225712, 0.95)
+size = Vector3(2.28877, 1.9225712, 2.28877)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ciht7"]
-size = Vector3(0.95, 1.5729882, 0.95)
+size = Vector3(1.8726, 1.5729882, 1.8726)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bqt6n"]
 size = Vector3(0.45, 3.0089667, 0.45)
@@ -2337,7 +2348,7 @@ size = Vector3(0.45, 3.0089667, 0.45)
 size = Vector3(0.45, 3.4065757, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_icche"]
-size = Vector3(0.95, 1.174256, 0.95)
+size = Vector3(1.39792, 1.174256, 1.39792)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_27wgp"]
 size = Vector3(0.45, 4.853546, 0.45)
@@ -2346,16 +2357,16 @@ size = Vector3(0.45, 4.853546, 0.45)
 size = Vector3(0.45, 4.368882, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_15o5u"]
-size = Vector3(0.95, 0.80159223, 0.95)
+size = Vector3(0.95427, 0.80159223, 0.95427)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iwege"]
 size = Vector3(0.45, 4.5896864, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d2o6y"]
-size = Vector3(0.95, 1.9228281, 0.95)
+size = Vector3(2.28907, 1.9228281, 2.28907)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5cqja"]
-size = Vector3(0.95, 2.029099, 0.95)
+size = Vector3(2.41558, 2.029099, 2.41558)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tuao1"]
 size = Vector3(0.45, 3.1045988, 0.45)
@@ -2373,7 +2384,7 @@ size = Vector3(0.89657634, 0.5025704, 0.89657634)
 size = Vector3(0.45, 4.283008, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a38yx"]
-size = Vector3(0.95, 1.2865022, 0.95)
+size = Vector3(1.53154, 1.2865022, 1.53154)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1u84"]
 size = Vector3(0.45, 4.048854, 0.45)
@@ -2382,19 +2393,19 @@ size = Vector3(0.45, 4.048854, 0.45)
 size = Vector3(0.45, 4.161853, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gws1c"]
-size = Vector3(0.95, 2.0818965, 0.95)
+size = Vector3(2.47844, 2.0818965, 2.47844)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmngf"]
 size = Vector3(0.45, 4.857381, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgutt"]
-size = Vector3(0.95, 1.0516183, 0.95)
+size = Vector3(1.25192, 1.0516183, 1.25192)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s7fyu"]
 size = Vector3(0.45, 3.1283734, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mcvi3"]
-size = Vector3(0.95, 1.7483422, 0.95)
+size = Vector3(2.08135, 1.7483422, 2.08135)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cdpi2"]
 size = Vector3(0.45, 2.8542337, 0.45)
@@ -2403,7 +2414,7 @@ size = Vector3(0.45, 2.8542337, 0.45)
 size = Vector3(0.45, 4.066907, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6ykh"]
-size = Vector3(0.95, 1.5521399, 0.95)
+size = Vector3(1.84778, 1.5521399, 1.84778)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4j8hl"]
 size = Vector3(0.45, 3.9152393, 0.45)
@@ -2415,13 +2426,13 @@ size = Vector3(0.45, 3.6499126, 0.45)
 size = Vector3(0.45, 3.357364, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_adxnd"]
-size = Vector3(0.95, 0.85772216, 0.95)
+size = Vector3(1.02109, 0.85772216, 1.02109)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0n8by"]
 size = Vector3(0.45, 3.8549275, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jucjp"]
-size = Vector3(0.95, 0.9888946, 0.95)
+size = Vector3(1.17725, 0.9888946, 1.17725)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yaebj"]
 size = Vector3(0.45, 3.1402266, 0.45)
@@ -2430,13 +2441,13 @@ size = Vector3(0.45, 3.1402266, 0.45)
 size = Vector3(0.45, 3.1691947, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w127p"]
-size = Vector3(0.95, 1.0671717, 0.95)
+size = Vector3(1.27044, 1.0671717, 1.27044)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t2tj4"]
 size = Vector3(0.45, 4.7554, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4yrig"]
-size = Vector3(0.95, 2.0944438, 0.95)
+size = Vector3(2.49338, 2.0944438, 2.49338)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2v2k0"]
 size = Vector3(0.45, 3.5075848, 0.45)
@@ -2448,7 +2459,7 @@ size = Vector3(0.45, 3.1251693, 0.45)
 size = Vector3(0.45, 4.525603, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yyyyb"]
-size = Vector3(0.95, 1.0421026, 0.95)
+size = Vector3(1.24059, 1.0421026, 1.24059)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0mfsm"]
 size = Vector3(0.45, 4.24705, 0.45)
@@ -2457,10 +2468,10 @@ size = Vector3(0.45, 4.24705, 0.45)
 size = Vector3(0.8933719, 0.50077415, 0.8933719)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ugkbh"]
-size = Vector3(0.95, 1.0304517, 0.95)
+size = Vector3(1.22672, 1.0304517, 1.22672)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_muhw2"]
-size = Vector3(0.95, 1.8468914, 0.95)
+size = Vector3(2.19867, 1.8468914, 2.19867)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ni0u6"]
 size = Vector3(0.45, 3.5592377, 0.45)
@@ -2469,13 +2480,13 @@ size = Vector3(0.45, 3.5592377, 0.45)
 size = Vector3(0.45, 5.025313, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwas8"]
-size = Vector3(0.95, 0.97683734, 0.95)
+size = Vector3(1.1629, 0.97683734, 1.1629)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp5qg"]
 size = Vector3(0.45, 2.9472146, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_021wq"]
-size = Vector3(0.95, 1.6379296, 0.95)
+size = Vector3(1.94991, 1.6379296, 1.94991)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_myx1o"]
 size = Vector3(0.45, 3.2247162, 0.45)
@@ -2484,13 +2495,13 @@ size = Vector3(0.45, 3.2247162, 0.45)
 size = Vector3(0.45, 4.759391, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30rji"]
-size = Vector3(0.95, 0.9424801, 0.95)
+size = Vector3(1.122, 0.9424801, 1.122)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cr2pn"]
 size = Vector3(0.45, 4.444808, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_438hk"]
-size = Vector3(0.95, 1.4788978, 0.95)
+size = Vector3(1.76059, 1.4788978, 1.76059)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v45wy"]
 size = Vector3(0.95, 0.7065236, 0.95)
@@ -2502,13 +2513,13 @@ size = Vector3(0.45, 2.9315424, 0.45)
 size = Vector3(0.45, 3.7291546, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q3nge"]
-size = Vector3(0.95, 1.968066, 0.95)
+size = Vector3(2.34293, 1.968066, 2.34293)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fg4qm"]
-size = Vector3(0.95, 0.9454166, 0.95)
+size = Vector3(1.12549, 0.9454166, 1.12549)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ip7p0"]
-size = Vector3(0.95, 1.9816697, 0.95)
+size = Vector3(2.35912, 1.9816697, 2.35912)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mpoqh"]
 size = Vector3(0.95, 0.5901341, 0.95)
@@ -2532,7 +2543,7 @@ size = Vector3(0.45, 3.2643065, 0.45)
 size = Vector3(0.45, 3.235545, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ra46"]
-size = Vector3(0.95, 2.066052, 0.95)
+size = Vector3(2.45958, 2.066052, 2.45958)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j50ic"]
 size = Vector3(0.45, 4.1917267, 0.45)
@@ -2541,13 +2552,13 @@ size = Vector3(0.45, 4.1917267, 0.45)
 size = Vector3(0.45, 3.7216644, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sp0ey"]
-size = Vector3(0.95, 1.6093918, 0.95)
+size = Vector3(1.91593, 1.6093918, 1.91593)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuumf"]
 size = Vector3(0.45, 3.0449388, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3yvk6"]
-size = Vector3(0.95, 0.82254934, 0.95)
+size = Vector3(0.97922, 0.82254934, 0.97922)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y3yqm"]
 size = Vector3(0.45, 4.6908064, 0.45)
@@ -6546,6 +6557,22 @@ metadata/original = "res://assets/naturaleza/glTF/Rock_Medium_3.gltf"
 transform = Transform3D(-2.21963, 0, -1.717008, 0, 2.8062205, 0, 1.717008, 0, -2.21963, 50.00176, 20.785767, -22.422512)
 metadata/original = "res://assets/naturaleza/glTF/Rock_Medium_3.gltf"
 
+[node name="MacizosLaterales" type="StaticBody3D" parent="EntradaMinas"]
+
+[node name="MacizoOeste" type="CollisionShape3D" parent="EntradaMinas/MacizosLaterales"]
+position = Vector3(41.2, 22.2, -24.5)
+rotation = Vector3(0, -0.66, 0)
+shape = SubResource("FormaMacizoBocamina")
+
+[node name="MacizoEste" type="CollisionShape3D" parent="EntradaMinas/MacizosLaterales"]
+position = Vector3(48.8, 22.2, -24.5)
+rotation = Vector3(0, 0.66, 0)
+shape = SubResource("FormaMacizoBocamina")
+
+[node name="FondoLaderaBocamina" type="MeshInstance3D" parent="."]
+position = Vector3(54, 12, -19)
+mesh = SubResource("LaderaExterior")
+
 [node name="Paisaje" type="Node3D" parent="." unique_id=1075416019]
 
 [node name="Rock_Medium_12" type="Node3D" parent="Paisaje" unique_id=1676468242 instance=ExtResource("4_c5bxi")]
@@ -8718,8 +8745,19 @@ mesh = SubResource("BoxMesh_xaylt")
 [node name="@Label3D@1767" type="Label3D" parent="SenalEntrada" unique_id=634688559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.09)
 pixel_size = 0.004
-text = "MONTANAS / ALDEA"
+text = "MONTAÑAS · ALDEA"
 font_size = 30
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
+
+[node name="RotuloReverso" type="Label3D" parent="SenalEntrada"]
+position = Vector3(0, 1.7, -0.078)
+rotation_degrees = Vector3(0, 180, 0)
+pixel_size = 0.004
+text = "ALDEA"
+font_size = 30
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
 
 [node name="Limites" type="Node3D" parent="." unique_id=44636167]
 

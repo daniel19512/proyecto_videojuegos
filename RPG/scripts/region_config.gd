@@ -1,4 +1,4 @@
-﻿extends Node
+extends Node
 ## Configuración de una región jugable. Los escenarios y sus cierres no se alteran.
 @export var id_region: StringName
 @export var jugador: NodePath = ^"../Jugador"
@@ -7,6 +7,9 @@
 
 func _ready() -> void:
 	get_parent().set_meta("id_region",id_region)
+	var actividades := preload("res://scripts/vida/actividades_vida.gd").new()
+	actividades.name = "ActividadesVida"
+	add_child(actividades)
 
 func obtener_entrada(id: String) -> Marker3D:
 	if not entradas.has(id):

@@ -227,20 +227,39 @@ func validar_interior(ruta: String, nombre_panel: String, texto: String) -> void
 	jugador.velocity = Vector3.ZERO
 	await esperar(12)
 	comprobar(punto.jugador_cerca and punto.get_node("Aviso").visible and not salida.habilitada, id + ": junto al punto solo aparece su aviso")
+	var recetas := {
+		"cerveza": ["cerveza_suave", {"trigo": 1, "hierbas": 1}],
+		"panaderia": ["hogaza", {"harina": 1}],
+		"herreria": ["refinar", {"hierro": 1, "carbon": 1}],
+	}
+	var oficios: GDScript = load("res://scripts/vida/oficios.gd")
+	var ficha: Array = recetas[punto.estacion]
+	for ingrediente in ficha[1]:
+		oficios.Bolsa.anadir(oficios.Bolsa.jugador(), ingrediente, ficha[1][ingrediente])
 	await pulsar(&"interactuar")
+	var interfaz := root.get_node("InterfazVida")
+	comprobar(paused and interfaz.contexto == "estacion", id + ": F abre el selector de recetas")
+	interfaz._elegir_receta(ficha[0])
+	await process_frame
 	comprobar(paused and panel.visible and panel.estado == MinijuegoBase.Estado.INSTRUCCIONES and panel.sonido.ultimo == &"abrir", id + ": F abre las instrucciones, pausa y suena")
 	await pulsar(&"interactuar")
 	comprobar(panel.estado == MinijuegoBase.Estado.JUGANDO and panel.sonido.ultimo == &"empezar", id + ": F empieza la partida con su sonido")
 	var resultados := []
 	panel.partida_terminada.connect(func(p): resultados.append(p))
 	panel.logica.puntuacion = 42
+	match punto.estacion:
+		"cerveza":
+			panel.logica.recetas_completadas = 1
+		"panaderia":
+			panel.logica.doradas = 1
+		"herreria":
+			panel.logica.piezas = 1
 	# 0 y no un margen pequeño: en headless dos fotogramas pueden durar menos.
 	panel.logica.tiempo_restante = 0.0
 	await process_frame
 	await process_frame
 	comprobar(panel.estado == MinijuegoBase.Estado.RESULTADO and resultados == [42] and panel.sonido.ultimo == &"fin", id + ": al acabar el tiempo suena el final y muestra el resultado")
-	await pulsar(&"interactuar")
-	comprobar(panel.estado == MinijuegoBase.Estado.JUGANDO and panel.logica.puntuacion == 0, id + ": F juega otra vez desde cero")
+	comprobar(oficios.xp(punto.estacion) == 12, id + ": el resultado concede experiencia una vez")
 	await pulsar(&"ui_cancel")
 	comprobar(not panel.visible and not paused and punto.get_node("Aviso").visible and panel.sonido.ultimo == &"cerrar", id + ": Esc cierra, suena y quita la pausa")
 	escena.queue_free()

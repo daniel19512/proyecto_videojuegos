@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/region_config.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/salida_region.gd" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/acceso_ruinas_bosque.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/presentacion/senal_camino.tscn" id="Senal"]
 
 [sub_resource type="BoxShape3D" id="Detector"]
 size = Vector3(3.6, 3, 1.4)
@@ -45,6 +46,14 @@ marcador_salida = NodePath("../../Bosque/Marcadores/SalidaRuinas/TransicionFutur
 shape = SubResource("Detector")
 
 [node name="VestigiosAccesoRuinas" parent="." instance=ExtResource("4")]
+
+[node name="SenalAldea" parent="." instance=ExtResource("Senal")]
+position = Vector3(3, 0.62, 44)
+destino = "ALDEA"
+
+[node name="SenalRuinas" parent="." instance=ExtResource("Senal")]
+position = Vector3(24.5, 1.9, -37)
+destino = "RUINAS"
 
 [node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente", "sol")]
 script = ExtResource("CicloLuz")

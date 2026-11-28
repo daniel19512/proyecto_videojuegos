@@ -18,12 +18,13 @@ func agregar(n: Node, padre: Node, nombre: String) -> void:
 	padre.add_child(n, true)
 	n.owner = raiz
 
-## Punto de un minijuego de oficio (`id`: cerveza, pan o forja). Las
+## Punto de un minijuego de oficio. El ID identifica su panel. Las
 ## propiedades se asignan antes de entrar al árbol porque _ready las usa.
-func punto_minijuego(id: String, pos: Vector3, texto: String) -> void:
+func punto_minijuego(id: String, estacion: String, pos: Vector3, texto: String) -> void:
 	var punto := (load("res://scenes/minijuegos/punto_minijuego.tscn") as PackedScene).instantiate() as Node3D
 	punto.set("escena_minijuego", load("res://scenes/minijuegos/minijuego_%s.tscn" % id))
 	punto.set("texto_aviso", texto)
+	punto.set("estacion", estacion)
 	punto.position = pos
 	agregar(punto, raiz, "PuntoMinijuego")
 
@@ -241,7 +242,7 @@ func construir() -> void:
 	puerta.set("escena_destino","res://scenes/mundo.tscn")
 	puerta.set("entrada_destino","aldea_taberna_e01")
 	puerta.set("texto","[F] Salir de la taberna")
-	punto_minijuego("cerveza",Vector3(-1.3,0,-3.6),"[F] Elaborar cerveza")
+	punto_minijuego("cerveza","cerveza",Vector3(-1.3,0,-3.6),"[F] Elaborar cerveza")
 	raiz.set_meta("assets_utilizados",usados)
 	completar_luz_interior()
 	var escena := PackedScene.new()

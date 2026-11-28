@@ -4,9 +4,9 @@ extends Node3D
 ## líneas fijas exportadas. Al hablar pausa el mundo, como el pescador.
 ## La mirada se guarda en el mundo y se traduce a arriba/abajo/izquierda/derecha
 ## según la cámara, para que el sprite siga coherente al girarla.
-## Con IA, ejecuta la orden que le da el autoload Aldeanos: camina por la ruta
-## de MapaAldea, se para si el viajero está cerca y solo es sólido mientras
-## está en su puesto (así nunca bloquea un camino). Sin IA no se mueve.
+## Ejecuta rutas de Aldeanos y se detiene al acercarse el viajero.
+## Los habituales conservan la solidez del puesto. Los habitantes regionales
+## comprueban suelo y obstáculos al caminar.
 
 signal conversacion_terminada
 
@@ -29,10 +29,17 @@ signal conversacion_terminada
 @export var solido: bool = true
 
 var jugador_cerca: bool = false
+const TIENDAS_NPC := {&"panadera": "panaderia", &"herrero": "herreria", &"samuel": "semillas"}
+
 var hablando: bool = false
 ## Mientras charla con otro aldeano (capa 3) no camina.
 var conversando: bool = false
 var conversaciones: int = 0
+var regional := false
+var orden_regional: Array = []
+var replanificar_regional := false
+var _bloqueado := 0.0
+var _lado_cedido := 0.0
 ## Posición inicial en la escena: su puesto de trabajo y su casa.
 var puesto: Vector3
 ## Última posición conocida (al salir del árbol ya no hay transformación global).
@@ -52,6 +59,7 @@ var _jugador: Node3D
 
 
 func _ready() -> void:
+	conversaciones = int(EstadoMundo.objeto("Aldea", "npc_" + String(id_npc)).get("conversaciones", 0))
 	if frames:
 		_sprite.sprite_frames = frames
 	_sprite.pixel_size = tamano_pixel
@@ -71,6 +79,9 @@ func _ready() -> void:
 	ultima_posicion = puesto
 	if not id_npc.is_empty():
 		Aldeanos.registrar(self)
+		Misiones.actualizado.connect(_refrescar_aviso)
+	Ajustes.dispositivo_cambiado.connect(_refrescar_aviso)
+	Ajustes.cambiado.connect(_refrescar_aviso)
 
 
 func _exit_tree() -> void:
@@ -82,9 +93,23 @@ func _process(_delta: float) -> void:
 	# La cámara puede girar: recalcular la dirección en pantalla cada fotograma.
 	actualizar_animacion(esta_caminando())
 	# Con el árbol en pausa este nodo no se procesa, así que no reabre la caja.
-	# Mientras charla con otro aldeano no atiende al viajero.
-	if jugador_cerca and not conversando and Input.is_action_just_pressed("interactuar"):
-		hablar()
+	if jugador_cerca and Input.is_action_just_pressed("interactuar"):
+		if InterfazVida.interaccion_mundo_consumida():
+			return
+		Aldeanos.interrumpir_charla(id_npc)
+		if Historia.tiene_npc(id_npc):
+			Misiones.abrir(id_npc, hablar, hablar.bind(true), TIENDAS_NPC.get(id_npc, ""))
+		else:
+			hablar()
+
+
+func _unhandled_input(evento: InputEvent) -> void:
+	if not jugador_cerca or hablando or conversando or GestorRegiones.en_transicion:
+		return
+	var tienda: String = TIENDAS_NPC.get(id_npc, "")
+	if not tienda.is_empty() and evento.is_action_pressed("comerciar_npc"):
+		InterfazVida.abrir("tienda", tienda)
+		get_viewport().set_input_as_handled()
 
 
 func esta_caminando() -> bool:
@@ -103,7 +128,8 @@ func ejecutar() -> void:
 	if estado.llegado:
 		_refrescar_aviso()
 		return
-	_ruta = Aldeanos.ruta(global_position, Aldeanos.destino(id_npc))
+	var destino := Aldeanos.destino(id_npc)
+	_ruta = Aldeanos.ruta(global_position, destino, Aldeanos.obstaculos_personales(self, destino))
 	if _ruta.is_empty():
 		Aldeanos.llegada(id_npc)
 	_refrescar_aviso()
@@ -112,7 +138,14 @@ func ejecutar() -> void:
 func _physics_process(delta: float) -> void:
 	_caminando = false
 	ultima_posicion = global_position
-	if not Aldeanos.activo() or hablando or conversando:
+	if hablando or conversando or GestorRegiones.en_transicion:
+		return
+	if regional:
+		if jugador_cerca:
+			_ceder_al_jugador(delta)
+		elif not _ruta.is_empty():
+			_lado_cedido = 0.0
+			_avanzar_regional(delta)
 		return
 	var estado := orden()
 	if estado.llegado or _ruta.is_empty():
@@ -132,11 +165,107 @@ func _physics_process(delta: float) -> void:
 		_recalcular -= delta
 		if _recalcular <= 0.0:
 			_recalcular = 1.5
-			_ruta = Aldeanos.ruta(global_position, objetivo)
+			_ruta = Aldeanos.ruta(global_position, objetivo, Aldeanos.obstaculos_personales(self, objetivo))
 			_paso = 0
 			if _ruta.is_empty():
 				return
 	_avanzar(delta)
+
+
+func ruta_regional(puntos: PackedVector3Array) -> void:
+	_ruta = puntos
+	_paso = 0
+	_bloqueado = 0.0
+	replanificar_regional = false
+
+
+func ruta_regional_acabada() -> bool:
+	return _ruta.is_empty()
+
+
+func _avanzar_regional(delta: float) -> void:
+	var objetivo := _ruta[_paso]
+	var cambio := _plano(objetivo - global_position)
+	var siguiente := global_position + cambio.limit_length(Aldeanos.velocidad * delta)
+	if _pisar(siguiente):
+		if cambio.length_squared() > 0.0001:
+			mirada = cambio.normalized()
+			_caminando = true
+		if _plano(objetivo - siguiente).length_squared() < 0.0001:
+			_paso += 1
+			if _paso >= _ruta.size():
+				_ruta.clear()
+		_bloqueado = 0.0
+		return
+	_bloqueado += delta
+	if _bloqueado > 2.0:
+		_ruta.clear()
+		replanificar_regional = true
+
+
+func _ceder_al_jugador(delta: float) -> void:
+	if not is_instance_valid(_jugador):
+		return
+	var separacion := _plano(global_position - _jugador.global_position)
+	var rumbo := separacion.normalized()
+	if separacion.length_squared() > 1.22 * 1.22 or _jugador.intencion_horizontal.dot(rumbo) < 0.55:
+		_lado_cedido = 0.0
+		return
+	var lado := rumbo.cross(Vector3.UP)
+	var primero := _lado_cedido if _lado_cedido != 0.0 else 1.0
+	for signo: float in [primero, -primero]:
+		var paso := (lado * signo + rumbo * 0.3).normalized()
+		if _pisar(global_position + paso * Aldeanos.velocidad * delta):
+			_lado_cedido = signo
+			_caminando = true
+			mirada = paso
+			replanificar_regional = true
+			return
+
+
+func _pisar(siguiente: Vector3) -> bool:
+	var cuerpo := $Cuerpo as StaticBody3D
+	var rayo := PhysicsRayQueryParameters3D.create(siguiente + Vector3.UP * 0.65,
+		siguiente - Vector3.UP * 0.6, 1, [cuerpo.get_rid()])
+	var suelo := get_world_3d().direct_space_state.intersect_ray(rayo)
+	if suelo.is_empty() or suelo.normal.y <= 0.75:
+		return false
+	siguiente.y = suelo.position.y
+	if not _paso_libre(siguiente):
+		return false
+	global_position = siguiente
+	return true
+
+
+func _paso_libre(siguiente: Vector3) -> bool:
+	if _ocupa_persona(siguiente):
+		return false
+	var cuerpo := $Cuerpo as StaticBody3D
+	var forma := $Cuerpo/Colision as CollisionShape3D
+	var consulta := PhysicsShapeQueryParameters3D.new()
+	consulta.shape = forma.shape
+	consulta.exclude = [cuerpo.get_rid()]
+	consulta.transform.origin = siguiente + Vector3.UP * (forma.position.y + 0.16)
+	consulta.collision_mask = 1
+	return get_world_3d().direct_space_state.intersect_shape(consulta, 1).is_empty()
+
+
+func _ocupa_persona(siguiente: Vector3) -> bool:
+	var escena := get_tree().current_scene
+	var jugador := escena.get_node_or_null("Jugador") as Node3D if escena else null
+	if jugador and _acerca_demasiado(jugador.global_position, siguiente):
+		return true
+	for otro in Aldeanos.nodos.values():
+		if otro != self and _acerca_demasiado(otro.global_position, siguiente):
+			return true
+	return false
+
+
+func _acerca_demasiado(otra: Vector3, siguiente: Vector3) -> bool:
+	if absf(otra.y - siguiente.y) > 1.6:
+		return false
+	var distancia := _plano(otra - siguiente).length_squared()
+	return distancia < 0.95 * 0.95 and distancia < _plano(otra - global_position).length_squared()
 
 
 func _avanzar(delta: float) -> void:
@@ -144,6 +273,14 @@ func _avanzar(delta: float) -> void:
 	while paso > 0.0 and _paso < _ruta.size():
 		var hacia := _ruta[_paso] - global_position
 		var plano := _plano(hacia)
+		var siguiente := global_position + plano.limit_length(paso)
+		if _ocupa_persona(siguiente):
+			_bloqueado += delta
+			if _bloqueado > 2.0:
+				_bloqueado = 0.0
+				ejecutar()
+			return
+		_bloqueado = 0.0
 		if plano.length() <= paso:
 			global_position = _ruta[_paso]
 			paso -= plano.length()
@@ -250,14 +387,27 @@ func hablando_en_bocadillo() -> bool:
 	return bocadillo != null and bocadillo.visible
 
 
+func ocultar_bocadillo() -> void:
+	var bocadillo := get_node_or_null("Bocadillo") as Label3D
+	if bocadillo:
+		bocadillo.hide()
+	conversando = false
+	_refrescar_aviso()
+
+
 ## «!» sobre la cabeza cuando ha llegado buscando al viajero.
 func _refrescar_aviso() -> void:
-	var esperando: bool = Aldeanos.activo() and orden().accion == "buscar_jugador" and orden().llegado
-	_aviso.text = "[F] Hablar" if jugador_cerca or not esperando else "¡!"
+	var esperando: bool = not regional and Aldeanos.activo() and orden().accion == "buscar_jugador" and orden().llegado
+	var invitacion := "[%s] Hablar" % Ajustes.indicacion("interactuar")
+	_aviso.text = invitacion if jugador_cerca or not esperando else "¡!"
+	if jugador_cerca and Misiones.tiene_aviso(id_npc):
+		_aviso.text += " · Encargo"
+	if jugador_cerca and TIENDAS_NPC.has(id_npc):
+		_aviso.text += "  [%s] Tienda" % Ajustes.indicacion("comerciar_npc")
 	_aviso.visible = ((jugador_cerca and not hablando) or esperando) and not conversando
 
 
-func hablar() -> void:
+func hablar(fijo: bool = false) -> void:
 	if is_instance_valid(_jugador):
 		var hacia := _jugador.global_position - global_position
 		hacia.y = 0
@@ -268,22 +418,48 @@ func hablar() -> void:
 	hablando = true
 	get_tree().paused = true
 	# Con IA disponible conversa el modelo; si su primera respuesta falla, lo fijo.
-	if IA.disponible() and Historia.tiene_npc(id_npc):
-		if await DialogoIA.conversar(id_npc, nombre):
-			conversaciones += 1
+	if not fijo and not _presenta_la_casa() and IA.disponible() and Historia.tiene_npc(id_npc):
+		var exito := await DialogoIA.conversar(id_npc, nombre)
+		if exito:
+			_recordar_conversacion()
+		if exito or DialogoIA.cancelada:
 			_al_cerrar_dialogo()
 			return
-	_caja.mostrar(nombre, lineas_dialogo())
+	_caja.mostrar(nombre, lineas_dialogo(), frames.get_frame_texture(&"idle_abajo", 0) if frames else null)
+	_recordar_conversacion()
+
+
+func _recordar_conversacion() -> void:
+	Misiones.conversar(id_npc)
 	conversaciones += 1
+	EstadoMundo.objeto("Aldea", "npc_" + String(id_npc)).conversaciones = conversaciones
+
+
+func _presenta_la_casa() -> bool:
+	return id_npc == &"guardia" and conversaciones == 0 and Partidas.espacio > 0
 
 
 func lineas_dialogo() -> PackedStringArray:
+	if _presenta_la_casa():
+		return PackedStringArray([
+			"¡Bienvenido a la Aldea, %s! La casa al noroeste de la plaza es tuya." % EstadoMundo.nombre_protagonista(),
+			"Puedes guardar tus cosas en el cofre y dormir hasta las seis de la mañana. El mapa te indica dónde está.",
+		])
 	if _recado:
 		var del_recado: PackedStringArray = _recado.lineas_para(id_npc)
 		if not del_recado.is_empty():
 			return del_recado
 	if conversaciones == 0 and not lineas_primera_visita.is_empty():
+		if regional:
+			var bienvenida := lineas_primera_visita.duplicate()
+			bienvenida[0] = "Mucho gusto, %s. %s" % [EstadoMundo.nombre_protagonista(), bienvenida[0]]
+			return bienvenida
 		return lineas_primera_visita
+	var saludo := Misiones.saludo(id_npc)
+	if not saludo.is_empty():
+		var lineas := PackedStringArray([saludo])
+		lineas.append_array(lineas_habituales)
+		return lineas
 	return lineas_habituales
 
 

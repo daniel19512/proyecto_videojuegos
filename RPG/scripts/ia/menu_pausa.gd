@@ -4,6 +4,9 @@ extends CanvasLayer
 ## el modelo en user://ia.cfg mediante el autoload IA, muestran el gasto de la
 ## sesión y permiten empezar una historia nueva (con confirmación).
 
+const Estilo = preload("res://scripts/presentacion/estilo.gd")
+const Opciones = preload("res://scripts/presentacion/opciones.gd")
+var _opciones_generales: Control
 var abierto: bool = false
 var _principal: VBoxContainer
 var _opciones: VBoxContainer
@@ -26,7 +29,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(evento: InputEvent) -> void:
-	if not evento.is_action_pressed("ui_cancel") or evento.is_echo():
+	if not (evento.is_action_pressed("pausar_juego") or evento.is_action_pressed("ui_cancel")) or evento.is_echo() or MapaMundo.abierto or is_instance_valid(_opciones_generales):
 		return
 	if abierto:
 		if Diario.abierto:
@@ -36,7 +39,7 @@ func _unhandled_input(evento: InputEvent) -> void:
 		else:
 			cerrar()
 		get_viewport().set_input_as_handled()
-	elif not get_tree().paused and not GestorRegiones.en_transicion:
+	elif not get_tree().paused and not GestorRegiones.en_transicion and GestorRegiones.region_actual != &"":
 		abrir()
 		get_viewport().set_input_as_handled()
 
@@ -93,17 +96,6 @@ func _abrir_diario() -> void:
 	Diario.abrir(false)
 
 
-func _probar() -> void:
-	aplicar_opciones()
-	if not IA.disponible():
-		_estado.text = "Falta la clave, la IA está desactivada o se alcanzó el tope."
-		return
-	_estado.text = "Probando…"
-	var esquema := {type = "object", properties = {ok = {type = "boolean"}}, required = ["ok"], additionalProperties = false}
-	var resultado: Dictionary = await IA.solicitar([{role = "user", content = "Responde ok=true."}], "prueba", esquema, 20)
-	_estado.text = "Conexión correcta con %s." % IA.modelo if resultado.ok else "Error: %s" % resultado.error
-
-
 func _nueva_historia() -> void:
 	if not _confirmar_nueva:
 		_confirmar_nueva = true
@@ -130,13 +122,6 @@ func _construir() -> void:
 	marco.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	marco.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	marco.grow_vertical = Control.GROW_DIRECTION_BOTH
-	var estilo := StyleBoxFlat.new()
-	estilo.bg_color = Color(0.16, 0.11, 0.07, 0.97)
-	estilo.border_color = Color(0.55, 0.38, 0.2)
-	estilo.set_border_width_all(5)
-	estilo.set_corner_radius_all(4)
-	estilo.set_content_margin_all(20)
-	marco.add_theme_stylebox_override("panel", estilo)
 	fondo.add_child(marco)
 	var pila := VBoxContainer.new()
 	marco.add_child(pila)
@@ -147,8 +132,12 @@ func _construir() -> void:
 	_principal.add_child(_titulo("Pausa"))
 	_principal.add_child(_boton("Continuar", cerrar))
 	_principal.add_child(_boton("Diario", _abrir_diario))
-	_principal.add_child(_boton("Opciones de IA", mostrar_opciones))
-	_principal.add_child(_boton("Salir del juego", func(): get_tree().quit()))
+	_principal.add_child(_boton("Opciones", _mostrar_opciones_generales.bind("Gráficos")))
+	_principal.add_child(_boton("Guardar partida", _guardar_partida))
+	_principal.add_child(_boton("Mapa", MapaMundo.abrir))
+	_principal.add_child(_boton("Controles", _mostrar_opciones_generales.bind("Controles")))
+	_principal.add_child(_boton("Menú principal", _confirmar_salida.bind(true)))
+	_principal.add_child(_boton("Salir del juego", _confirmar_salida.bind(false)))
 
 	_opciones = VBoxContainer.new()
 	_opciones.add_theme_constant_override("separation", 8)
@@ -175,7 +164,6 @@ func _construir() -> void:
 	_opciones.add_child(_tope)
 	_uso = _etiqueta("")
 	_opciones.add_child(_uso)
-	_opciones.add_child(_boton("Probar conexión", _probar))
 	_nueva = _boton("Nueva historia", _nueva_historia)
 	_opciones.add_child(_nueva)
 	_estado = _etiqueta("")
@@ -184,9 +172,62 @@ func _construir() -> void:
 	_opciones.add_child(_boton("Guardar y volver", _volver))
 
 
+func _guardar_partida() -> void:
+	if not EstadoMundo.automatico:
+		_aviso_partida("Inicia la partida desde la escena principal para guardarla.")
+		return
+	_aviso_partida("Partida guardada." if EstadoMundo.guardar_actual() else "No se pudo guardar la partida.")
+
+
+func _aviso_partida(texto: String) -> void:
+	var aviso := AcceptDialog.new()
+	aviso.dialog_text = texto
+	aviso.window_input.connect(func(evento):
+		if evento.is_action_pressed("ui_cancel"):
+			aviso.set_input_as_handled()
+			aviso.hide()
+			aviso.canceled.emit())
+	aviso.confirmed.connect(aviso.queue_free)
+	aviso.canceled.connect(aviso.queue_free)
+	add_child(aviso)
+	aviso.popup_centered()
+
+
+func _mostrar_opciones_generales(seccion: String) -> void:
+	_principal.hide()
+	_opciones_generales = Opciones.new()
+	_opciones_generales.seccion_inicial = seccion
+	add_child(_opciones_generales)
+	_opciones_generales.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_opciones_generales.offset_left = 32
+	_opciones_generales.offset_right = -32
+	_opciones_generales.offset_top = 24
+	_opciones_generales.offset_bottom = -24
+	_opciones_generales.cerrado.connect(_mostrar_principal)
+
+
+func _confirmar_salida(volver: bool) -> void:
+	var pregunta := "¿Volver al menú principal?" if volver else "¿Salir del juego?"
+	var aceptar := "Guardar y volver" if volver else "Guardar y salir"
+	Estilo.confirmar(self, pregunta, _salir.bind(volver, true), aceptar, _salir.bind(volver, false))
+
+func _salir(volver: bool, guardar: bool) -> void:
+	if volver and IA.peticiones_en_curso > 0:
+		_aviso_partida("Hay una respuesta pendiente. Vuelve a intentarlo cuando termine.")
+		return
+	if guardar and not EstadoMundo.guardar_actual():
+		_aviso_partida("No se pudo guardar la partida. Puedes volver a intentarlo.")
+		return
+	if volver:
+		if Partidas.volver_al_menu():
+			cerrar()
+		else:
+			_aviso_partida("No se pudo abrir el menú principal.")
+	else:
+		AudioJuego.salir_del_juego()
+
 func _titulo(texto: String) -> Label:
-	var etiqueta := Label.new()
-	etiqueta.text = texto
+	var etiqueta := Estilo.titulo(texto)
 	etiqueta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	etiqueta.add_theme_font_size_override("font_size", 28)
 	etiqueta.add_theme_color_override("font_color", Color(0.98, 0.85, 0.5))
@@ -203,6 +244,6 @@ func _etiqueta(texto: String) -> Label:
 func _boton(texto: String, accion: Callable) -> Button:
 	var boton := Button.new()
 	boton.text = texto
-	boton.add_theme_font_size_override("font_size", 18)
+
 	boton.pressed.connect(accion)
 	return boton

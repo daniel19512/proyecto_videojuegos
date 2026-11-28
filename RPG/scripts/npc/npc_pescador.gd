@@ -13,9 +13,14 @@ var ultima_puntuacion: int = 0
 
 func _ready() -> void:
 	super._ready()
+	var memoria := EstadoMundo.objeto("Aldea", "npc_pescador")
+	partidas = int(memoria.get("partidas", 0))
+	mejor_puntuacion = int(memoria.get("mejor", 0))
+	ultima_puntuacion = int(memoria.get("ultima", 0))
 	if not punto_pesca.is_empty():
 		var minijuego: Node = get_node(punto_pesca).get_node("MinijuegoPesca")
 		minijuego.partida_terminada.connect(registrar_partida)
+
 
 
 func registrar_partida(puntuacion: int) -> void:
@@ -23,6 +28,9 @@ func registrar_partida(puntuacion: int) -> void:
 		mejor_puntuacion = puntuacion
 	ultima_puntuacion = puntuacion
 	partidas += 1
+	EstadoMundo.objeto("Aldea", "npc_pescador").merge({
+		"partidas": partidas, "mejor": mejor_puntuacion, "ultima": ultima_puntuacion
+	}, true)
 	# Recuerdo persistente para la conversación con IA (vale también sin ella).
 	Historia.recordar(&"pescador", "El viajero pescó en el río y logró %d puntos." % puntuacion)
 
@@ -32,10 +40,10 @@ func lineas_dialogo() -> PackedStringArray:
 		if conversaciones == 0:
 			return PackedStringArray([
 				"¡Buenas! Soy Tomás. Llevo media vida pescando en este río.",
-				"Si quieres probar suerte, coge la red de la orilla, aquí al lado, y pulsa F.",
+				"Si quieres probar suerte, consigue una caña en el Mercado y acércate a la orilla.",
 				"Atrapa los peces, pero ojo con las piedras: la corriente arrastra de todo.",
 			])
-		return PackedStringArray(["¿Todavía no has probado? La red te espera junto a la orilla."])
+		return PackedStringArray(["¿Todavía no has probado? Trae una caña a la orilla."])
 	var lineas := PackedStringArray()
 	if mejor_puntuacion <= 0:
 		lineas.append("Bueno... el río no siempre es generoso. Tu mejor marca es %d puntos." % mejor_puntuacion)

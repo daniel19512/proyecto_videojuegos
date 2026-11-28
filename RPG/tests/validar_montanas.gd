@@ -106,7 +106,8 @@ func validar() -> void:
 					comprobar(espacio.intersect_shape(shape_q,8).is_empty(),"Ancho sin obstáculos "+str(hit.position))
 	comprobar(mapa.get_node("Marcadores/Minas").get_meta("activa")==false,"Metadato historico conservado; activacion explicita en envolvente")
 	comprobar(mundo.get_node("Region/SalidaMinas").escena_destino=="res://scenes/mundo_minas.tscn","Destino minero configurado explicitamente")
-	comprobar(mundo.find_children("*","Area3D",true,false).size()==2,"Solo retorno Aldea y conexion Minas autorizada")
+	var salidas := mundo.find_children("*","Area3D",true,false).filter(func(area): return area.get("escena_destino") != null)
+	comprobar(salidas.size()==2,"Solo retorno Aldea y conexion Minas autorizada")
 	var rio: MeshInstance3D = mapa.get_node("Hidrografia/RioDescendente")
 	var agua_vertices: PackedVector3Array = rio.mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
 	for i in range(0,agua_vertices.size(),6):

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cr6jjfl2hyj8"
+path="res://.godot/imported/1. Moonspire.ogg-bacf9af2d46249ae1d750bb0ac7ea6be.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/musica/alkakrab/1. Moonspire.ogg"
+dest_files=["res://.godot/imported/1. Moonspire.ogg-bacf9af2d46249ae1d750bb0ac7ea6be.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

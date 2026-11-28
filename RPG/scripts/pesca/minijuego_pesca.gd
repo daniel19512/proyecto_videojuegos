@@ -31,6 +31,7 @@ var _textos: Array[Dictionary] = []
 var _tiempo_visual: float = 0.0
 var _fotograma_apertura: int = -1
 var sonido: ReproductorSonidos
+var _captura_liquidada := false
 
 @onready var _area: Control = $Marco/AreaJuego
 @onready var _puntos: Label = $Marco/Puntos
@@ -40,6 +41,11 @@ var sonido: ReproductorSonidos
 
 func _ready() -> void:
 	visible = false
+	var tema := load("res://scenes/presentacion/sapientia.tres") as Theme
+	$Marco.add_theme_stylebox_override("panel", tema.get_stylebox("panel", "PanelContainer"))
+	var titulo := $Marco.get_node_or_null("Titulo") as Label
+	if titulo:
+		titulo.theme_type_variation = &"Titulo"
 	_area.draw.connect(_dibujar)
 	# Mismos sonidos de interfaz que los minijuegos de oficio (Kenney, CC0).
 	sonido = ReproductorSonidos.new()
@@ -54,6 +60,7 @@ func _ready() -> void:
 
 
 func abrir() -> void:
+	_captura_liquidada = false
 	logica = LogicaPesca.new(semilla)
 	_textos.clear()
 	_fotograma_apertura = Engine.get_process_frames()
@@ -85,6 +92,9 @@ func _process(delta: float) -> void:
 	)
 	match estado:
 		Estado.INSTRUCCIONES, Estado.RESULTADO:
+			if confirmar and _captura_liquidada:
+				cerrar()
+				return
 			if confirmar:
 				logica = LogicaPesca.new(semilla)
 				_textos.clear()
@@ -102,11 +112,16 @@ func _process(delta: float) -> void:
 	_area.queue_redraw()
 
 
+func mostrar_captura(mensaje: String) -> void:
+	_captura_liquidada = true
+	_mensaje.text = "Puntuación: %d\n\n%s\n\n[F/A] Continuar    [Esc/B] Salir" % [logica.puntuacion, mensaje]
+
+
 func _cambiar_estado(nuevo: Estado) -> void:
 	estado = nuevo
 	match estado:
 		Estado.INSTRUCCIONES:
-			_mensaje.text = "Mueve la red con A/D o las flechas.\nAtrapa peces (+%d). Si se escapan: %d.\nEvita las piedras (%d).\n\n[F] Empezar     [Esc] Salir" % [
+			_mensaje.text = "Mueve la red con A/D, flechas o stick.\nAtrapa peces (+%d). Si se escapan: %d.\nEvita las piedras (%d).\n\n[F/A] Empezar     [Esc/B] Salir" % [
 				LogicaPesca.PUNTOS_PEZ, LogicaPesca.PUNTOS_PEZ_PERDIDO, LogicaPesca.PUNTOS_PIEDRA]
 		Estado.JUGANDO:
 			_mensaje.text = ""
@@ -173,7 +188,7 @@ func _dibujar() -> void:
 		else:
 			_dibujar_piedra(objeto.pos)
 	_dibujar_red(Vector2(logica.red_x, LogicaPesca.RED_Y))
-	var fuente: Font = ThemeDB.fallback_font
+	var fuente: Font = _mensaje.get_theme_default_font()
 	for texto in _textos:
 		var valor: int = texto.puntos
 		var cadena: String = ("+%d" if valor > 0 else "%d") % valor

@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" path="res://scenes/interiores/puerta_interior.tscn" id="18_ahmh2"]
 [ext_resource type="Script" path="res://scripts/interiores/puerta_interior.gd" id="19_v1xym"]
 
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/punto_minijuego.tscn" id="OficioPunto"]
+[ext_resource type="PackedScene" path="res://scenes/minijuegos/minijuego_carpinteria.tscn" id="OficioPanel"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yya3q"]
 albedo_color = Color(0.16, 0.105, 0.065, 1)
 roughness = 0.92
@@ -1104,6 +1107,12 @@ script = ExtResource("19_v1xym")
 escena_destino = "res://scenes/mundo.tscn"
 entrada_destino = "aldea_e04"
 texto = "[F] Salir"
+
+[node name="PuntoMinijuego" parent="." instance=ExtResource("OficioPunto")]
+position = Vector3(-1.65, 0, -1.5)
+estacion = "carpinteria"
+escena_minijuego = ExtResource("OficioPanel")
+texto_aviso = "[F/A] Banco de carpintería"
 
 [node name="CicloDiaNoche" type="Node" parent="." node_paths=PackedStringArray("ambiente")]
 script = ExtResource("CicloLuz")

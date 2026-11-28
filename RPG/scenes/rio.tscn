@@ -661,6 +661,10 @@ size = Vector3(4.1150923, 2, 1.04)
 [sub_resource type="BoxShape3D" id="BoxShape3D_am5fd"]
 size = Vector3(3.9751697, 2, 1.04)
 
+[sub_resource type="PlaneMesh" id="ContinuacionCauce"]
+material = SubResource("ShaderMaterial_tn7g1")
+size = Vector2(3.85, 16.1)
+
 [node name="Rio" type="Node3D" unique_id=84227309]
 metadata/limites_visuales_z = Vector2(-48, 48)
 metadata/limites_jugables_z = Vector2(-36, 36)
@@ -672,6 +676,14 @@ mesh = SubResource("ArrayMesh_mbar5")
 
 [node name="AlimentacionMolino" type="MeshInstance3D" parent="SuperficieAgua" unique_id=1434540188]
 mesh = SubResource("ArrayMesh_v24ro")
+
+[node name="CauceFueraNorte" type="MeshInstance3D" parent="."]
+position = Vector3(30.25, 0.319, -56)
+mesh = SubResource("ContinuacionCauce")
+
+[node name="CauceFueraSur" type="MeshInstance3D" parent="."]
+position = Vector3(30.25, 0.319, 56)
+mesh = SubResource("ContinuacionCauce")
 
 [node name="Orillas" type="Node3D" parent="." unique_id=1849532176]
 

@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/presentacion/senal_camino.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="Madera"]
+albedo_color = Color(0.34, 0.2, 0.095, 1)
+roughness = 0.92
+
+[sub_resource type="BoxMesh" id="Poste"]
+size = Vector3(0.16, 1.48, 0.16)
+
+[sub_resource type="BoxMesh" id="Tabla"]
+size = Vector3(1.85, 0.38, 0.12)
+
+[node name="SenalCamino" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Poste" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.72, 0)
+mesh = SubResource("Poste")
+material_override = SubResource("Madera")
+
+[node name="Tabla" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.32, 0)
+mesh = SubResource("Tabla")
+material_override = SubResource("Madera")
+
+[node name="Frente" type="Label3D" parent="."]
+position = Vector3(0, 1.32, 0.063)
+pixel_size = 0.007
+font_size = 33
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)
+
+[node name="Reverso" type="Label3D" parent="."]
+position = Vector3(0, 1.32, -0.063)
+rotation_degrees = Vector3(0, 180, 0)
+pixel_size = 0.007
+font_size = 33
+outline_size = 3
+modulate = Color(0.93, 0.82, 0.58, 1)

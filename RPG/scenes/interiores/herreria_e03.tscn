@@ -1273,6 +1273,7 @@ entrada_destino = "aldea_e03"
 texto = "[F] Salir"
 
 [node name="PuntoMinijuego" parent="." instance=ExtResource("m1_punto")]
+estacion = "herreria"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.4)
 escena_minijuego = ExtResource("m2_forja")
 texto_aviso = "[F] Forjar"

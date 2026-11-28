@@ -21,6 +21,8 @@ void vertex() { mundo=(MODEL_MATRIX*vec4(VERTEX,1.0)).xyz; }
 void fragment() {
 	vec2 p=mundo.xz;
 	vec2 mascara_suelo=texture(mascara,(p+vec2(40,36))/vec2(80,72)).rg;
+	vec2 exterior=max(abs(p)-vec2(40,36),vec2(0));
+	mascara_suelo*=1.0-smoothstep(1.0,8.0,length(exterior));
 	float grande=ruido(p*0.18);
 	float medio=ruido(p*0.75);
 	float fino=ruido(p*5.0);

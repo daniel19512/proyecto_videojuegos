@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmj4wwq15dtf6"
+path="res://.godot/imported/10. Elven Dawn  .ogg-bbc4d77e5b424ea3c7e09ab34c38396a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/musica/alkakrab/10. Elven Dawn  .ogg"
+dest_files=["res://.godot/imported/10. Elven Dawn  .ogg-bbc4d77e5b424ea3c7e09ab34c38396a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

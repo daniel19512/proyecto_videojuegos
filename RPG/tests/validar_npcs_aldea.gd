@@ -60,6 +60,7 @@ func conversar(npc: Node3D) -> PackedStringArray:
 	if not npc.jugador_cerca:
 		return PackedStringArray(["<sin zona>"])
 	await pulsar(&"interactuar")
+	await pulsar(&"ui_accept")
 	var caja: CanvasLayer = npc.get_node("CajaDialogo")
 	var lineas: PackedStringArray = caja.lineas.duplicate()
 	if not paused or not caja.abierta:

@@ -112,6 +112,7 @@ func validar() -> void:
 	# Sin ia: diálogo fijo de siempre.
 	await acercarse(panadera)
 	await pulsar(&"interactuar")
+	await pulsar(&"ui_accept")
 	var caja: CanvasLayer = panadera.get_node("CajaDialogo")
 	comprobar(caja.abierta and not dialogo.abierta, "sin IA la panadera usa su diálogo fijo")
 	await pulsar(&"ui_cancel")
@@ -126,6 +127,7 @@ func validar() -> void:
 	]
 	await acercarse(panadera)
 	await pulsar(&"interactuar")
+	await pulsar(&"ui_accept")
 	await esperar_turno()
 	comprobar(paused and dialogo.abierta and "Marta" in dialogo.respuesta_actual, "con IA la panadera responde con el modelo y pausa")
 	comprobar(Array(dialogo.opciones_actuales) == ["¿Qué pasa con la harina?", "Solo estoy de paso", dialogo.TEXTO_ESCRIBIR, dialogo.TEXTO_DESPEDIRSE], "muestra las opciones, escribir y despedirse")
@@ -153,6 +155,7 @@ func validar() -> void:
 	# Texto libre y contexto del narrador en el herrero.
 	await acercarse(herrero)
 	await pulsar(&"interactuar")
+	await pulsar(&"ui_accept")
 	await esperar_turno()
 	comprobar("investiga la harina" in llamadas.back().mensajes[0].content, "el herrero recibe la indicación del narrador")
 	dialogo.elegir(dialogo.TEXTO_ESCRIBIR)
@@ -174,6 +177,7 @@ func validar() -> void:
 	fallar = true
 	await acercarse(herrero)
 	await pulsar(&"interactuar")
+	await pulsar(&"ui_accept")
 	await esperar(4)
 	comprobar(herrero.get_node("CajaDialogo").abierta and not dialogo.abierta and paused, "si el modelo falla, el herrero usa su diálogo fijo")
 	await pulsar(&"ui_cancel")
@@ -193,7 +197,7 @@ func validar() -> void:
 	comprobar(historia.estado.npcs.pescador.recuerdos.size() == historia.RECUERDOS_MAXIMOS, "los recuerdos por NPC tienen tope")
 
 	# Persistencia.
-	historia.ruta_guardado = "user://prueba_historia_ia.json"
+	historia.ruta_guardado = "res://logs/prueba_historia_ia_%s.json" % Time.get_ticks_usec()
 	historia.guardar()
 	var resumen: String = historia.estado.resumen
 	historia.estado = {}

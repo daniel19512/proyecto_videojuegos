@@ -1,143 +1,84 @@
-# RPG Medieval — Simulador de Vida
+<p align="center">
+  <img src="RPG/assets/branding/sapientIA.png" alt="Logotipo de SapientIA" width="172">
+</p>
 
-**Un mundo de fantasía medieval donde la vida cotidiana es la aventura.**
+# SapientIA
 
-> **Estado:** En desarrollo · Proyecto académico · Godot 4.7.2
+SapientIA es un RPG de simulación de vida medieval desarrollado como proyecto académico. Combina escenarios tridimensionales low-poly, personajes pixel art en 2D y conversaciones opcionales con inteligencia artificial. Explora a tu ritmo, conoce a los aldeanos y aprende oficios en un mundo tranquilo, sin combate ni presión de supervivencia.
 
-Este proyecto es un **RPG de simulación de vida** ambientado en una aldea medieval de fantasía. En lugar de centrarse en el combate, da protagonismo a la exploración, los oficios, las relaciones entre habitantes y las pequeñas historias que surgen de la vida en comunidad.
+## Descargar SapientIA para Windows (64 bits)
 
-El juego combina **escenarios completamente 3D** con **personajes 2D de pixel art**, vistos mediante una cámara ortográfica inclinada. Sus aldeanos pueden estar controlados por un **modelo de lenguaje**: conversan contigo, recuerdan lo que haces, deciden qué hacer durante el día, hablan entre ellos y, entre todos, dan forma a la historia.
+**[Ver GitHub Releases](https://github.com/daniel19512/proyecto_videojuegos/releases)**
 
-## La experiencia que queremos crear
+**v1.0.0 · Pendiente de publicación.** El [enlace directo a SapientIA_Windows_x64.zip](https://github.com/daniel19512/proyecto_videojuegos/releases/download/v1.0.0/SapientIA_Windows_x64.zip) estará disponible cuando se publique la versión.
 
-Imagina llegar a una aldea donde cada habitante tiene su propia rutina, sus intereses y sus relaciones. Podrás conocer a tus vecinos, aprender oficios, participar en actividades cotidianas y descubrir cómo evoluciona la comunidad con el paso del tiempo.
+1. Descarga `SapientIA_Windows_x64.zip` desde **Assets** en GitHub Releases.
+2. Extrae el ZIP completo en una carpeta.
+3. Abre `SapientIA.exe` y elige **Nueva partida**. Mantén `SapientIA.pck` junto al ejecutable.
 
-La propuesta se apoya en cuatro pilares:
+La descarga incluye todo lo necesario para jugar. Puedes abrirla sin instalar Godot ni herramientas de desarrollo y sin descargar el código fuente. El juego usa Direct3D 12. La publicación está sujeta a los permisos indicados en [Créditos y licencias](CREDITOS_Y_LICENCIAS.md).
 
-- **Exploración tranquila:** recorrer la aldea, sus interiores y las regiones que la rodean.
-- **Vida social:** NPCs con personalidad, memoria, rutinas y conversaciones propias.
-- **Oficios y actividades:** minijuegos de pesca, cerveza, pan y forja.
-- **Un mundo con identidad:** plaza, taberna, panadería, herrería, molino, mercado, huertos y naturaleza que tienen sentido para sus habitantes.
+## Qué puedes hacer
 
-## Qué hay ya en el juego
+- Recorre Aldea, Bosque, Campos y Granjas, Montañas, Minas y Ruinas. Entra en los edificios y usa tu vivienda para guardar objetos o descansar.
+- Conoce a 21 personajes con perfiles y horarios propios. Observa sus desplazamientos, encuentros y visitas. Al conversar, hacer regalos y resolver encargos puedes desarrollar amistad y confianza.
+- Sigue la historia principal opcional, acepta misiones predefinidas o recibe encargos generados por IA cuando está activa.
+- Cultiva, pesca, mina, recolecta y comercia. Administra objetos en la mochila y en cofres y desbloquea recetas con la progresión de oficios. Los seis minijuegos cubren pesca, cerveza, pan, forja, carpintería y molienda.
+- Elige entre ocho apariencias y guarda en cinco ranuras independientes. El mundo tiene ciclo de día y noche, música y sonido ambiental. El menú permite configurar vídeo, audio y controles.
 
-| Implementado | Planeado |
-| --- | --- |
-| Aldea de 12 edificios con interiores visitables (E01–E11) | Cambio de luz según la hora del día |
-| Cinco regiones conectadas: bosque, campos y granjas, montañas, minas y ruinas | Profesiones con progreso, inventario y recompensas |
-| Río con agua animada, puente y molino con rueda | Misiones y eventos más elaborados |
-| Protagonista 2D con movimiento relativo a la cámara y cámara orbital 360° | Más aldeanos y oficios |
-| Cinco aldeanos con sprites propios: Tomás, Marta, Gonzalo, Anselmo y Bruno | Persistencia del estado de las regiones |
-| Cuatro minijuegos con sonido: pesca, cerveza, pan y forja | |
-| **NPCs con IA:** conversación libre, memoria, narrador, diario, acciones autónomas y conversaciones entre aldeanos | |
+## Controles predeterminados
 
-El avance detallado está en [Estado del proyecto](RPG/docs/estado_proyecto.md).
-
-## Controles
-
-| Acción | Teclado | Mando |
-| --- | --- | --- |
+| Acción | Teclado y ratón | Mando |
+|---|---|---|
 | Moverse | WASD o flechas | Stick izquierdo |
-| Girar la cámara | Q / E | Stick derecho |
-| Hablar, entrar, jugar | F | A |
-| Diario de la historia | J | — |
-| Menú de pausa y opciones | Esc | — |
+| Girar la cámara | Q/E | Stick derecho |
+| Interactuar | F | A |
+| Comerciar | T | X |
+| Mochila | I | Y |
+| Diario | J | Pulsar stick izquierdo |
+| Mapa | M | Ver |
+| Pausa | Esc | Menú |
+| Barra rápida | [ / ], R | LB/RB, pulsar stick derecho |
+| Navegar, aceptar y volver | Flechas, Enter, Esc o ratón | Cruceta o stick izquierdo, A y B |
 
-## Aldeanos con IA
+## Arquitectura e IA
 
-Con una clave de [OpenRouter](https://openrouter.ai/), los aldeanos dejan de usar diálogos fijos:
+Godot 4.7.2 y GDScript organizan el juego en nodos, escenas reutilizables y módulos. El aldeano base encapsula interacción y presentación. Sus variantes extienden el comportamiento mediante herencia, y cada escena compone sprites, detección y colisiones. Las señales notifican acciones entre interfaces y sistemas. `GestorRegiones` abstrae las transiciones y elige los marcadores de llegada. Los autoloads `Partidas`, `EstadoMundo` e `Historia` conservan estado jugable, memoria y relaciones en `user://`.
 
-- **Conversan contigo:** responden en personaje, te proponen 2-3 respuestas y también puedes escribir la tuya. Recuerdan lo que has hecho, incluidas tus partidas de pesca.
-- **Un narrador invisible da forma a la historia:** a partir de lo que pasa, actualiza los asuntos abiertos, orienta a cada aldeano y escribe en tu **diario** (tecla J).
-- **Viven su día:** un día de juego dura 12 minutos en cuatro franjas. En cada una deciden qué hacer (trabajar, ir a la plaza o al molino, visitar a un vecino, buscarte para contarte algo…) y caminan por la aldea.
-- **Hablan entre ellos:** si estás cerca lo verás en bocadillos sobre sus cabezas. Lo que se cuentan circula como rumores que luego te mencionan.
+`SimuladorNPC` aplica reglas locales de horarios, navegación y encuentros. Si activas IA en **Ajustes → IA** y guardas tu clave de OpenRouter, Godot envía solicitudes HTTP con JSON al modelo configurado. El contexto combina el perfil del personaje, la situación del mundo, recuerdos y relaciones. El cliente valida el esquema de la respuesta y el juego verifica los encargos propuestos antes de aplicarlos. Las reglas locales conservan el control de inventario, recompensas, desplazamientos y cambios de región. Ante una caída de red o sin clave, se usan rutinas y respuestas locales.
 
-**Cómo activarlo:** pulsa **Esc → Opciones de IA**, pega tu clave, pulsa «Probar conexión» y «Guardar y volver».
+La clave se guarda en `user://ia.cfg`. Las partidas se guardan por separado en `user://partidas/`.
 
-- La clave se guarda **solo en tu equipo** (`user://ia.cfg`, en la carpeta de datos de Godot), nunca en el repositorio.
-- Modelo por defecto: `z-ai/glm-5.3-flash`, cambiable en el mismo menú. Cuesta del orden de 0,0002 USD por conversación o plan.
-- Hay un **tope de tokens por sesión** (200.000 por defecto) y el menú muestra el gasto. Al alcanzarlo, o sin clave ni conexión, los aldeanos vuelven a sus diálogos y rutinas fijos.
-- La historia se guarda entre sesiones (`user://historia.json`). «Nueva historia» la reinicia.
-- La premisa, las fichas de los aldeanos y los lugares a los que pueden ir se editan sin tocar código en `RPG/data/historia/`.
+## Desarrollo
 
-## Dirección artística
+1. Clona el repositorio con `git clone https://github.com/daniel19512/proyecto_videojuegos.git`. Para editar, necesitas una copia autorizada de los recursos correspondientes a la revisión local de entrega. Git gestiona el código y GitHub aloja el proyecto. Esta entrega carece de objetos gestionados mediante Git LFS.
+2. Abre `RPG/project.godot` en Godot 4.7.2 y ejecuta con F5. Puedes dejar OpenRouter desactivado.
+3. Instala las plantillas de exportación de la misma versión y usa el perfil **Windows x64** en modo Release. Crea primero la carpeta de destino.
 
-El proyecto utiliza una estética **medieval fantástica, cálida y estilizada**, con arquitectura de madera y piedra, vegetación colorida y espacios diseñados para sentirse habitados.
-
-La combinación de **personajes pixel art en escenarios 3D** conserva el encanto de los RPG clásicos mientras aprovecha la profundidad, iluminación y composición espacial de un entorno tridimensional.
-
-## Tecnologías
-
-| Tecnología | Uso |
-| --- | --- |
-| **Godot 4.7.2** | Motor del videojuego |
-| **GDScript** | Lógica de juego |
-| **Forward Plus / Jolt Physics** | Renderizado 3D y colisiones |
-| **AnimatedSprite3D** | Personajes 2D dentro del mundo 3D |
-| **glTF / GLB / FBX** | Modelos 3D modulares |
-| **OpenRouter** | Modelo de lenguaje de los aldeanos (salida JSON estructurada, llamada directa desde Godot) |
-| **AStarGrid2D** | Rutas de los aldeanos por la aldea |
-
-## Estructura del repositorio
-
-```text
-.
-├── AGENTS.md                 # Instrucciones y decisiones técnicas para agentes
-├── README.md
-└── RPG/                      # Proyecto Godot
-    ├── assets/               # Modelos, texturas, sprites y sonidos
-    ├── data/historia/        # Premisa, aldeanos y lugares de la historia (editables)
-    ├── docs/                 # Estado, inventario de assets, planos e interiores
-    ├── scenes/               # Mundo, regiones, interiores, NPCs y minijuegos
-    ├── scripts/
-    │   ├── ia/               # Cliente OpenRouter, historia, narrador, reloj, aldeanos, diario y menú
-    │   ├── minijuegos/       # Cerveza, pan, forja y base común
-    │   ├── npc/              # Aldeanos, patrulla y pescador
-    │   └── pesca/            # Minijuego de pesca
-    ├── tests/                # Validaciones automáticas
-    └── project.godot
+```powershell
+New-Item -ItemType Directory -Force Distribucion/SapientIA_Windows_x64
+godot --headless --path RPG --export-release "Windows x64"
 ```
 
-La escena principal es `RPG/scenes/mundo.tscn`.
-
-## Cómo abrir el proyecto
-
-1. Instala **Godot 4.7.2**.
-2. Clona o descarga este repositorio.
-3. En Godot, selecciona **Import** y elige `RPG/project.godot`.
-4. Espera a que termine la importación inicial de recursos y ejecuta el proyecto (F5).
-
-Los recursos gráficos y de sonido están incluidos en `RPG/assets/`. El juego funciona sin clave de OpenRouter, con diálogos fijos.
-
-## Pruebas
-
-Las validaciones están en `RPG/tests/` y se ejecutan sin ventana desde la raíz del repositorio, por ejemplo:
-
 ```text
-godot --headless --path RPG --log-file logs/validar_ia_capa1.log --script res://tests/validar_ia_capa1.gd
+RPG/
+  assets/   Recursos visuales, audio y fuentes
+  data/     Perfiles, lugares, catálogos y misiones en JSON
+  scenes/   Regiones, interiores, personajes e interfaces
+  scripts/  Sistemas de juego y herramientas de edición
+  tests/    Validaciones del proyecto
+  docs/     Estado técnico y catálogo agrícola
+  project.godot
+  export_presets.cfg
+Distribucion/   Entrega ejecutable local
 ```
 
-Las pruebas de IA usan un simulador y **nunca llaman a la red** ni tocan tu partida guardada. Los registros se guardan en `RPG/logs/` (excluida de Git).
+## Autores
 
-## Recursos de terceros
+**Daniel Alejandro Berrio Restrepo**
 
-- [Quaternius](https://quaternius.com/): Medieval Village MegaKit, Stylized Nature MegaKit, Fantasy Props MegaKit y Farm Animals Pack.
-- [KayKit](https://kaylousberg.com/) Forest Nature Pack (CC0) y Forest Nature Updated: vegetación del bosque.
-- Avramania: Interiors Furniture, Food & Market, Props Tools & Fencing y Farm & Harvest; LowPolyBlacksmithPack; medv-cafe (taberna).
-- [Kenney](https://kenney.nl/): Interface Sounds, Impact Sounds y RPG Audio (CC0), sonidos de los minijuegos.
-- **Ventilatore — The Fantasy Tileset / Animated Character:** sprites del protagonista. Los sprites de los aldeanos se generaron para el proyecto.
+**Samuel Castro Carmona**
 
-Los recursos pertenecen a sus respectivos autores y están sujetos a sus propias condiciones de uso. **Algunas licencias tienen restricciones o están pendientes de verificar** (por ejemplo, Forest Nature Updated no permite redistribuir sus archivos originales y la licencia de medv-cafe no se ha localizado). El detalle está en el [Inventario de assets](RPG/docs/inventario_assets.md) y en la [integración de interiores](RPG/docs/integracion_assets_interiores.md).
+Estudiantes de Ciencias de la Computación. Proyecto académico de 2026.
 
-## Documentación del desarrollo
-
-- [Estado del proyecto](RPG/docs/estado_proyecto.md): funcionalidades, pruebas, limitaciones y próximos pasos.
-- [Inventario de assets](RPG/docs/inventario_assets.md): recursos disponibles, licencias y comprobaciones.
-- [Interiores de la aldea](RPG/docs/interiores_aldea.md) y [transiciones regionales](RPG/docs/transiciones_regionales.md).
-- [AGENTS.md](AGENTS.md): arquitectura, convenciones y reglas de trabajo.
-
-## Sobre el proyecto
-
-Este videojuego nace como un **proyecto académico** y se desarrolla por capas: primero una base jugable estable, después una aldea y unas regiones más completas y, ahora, unos habitantes que viven, conversan y cuentan su propia historia.
-
-**La meta es crear un pequeño mundo medieval que se sienta vivo, incluso cuando el jugador simplemente decide pasear por sus calles.**
+Consulta las atribuciones de modelos, sprites, iconos, fuentes, música y audio, así como las condiciones de redistribución. [Créditos y licencias](CREDITOS_Y_LICENCIAS.md) · [Documentación técnica](RPG/docs/estado_proyecto.md)

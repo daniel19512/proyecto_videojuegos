@@ -25,7 +25,9 @@ func viajar_mina(destino: StringName) -> bool:
 	comprobar(j.is_physics_processing() and camara.is_processing(),"Control y camara restaurados")
 	comprobar(root.find_children("*","CharacterBody3D",true,false).size()==1,"Un jugador")
 	comprobar(root.find_children("*","Camera3D",true,false).size()==1,"Una camara")
-	for area in current_scene.find_children("*","Area3D",true,false): comprobar(not area.overlaps_body(j),"Aparicion fuera del detector")
+	for area in current_scene.find_children("*","Area3D",true,false):
+		if area.get("escena_destino") != null:
+			comprobar(not area.overlaps_body(j),"Aparicion fuera del detector "+str(area.name))
 	await esperar(60)
 	comprobar(not gestor.en_transicion and gestor.region_actual==destino,"Sin bucle en reposo")
 	var angulo: float = camara.angulo_horizontal
